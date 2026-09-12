@@ -1,0 +1,12 @@
+{
+  "name": "abigail-joy-photography",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "serve": "node serve.mjs",
+    "screenshot": "node screenshot.mjs http://localhost:3000"
+  },
+  "dependencies": {
+    "puppeteer": "^24.0.0"
+  }
+}
