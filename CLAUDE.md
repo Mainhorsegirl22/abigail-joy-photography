@@ -1,5 +1,12 @@
 # CLAUDE.md — Frontend Website Rules
 
+## Repository Structure
+This repo holds two independent projects:
+- **Root** (`/`) — the static marketing website: plain HTML/Tailwind, built and previewed with `serve.mjs`/`screenshot.mjs`. Everything below in this file applies here. No `index.html` exists yet — the site itself hasn't been built out, only the dev tooling.
+- **`mobile-app/`** — a separate Expo/React Native app with its own toolchain, `package.json`, and `mobile-app/CLAUDE.md`. The Tailwind/HTML rules in this file do not apply there.
+
+Note: `brand_assets/` is currently empty (just `.gitkeep`) — no real logo/palette has been supplied yet.
+
 ## Always Do First
 - **Invoke the `frontend-design` skill** before writing any frontend code, every session, no exceptions.
 
