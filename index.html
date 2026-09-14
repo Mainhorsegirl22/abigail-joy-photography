@@ -1,90 +1,236 @@
-<title>Pine Hill German Shepherds — Homepage Preview</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500&family=Sacramento&family=Jost:wght@400&display=swap">
+<title>Pine Hill German Shepherds — Homepage</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Sacramento&family=Jost:wght@300;400;500&display=swap">
 <style>
-  * { box-sizing: border-box; }
-  body { margin: 0; font-family: 'Jost', sans-serif; color: #6a6152; }
-  .ph { background: linear-gradient(135deg,#d8cdb8,#b9ab8f); display:flex; align-items:center; justify-content:center; color:#5a4f3a; font-family:'Jost',sans-serif; font-size:13px; letter-spacing:.05em; text-transform:uppercase; }
-  .hero-bg { background: linear-gradient(135deg,#3a3222,#5c5138); }
-  h1,h2,h3 { font-family:'Cormorant Garamond',serif; color:#3f3829; font-weight:500; margin:0; }
-  .script { font-family:'Sacramento',cursive; font-weight:400; line-height:1; color:#ad9877; margin:0 0 6px; }
-  .btn { display:inline-block; background:#A4AD94; color:#fff; text-decoration:none; font-family:'Jost',sans-serif; font-size:11px; letter-spacing:1.76px; text-transform:uppercase; padding:16px 30px; }
-  section { padding: 70px 90px; }
-  @media (max-width: 700px) { section { padding: 40px 24px; } .grid2, .grid3 { grid-template-columns: 1fr !important; } }
-  .grid2 { display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center; max-width:1200px; margin:0 auto; }
-  .grid3 { display:grid; grid-template-columns:1fr 1fr 1fr; gap:40px; max-width:1100px; margin:0 auto 30px; }
+  /* ---------- design tokens ---------- */
+  :root{
+    --ink:#3f3829;          /* logo charcoal */
+    --ink-soft:#6a6152;     /* body text */
+    --gold:#ad9877;         /* logo gold */
+    --sage:#A4AD94;         /* action */
+    --sage-dk:#8d9880;
+    --cream:#F7F5F4;
+    --paper:#FDFCFA;
+    --white:#fff;
+
+    /* spacing scale — every value on the page comes from here */
+    --s1:8px; --s2:16px; --s3:24px; --s4:32px; --s5:48px;
+    --s6:64px; --s7:96px; --s8:128px;
+
+    --gutter:clamp(24px, 5vw, 64px);
+    --container:1140px;
+
+    /* layered, color-tinted elevation */
+    --lift-1:0 1px 2px rgba(63,56,41,.05), 0 4px 12px rgba(63,56,41,.06);
+    --lift-2:0 2px 4px rgba(63,56,41,.06), 0 12px 28px rgba(63,56,41,.10), 0 28px 56px -20px rgba(63,56,41,.14);
+    --lift-action:0 2px 6px rgba(122,133,108,.28), 0 10px 24px -8px rgba(122,133,108,.45);
+
+    --ease:cubic-bezier(.2,.9,.3,1.2);
+  }
+  *{box-sizing:border-box}
+  html{-webkit-font-smoothing:antialiased}
+  body{margin:0;background:var(--paper);color:var(--ink-soft);
+       font-family:'Jost',system-ui,sans-serif;font-weight:400;font-size:15.5px;line-height:1.85}
+
+  /* ---------- typography ---------- */
+  h1,h2,h3{font-family:'Cormorant Garamond',Georgia,serif;color:var(--ink);font-weight:500;margin:0;letter-spacing:-.01em}
+  h1{font-size:clamp(34px,5.2vw,60px);line-height:1.08;letter-spacing:-.03em}
+  h2{font-size:clamp(28px,3.6vw,42px);line-height:1.15;letter-spacing:-.02em}
+  h3{font-size:21px;line-height:1.3}
+  p{margin:0}
+  .script{font-family:'Sacramento',cursive;color:var(--gold);font-size:clamp(26px,2.6vw,32px);line-height:1;margin:0 0 var(--s1)}
+  .eyebrow{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin:0 0 var(--s2)}
+  .lede{max-width:58ch}
+  .measure{max-width:62ch}
+
+  /* ---------- layout primitives ---------- */
+  .section{padding-block:clamp(56px,8vw,var(--s7));padding-inline:var(--gutter)}
+  .wrap{max-width:var(--container);margin-inline:auto}
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,5vw,var(--s6));align-items:center}
+  .trio{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(24px,3.5vw,var(--s5))}
+  .center{text-align:center}
+  .stack>*+*{margin-top:var(--s3)}
+  @media(max-width:820px){
+    .split,.trio{grid-template-columns:1fr}
+    .split{gap:var(--s4)}
+  }
+
+  /* ---------- media ---------- */
+  .frame{position:relative;overflow:hidden;border-radius:2px;box-shadow:var(--lift-2);background:var(--cream)}
+  .frame img{width:100%;height:100%;object-fit:cover;display:block}
+  /* gradient + color treatment layers per brand spec */
+  .frame::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(63,56,41,.28),transparent 55%);pointer-events:none}
+  .frame::before{content:"";position:absolute;inset:0;background:var(--gold);mix-blend-mode:multiply;opacity:.06;pointer-events:none;z-index:1}
+  /* sandbox stand-in: real photos live in the WP media library */
+  .ph{aspect-ratio:var(--ar,4/3);display:grid;place-items:center;
+      background:linear-gradient(135deg,#ddd3c0,#bdae92);
+      color:#5c5140;font-size:11px;letter-spacing:.16em;text-transform:uppercase;text-align:center;padding:var(--s2)}
+
+  /* ---------- actions: hover + focus-visible + active, transform/opacity only ---------- */
+  .btn{display:inline-block;background:var(--sage);color:#fff;text-decoration:none;
+       font-size:11px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;
+       padding:17px 34px;border:0;box-shadow:var(--lift-action);
+       transition:transform .28s var(--ease), opacity .2s ease, box-shadow .28s var(--ease);will-change:transform}
+  .btn:hover{transform:translateY(-2px) scale(1.015);box-shadow:0 4px 10px rgba(122,133,108,.3),0 16px 32px -10px rgba(122,133,108,.5)}
+  .btn:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+  .btn:active{transform:translateY(0) scale(.985);opacity:.92}
+  .btn--ghost{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1px rgba(63,56,41,.25)}
+  .btn--ghost:hover{box-shadow:inset 0 0 0 1px rgba(63,56,41,.5);transform:translateY(-2px)}
+
+  .navlink{font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink);text-decoration:none;
+           transition:opacity .2s ease, transform .25s var(--ease);display:inline-block}
+  .navlink:hover{opacity:.6;transform:translateY(-1px)}
+  .navlink:focus-visible{outline:2px solid var(--gold);outline-offset:4px}
+
+  /* ---------- header ---------- */
+  .masthead{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:var(--s3);
+            padding:var(--s3) var(--gutter);background:var(--white);
+            box-shadow:var(--lift-1);position:relative;z-index:3}
+  .brandmark{text-align:center;line-height:1}
+  .brandmark .word{font-family:'Cormorant Garamond',serif;font-size:24px;letter-spacing:.14em;color:var(--ink);display:block}
+  .brandmark .sub{font-size:9.5px;letter-spacing:.3em;color:var(--gold);display:block;margin-top:5px}
+  .nav{display:flex;gap:var(--s4);align-items:center}
+  .nav--end{justify-content:flex-end}
+  @media(max-width:820px){
+    .masthead{grid-template-columns:1fr auto;gap:var(--s2);text-align:left}
+    .nav:not(.nav--end){display:none}
+    .brandmark{text-align:left}
+  }
+
+  /* ---------- hero ---------- */
+  .hero{position:relative;min-height:clamp(520px,72vh,680px);display:grid;place-items:center;
+        padding-inline:var(--gutter);text-align:center;overflow:hidden;
+        background:linear-gradient(140deg,#4a4030,#6d5f45)}
+  .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(35,30,20,.55),rgba(35,30,20,.18));z-index:1}
+  .hero__inner{position:relative;z-index:2;max-width:820px;margin-inline:auto}
+  .hero h1{color:#fff;margin:0 0 var(--s3)}
+  .hero .script{color:#F1E9DA}
+  .hero p{color:rgba(255,255,255,.88);max-width:52ch;margin-inline:auto}
+  .hero .btn{margin-top:var(--s5)}
+
+  /* ---------- misc ---------- */
+  .band-cream{background:var(--cream)}
+  .band-white{background:var(--white)}
+  .rule{width:44px;height:1px;background:var(--gold);opacity:.7;margin:var(--s3) 0}
+  .center .rule{margin-inline:auto}
+  .card{background:var(--white);padding:var(--s5) var(--s4);box-shadow:var(--lift-1);border-radius:2px;
+        transition:transform .3s var(--ease), box-shadow .3s var(--ease)}
+  .card:hover{transform:translateY(-3px);box-shadow:var(--lift-2)}
 </style>
 
-<header style="display:flex;align-items:center;justify-content:space-between;padding:20px 40px;background:#fff;border-bottom:1px solid #eee;">
-  <nav style="display:flex;gap:28px;font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:#3f3829;">
-    <span>About</span><span>Our Dogs</span><span>Getting Started</span>
+<header class="masthead">
+  <nav class="nav">
+    <a class="navlink" href="#story">About</a>
+    <a class="navlink" href="#why">Our Dogs</a>
+    <a class="navlink" href="#litter">Getting Started</a>
   </nav>
-  <div style="font-family:'Cormorant Garamond',serif;font-size:22px;letter-spacing:.08em;color:#3f3829;">PINE HILL <span style="color:#ad9877;font-size:11px;letter-spacing:.15em;display:block;text-align:center;">GERMAN SHEPHERDS</span></div>
-  <a href="#" class="btn" style="padding:10px 20px;">Apply</a>
+  <div class="brandmark">
+    <!-- WP: replace with <img src="…/2026/09/Pine-Hill-Logo.png"> (media ID 2687) -->
+    <span class="word">PINE HILL</span>
+    <span class="sub">GERMAN SHEPHERDS</span>
+  </div>
+  <nav class="nav nav--end"><a class="btn" href="#contact" style="padding:12px 24px">Apply</a></nav>
 </header>
 
-<section style="position:relative;min-height:640px;display:flex;align-items:center;justify-content:center;text-align:center;padding:0 24px;" class="hero-bg">
-  <div style="position:relative;max-width:760px;margin:0 auto;">
-    <p class="script" style="font-size:32px;color:#fff;">To Love, Serve, and Protect</p>
-    <h1 style="font-size:44px;color:#fff;margin:0 0 18px;">New England&#8217;s Dedicated Breeders of Working-Line German Shepherds</h1>
-    <p style="color:#fff;font-size:14.5px;margin:0 0 26px;">Raised in the backwoods of northern Maine — with full health testing, early puppy development, and a whole lot of love.</p>
-    <a href="#" class="btn">Meet Our Shepherds</a>
+<section class="hero">
+  <div class="hero__inner">
+    <p class="script">To Love, Serve, and Protect</p>
+    <h1>New England's Dedicated Breeders of Working-Line German Shepherds</h1>
+    <p>Raised in the backwoods of northern Maine — with full health testing, early puppy development, and a whole lot of love.</p>
+    <a class="btn" href="#why">Meet Our Shepherds</a>
   </div>
 </section>
 
-<section style="background:#fff;">
-  <div class="grid2">
-    <div class="ph" style="aspect-ratio:7/8;">photo — Freda</div>
-    <div>
-      <p class="script" style="font-size:28px;">welcome to pine hill</p>
-      <h2 style="font-size:38px;margin:0 0 18px;">We&#8217;re a Small Family Kennel</h2>
-      <p style="font-size:14.5px;margin:0 0 14px;line-height:1.85;">Welcome to Pine Hill German Shepherds! We&#8217;re a small, family-operated breeder nestled in the serene backwoods of northern Maine. Our main breeding female, Freda, is a beloved part of our home and family — and with only one breeding female, we&#8217;re able to raise every litter within our own household.</p>
-      <p style="font-size:14.5px;margin:0 0 22px;line-height:1.85;">Our mission is to raise confident, healthy German Shepherd puppies from fully health-tested parents renowned for their intelligence, working drive, and unwavering loyalty, with a strong foundation built through early development and socialization.</p>
-      <a href="#" class="btn">Read Our Full Story</a>
+<section class="section band-white" id="story">
+  <div class="wrap split">
+    <div class="frame"><div class="ph" style="--ar:4/5">photo — Freda (media 2539)</div></div>
+    <div class="stack">
+      <div>
+        <p class="script">welcome to pine hill</p>
+        <h2>We're a Small Family Kennel</h2>
+        <div class="rule"></div>
+      </div>
+      <p class="measure">Welcome to Pine Hill German Shepherds! We're a small, family-operated breeder nestled in the serene backwoods of northern Maine. Our main breeding female, Freda, is a beloved part of our home and family — and with only one breeding female, we're able to raise every litter within our own household.</p>
+      <p class="measure">Our mission is to raise confident, healthy German Shepherd puppies from fully health-tested parents renowned for their intelligence, working drive, and unwavering loyalty.</p>
+      <div><a class="btn" href="#">Read Our Full Story</a></div>
     </div>
   </div>
 </section>
 
-<section style="background:#F7F5F4;text-align:center;">
-  <p class="script" style="font-size:28px;">get to know the breed</p>
-  <h2 style="font-size:36px;margin:0 0 36px;">Why Working-Line German Shepherds?</h2>
-  <div class="grid3">
-    <div><h3 style="font-size:21px;margin:0 0 10px;">Health Tested</h3><p style="font-size:14.5px;line-height:1.85;">Every parent is fully health tested — OFA hips, elbows, eyes and heart, plus comprehensive genetic panel screening.</p></div>
-    <div><h3 style="font-size:21px;margin:0 0 10px;">Working Drive &amp; Intelligence</h3><p style="font-size:14.5px;line-height:1.85;">Bred from proven working lines: confident, intelligent, and versatile enough to thrive in any environment.</p></div>
-    <div><h3 style="font-size:21px;margin:0 0 10px;">Early Puppy Development</h3><p style="font-size:14.5px;line-height:1.85;">Every puppy goes through Puppy Culture along with ESI and early neurological stimulation from day one.</p></div>
-  </div>
-  <a href="#" class="btn">Learn About Our Program</a>
-</section>
-
-<section style="background:#fff;text-align:center;">
-  <h2 style="font-size:32px;margin:0 0 14px;">Upcoming Litter — Summer 2026</h2>
-  <p style="font-size:14.5px;max-width:600px;margin:0 auto 24px;line-height:1.85;">We very occasionally have puppies available. If you&#8217;d like to join the waiting list for our upcoming litter, we&#8217;d love to hear from you.</p>
-  <a href="#" class="btn">Contact Us</a>
-</section>
-
-<section style="background:#F7F5F4;">
-  <div class="grid2">
-    <div class="ph" style="aspect-ratio:7/5;">photo — K9 Scholars</div>
-    <div style="text-align:center;">
-      <h2 style="font-size:34px;margin:0 0 16px;">K9 Scholars</h2>
-      <p style="font-size:14.5px;margin:0 0 22px;line-height:1.85;">Having a well-mannered puppy significantly eases life for both owner and pet. With each litter, we reserve two spots for puppies to stay with us for advanced obedience and training. These puppies live in our home, working through our positive-reinforcement program that builds confident, well-behaved companions ready to succeed anywhere.</p>
-      <a href="#" class="btn">Learn More</a>
+<section class="section band-cream center" id="why">
+  <div class="wrap">
+    <p class="script">get to know the breed</p>
+    <h2>Why Working-Line German Shepherds?</h2>
+    <div class="rule"></div>
+    <div class="trio" style="margin-top:var(--s6)">
+      <div class="card">
+        <h3>Health Tested</h3>
+        <div class="rule" style="margin-block:var(--s2)"></div>
+        <p>Every parent is fully health tested — OFA hips, elbows, eyes and heart, plus comprehensive genetic panel screening.</p>
+      </div>
+      <div class="card">
+        <h3>Working Drive &amp; Intelligence</h3>
+        <div class="rule" style="margin-block:var(--s2)"></div>
+        <p>Bred from proven working lines: confident, intelligent, and versatile enough to thrive in any environment.</p>
+      </div>
+      <div class="card">
+        <h3>Early Puppy Development</h3>
+        <div class="rule" style="margin-block:var(--s2)"></div>
+        <p>Every puppy goes through Puppy Culture along with ESI and early neurological stimulation from day one.</p>
+      </div>
     </div>
+    <div style="margin-top:var(--s6)"><a class="btn" href="#">Learn About Our Program</a></div>
   </div>
 </section>
 
-<section style="background:#fff;text-align:center;">
-  <p class="script" style="font-size:24px;">&#8220;Life is never boring when you own working-line German Shepherds.&#8221;</p>
-  <h2 style="font-size:30px;margin:0 0 20px;">Follow Our Journey</h2>
-  <div class="ph" style="max-width:900px;height:200px;margin:0 auto;">Instagram feed</div>
+<section class="section band-white center" id="litter">
+  <div class="wrap">
+    <p class="eyebrow">Now accepting inquiries</p>
+    <h2>Upcoming Litter — Summer 2026</h2>
+    <div class="rule"></div>
+    <p class="lede" style="margin:var(--s3) auto 0">We very occasionally have puppies available. If you'd like to join the waiting list for our upcoming litter, we'd love to hear from you.</p>
+    <div style="margin-top:var(--s5)"><a class="btn" href="#contact">Join the Waiting List</a></div>
+  </div>
 </section>
 
-<section style="background:#F7F5F4;">
-  <div class="grid2">
-    <div class="ph" style="height:320px;">map — Garland, Maine</div>
-    <div style="text-align:center;">
-      <h2 style="font-size:30px;margin:0 0 12px;">Get In Touch</h2>
-      <p style="font-size:14.5px;margin:0 0 20px;line-height:1.85;">Have a question? We&#8217;d love to hear from you.</p>
-      <a href="#" class="btn">Contact Us</a>
+<section class="section band-cream">
+  <div class="wrap split">
+    <div class="stack">
+      <div>
+        <p class="script">raised, not just bred</p>
+        <h2>K9 Scholars</h2>
+        <div class="rule"></div>
+      </div>
+      <p class="measure">With each litter, we reserve two spots for puppies to stay with us for advanced obedience and training. These puppies live in our home, working through our positive-reinforcement program that builds confident, well-behaved companions ready to succeed anywhere.</p>
+      <div><a class="btn" href="#">Learn More</a></div>
+    </div>
+    <div class="frame"><div class="ph" style="--ar:4/3">photo — K9 Scholars (media 2013)</div></div>
+  </div>
+</section>
+
+<section class="section band-white center">
+  <div class="wrap">
+    <p class="script">"Life is never boring when you own working-line German Shepherds."</p>
+    <h2>Follow Our Journey</h2>
+    <div class="rule"></div>
+    <div class="frame" style="margin-top:var(--s5)"><div class="ph" style="--ar:3/1">Instagram feed — [instagram-feed feed=1]</div></div>
+  </div>
+</section>
+
+<section class="section band-cream" id="contact">
+  <div class="wrap split">
+    <div class="frame"><div class="ph" style="--ar:16/10">map — Garland, Maine</div></div>
+    <div class="stack">
+      <div>
+        <p class="script">say hello</p>
+        <h2>Get In Touch</h2>
+        <div class="rule"></div>
+      </div>
+      <p class="measure">Have a question about our dogs, our program, or an upcoming litter? We'd love to hear from you.</p>
+      <div style="display:flex;gap:var(--s2);flex-wrap:wrap">
+        <a class="btn" href="#">Contact Us</a>
+        <a class="btn btn--ghost" href="#">Puppy Application</a>
+      </div>
     </div>
   </div>
 </section>
