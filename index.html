@@ -14,7 +14,7 @@
 }
 .ph-pg *{box-sizing:border-box}
 .ph-pg h1,.ph-pg h2,.ph-pg h3,.ph-pg h4{font-family:'Cormorant Garamond',Georgia,serif;font-weight:500;margin:0;text-wrap:balance}
-.ph-pg h1{font-size:clamp(40px,5.6vw,68px);line-height:1.04;letter-spacing:-.02em;color:#fff}
+.ph-pg h1{font-size:clamp(30px,3.9vw,50px);line-height:1.04;letter-spacing:-.02em;color:#fff}
 .ph-pg h2{font-size:clamp(30px,4vw,50px);line-height:1.1;letter-spacing:-.015em;color:var(--brass)}
 .ph-pg h3{font-size:clamp(20px,2vw,25px);line-height:1.25;color:var(--espresso)}
 .ph-pg h4{font-size:19px;line-height:1.35;color:var(--espresso)}
@@ -52,15 +52,15 @@
 .ph-pg .ph-btn--solid:hover{background:#3D362E;color:var(--ivory)}
 .ph-pg .ph-btn--outline{background:transparent;color:var(--espresso);border-color:var(--espresso)}
 .ph-pg .ph-btn--outline:hover{background:var(--espresso);border-color:var(--espresso);color:var(--ivory)}
-.ph-hero{position:relative;min-height:clamp(560px,82vh,800px);display:grid;place-items:center;text-align:center;
-  padding:var(--s8) var(--gutter);overflow:hidden;background:#3D3428 center/cover no-repeat}
+.ph-hero{position:relative;min-height:clamp(560px,82vh,800px);display:grid;align-items:end;justify-items:center;text-align:center;
+  padding:var(--s8) var(--gutter) clamp(64px,11vh,120px);overflow:hidden;background:#3D3428 center/cover no-repeat}
 .ph-hero::after{content:"";position:absolute;inset:0;z-index:1;
   background:linear-gradient(to top,rgba(22,18,14,.60),rgba(22,18,14,.22) 55%,rgba(22,18,14,.38))}
 .ph-hero__in{position:relative;z-index:2;max-width:900px}
-.ph-hero .ph-script{color:var(--taupe)}
-.ph-hero__sub{color:rgba(255,255,255,.84);font-size:11px;letter-spacing:.2em;text-transform:uppercase;margin-top:var(--s4);line-height:2}
-.ph-hero h1{margin-bottom:var(--s2)}
-.ph-hero .ph-btn{margin-top:var(--s5)}
+.ph-hero .ph-script{color:var(--taupe);font-size:clamp(20px,2.2vw,28px)}
+.ph-hero__sub{color:rgba(255,255,255,.84);font-size:10px;letter-spacing:.2em;text-transform:uppercase;margin-top:var(--s3);line-height:2}
+.ph-hero h1{margin-bottom:var(--s1)}
+.ph-hero .ph-btn{margin-top:var(--s4)}
 .ph-hero em{font-style:italic}
 /* sections alternate white / soft linen down the page */
 .ph-ivory{background:#FFFFFF}
