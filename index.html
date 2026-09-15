@@ -8,8 +8,9 @@
   --gutter:clamp(24px,5vw,56px); --container:1180px; --sy:clamp(72px,9vw,120px);
   --lift:0 2px 6px rgba(43,37,31,.06), 0 18px 40px -16px rgba(43,37,31,.18);
   --ease:cubic-bezier(.22,.9,.32,1);
-  background:var(--ivory); color:var(--body);
+  background:#FFFFFF; color:var(--body);
   font-family:'Montserrat',system-ui,sans-serif; font-weight:400; font-size:15px; line-height:1.9;
+  overflow-x:clip;
 }
 .ph-pg *{box-sizing:border-box}
 .ph-pg h1,.ph-pg h2,.ph-pg h3,.ph-pg h4{font-family:'Cormorant Garamond',Georgia,serif;font-weight:500;margin:0;text-wrap:balance}
@@ -25,7 +26,10 @@
 .ph-lede{max-width:56ch;font-size:15.5px}
 .ph-center{text-align:center}
 .ph-center .ph-measure,.ph-center .ph-lede{margin-inline:auto}
-.ph-sec{padding-block:var(--sy);padding-inline:var(--gutter)}
+/* every section spans the viewport, so a tinted band can never render as a
+   partial-width block inside the theme's content container */
+.ph-sec{padding-block:var(--sy);padding-inline:var(--gutter);
+        width:100vw;margin-left:calc(50% - 50vw)}
 .ph-wrap{max-width:var(--container);margin-inline:auto}
 .ph-narrow{max-width:820px;margin-inline:auto}
 .ph-split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(36px,5.5vw,88px);align-items:center}
@@ -61,8 +65,9 @@
 .ph-hero h1{margin-bottom:var(--s2)}
 .ph-hero .ph-btn{margin-top:var(--s5)}
 .ph-hero em{font-style:italic}
-.ph-ivory{background:var(--ivory)}
-.ph-linen{background:var(--linen)}
+/* mostly white; espresso band is the single dark accent */
+.ph-ivory{background:#FFFFFF}
+.ph-linen{background:#FFFFFF}
 .ph-dark{background:var(--espresso)}
 .ph-dark h2{color:var(--taupe)}
 .ph-dark p{color:rgba(247,244,238,.78)}
@@ -72,7 +77,8 @@
 .ph-feat p{font-size:14.5px}
 /* the rule already provides separation; don't double it against the grid gap */
 .ph-feat .ph-rule,.ph-stack .ph-rule{margin-bottom:0}
-.ph-card{background:#fff;padding:var(--s5) var(--s4);border:1px solid var(--hair);
+/* cards sit on white, so they take the tint to read as objects */
+.ph-card{background:var(--ivory);padding:var(--s5) var(--s4);border:1px solid var(--hair);
   transition:transform .3s var(--ease),box-shadow .3s var(--ease)}
 .ph-card:hover{transform:translateY(-4px);box-shadow:var(--lift)}
 .ph-card .ph-ico{color:var(--brass);margin-bottom:var(--s2)}
