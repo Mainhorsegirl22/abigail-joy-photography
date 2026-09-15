@@ -55,14 +55,18 @@
 .ph-pg .ph-btn--solid:hover{background:var(--sage-deep);color:var(--espresso)}
 .ph-pg .ph-btn--outline{background:var(--sage);color:var(--espresso);border-color:var(--sage)}
 .ph-pg .ph-btn--outline:hover{background:var(--sage-deep);border-color:var(--sage-deep);color:var(--espresso)}
-.ph-hero{position:relative;min-height:clamp(560px,82vh,800px);display:grid;align-items:end;justify-items:center;text-align:center;
-  padding:var(--s8) var(--gutter) clamp(44px,6vh,72px);overflow:hidden;background:#3D3428 center/cover no-repeat}
+.ph-hero{position:relative;min-height:clamp(560px,82vh,800px);display:grid;align-items:end;justify-items:start;text-align:left;
+  padding:var(--s8) clamp(56px,7vw,110px) clamp(56px,9vh,104px) var(--gutter);overflow:hidden;background:#3D3428 center/cover no-repeat}
 .ph-hero::after{content:"";position:absolute;inset:0;z-index:1;
-  background:linear-gradient(to top,rgba(26,19,13,.62) 0%,rgba(26,19,13,.30) 22%,transparent 46%)}
-.ph-hero__in{position:relative;z-index:2;max-width:760px}
-.ph-hero .ph-script{color:rgba(247,244,238,.92);font-size:clamp(23px,2.6vw,32px)}
+  background:linear-gradient(105deg,rgba(26,19,13,.62) 0%,rgba(26,19,13,.34) 38%,transparent 66%)}
+.ph-hero__in{position:relative;z-index:2;max-width:600px}
+.ph-hero .ph-script{color:rgba(247,244,238,.95);font-size:clamp(26px,3vw,38px);margin:var(--s1) 0 0}
+.ph-hero__side{position:absolute;right:calc(var(--gutter)*.55);top:50%;transform:translateY(-50%) rotate(180deg);
+  writing-mode:vertical-rl;z-index:2;font-size:9px;font-weight:500;letter-spacing:.26em;text-transform:uppercase;
+  color:rgba(247,244,238,.72);padding-block:var(--s4);white-space:nowrap;
+  border-right:1px solid rgba(247,244,238,.28)}
 .ph-hero h1{font-size:clamp(27px,3.1vw,40px);margin-bottom:var(--s1)}
-.ph-hero .ph-btn{margin-top:var(--s3)}
+.ph-hero .ph-btn{margin-top:var(--s4)}
 .ph-pg .ph-hero .ph-btn--solid{background:var(--sage);color:var(--espresso)}
 .ph-pg .ph-hero .ph-btn--solid:hover{background:var(--sage-deep);color:var(--espresso)}
 .ph-hero em{font-style:italic}
@@ -75,10 +79,15 @@
 /* the rule already provides separation; don't double it against the grid gap */
 .ph-feat .ph-rule,.ph-stack .ph-rule{margin-bottom:0}
 /* cards sit on white, so they take the tint to read as objects */
-.ph-card{background:transparent;padding:0 var(--s2);border:0}
-.ph-card .ph-ico{display:block;box-sizing:content-box;width:30px;height:30px;padding:22px;
-  margin:0 auto var(--s3);border-radius:50%;background:var(--sand);color:var(--espresso)}
-.ph-card h4{margin-bottom:var(--s2)}
+.ph-steps{display:grid;gap:var(--s5);margin-top:var(--s5)}
+.ph-step{position:relative;display:grid;grid-template-columns:auto 1fr;gap:var(--s3);align-items:start}
+.ph-step .ph-ico{box-sizing:content-box;width:26px;height:26px;padding:19px;border-radius:50%;
+  background:var(--sand);color:var(--espresso);display:block}
+.ph-step::after{content:"";position:absolute;left:32px;top:68px;height:calc(100% + var(--s5) - 68px);
+  width:1px;background:var(--hair)}
+.ph-step:last-child::after{display:none}
+.ph-step h4{margin-bottom:var(--s1)}
+.ph-step p{font-size:12.5px}
 .ph-dog h3{margin-top:var(--s3)}
 .ph-dog .ph-role{font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--brass);margin-top:var(--s1)}
 .ph-list{display:grid;grid-template-columns:1fr 1fr;gap:var(--s1) var(--s3);margin-top:var(--s2);padding:0;list-style:none}
@@ -94,6 +103,7 @@
   .ph-split,.ph-trio,.ph-duo{grid-template-columns:1fr}
   .ph-split{gap:var(--s5)}
   .ph-split>.ph-frame{height:auto}
+  .ph-hero__side{display:none}
   .ph-flip>*:first-child{order:2}
   .ph-list{grid-template-columns:1fr}
 }
@@ -122,10 +132,11 @@
 
 <section class="ph-hero" style="background-image:linear-gradient(to top,#3A2C20 0%,#6B4F33 30%,#C98B45 62%,#F0B860 100%)">
   <div class="ph-hero__in">
-    <p class="ph-script">Thoughtfully bred. Intentionally raised.</p>
     <h1>New England&#8217;s Dedicated Breeders of <em style="white-space:nowrap">Working-Line</em> German Shepherds</h1>
+    <p class="ph-script">thoughtfully bred, intentionally raised</p>
     <a class="ph-btn ph-btn--solid" href="#story">Meet Our Shepherds</a>
   </div>
+  <p class="ph-hero__side">Working-line German Shepherds &middot; Northern Maine</p>
 </section>
 
 <section class="ph-sec ph-ivory" id="story">
@@ -168,33 +179,38 @@
 </section>
 
 <section class="ph-sec ph-ivory">
-  <div class="ph-wrap">
-    <div class="ph-center ph-narrow" style="margin-bottom:var(--s6)">
-      <p class="ph-script">unleashing the best in each puppy</p>
+  <div class="ph-wrap ph-split">
+    <div>
       <h2>Raised With Puppy Culture</h2>
-      <hr class="ph-rule">
-      <p class="ph-lede">As breeders, we hold an almost magical ability to influence what happens later in our puppies&#8217; lives &mdash; and we take that responsibility seriously.</p>
-    </div>
-    <div class="ph-trio">
-      <div class="ph-card ph-center">
-        <svg class="ph-ico" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1" aria-hidden="true"><path d="M12 20.5s-7-4.7-7-9.6A3.9 3.9 0 0 1 12 8.2a3.9 3.9 0 0 1 7 2.7c0 4.9-7 9.6-7 9.6Z"/></svg>
-        <h4>Health &amp; Integrity</h4>
-        <p>Health-tested parents, veterinary screening, and a written health guarantee with every puppy.</p>
+      <p class="ph-script">unleashing the best in each puppy</p>
+      <div class="ph-steps">
+        <div class="ph-step">
+          <svg class="ph-ico" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1" aria-hidden="true"><path d="M12 20.5s-7-4.7-7-9.6A3.9 3.9 0 0 1 12 8.2a3.9 3.9 0 0 1 7 2.7c0 4.9-7 9.6-7 9.6Z"/></svg>
+          <div>
+            <h4>Health &amp; Integrity</h4>
+            <p>Health-tested parents, veterinary screening, and a written health guarantee with every puppy.</p>
+          </div>
+        </div>
+        <div class="ph-step">
+          <svg class="ph-ico" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1" aria-hidden="true"><ellipse cx="7" cy="9.5" rx="1.7" ry="2.3"/><ellipse cx="12" cy="7.6" rx="1.7" ry="2.5"/><ellipse cx="17" cy="9.5" rx="1.7" ry="2.3"/><path d="M12 12.4c-2.9 0-4.8 2.1-4.8 4.1 0 1.8 1.6 2.6 4.8 2.6s4.8-.8 4.8-2.6c0-2-1.9-4.1-4.8-4.1Z"/></svg>
+          <div>
+            <h4>Temperament First</h4>
+            <p>Every puppy has its own personality. Our goal is to match each one with the family that truly fits.</p>
+          </div>
+        </div>
+        <div class="ph-step">
+          <svg class="ph-ico" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1" aria-hidden="true"><path d="M12 21c.2-6 2.4-10.4 8-12.4-.8 6.9-3.3 10.9-8 12.4Z"/><path d="M12 21c-2.8-4.8-5.6-7.6-7.6-8.6 3.8-1 6.6 1.7 7.6 8.6Z"/></svg>
+          <div>
+            <h4>The First Nine Weeks</h4>
+            <p>Puppy Culture, ESI (Early Scent Introduction), and early socialization from day one through go-home day.</p>
+          </div>
+        </div>
       </div>
-      <div class="ph-card ph-center">
-        <svg class="ph-ico" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1" aria-hidden="true"><ellipse cx="7" cy="9.5" rx="1.7" ry="2.3"/><ellipse cx="12" cy="7.6" rx="1.7" ry="2.5"/><ellipse cx="17" cy="9.5" rx="1.7" ry="2.3"/><path d="M12 12.4c-2.9 0-4.8 2.1-4.8 4.1 0 1.8 1.6 2.6 4.8 2.6s4.8-.8 4.8-2.6c0-2-1.9-4.1-4.8-4.1Z"/></svg>
-        <h4>Temperament First</h4>
-        <p>Every puppy has its own personality. Our goal is to match each one with the family that truly fits.</p>
-      </div>
-      <div class="ph-card ph-center">
-        <svg class="ph-ico" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1" aria-hidden="true"><path d="M12 21c.2-6 2.4-10.4 8-12.4-.8 6.9-3.3 10.9-8 12.4Z"/><path d="M12 21c-2.8-4.8-5.6-7.6-7.6-8.6 3.8-1 6.6 1.7 7.6 8.6Z"/></svg>
-        <h4>The First Nine Weeks</h4>
-        <p>Puppy Culture, ESI (Early Scent Introduction), and early socialization from day one through go-home day.</p>
+      <div style="margin-top:var(--s5)">
+        <a class="ph-btn ph-btn--outline" href="/puppy-culture/">Learn About Puppy Culture</a>
       </div>
     </div>
-    <div class="ph-center" style="margin-top:var(--s6)">
-      <a class="ph-btn ph-btn--outline" href="/puppy-culture/">Learn About Puppy Culture</a>
-    </div>
+    <div class="ph-frame"><div class="ph" style="--ar:4/5">puppies &mdash; German Shepherd puppies raised with Pu</div></div>
   </div>
 </section>
 
