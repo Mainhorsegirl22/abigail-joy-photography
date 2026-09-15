@@ -4,7 +4,7 @@
 .ph-pg{
   --espresso:#2E2A26; --ivory:#F7F4EE; --linen:#EDE8DF; --taupe:#C9BFB0;
   --shell:#F3F0EA; --sand:#DDD2C4; --sage:#DCE0CD; --sage-deep:#CBD1B8;
-  --brass:#A28465; --body:#4A443D; --hair:rgba(46,42,38,.12);
+  --brass:#A28465; --body:#4A443D; --hair:rgba(46,42,38,.12); --sand-soft:#E9E1D5;
   --s1:8px; --s2:16px; --s3:24px; --s4:32px; --s5:48px; --s6:64px; --s7:88px; --s8:120px;
   --gutter:clamp(24px,5vw,56px); --container:1180px; --sy:clamp(72px,9vw,120px);
   --lift:0 2px 6px rgba(43,37,31,.06), 0 18px 40px -16px rgba(43,37,31,.18);
@@ -36,6 +36,27 @@
 .ph-split>.ph-frame{height:clamp(400px,42vw,560px)}
 .ph-split>.ph-frame>.ph{height:100%;aspect-ratio:auto}
 .ph-trio{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(28px,4vw,64px)}
+/* photograph runs off the right edge; text self-aligns to the container line */
+.ph-sec--edge{padding-inline:var(--gutter) 0}
+.ph-edge{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,5vw,72px);align-items:center}
+.ph-edge__text{max-width:calc(var(--container)/2);margin-left:auto;padding-right:clamp(24px,3vw,56px)}
+.ph-edge>.ph-frame{height:clamp(420px,46vw,620px)}
+/* full-width photographic band, copy on the container line */
+.ph-band{position:relative;min-height:clamp(420px,54vh,560px);display:grid;align-items:center;
+  padding-block:var(--s7);padding-inline:var(--gutter);overflow:hidden;
+  background:#3D3428 center/cover no-repeat}
+.ph-band::after{content:"";position:absolute;inset:0;z-index:1;
+  background:linear-gradient(100deg,rgba(26,19,13,.66) 0%,rgba(26,19,13,.38) 46%,rgba(26,19,13,.12) 100%)}
+.ph-band__wrap{position:relative;z-index:2;width:100%;max-width:var(--container);margin-inline:auto}
+.ph-band__in{max-width:520px}
+.ph-band h2{color:#FFFFFF;margin-bottom:var(--s3)}
+.ph-band .ph-lede{color:rgba(255,255,255,.88)}
+.ph-band .ph-kicker{color:var(--sand)}
+.ph-band .ph-btn{margin-top:var(--s4)}
+/* quiet tinted band so the page isn't only white-on-shell */
+.ph-sand{background:var(--sand-soft)}
+/* stagger the pair so it reads composed rather than tabular */
+.ph-duo>*:nth-child(2){margin-top:clamp(0px,4.5vw,64px)}
 .ph-duo{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(28px,4vw,56px)}
 .ph-stack>*+*{margin-top:var(--s3)}
 .ph-rule{width:56px;height:1px;background:var(--brass);border:0;margin:var(--s3) 0}
@@ -106,7 +127,11 @@
   border:1px solid var(--taupe);background:#fff;color:var(--espresso);min-width:210px;border-radius:0}
 .ph-signup input:focus-visible{outline:2px solid var(--brass);outline-offset:2px}
 @media(max-width:880px){
-  .ph-split,.ph-trio,.ph-duo{grid-template-columns:1fr}
+  .ph-split,.ph-trio,.ph-duo,.ph-edge{grid-template-columns:1fr}
+  .ph-sec--edge{padding-inline:var(--gutter)}
+  .ph-edge__text{max-width:none;margin-left:0;padding-right:0}
+  .ph-edge>.ph-frame{height:auto}
+  .ph-duo>*:nth-child(2){margin-top:0}
   .ph-split{gap:var(--s5)}
   .ph-split>.ph-frame{height:auto}
   .ph-hero__side{display:none}
@@ -161,9 +186,9 @@
   </div>
 </section>
 
-<section class="ph-sec ph-linen" id="health">
-  <div class="ph-wrap ph-split">
-    <div class="ph-panel ph-feat">
+<section class="ph-sec ph-sec--edge ph-linen" id="health">
+  <div class="ph-edge">
+    <div class="ph-edge__text ph-feat">
       <div>
         <p class="ph-script">health &amp; integrity</p>
         <h2>We Believe in Going the Extra Mile</h2>
@@ -220,20 +245,21 @@
   </div>
 </section>
 
-<section class="ph-sec ph-linen ph-center" id="litter">
-  <div class="ph-narrow">
-    <p class="ph-kicker">Open reservations for 2026</p>
-    <h2>Upcoming Litter &mdash; Winter 2026</h2>
-    <hr class="ph-rule">
-    <p class="ph-lede">We very occasionally have puppies available. If you&#8217;re interested in getting on our waiting list for our upcoming litter, we&#8217;d love to hear from you.</p>
-    <div style="margin-top:var(--s5)"><a class="ph-btn ph-btn--solid" href="/reserve-a-puppy/">Join the Waiting List</a></div>
+<section class="ph-band" id="litter" style="background-image:linear-gradient(105deg,#2F2820,#7A6242 55%,#C49A5E)">
+  <div class="ph-band__wrap">
+    <div class="ph-band__in">
+      <p class="ph-kicker">Open reservations for 2026</p>
+      <h2>Upcoming Litter &mdash; Winter 2026</h2>
+      <p class="ph-lede">We very occasionally have puppies available. If you&#8217;re interested in getting on our waiting list for our upcoming litter, we&#8217;d love to hear from you.</p>
+      <a class="ph-btn ph-btn--solid" href="/reserve-a-puppy/">Join the Waiting List</a>
+    </div>
   </div>
 </section>
 
 <section class="ph-sec ph-ivory" id="scholars">
   <div class="ph-wrap ph-split ph-flip">
     <div class="ph-frame"><div class="ph" style="--ar:4/3">scholars &mdash; K9 Scholars training program</div></div>
-    <div class="ph-panel ph-stack">
+    <div class="ph-stack">
       <div>
         <p class="ph-script">k9 scholars</p>
         <h2>Taking Puppy Training to the Next Level</h2>
@@ -281,7 +307,7 @@
   </div>
 </section>
 
-<section class="ph-sec ph-ivory ph-center">
+<section class="ph-sec ph-sand ph-center">
   <div class="ph-narrow">
     <p class="ph-script">kind words</p>
     <hr class="ph-rule">
