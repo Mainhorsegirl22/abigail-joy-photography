@@ -136,10 +136,14 @@
   .ph-split,.ph-trio,.ph-duo,.ph-edge{grid-template-columns:1fr}
   .ph-sec--edge{padding-inline:var(--gutter)}
   .ph-edge__text{max-width:none;margin-left:0;padding-right:0}
-  .ph-edge>.ph-frame{height:auto}
   .ph-duo>*:nth-child(2){margin-top:0}
   .ph-split{gap:var(--s5)}
-  .ph-split>.ph-frame{height:auto}
+  /* uncapped portrait crops made the phone page endless to scroll */
+  .ph-split>.ph-frame,.ph-edge>.ph-frame{height:clamp(300px,78vw,380px)}
+  .ph-dog .ph-frame{height:clamp(300px,78vw,380px)}
+  /* stacked, the separator dots read as a broken bullet list */
+  .ph-trust li+li::before{display:none}
+  .ph-trust ul{gap:var(--s2)}
   .ph-hero__side{display:none}
   .ph-flip>*:first-child{order:2}
   .ph-list{grid-template-columns:1fr}
