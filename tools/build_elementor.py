@@ -323,14 +323,15 @@ body{--espresso:#1C1A18;--ivory:#F6F4F1;--linen:#F2F0EC;--taupe:#C6C1B8;--sand:#
  text-transform:uppercase!important;color:var(--espresso)!important}
 
 /* ---- full-bleed photo strip ---------------------------------------- */
-.ph-strip{padding:32px 0 0!important;gap:0!important;background-color:#FFFFFF!important}
+.ph-strip{padding:clamp(36px,4vw,56px) 0 clamp(48px,5.5vw,80px)!important;gap:0!important;
+ background-color:#FFFFFF!important}
 .ph-strip__cap p{text-align:center!important;font-size:10.5px!important;font-weight:600!important;
  letter-spacing:.2em!important;text-transform:uppercase!important;color:var(--brass)!important;
  padding-bottom:24px!important}
 .ph-strip__row{display:flex!important;flex-direction:row!important;gap:3px!important;
  width:100%!important;max-width:none!important;padding:0!important}
 .ph-strip__img{flex:1 1 0!important;min-width:0!important;width:auto!important}
-.ph-strip__img img{width:100%!important;height:clamp(190px,21vw,290px)!important;
+.ph-strip__img img{width:100%!important;height:clamp(300px,30vw,420px)!important;
  object-fit:cover!important;display:block!important}
 
 /* ---- puppy culture steps ------------------------------------------- */
@@ -408,7 +409,7 @@ body{--espresso:#1C1A18;--ivory:#F6F4F1;--linen:#F2F0EC;--taupe:#C6C1B8;--sand:#
 .ph-sec--edge{padding-right:var(--gut)!important}
 .ph-edge__text{padding-left:0!important;padding-right:0!important}
 .ph-frame img,.ph-edge>.elementor-widget-image img{height:clamp(300px,78vw,380px)!important}
-.ph-strip__img img{height:clamp(200px,52vw,260px)!important}
+.ph-strip__img img{height:clamp(220px,58vw,300px)!important}
 .ph-dog:nth-child(2){margin-top:0!important}
 .ph-list ul{grid-template-columns:1fr}
 .ph-trust__row{gap:10px!important}
