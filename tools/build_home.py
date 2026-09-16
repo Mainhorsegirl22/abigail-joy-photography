@@ -40,6 +40,8 @@ if MODE == "local":
 INSTA = '[instagram-feed feed=1]' if MODE == "wp" else '<div class="ph" style="--ar:4/1">Instagram feed</div>'
 
 CSS = """
+@font-face{font-family:'Mrs Saint Delafield';font-style:normal;font-weight:400;font-display:swap;
+  src:url(https://fonts.gstatic.com/s/mrssaintdelafield/v14/v6-IGZDIOVXH9xtmTZfRagunqBw5WC62QKknLw.woff2) format('woff2')}
 .ph-pg{
   --espresso:#1C1A18; --ivory:#F6F4F1; --linen:#E8E5DF; --taupe:#C6C1B8;
   --shell:#FFFFFF; --sand:#DCD8D1; --sage:#232020; --sage-deep:#3A3633; --sage-pale:#E4E1DA;
@@ -60,7 +62,7 @@ CSS = """
 .ph-pg h4{font-size:18px;line-height:1.35;color:var(--espresso)}
 .ph-pg :where(p){margin:0}
 .ph-pg :where(a){color:inherit}
-.ph-script{font-family:'Mrs Saint Delafield',cursive;color:var(--brass);font-size:clamp(38px,4.2vw,54px);line-height:1;margin:0 0 var(--s1)}
+.ph-script{font-family:'Mrs Saint Delafield',cursive!important;color:var(--brass);font-size:clamp(38px,4.2vw,54px);line-height:1;margin:0 0 var(--s1)}
 .ph-kicker{font-size:10.5px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--brass);margin:0 0 var(--s2)}
 .ph-measure{max-width:62ch}
 .ph-lede{max-width:58ch;font-size:15px}
@@ -133,7 +135,7 @@ CSS = """
 /* headline sits on the photograph; the scrim keeps it legible */
 .ph-hero{position:relative;min-height:clamp(560px,82vh,800px);display:grid;align-items:end;justify-items:start;text-align:left;
   padding:var(--s8) clamp(56px,7vw,110px) clamp(56px,9vh,104px) var(--gutter);overflow:hidden;
-  background:#3D3428 center 68%/cover no-repeat}
+  background:#3D3428 center 80%/cover no-repeat}
 .ph-hero::after{content:"";position:absolute;inset:0;z-index:1;
   background:linear-gradient(105deg,rgba(26,19,13,.62) 0%,rgba(26,19,13,.34) 38%,transparent 66%)}
 .ph-hero__in{position:relative;z-index:2;max-width:600px}

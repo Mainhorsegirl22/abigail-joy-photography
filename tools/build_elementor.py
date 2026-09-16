@@ -250,7 +250,9 @@ DATA = [hero, trust, story, health, culture, strip, litter, scholars, shepherds,
         quote, contact, newsletter, follow]
 
 # ------------------------------------------------------------------ stylesheet
-CSS = """@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Montserrat:wght@300;400;500;600&family=Mrs+Saint+Delafield&display=swap');
+CSS = """@font-face{font-family:'Mrs Saint Delafield';font-style:normal;font-weight:400;font-display:swap;
+  src:url(https://fonts.gstatic.com/s/mrssaintdelafield/v14/v6-IGZDIOVXH9xtmTZfRagunqBw5WC62QKknLw.woff2) format('woff2')}
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Montserrat:wght@300;400;500;600&family=Mrs+Saint+Delafield&display=swap');
 body{--espresso:#1C1A18;--ivory:#F6F4F1;--linen:#F2F0EC;--taupe:#C6C1B8;--sand:#DCD8D1;
  --sage:#232020;--sage-deep:#3A3633;--brass:#7C7369;--body:#55504A;--hair:rgba(28,26,24,.12);
  --gut:clamp(24px,5vw,56px);--wrap:1180px;--sy:clamp(60px,7vw,100px);
@@ -268,7 +270,7 @@ body{--espresso:#1C1A18;--ivory:#F6F4F1;--linen:#F2F0EC;--taupe:#C6C1B8;--sand:#
 .ph-sub .elementor-heading-title,.ph-step .elementor-icon-box-title{
  font-size:18px!important;line-height:1.35!important;letter-spacing:0!important}
 .ph-script,.ph-script p{font-family:'Mrs Saint Delafield',cursive!important;color:var(--brass)!important;
- font-size:clamp(34px,3.8vw,48px)!important;line-height:1.1!important}
+ font-size:clamp(34px,3.8vw,48px)!important;line-height:1.1!important;font-style:normal!important}
 .ph-kicker p{font-size:10.5px!important;font-weight:600!important;letter-spacing:.18em!important;
  text-transform:uppercase!important;color:var(--brass)!important}
 .ph-lede p{font-size:15px!important;max-width:58ch}
@@ -363,7 +365,8 @@ body{--espresso:#1C1A18;--ivory:#F6F4F1;--linen:#F2F0EC;--taupe:#C6C1B8;--sand:#
 .ph-map iframe,.ph-map .elementor-custom-embed{height:clamp(400px,42vw,560px)!important}
 
 /* ---- hero ----------------------------------------------------------- */
-.ph-hero{position:relative!important;min-height:clamp(560px,82vh,800px)!important;display:flex!important;
+.ph-hero{background-position:center 80%!important;
+ position:relative!important;min-height:clamp(560px,82vh,800px)!important;display:flex!important;
  flex-direction:column!important;justify-content:flex-end!important;align-items:flex-start!important;
  padding:120px clamp(56px,7vw,110px) clamp(56px,9vh,104px) var(--gut)!important;overflow:hidden!important}
 .ph-hero::after{content:""!important;position:absolute!important;inset:0!important;z-index:1!important;
