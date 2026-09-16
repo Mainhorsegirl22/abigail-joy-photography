@@ -285,7 +285,7 @@ body{--espresso:#1C1A18;--ivory:#F6F4F1;--linen:#F2F0EC;--taupe:#C6C1B8;--sand:#
  text-transform:uppercase!important;color:var(--brass)!important}
 .ph-list ul{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:6px 24px}
 .ph-list li{font-size:13.5px!important;line-height:1.7!important;padding-left:18px;position:relative}
-.ph-list li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:1px;background:var(--brass)}
+.ph-list li::before{content:'';position:absolute;left:0;top:11px;width:7px;height:1px;background:var(--brass)}
 
 /* ---- buttons ------------------------------------------------------- */
 .elementor-button{background-color:var(--sage)!important;color:var(--ivory)!important;
@@ -358,11 +358,13 @@ body{--espresso:#1C1A18;--ivory:#F6F4F1;--linen:#F2F0EC;--taupe:#C6C1B8;--sand:#
 .ph-map iframe,.ph-map .elementor-custom-embed{height:clamp(400px,42vw,560px)!important}
 
 /* ---- hero ----------------------------------------------------------- */
-.ph-hero{background-position:center 80%!important;
+.ph-hero{background-image:url(IMG_HERO)!important;
+ background-size:cover!important;background-repeat:no-repeat!important;
+ background-position:center 80%!important;
  position:relative!important;min-height:clamp(560px,82vh,800px)!important;display:flex!important;
  flex-direction:column!important;justify-content:flex-end!important;align-items:flex-start!important;
  padding:120px clamp(56px,7vw,110px) clamp(56px,9vh,104px) var(--gut)!important;overflow:hidden!important}
-.ph-hero::after{content:""!important;position:absolute!important;inset:0!important;z-index:1!important;
+.ph-hero::after{content:''!important;position:absolute!important;inset:0!important;z-index:1!important;
  pointer-events:none!important;
  background:linear-gradient(105deg,rgba(26,19,13,.62) 0%,rgba(26,19,13,.34) 38%,transparent 66%)!important}
 .ph-hero>*{position:relative!important;z-index:2!important}
@@ -379,10 +381,12 @@ body{--espresso:#1C1A18;--ivory:#F6F4F1;--linen:#F2F0EC;--taupe:#C6C1B8;--sand:#
  text-transform:uppercase!important;color:rgba(247,244,238,.72)!important}
 
 /* ---- litter band: the photograph carries it, copy sits on a card ---- */
-.ph-band{position:relative!important;min-height:clamp(420px,54vh,560px)!important;display:flex!important;
+.ph-band{background-image:url(IMG_BAND)!important;background-size:cover!important;
+ background-repeat:no-repeat!important;background-position:center 62%!important;
+ position:relative!important;min-height:clamp(420px,54vh,560px)!important;display:flex!important;
  flex-direction:column!important;justify-content:center!important;
  padding:88px var(--gut)!important;overflow:hidden!important}
-.ph-band::after{content:""!important;position:absolute!important;inset:0!important;z-index:1!important;
+.ph-band::after{content:''!important;position:absolute!important;inset:0!important;z-index:1!important;
  pointer-events:none!important;
  background:linear-gradient(100deg,rgba(26,19,13,.22) 0%,rgba(26,19,13,.08) 52%,rgba(26,19,13,0) 100%)!important}
 .ph-band>*{position:relative!important;z-index:2!important}
@@ -407,6 +411,7 @@ body{--espresso:#1C1A18;--ivory:#F6F4F1;--linen:#F2F0EC;--taupe:#C6C1B8;--sand:#
 
 
 def resolve(css):
+    css = css.replace("IMG_HERO", M["hero"]).replace("IMG_BAND", M["band"])
     """Rewrite every .ph-name selector to also match the real element ids.
 
     Elementor is inconsistent about honouring _css_classes, but it always emits
@@ -423,10 +428,27 @@ def resolve(css):
     return re.sub(r"\.(ph-[A-Za-z0-9_-]+)", sub, css)
 
 
+def bundle():
+    section("css")
+    """Page data with its own stylesheet carried inside it.
+
+    Elementor's Custom CSS box is compiled and cached separately from the
+    widget tree, so the two can be served out of step - which is what
+    scrambles the page whenever ids change. Shipping the stylesheet as the
+    page's first widget means markup and CSS are one record: they are
+    written together, cached together and can never disagree.
+    """
+    css = re.sub(r"/\*.*?\*/", "", resolve(CSS), flags=re.S)
+    css = re.sub(r"\s*\n\s*", "", css)
+    style = w("html", {"html": "<style>" + css + "</style>",
+                       "custom_css": "selector{display:none!important}"})
+    return [con([style], "ph-css")] + DATA
+
+
 if __name__ == "__main__":
     mode = sys.argv[1] if len(sys.argv) > 1 else "data"
     if mode == "data":
-        sys.stdout.write(json.dumps(DATA, separators=(",", ":")))
+        sys.stdout.write(json.dumps(bundle(), separators=(",", ":")))
     elif mode == "css":
         sys.stdout.write(resolve(CSS))
     elif mode == "index":
