@@ -30,10 +30,6 @@ M = {
  "scholars": f"{U}/2025/01/AKC-East-Working-Line-German-Shepherd-Puppies-for-Sale-in-Maine-Pine-Hill-German-Shepherds-scaled.jpg",
  "montie":   f"{U}/2026/04/Cruz-AKC-German-Shepherd-dog-in-NH--scaled.jpg",
  "band":     f"{U}/2026/09/BK700068-scaled.jpg",
- "s1":       f"{U}/2026/08/Rangley-1-1-scaled.jpg",
- "s2":       f"{U}/2026/08/Rangley-3-scaled.jpg",
- "s3":       f"{U}/2026/08/Rrangley-5-scaled.jpg",
- "s4":       f"{U}/2026/09/BK700064-scaled.jpg",
 }
 ALT = {
  "frida": "Frida, our foundation female at Pine Hill German Shepherds",
@@ -41,10 +37,6 @@ ALT = {
  "puppies": "German Shepherd puppies raised with Puppy Culture",
  "scholars": "K9 Scholars training program",
  "montie": "Captain Montie, IGP and personal protection",
- "s1": "Pine Hill German Shepherds in the Maine woods",
- "s2": "Working-line German Shepherd on the trail",
- "s3": "German Shepherd at Rangeley, Maine",
- "s4": "German Shepherd breeders in New England",
 }
 
 # ------------------------------------------------------------------ plumbing
@@ -100,10 +92,6 @@ def icon_box(icon, title, desc):
     return w("icon-box", {"selected_icon": {"value": f"fas fa-{icon}", "library": "fa-solid"},
                           "title_text": title, "description_text": desc,
                           "position": "left", "title_size": "h4"}, "ph-step")
-
-def photo(key):
-    return w("image", {"image": {"url": M[key], "id": 0, "size": "", "alt": ALT.get(key, ""),
-                                 "source": "library"}, "image_size": "full"}, "ph-strip__img")
 
 BG = lambda key: dict(background_background="classic",
                       background_image={"url": M[key], "id": 0, "size": "", "alt": "", "source": "library"},
@@ -169,11 +157,6 @@ culture = con([con([
          btn("Learn About Puppy Culture", "/puppy-culture/")], "ph-col"),
     img("puppies"),
 ], "ph-split", flex_direction="row", flex_align_items="center")], "ph-sec ph-white")
-
-strip = con([
-    p("Life at Pine Hill", "ph-strip__cap"),
-    con([photo("s1"), photo("s2"), photo("s3"), photo("s4")], "ph-strip__row", flex_direction="row"),
-], "ph-strip")
 
 litter = con([
     con([p("Open reservations for 2026", "ph-kicker"),
@@ -246,7 +229,7 @@ follow = con([con([
     w("shortcode", {"shortcode": "[instagram-feed feed=1]"}, "ph-feed"),
 ], "ph-narrow")], "ph-sec ph-linen")
 
-DATA = [hero, trust, story, health, culture, strip, litter, scholars, shepherds,
+DATA = [hero, trust, story, health, culture, litter, scholars, shepherds,
         quote, contact, newsletter, follow]
 
 # ------------------------------------------------------------------ stylesheet
@@ -322,18 +305,6 @@ body{--espresso:#1C1A18;--ivory:#F6F4F1;--linen:#F2F0EC;--taupe:#C6C1B8;--sand:#
 .ph-trust__i p{font-size:10.5px!important;font-weight:500!important;letter-spacing:.2em!important;
  text-transform:uppercase!important;color:var(--espresso)!important}
 
-/* ---- full-bleed photo strip ---------------------------------------- */
-.ph-strip{padding:clamp(36px,4vw,56px) 0 clamp(48px,5.5vw,80px)!important;gap:0!important;
- background-color:#FFFFFF!important}
-.ph-strip__cap p{text-align:center!important;font-size:10.5px!important;font-weight:600!important;
- letter-spacing:.2em!important;text-transform:uppercase!important;color:var(--brass)!important;
- padding-bottom:24px!important}
-.ph-strip__row{display:flex!important;flex-direction:row!important;gap:3px!important;
- width:100%!important;max-width:none!important;padding:0!important}
-.ph-strip__img{flex:1 1 0!important;min-width:0!important;width:auto!important}
-.ph-strip__img img{width:100%!important;height:clamp(300px,30vw,420px)!important;
- object-fit:cover!important;display:block!important}
-
 /* ---- puppy culture steps ------------------------------------------- */
 .ph-steps{gap:40px!important;padding:8px 0!important;max-width:none!important}
 .ph-step .elementor-icon-box-wrapper{display:flex!important;gap:24px!important;
@@ -404,12 +375,9 @@ body{--espresso:#1C1A18;--ivory:#F6F4F1;--linen:#F2F0EC;--taupe:#C6C1B8;--sand:#
 .ph-hero__side{display:none!important}
 .ph-hero{min-height:clamp(480px,74vh,620px)!important;padding-inline:var(--gut)!important}
 .ph-split,.ph-edge,.ph-duo{flex-direction:column!important;gap:36px!important}
-.ph-strip__row{flex-wrap:wrap!important;gap:3px!important}
-.ph-strip__img{flex:0 0 calc(50% - 1.5px)!important}
 .ph-sec--edge{padding-right:var(--gut)!important}
 .ph-edge__text{padding-left:0!important;padding-right:0!important}
 .ph-frame img,.ph-edge>.elementor-widget-image img{height:clamp(300px,78vw,380px)!important}
-.ph-strip__img img{height:clamp(220px,58vw,300px)!important}
 .ph-dog:nth-child(2){margin-top:0!important}
 .ph-list ul{grid-template-columns:1fr}
 .ph-trust__row{gap:10px!important}
