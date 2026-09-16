@@ -1,6 +1,45 @@
-<title>Pine Hill German Shepherds</title>
-<link rel="stylesheet" href="/fonts/fonts.css">
-<style>body{margin:0}
+#!/usr/bin/env python3
+"""Builds the Pine Hill homepage in two variants from one source.
+   local  -> placeholder blocks (sandbox can't reach the real media)
+   wp     -> real media library URLs, for post_content on page 2688
+"""
+import sys
+
+MODE = sys.argv[1] if len(sys.argv) > 1 else "local"
+U = "https://www.pinehillgermanshepherds.com/wp-content/uploads"
+
+MEDIA = {
+    "hero":     (f"{U}/2026/07/hero-sunset.jpg", "Working-line German Shepherd at sunset in Maine"),
+    "freda":    (f"{U}/2026/04/Freda-3.jpg", "Frida, our foundation female at Pine Hill German Shepherds"),
+    "working":  (f"{U}/2026/09/BK706350-scaled.jpg", "AKC working-line German Shepherd in Maine"),
+    "puppies":  (f"{U}/2024/10/AKC-German-Shepherd-Puppies-for-Sale-in-Maine-Pine-Hill-German-Shepherd-Breeders-scaled.jpg", "German Shepherd puppies raised with Puppy Culture"),
+    "scholars": (f"{U}/2025/01/AKC-East-Working-Line-German-Shepherd-Puppies-for-Sale-in-Maine-Pine-Hill-German-Shepherds-scaled.jpg", "K9 Scholars training program"),
+    "montie":   (f"{U}/2026/04/Cruz-AKC-German-Shepherd-dog-in-NH--scaled.jpg", "Captain Montie, IGP and personal protection"),
+    "family":   (f"{U}/2026/09/BK700068-scaled.jpg", "German Shepherd breeders in New England"),
+    "s1":       (f"{U}/2026/08/Rangley-1-1-scaled.jpg", "Pine Hill German Shepherds in the Maine woods"),
+    "s2":       (f"{U}/2026/08/Rangley-3-scaled.jpg", "Working-line German Shepherd on the trail"),
+    "s3":       (f"{U}/2026/08/Rrangley-5-scaled.jpg", "German Shepherd at Rangeley, Maine"),
+    "s4":       (f"{U}/2026/09/BK700064-scaled.jpg", "German Shepherd breeders in New England"),
+}
+
+def img(key, ar):
+    url, alt = MEDIA[key]
+    if MODE == "wp":
+        return f'<img src="{url}" alt="{alt}" loading="lazy">'
+    return f'<div class="ph" style="--ar:{ar}">{key} &mdash; {alt[:38]}</div>'
+
+def frame(key, ar, extra=""):
+    return f'<div class="ph-frame"{extra}>{img(key, ar)}</div>'
+
+MAP = ('<iframe src="https://maps.google.com/maps?q=Garland%2C%20Maine&amp;z=9&amp;output=embed" '
+       'style="width:100%;height:100%;min-height:420px;border:0;display:block" loading="lazy" '
+       'title="Pine Hill German Shepherds, Northern Maine"></iframe>')
+if MODE == "local":
+    MAP = '<div class="ph" style="--ar:16/11">Map &mdash; Penobscot County, Maine</div>'
+
+INSTA = '[instagram-feed feed=1]' if MODE == "wp" else '<div class="ph" style="--ar:4/1">Instagram feed</div>'
+
+CSS = """
 .ph-pg{
   --espresso:#1C1A18; --ivory:#F6F4F1; --linen:#E8E5DF; --taupe:#C6C1B8;
   --shell:#FFFFFF; --sand:#DCD8D1; --sage:#232020; --sage-deep:#3A3633; --sage-pale:#E4E1DA;
@@ -147,29 +186,30 @@
   .ph-list{grid-template-columns:1fr}
 }
 @media(prefers-reduced-motion:reduce){.ph-pg *{transition:none!important}}
-</style>
-<div class="ph-pg">
+"""
 
-<header style="background:#fff;border-bottom:1px solid rgba(43,37,31,.13)">
-  <div style="background:#C9BFB0;color:#2B251F;text-align:center;font-size:10px;letter-spacing:.22em;text-transform:uppercase;padding:11px 24px">Open Reservations for 2026</div>
-  <div style="display:flex;align-items:center;justify-content:space-between;gap:32px;padding:24px clamp(24px,5vw,56px);max-width:1400px;margin-inline:auto">
-    <a href="/" style="display:grid;justify-items:center;gap:5px;line-height:1;text-decoration:none">
-      <svg width="24" height="35" viewBox="0 0 100 150" aria-hidden="true"><path fill="#2B251F" d="M24 4 43 50 50 57 57 50 76 4c3 26 6 54 8 80 2 20 4 42 5 63H11c1-21 3-43 5-63 2-26 5-54 8-80Z"/></svg>
-      <span style="font-family:'Cormorant Garamond',serif;font-size:23px;letter-spacing:.16em;text-indent:.16em;color:#2B251F">PINE HILL</span>
-      <span style="font-family:'Montserrat',sans-serif;font-size:8px;letter-spacing:.34em;text-indent:.34em;color:#97784B">GERMAN SHEPHERDS</span>
-    </a>
-    <nav style="display:flex;align-items:center;gap:24px;font-family:'Montserrat',sans-serif">
-      <a href="#story" style="font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:#2B251F;text-decoration:none">About</a>
-      <a href="#shepherds" style="font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:#2B251F;text-decoration:none">Our Dogs</a>
-      <a href="#litter" style="font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:#2B251F;text-decoration:none">Puppies</a>
-      <a href="#scholars" style="font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:#2B251F;text-decoration:none">Training</a>
-      <a href="#contact" style="font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:#2B251F;text-decoration:none">Contact</a>
-      <a class="ph-btn ph-btn--solid" href="#contact" style="padding:13px 26px">Puppy Application</a>
-    </nav>
-  </div>
-</header>
+BAND_BG = (f"style=\"background-image:url('{MEDIA['family'][0]}')\""
+           if MODE == "wp" else
+           'style="background-image:linear-gradient(105deg,#2F2820,#7A6242 55%,#C49A5E)"')
 
-<section class="ph-hero" style="background-image:linear-gradient(to top,#3A2C20 0%,#6B4F33 30%,#C98B45 62%,#F0B860 100%)">
+HERO_BG = (f"style=\"background-image:url('{MEDIA['hero'][0]}')\""
+           if MODE == "wp" else
+           'style="background-image:linear-gradient(to top,#3A2C20 0%,#6B4F33 30%,#C98B45 62%,#F0B860 100%)"')
+
+ICO_HEART = '<svg class="ph-ico" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1" aria-hidden="true"><path d="M12 20.5s-7-4.7-7-9.6A3.9 3.9 0 0 1 12 8.2a3.9 3.9 0 0 1 7 2.7c0 4.9-7 9.6-7 9.6Z"/></svg>'
+ICO_PAW = '<svg class="ph-ico" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1" aria-hidden="true"><ellipse cx="7" cy="9.5" rx="1.7" ry="2.3"/><ellipse cx="12" cy="7.6" rx="1.7" ry="2.5"/><ellipse cx="17" cy="9.5" rx="1.7" ry="2.3"/><path d="M12 12.4c-2.9 0-4.8 2.1-4.8 4.1 0 1.8 1.6 2.6 4.8 2.6s4.8-.8 4.8-2.6c0-2-1.9-4.1-4.8-4.1Z"/></svg>'
+ICO_LEAF = '<svg class="ph-ico" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1" aria-hidden="true"><path d="M12 21c.2-6 2.4-10.4 8-12.4-.8 6.9-3.3 10.9-8 12.4Z"/><path d="M12 21c-2.8-4.8-5.6-7.6-7.6-8.6 3.8-1 6.6 1.7 7.6 8.6Z"/></svg>'
+
+def strip(k):
+    url, alt = MEDIA[k]
+    if MODE == "wp":
+        return f'<img src="{url}" alt="{alt}" loading="lazy">'
+    return f'<div class="ph" style="--ar:1/1">{k}</div>'
+
+strip1, strip2, strip3, strip4 = (strip("s1"), strip("s2"), strip("s3"), strip("s4"))
+
+BODY = f"""
+<section class="ph-hero" {HERO_BG.split('style=')[1] and ''}{HERO_BG}>
 </section>
 
 <section class="ph-heroText">
@@ -191,7 +231,7 @@
 
 <section class="ph-sec ph-ivory" id="story">
   <div class="ph-wrap ph-split ph-flip">
-    <div class="ph-frame"><div class="ph" style="--ar:4/5">freda &mdash; Frida, our foundation female at Pine H</div></div>
+    {frame('freda', '4/5')}
     <div class="ph-panel ph-stack">
       <div>
         <p class="ph-script">welcome to pine hill</p>
@@ -224,7 +264,7 @@
       </div>
       <div><a class="ph-btn ph-btn--solid" href="/our-shepherds/">Meet Our Shepherds</a></div>
     </div>
-    <div class="ph-frame"><div class="ph" style="--ar:4/5">working &mdash; AKC working-line German Shepherd in Ma</div></div>
+    {frame('working', '4/5')}
   </div>
 </section>
 
@@ -235,21 +275,21 @@
       <p class="ph-script">unleashing the best in each puppy</p>
       <div class="ph-steps">
         <div class="ph-step">
-          <svg class="ph-ico" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1" aria-hidden="true"><path d="M12 20.5s-7-4.7-7-9.6A3.9 3.9 0 0 1 12 8.2a3.9 3.9 0 0 1 7 2.7c0 4.9-7 9.6-7 9.6Z"/></svg>
+          {ICO_HEART}
           <div>
             <h4>Health &amp; Integrity</h4>
             <p>Health-tested parents, veterinary screening, and a written health guarantee with every puppy.</p>
           </div>
         </div>
         <div class="ph-step">
-          <svg class="ph-ico" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1" aria-hidden="true"><ellipse cx="7" cy="9.5" rx="1.7" ry="2.3"/><ellipse cx="12" cy="7.6" rx="1.7" ry="2.5"/><ellipse cx="17" cy="9.5" rx="1.7" ry="2.3"/><path d="M12 12.4c-2.9 0-4.8 2.1-4.8 4.1 0 1.8 1.6 2.6 4.8 2.6s4.8-.8 4.8-2.6c0-2-1.9-4.1-4.8-4.1Z"/></svg>
+          {ICO_PAW}
           <div>
             <h4>Temperament First</h4>
             <p>Every puppy has its own personality. Our goal is to match each one with the family that truly fits.</p>
           </div>
         </div>
         <div class="ph-step">
-          <svg class="ph-ico" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1" aria-hidden="true"><path d="M12 21c.2-6 2.4-10.4 8-12.4-.8 6.9-3.3 10.9-8 12.4Z"/><path d="M12 21c-2.8-4.8-5.6-7.6-7.6-8.6 3.8-1 6.6 1.7 7.6 8.6Z"/></svg>
+          {ICO_LEAF}
           <div>
             <h4>The First Nine Weeks</h4>
             <p>Puppy Culture, ESI (Early Scent Introduction), and early socialization from day one through go-home day.</p>
@@ -260,16 +300,16 @@
         <a class="ph-btn ph-btn--outline" href="/puppy-culture/">Learn About Puppy Culture</a>
       </div>
     </div>
-    <div class="ph-frame"><div class="ph" style="--ar:4/5">puppies &mdash; German Shepherd puppies raised with Pu</div></div>
+    {frame('puppies', '4/5')}
   </div>
 </section>
 
 <section class="ph-strip" aria-label="Life at Pine Hill">
   <figcaption>Life at Pine Hill</figcaption>
-  <div class="ph" style="--ar:1/1">s1</div><div class="ph" style="--ar:1/1">s2</div><div class="ph" style="--ar:1/1">s3</div><div class="ph" style="--ar:1/1">s4</div>
+  {strip1}{strip2}{strip3}{strip4}
 </section>
 
-<section class="ph-band" id="litter" style="background-image:linear-gradient(105deg,#2F2820,#7A6242 55%,#C49A5E)">
+<section class="ph-band" id="litter" {BAND_BG}>
   <div class="ph-band__wrap">
     <div class="ph-band__in">
       <p class="ph-kicker">Open reservations for 2026</p>
@@ -282,7 +322,7 @@
 
 <section class="ph-sec ph-ivory" id="scholars">
   <div class="ph-wrap ph-split ph-flip">
-    <div class="ph-frame"><div class="ph" style="--ar:4/3">scholars &mdash; K9 Scholars training program</div></div>
+    {frame('scholars', '4/3')}
     <div class="ph-stack">
       <div>
         <p class="ph-script">k9 scholars</p>
@@ -315,12 +355,12 @@
     </div>
     <div class="ph-duo">
       <div class="ph-dog">
-        <div class="ph-frame"><div class="ph" style="--ar:4/5">freda &mdash; Frida, our foundation female at Pine H</div></div>
+        {frame('freda', '4/5')}
         <h3>Frida Von Stephanitz</h3>
         <p class="ph-role">Scent Detection &amp; SAR Training</p>
       </div>
       <div class="ph-dog">
-        <div class="ph-frame"><div class="ph" style="--ar:4/5">montie &mdash; Captain Montie, IGP and personal prote</div></div>
+        {frame('montie', '4/5')}
         <h3>Captain Montie</h3>
         <p class="ph-role">IGP &amp; Personal Protection Work</p>
       </div>
@@ -342,7 +382,7 @@
 
 <section class="ph-sec ph-linen" id="contact">
   <div class="ph-wrap ph-split">
-    <div class="ph-frame"><div class="ph" style="--ar:16/11">Map &mdash; Penobscot County, Maine</div></div>
+    <div class="ph-frame">{MAP}</div>
     <div class="ph-panel ph-stack">
       <div>
         <p class="ph-script">say hello</p>
@@ -378,11 +418,41 @@
     <p class="ph-script">follow along</p>
     <h2>Follow Our Journey</h2>
     <hr class="ph-rule">
-    <div style="margin-top:var(--s5)"><div class="ph" style="--ar:4/1">Instagram feed</div></div>
+    <div style="margin-top:var(--s5)">{INSTA}</div>
   </div>
 </section>
+"""
 
+GOOGLE_FONTS = ('<link rel="stylesheet" href="https://fonts.googleapis.com/css2?'
+                'family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500'
+                '&family=Montserrat:wght@300;400;500;600&family=Mrs+Saint+Delafield&display=swap">')
+# Chromium in this sandbox cannot reach fonts.googleapis.com, so the local
+# preview self-hosts the same faces to render true typography.
+FONTS = GOOGLE_FONTS if MODE == "wp" else '<link rel="stylesheet" href="/fonts/fonts.css">'
 
+if MODE == "wp":
+    out = f'{FONTS}\n<style>{CSS}</style>\n<div class="ph-pg">\n{BODY}\n</div>'
+else:
+    NAV = """
+<header style="background:#fff;border-bottom:1px solid rgba(43,37,31,.13)">
+  <div style="background:#C9BFB0;color:#2B251F;text-align:center;font-size:10px;letter-spacing:.22em;text-transform:uppercase;padding:11px 24px">Open Reservations for 2026</div>
+  <div style="display:flex;align-items:center;justify-content:space-between;gap:32px;padding:24px clamp(24px,5vw,56px);max-width:1400px;margin-inline:auto">
+    <a href="/" style="display:grid;justify-items:center;gap:5px;line-height:1;text-decoration:none">
+      <svg width="24" height="35" viewBox="0 0 100 150" aria-hidden="true"><path fill="#2B251F" d="M24 4 43 50 50 57 57 50 76 4c3 26 6 54 8 80 2 20 4 42 5 63H11c1-21 3-43 5-63 2-26 5-54 8-80Z"/></svg>
+      <span style="font-family:'Cormorant Garamond',serif;font-size:23px;letter-spacing:.16em;text-indent:.16em;color:#2B251F">PINE HILL</span>
+      <span style="font-family:'Montserrat',sans-serif;font-size:8px;letter-spacing:.34em;text-indent:.34em;color:#97784B">GERMAN SHEPHERDS</span>
+    </a>
+    <nav style="display:flex;align-items:center;gap:24px;font-family:'Montserrat',sans-serif">
+      <a href="#story" style="font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:#2B251F;text-decoration:none">About</a>
+      <a href="#shepherds" style="font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:#2B251F;text-decoration:none">Our Dogs</a>
+      <a href="#litter" style="font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:#2B251F;text-decoration:none">Puppies</a>
+      <a href="#scholars" style="font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:#2B251F;text-decoration:none">Training</a>
+      <a href="#contact" style="font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:#2B251F;text-decoration:none">Contact</a>
+      <a class="ph-btn ph-btn--solid" href="#contact" style="padding:13px 26px">Puppy Application</a>
+    </nav>
+  </div>
+</header>"""
+    FOOT = """
 <footer style="background:var(--linen);color:var(--body);border-top:1px solid rgba(43,37,31,.13);padding:88px clamp(24px,5vw,56px) 48px;font-family:'Montserrat',sans-serif">
   <div style="display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:64px;max-width:1180px;margin-inline:auto">
     <div>
@@ -411,5 +481,8 @@
   <div style="max-width:1180px;margin:64px auto 0;padding-top:24px;border-top:1px solid rgba(43,37,31,.13);display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase">
     <span>&copy; 2026 Pine Hill German Shepherds</span><span>Penobscot County, Maine</span>
   </div>
-</footer>
-</div>
+</footer>"""
+    out = (f'<title>Pine Hill German Shepherds</title>\n{FONTS}\n'
+           f'<style>body{{margin:0}}{CSS}</style>\n<div class="ph-pg">\n{NAV}\n{BODY}\n{FOOT}\n</div>')
+
+sys.stdout.write(out)
