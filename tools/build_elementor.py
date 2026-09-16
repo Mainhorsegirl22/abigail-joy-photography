@@ -40,12 +40,21 @@ ALT = {
 }
 
 # ------------------------------------------------------------------ plumbing
+# Ids are namespaced per section and numbered within it, so adding or removing
+# a whole section never renumbers any other section. A stale stylesheet can
+# therefore only ever miss the section that actually changed, instead of
+# silently re-pointing every rule below it at the wrong element.
+SECTION = ["x"]
 _n = [0]
 INDEX = {}          # semantic class -> [element ids that carry it]
 
+def section(name):
+    SECTION[0] = name
+    _n[0] = 0
+
 def eid(prefix):
     _n[0] += 1
-    return f"ph{prefix}{_n[0]:03d}"
+    return f"ph{SECTION[0]}{prefix}{_n[0]:02d}"
 
 def _record(i, classes):
     for c in classes.split():
@@ -98,6 +107,7 @@ BG = lambda key: dict(background_background="classic",
                       background_position="center center", background_size="cover")
 
 # ------------------------------------------------------------------ sections
+section("hero")
 hero = con([
     con([h("New England&#8217;s Dedicated Breeders of Working-Line German Shepherds", tag="h1"),
          p("thoughtfully bred, intentionally raised", "ph-script"),
@@ -105,6 +115,7 @@ hero = con([
     p("Working-line German Shepherds &middot; Northern Maine", "ph-hero__side"),
 ], "ph-hero", **BG("hero"))
 
+section("trust")
 trust = con([con([
     p("AKC Registered", "ph-trust__i"),
     p("Full OFA Health Testing", "ph-trust__i"),
@@ -112,6 +123,7 @@ trust = con([con([
     p("Written Health Guarantee", "ph-trust__i"),
 ], "ph-trust__row", flex_direction="row")], "ph-trust")
 
+section("story")
 story = con([con([
     img("frida"),
     con([p("welcome to pine hill", "ph-script"),
@@ -128,6 +140,7 @@ story = con([con([
          btn("Read Our Full Story", "/about-us-maines-german-shepherds-2-2/")], "ph-col"),
 ], "ph-split", flex_direction="row", flex_align_items="center")], "ph-sec ph-white")
 
+section("health")
 health = con([con([
     con([p("health &amp; integrity", "ph-script"),
          h("We Believe in Going the Extra Mile"),
@@ -144,6 +157,7 @@ health = con([con([
     img("working"),
 ], "ph-edge", flex_direction="row", flex_align_items="center")], "ph-sec ph-sec--edge ph-linen")
 
+section("cult")
 culture = con([con([
     con([h("Raised With Puppy Culture"),
          p("unleashing the best in each puppy", "ph-script"),
@@ -158,6 +172,7 @@ culture = con([con([
     img("puppies"),
 ], "ph-split", flex_direction="row", flex_align_items="center")], "ph-sec ph-white")
 
+section("band")
 litter = con([
     con([p("Open reservations for 2026", "ph-kicker"),
          h("Upcoming Litter &mdash; Late Fall 2026"),
@@ -166,6 +181,7 @@ litter = con([
          btn("Join the Waiting List", "/reserve-a-puppy/")], "ph-band__card"),
 ], "ph-band", **BG("band"))
 
+section("schol")
 scholars = con([con([
     img("scholars"),
     con([p("k9 scholars", "ph-script"),
@@ -183,6 +199,7 @@ scholars = con([con([
 def dog(key, name, role):
     return con([img(key, "ph-frame ph-dogimg"), h(name, tag="h3"), p(role, "ph-role")], "ph-dog")
 
+section("shep")
 shepherds = con([
     con([p("meet our beloved shepherds", "ph-script"),
          h("We Are So Thankful for Our Shepherds"),
@@ -195,6 +212,7 @@ shepherds = con([
     con([btn("Meet Our Beloved Shepherds", "/our-shepherds/")], "ph-cta"),
 ], "ph-sec ph-linen")
 
+section("quote")
 quote = con([con([
     p("kind words", "ph-script"),
     rule(),
@@ -202,6 +220,7 @@ quote = con([con([
     p("Pine Hill German Shepherds", "ph-by"),
 ], "ph-narrow")], "ph-sec ph-sec--tight ph-linen")
 
+section("contact")
 contact = con([con([
     w("google_maps", {"address": "Garland, Maine", "zoom": {"unit": "px", "size": 9, "sizes": []}}, "ph-map"),
     con([p("say hello", "ph-script"),
@@ -214,6 +233,7 @@ contact = con([con([
          btn("Contact Us", "/contac-us-german-shepherd-puppies/")], "ph-col"),
 ], "ph-split", flex_direction="row", flex_align_items="center")], "ph-sec ph-linen")
 
+section("news")
 newsletter = con([con([
     p("Join the family", "ph-kicker"),
     h("Puppy Updates, Delivered"),
@@ -222,6 +242,7 @@ newsletter = con([con([
     btn("Join Our List", "/contac-us-german-shepherd-puppies/"),
 ], "ph-narrow")], "ph-sec ph-sec--tight ph-white")
 
+section("follow")
 follow = con([con([
     p("follow along", "ph-script"),
     h("Follow Our Journey"),
