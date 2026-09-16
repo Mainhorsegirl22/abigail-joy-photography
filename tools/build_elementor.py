@@ -448,7 +448,7 @@ def bundle():
 if __name__ == "__main__":
     mode = sys.argv[1] if len(sys.argv) > 1 else "data"
     if mode == "data":
-        sys.stdout.write(json.dumps(bundle(), separators=(",", ":")))
+        sys.stdout.write(json.dumps(DATA, separators=(",", ":")))
     elif mode == "css":
         sys.stdout.write(resolve(CSS))
     elif mode == "index":
