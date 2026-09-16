@@ -15,7 +15,7 @@
 }
 .ph-pg *{box-sizing:border-box}
 .ph-pg h1,.ph-pg h2,.ph-pg h3,.ph-pg h4{font-family:'Cormorant Garamond',Georgia,serif;font-weight:500;margin:0;text-wrap:balance}
-.ph-pg h1{font-size:clamp(30px,3.9vw,50px);line-height:1.04;letter-spacing:-.02em;color:#fff}
+.ph-pg h1{font-size:clamp(30px,3.9vw,50px);line-height:1.04;letter-spacing:-.02em;color:var(--espresso)}
 .ph-pg h2{font-size:clamp(26px,2.9vw,38px);line-height:1.1;letter-spacing:-.015em;color:var(--espresso)}
 .ph-pg h3{font-size:clamp(18px,1.6vw,21px);line-height:1.25;color:var(--espresso)}
 .ph-pg h4{font-size:18px;line-height:1.35;color:var(--espresso)}
@@ -50,7 +50,7 @@
 /* full-width photographic band, copy on the container line */
 .ph-band{position:relative;min-height:clamp(420px,54vh,560px);display:grid;align-items:center;
   padding-block:var(--s7);padding-inline:var(--gutter);overflow:hidden;
-  background:#3D3428 center/cover no-repeat}
+  background:#3D3428 center 68%/cover no-repeat}
 .ph-band::after{content:"";position:absolute;inset:0;z-index:1;
   background:linear-gradient(100deg,rgba(26,19,13,.66) 0%,rgba(26,19,13,.38) 46%,rgba(26,19,13,.12) 100%)}
 .ph-band__wrap{position:relative;z-index:2;width:100%;max-width:var(--container);margin-inline:auto}
@@ -83,20 +83,11 @@
 .ph-pg .ph-btn--solid:hover{background:var(--sage-deep);color:var(--ivory)}
 .ph-pg .ph-btn--outline{background:transparent;color:var(--espresso);border-color:var(--sage)}
 .ph-pg .ph-btn--outline:hover{background:var(--sage);border-color:var(--sage);color:var(--ivory)}
-.ph-hero{position:relative;min-height:clamp(560px,82vh,800px);display:grid;align-items:end;justify-items:start;text-align:left;
-  padding:var(--s8) clamp(56px,7vw,110px) clamp(56px,9vh,104px) var(--gutter);overflow:hidden;background:#3D3428 center/cover no-repeat}
-.ph-hero::after{content:"";position:absolute;inset:0;z-index:1;
-  background:linear-gradient(105deg,rgba(26,19,13,.62) 0%,rgba(26,19,13,.34) 38%,transparent 66%)}
-.ph-hero__in{position:relative;z-index:2;max-width:600px}
-.ph-hero .ph-script{color:rgba(247,244,238,.95);font-size:clamp(30px,3.4vw,44px);margin:var(--s1) 0 0}
-.ph-hero__side{position:absolute;right:calc(var(--gutter)*.55);top:50%;transform:translateY(-50%) rotate(180deg);
-  writing-mode:vertical-rl;z-index:2;font-size:9px;font-weight:500;letter-spacing:.26em;text-transform:uppercase;
-  color:rgba(247,244,238,.72);padding-block:var(--s4);white-space:nowrap;
-  border-right:1px solid rgba(247,244,238,.28)}
-.ph-hero h1{font-size:clamp(27px,3.1vw,40px);margin-bottom:var(--s1)}
-.ph-hero .ph-btn{margin-top:var(--s4)}
-.ph-pg .ph-hero .ph-btn--solid{background:var(--sage);color:var(--ivory)}
-.ph-pg .ph-hero .ph-btn--solid:hover{background:var(--sage-deep);color:var(--ivory)}
+.ph-hero{position:relative;min-height:clamp(380px,56vh,620px);overflow:hidden;
+  background:#3D3428 center 68%/cover no-repeat}
+.ph-heroText{padding:clamp(44px,5.5vw,76px) var(--gutter) clamp(52px,6vw,84px)}
+.ph-heroText .ph-wrap{display:grid;justify-items:start;gap:var(--s2)}
+.ph-heroText h1{max-width:20ch}
 .ph-hero em{font-style:italic}
 /* sections alternate white / soft linen down the page */
 .ph-ivory{background:var(--shell)}
@@ -144,8 +135,7 @@
   /* stacked, the separator dots read as a broken bullet list */
   .ph-trust li+li::before{display:none}
   .ph-trust ul{gap:var(--s2)}
-  .ph-hero__side{display:none}
-  .ph-flip>*:first-child{order:2}
+    .ph-flip>*:first-child{order:2}
   .ph-list{grid-template-columns:1fr}
 }
 @media(prefers-reduced-motion:reduce){.ph-pg *{transition:none!important}}
@@ -172,12 +162,14 @@
 </header>
 
 <section class="ph-hero" style="background-image:linear-gradient(to top,#3A2C20 0%,#6B4F33 30%,#C98B45 62%,#F0B860 100%)">
-  <div class="ph-hero__in">
+</section>
+
+<section class="ph-heroText">
+  <div class="ph-wrap">
     <h1>New England&#8217;s Dedicated Breeders of <em style="white-space:nowrap">Working-Line</em> German Shepherds</h1>
     <p class="ph-script">thoughtfully bred, intentionally raised</p>
     <a class="ph-btn ph-btn--solid" href="#story">Meet Our Shepherds</a>
   </div>
-  <p class="ph-hero__side">Working-line German Shepherds &middot; Northern Maine</p>
 </section>
 
 <section class="ph-trust">
