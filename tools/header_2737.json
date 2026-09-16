@@ -1,0 +1,5 @@
+{
+  "note": "Canonical widget tree for Elementor header template 2737 (Pine Hill - Header, Brand 2026).",
+  "why_the_html_widget": "Elementor strips @font-face out of its Custom CSS box. Rules in that box apply, at-rules do not. The ph1a008 HTML widget carries the Google Fonts link and an @font-face pointing straight at the font file; Elementor passes HTML widget content through verbatim, so nothing sanitises it. The widget is hidden with its own per-widget custom_css and renders no height.",
+  "escaping": "Attributes inside the html setting MUST use single quotes. Double quotes are un-escaped in transit through the MCP meta write and corrupt the stored JSON, which stops Elementor parsing the template at all."
+}
