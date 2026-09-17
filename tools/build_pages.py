@@ -428,12 +428,11 @@ EXTRA = """
 .ph-facts a:hover{color:var(--brass)}
 .ph-card .ph-facts{width:100%}
 .ph-card .elementor-button{margin-top:6px}
-.ph-doc{max-width:760px!important;margin-inline:auto!important;padding:0!important;gap:0!important;
+.ph-doc{max-width:670px!important;margin-inline:auto!important;padding:0!important;gap:0!important;
  align-items:flex-start!important}
 .ph-clause .elementor-heading-title{font-size:19px!important;letter-spacing:0!important;
  padding-top:30px!important;margin-bottom:10px!important}
-.ph-terms p{font-size:14px!important;line-height:1.85!important;padding-bottom:12px!important;
- max-width:70ch}
+.ph-terms p{font-size:15px!important;line-height:1.85!important;padding-bottom:12px!important}
 .ph-form .elementor-field-group>label{font-size:10.5px!important;letter-spacing:.14em!important;
  text-transform:uppercase!important;color:var(--brass)!important;margin-bottom:6px!important}
 .ph-form input:not([type=checkbox]),.ph-form select,.ph-form textarea{
@@ -455,6 +454,15 @@ if __name__ == "__main__":
     j, c = emit(data, EXTRA)
     if mode == "data":
         sys.stdout.write(j)
+    elif mode == "wire":
+        # The MCP meta write runs stripslashes on the value, so a lone
+        # backslash never survives the trip: "Male\\nFemale" arrives as
+        # "MalenFemale" and the select renders one nonsense option. Doubling
+        # every backslash first means stripslashes hands WordPress exactly the
+        # JSON this file generated. \uXXXX is decoded in transit instead, so it
+        # arrives as the real character and needs no doubling - only the
+        # backslash matters.
+        sys.stdout.write(j.replace("\\", "\\\\"))
     elif mode == "css":
         sys.stdout.write(c)
     elif mode == "index":

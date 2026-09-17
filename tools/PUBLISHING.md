@@ -13,12 +13,23 @@ footer, which is what happened to Puppies and Available Litters.
 
 ### 2. Write the content
 
-Two meta writes: `_elementor_data` (the JSON from `build_pages.py <page> data`)
-and `_elementor_page_settings` as a nested object `{custom_css: "..."}`.
+Two meta writes: `_elementor_data` (the JSON from `build_pages.py <page> wire`)
+and `_elementor_page_settings` as a nested object `{custom_css: "..."}` passed
+in the tool's `meta` argument, not `key`/`value` - `meta` is what the server
+reads when both are present, and only `meta` can carry a nested object.
 
-Never write a double quote inside either value. Attributes in generated HTML
-are single-quoted for exactly this reason - a double quote gets un-escaped in
-transit and corrupts the stored JSON. This broke header 2737 and footer 2820.
+**The write runs stripslashes on the value, so a lone backslash never
+survives the trip.** `Male\nFemale` arrives as `MalenFemale`; JSON's own `\"`
+escapes arrive as bare `"` and corrupt the document. That is what broke header
+2737 and footer 2820 - not the double quotes themselves.
+
+So: send the JSON with every backslash doubled. `build_pages.py <page> wire`
+does exactly that, and `data` gives the plain JSON for reading and diffing.
+`\uXXXX` is decoded in transit instead of being stripped, so it arrives as the
+real character either way; only the backslash needs the doubling.
+
+Test any uncertainty cheaply: write a throwaway meta key, read it back, then
+`wp_delete_post_meta` it.
 
 ### 3. Attach the new header and footer  ← the one that gets forgotten
 
