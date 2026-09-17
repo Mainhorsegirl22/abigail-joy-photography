@@ -319,8 +319,8 @@ body{--espresso:#1C1A18;--ivory:#F6F4F1;--linen:#F2F0EC;--sand:#DCD8D1;--sage:#2
  flex-direction:column!important;justify-content:flex-end!important;align-items:flex-start!important;
  padding:120px clamp(56px,7vw,110px) clamp(48px,7vh,88px) var(--gut)!important;
  background-repeat:no-repeat!important;overflow:hidden!important}
-.ph-hero--slim{min-height:clamp(280px,34vh,380px)!important;justify-content:center!important;
- padding-block:clamp(72px,9vh,110px) clamp(40px,5vh,60px)!important}
+.ph-hero--slim{min-height:clamp(440px,54vh,620px)!important;justify-content:flex-end!important;
+ padding-block:clamp(96px,11vh,140px) clamp(44px,6vh,72px)!important}
 .ph-hero::after{content:''!important;position:absolute!important;inset:0!important;z-index:1!important;
  pointer-events:none!important;
  background:linear-gradient(100deg,rgba(26,19,13,.66) 0%,rgba(26,19,13,.36) 42%,rgba(26,19,13,.06) 78%)!important}
@@ -346,6 +346,8 @@ body{--espresso:#1C1A18;--ivory:#F6F4F1;--linen:#F2F0EC;--sand:#DCD8D1;--sage:#2
 .ph-frame img{width:100%!important;height:clamp(380px,40vw,540px)!important;object-fit:cover!important;
  display:block!important;box-shadow:0 2px 6px rgba(28,26,24,.06),0 18px 40px -16px rgba(28,26,24,.20)}
 .ph-frame--sq img{height:clamp(300px,30vw,400px)!important}
+.ph-whole img{height:auto!important;width:100%!important;object-fit:contain!important;
+ box-shadow:0 2px 6px rgba(28,26,24,.06),0 18px 40px -16px rgba(28,26,24,.20)}
 
 .ph-trio,.ph-quad{display:flex!important;flex-direction:row!important;
  gap:clamp(20px,2.6vw,36px)!important;max-width:var(--wrap)!important;width:100%!important;
@@ -427,6 +429,7 @@ body{--espresso:#1C1A18;--ivory:#F6F4F1;--linen:#F2F0EC;--sand:#DCD8D1;--sage:#2
 .ph-trio,.ph-quad,.ph-steps{flex-direction:column!important;flex-wrap:nowrap!important}
 .ph-trio>*,.ph-quad>*{flex:1 1 auto!important}
 .ph-frame img,.ph-frame--sq img{height:clamp(280px,70vw,360px)!important}
+.ph-whole img{height:auto!important}
 .ph-list ul{grid-template-columns:1fr}
 .ph-hero{min-height:clamp(340px,52vh,440px)!important;padding-inline:var(--gut)!important}
 .ph-facts li{flex-direction:column;gap:2px}

@@ -190,6 +190,10 @@ def puppies():
 
 
 # ============================================================ LITTERS
+# CAUTION: Abigail replaced the litter-card image in the Elementor editor with
+# a "Litter A" announcement poster. That change lives in _elementor_data, not
+# here, so regenerating this page and pushing the data would overwrite it. Ask
+# her before pushing litters data again; the stylesheet is safe to push.
 def litters():
     start("lit")
 
@@ -440,6 +444,7 @@ EXTRA = """
  outline:2px solid var(--brass)!important;outline-offset:2px!important}
 .ph-form .elementor-field-type-acceptance label{font-size:13.5px!important;text-transform:none!important;
  letter-spacing:0!important;color:var(--body)!important;line-height:1.7!important}
+.elementor-element-litherow10 img{height:auto!important;object-fit:contain!important}
 """
 
 PAGES = {"puppies": puppies, "litters": litters, "contract": contract}
