@@ -11,7 +11,7 @@ certificate links kept so a buyer can open the paperwork. Anything nobody has
 told me is written with fill(), which renders as a visible blank.
 """
 import sys
-from phkit import (start, section, con, row, w, h, p, ul, dl, btn, img, rule,
+from phkit import (start, section, con, row, w, h, p, ul, dl, btn, img, rule, form,
                    fill, pill, hero, sec, head, split, col, trio, quad, card,
                    stat, steps, faq, cta, emit, IMG, INDEX)
 
@@ -25,6 +25,13 @@ FREDA = {
     "elbows": f"{DOCS}/FREDA-VON-STEPHANITZ-ELBOW-10_18_2024-ELBOW.pdf",
     "heart": f"{DOCS}/Screenshot-2025-01-15-174147.png",
     "eyes": f"{DOCS}/OFA-Case-249JFB.pdf",
+}
+
+
+RANGELEY = {
+    "name": "Ledger Bei Mackenzie von Franzosisches Haus",
+    "call": "Rangeley",
+    "akc": "DN77163902",
 }
 
 
@@ -61,11 +68,15 @@ def puppies():
                     "breeding, plus a full genetic panel. The certificates are "
                     "published on this site — you can read them yourself.")]),
             card([h("A written health guarantee", tag="h3"),
-                  p("In writing, in the sales contract, signed before your puppy "
-                    "goes home. You will know exactly what is covered.")]),
+                  p("Genetic hip and elbow dysplasia covered for twenty-four "
+                    "months, plus a three-day vet check window. It is in the "
+                    "contract you sign before your puppy goes home \u2014 you can "
+                    "read the whole thing first.")]),
             card([h("AKC registration", tag="h3"),
-                  p("Full AKC papers. Freda is registered under "
-                    f"{FREDA['akc']}, and her pedigree is available to read.")]),
+                  p("AKC papers on Limited Registration \u2014 a pet home, not "
+                    "breeding or show rights. Full Registration is possible, but "
+                    "only by written agreement beforehand and for an additional "
+                    f"fee. Freda is registered under {FREDA['akc']}.")]),
         ]),
     ], "offer", tone="white"))
 
@@ -80,8 +91,12 @@ def puppies():
                 ("Balance due", "Before go-home day at eight weeks")]),
             p("The deposit holds your place in line. Puppies are matched to "
               "families at six weeks, once temperaments are clear.", "ph-measure"),
-            p(f"Also included: {fill('vaccinations, microchip, vet certificate — confirm')}",
-              "ph-measure"),
+            ul(["Wormed at four, six and eight weeks",
+                "First vaccination from a licensed vet, with written proof",
+                "Vet-checked before pickup",
+                "AKC papers, Limited Registration"], "ph-list ph-list--one"),
+            p("The balance is due in full at pickup, in certified funds or cash. "
+              "Personal cheques are not accepted at pickup.", "ph-measure"),
             btn("Reserve a Puppy", "/reserve-a-puppy/"),
         ]),
         img("portrait"),
@@ -149,7 +164,17 @@ def puppies():
              "Puppies can be collected from our home in Garland. For families who "
              "cannot make the trip we offer delivery — ask and we will work it out."),
             ("What if I change my mind?",
-             f"The deposit terms are in the sales contract. {fill('refundable or not — confirm')}"),
+             "The $500 deposit is non-refundable. If the balance is not paid and "
+             "the puppy not collected within fourteen days of the agreed date, "
+             "the reservation ends and the puppy is offered to the next family. "
+             "Those terms are set out in the sales contract, which you can read "
+             "in full before you pay anything."),
+            ("Is there a health guarantee?",
+             "Yes, in writing. Debilitating genetic hip or elbow dysplasia is "
+             "covered for twenty-four months from pickup, on proof from your vet. "
+             "The remedy is a replacement puppy from a future litter rather than "
+             "a refund. There is also a three-day window for a vet check, and if "
+             "your vet certifies the puppy unfit for sale you can return it."),
             ("What is a working-line German Shepherd like to live with?",
              "Busy. These are dogs bred to work, with real drive and real stamina. "
              "They are wonderful family dogs for families who give them a job. They "
@@ -179,58 +204,212 @@ def litters():
             img("puppies", "ph-frame"),
             col([
                 pill("Waiting list open", "open"),
-                h("Freda × Barley — Late Fall 2026", tag="h3"),
+                h(f"Freda \u00d7 {RANGELEY['call']} \u2014 Late Fall 2026", tag="h3"),
                 dl([("Dam", FREDA["name"]),
-                    ("Sire", "Barley Fatymona of Spodnick's K9"),
-                    ("Sire rating", "SG · IGP3 · Czech import"),
-                    ("Sire health", "Hips A · Elbows 0/0 · DM N/N"),
+                    ("Sire", RANGELEY["name"]),
                     ("Expected", "Late fall 2026"),
                     ("Puppies expected", fill("estimate")),
                     ("Colours", fill("sable, bi-colour?")),
-                    ("Price", "$3,000 · $500 deposit")]),
+                    ("Registration", "AKC, Limited"),
+                    ("Price", "$3,000 \u00b7 $500 deposit")]),
                 p("Reservations are taken in the order deposits are received. "
-                  "Puppies are matched to families at six weeks.", "ph-measure"),
+                  "Puppies are matched to families at six weeks, once their "
+                  "temperaments are clear.", "ph-measure"),
                 btn("Reserve a Puppy", "/reserve-a-puppy/"),
             ]),
         )], "ph-litter"),
     ], "current", tone="white"))
 
+    # Both parents, with every result printed and the paperwork linked where
+    # she has published it. This is the page a serious buyer actually reads.
     d.append(sec([
-        head("the parents", "Who They Come From", centred=True),
+        head("the parents", "Health Testing, In Full",
+             "Every result below is on file. Freda's certificates open in a new "
+             "tab. Rangeley's OFA results are searchable on his registration "
+             "number."),
         row([
             card([img("freda", "ph-frame ph-frame--sq"),
                   h(FREDA["name"], tag="h3"),
-                  p("Dam · dark sable · search and rescue", "ph-role"),
-                  dl([("Hips", link("Good", FREDA["hips"])),
+                  p("Dam \u00b7 dark sable \u00b7 search and rescue", "ph-role"),
+                  dl([("AKC", FREDA["akc"]),
+                      ("Hips", link("Good", FREDA["hips"])),
                       ("Elbows", link("Good", FREDA["elbows"])),
                       ("Heart", link("Normal", FREDA["heart"])),
                       ("Eyes", link("Normal", FREDA["eyes"])),
                       ("Genetics", "Clear")]),
                   btn("Read Her Pedigree", FREDA["pedigree"], "ph-ghost")]),
-            card([img("working", "ph-frame ph-frame--sq"),
-                  h("Barley Fatymona", tag="h3"),
-                  p("Sire · Czech import · at stud with Spodnick's K9", "ph-role"),
-                  dl([("Rating", "SG"), ("Title", "IGP3"),
-                      ("Hips", "A"), ("Elbows", "0/0"), ("DM", "N/N")]),
-                  p(f"Photograph: {fill('a photo of Barley would be better here')}",
-                    "ph-note")]),
+            card([img("rangeley1", "ph-frame ph-frame--sq"),
+                  h(RANGELEY["name"], tag="h3"),
+                  p(f"Sire \u00b7 called {RANGELEY['call']}", "ph-role"),
+                  dl([("AKC", RANGELEY["akc"]),
+                      ("Hips", "OFA Good"),
+                      ("Elbows", "OFA Normal"),
+                      ("Heart", "OFA Advanced Echocardiogram, Normal"),
+                      ("Eyes", "OFA CAER, Normal"),
+                      ("Genetics", "Embark, Clear")]),
+                  p("An advanced echocardiogram is a step beyond the basic "
+                    "cardiac exam most breeders stop at.", "ph-note")]),
         ], "ph-split"),
     ], "parents", tone="linen"))
 
     d.append(sec([
-        head("previously", "Past Litters",
-             "Puppies from earlier litters, now living and working with their families."),
-        quad([con([img(k, "ph-frame ph-frame--sq"), p(c, "ph-role")], "ph-col")
-              for k, c in [("rangley1", "Spring 2026"), ("rangley3", "Autumn 2025"),
-                           ("rangley5", "Spring 2025"), ("rangley7", "Autumn 2024")]]),
-        p(f"Dates above are {fill('examples — give me the real litter dates')}",
-          "ph-note"),
-    ], "past", tone="white"))
+        head("the sire", RANGELEY["call"],
+             "A dark sable working-line male with a full OFA panel behind him."),
+        quad([img(k, "ph-frame ph-frame--sq")
+              for k in ("rangeley2", "rangeley3", "rangeley5", "rangeley7")]),
+    ], "sire", tone="white"))
 
     d.append(cta("Nothing Available Right Now?",
                  "Join the waiting list and you will hear about the next litter "
                  "before it is announced anywhere else.",
                  "Join the Waiting List", "/reserve-a-puppy/", image_key="band2"))
+    return d
+
+
+# ============================================================ SALES CONTRACT
+# Her contract, reproduced. The wording of the terms is hers and is not
+# reworded here - only laid out so it can be read on a phone without pinching.
+def contract():
+    start("con")
+
+    d = [hero("Puppy Sales Contract", "read it before you pay anything",
+              "family", ypos=55, tall=False)]
+
+    d.append(sec([con([
+        h("The Terms, In Short"),
+        rule(True),
+        p("This is the agreement you sign before your puppy comes home. The "
+          "whole thing is below so you can read it now, not at the door with a "
+          "puppy in your arms.", "ph-lede"),
+        dl([("Price", "$3,000"),
+            ("Deposit", "$500 at reservation, non-refundable"),
+            ("Balance", "$2,500 at pickup, certified funds or cash"),
+            ("Registration", "AKC Limited \u2014 pet home, no breeding rights"),
+            ("Spay or neuter", "Required by twelve months"),
+            ("Vet check", "Within three days of coming home"),
+            ("Health guarantee", "Hips and elbows, twenty-four months")]),
+    ], "ph-narrow")], "summary", tone="linen", tight=True))
+
+    body = [
+        ("1. Price and payment",
+         "Price: $3,000.00, paid as a $500 deposit at reservation "
+         "(non-refundable, no exceptions) and a $2,500 balance due in full at "
+         "pickup, before the puppy leaves the Seller's possession. Personal "
+         "cheques are not accepted at pickup; certified funds or cash only."),
+        (None,
+         "No-show: if the Buyer has not paid the balance and collected the puppy "
+         "within 14 days of the agreed date, with no written alternate "
+         "arrangement, this Agreement ends, the deposit is forfeited, and the "
+         "Seller may resell the puppy."),
+        ("2. Health and vaccination",
+         "Sire and dam are health-tested breeding stock. Puppies are raised "
+         "in-home and wormed at 4, 6 and 8 weeks."),
+        (None,
+         "Before pickup the puppy receives its first vaccination (e.g. DHPP) "
+         "from a licensed veterinarian. This is one dose in a multi-dose series, "
+         "not full protection. The Buyer must continue the series with a vet on "
+         "schedule, and should limit the puppy's exposure to other dogs and "
+         "public places until the series is complete. The Seller provides "
+         "written proof of the vaccine given \u2014 date, product and lot \u2014 at "
+         "pickup. The puppy is believed to be in good health at pickup."),
+        ("3. Vet check and return, three days",
+         "The Buyer must have the puppy vet-checked within 3 days of coming "
+         "home. If the vet certifies in writing that the puppy is unfit for "
+         "sale, the Buyer may return it, in the same condition as sold, within "
+         "that same 3-day window, for a refund of the purchase price paid "
+         "(deposit excluded). Return expenses and distress claims are not "
+         "covered. Beyond this window the Seller is not responsible for "
+         "conditions that develop later, except as covered by the Genetic Health "
+         "Guarantee below."),
+        ("4. Genetic health guarantee \u2014 hips and elbows",
+         "The Seller warrants against debilitating genetic hip or elbow "
+         "dysplasia for 24 months from pickup. To qualify, the puppy must be "
+         "vet-evaluated with written or radiographic proof, kept at an "
+         "appropriate weight and activity level, and not bred. If these "
+         "conditions are met the Seller will replace the puppy from a future "
+         "litter when available, at the Seller's choice, with no cash refund. "
+         "Injury, environment, diet or exercise issues, and non-heritable "
+         "conditions are not covered."),
+        ("5. Buyer's responsibilities",
+         "The Buyer will keep the dog safe, well-fed, appropriately exercised "
+         "and under veterinary care, and will not neglect or mistreat it."),
+        (None,
+         "Spay or neuter is required by 12 months of age under Limited "
+         "Registration, unless the Seller has approved Full Registration in "
+         "writing. Proof is due to the Seller on request."),
+        ("6. Seller's responsibilities",
+         "Before pickup the Seller worms, vet-checks and vaccinates the puppy as "
+         "described in Section 2, and provides AKC papers reflecting Limited "
+         "Registration unless otherwise agreed in writing."),
+        ("7. General terms",
+         "Liability release: once the Buyer takes possession, the Buyer releases "
+         "Pine Hill German Shepherds from all liability for damage or injury the "
+         "dog causes to any person or property, assumes full responsibility for "
+         "the dog going forward, and will indemnify the Seller for any related "
+         "costs the Seller incurs because of the Buyer's dog."),
+        (None,
+         "Disputes and venue: the losing party in any legal action to enforce "
+         "this Agreement pays the winner's costs and attorney's fees. Suits must "
+         "be filed in Penobscot County, Maine, or, at the Seller's option, near "
+         "the Buyer. If any provision is unenforceable, the rest of this "
+         "Agreement remains in effect."),
+        (None,
+         "Entire agreement: this is the complete agreement between the parties, "
+         "binding on their heirs and successors. It may be signed and "
+         "transmitted electronically."),
+    ]
+    blocks = [p("Pine Hill German Shepherds (\u201cSeller\u201d) agrees to sell the "
+                "purebred German Shepherd puppy described below to the Buyer, on "
+                "the terms below. The puppy is AKC-registered under Limited "
+                "Registration \u2014 pet only, no breeding or show rights. Buyers "
+                "wanting Full Registration and breeding rights must contact the "
+                "Seller in advance for approval and an additional fee.",
+                "ph-lede")]
+    for heading, para in body:
+        if heading:
+            blocks.append(h(heading, "ph-clause", tag="h3"))
+        blocks.append(p(para, "ph-terms"))
+    d.append(sec([con(blocks, "ph-doc")], "terms", tone="white"))
+
+    F = [("text", "Buyer name", 50, {"required": "true"}),
+         ("email", "Email", 50, {"required": "true"}),
+         ("tel", "Phone", 50, {"required": "true"}),
+         ("text", "Address", 50, {"required": "true"}),
+         ("text", "Puppy name", 50, {}),
+         ("select", "Gender", 50, {"field_options": "Male\nFemale"}),
+         ("date", "Puppy date of birth", 50, {}),
+         ("text", "Markings and colour", 50, {}),
+         ("text", "Sire", 50, {}),
+         ("text", "Dam", 50, {}),
+         ("acceptance", "", 100,
+          {"required": "true",
+           "acceptance_text": "I have read, understand and agree to this "
+                              "Agreement in full."}),
+         ("acceptance", "", 100,
+          {"required": "true",
+           "acceptance_text": "I understand the $500 deposit is non-refundable."}),
+         ("acceptance", "", 100,
+          {"required": "true",
+           "acceptance_text": "I understand this puppy is sold on Limited "
+                              "Registration and must be spayed or neutered by "
+                              "twelve months of age."}),
+         ("text", "Type your full legal name as your signature", 50,
+          {"required": "true"}),
+         ("date", "Date", 50, {"required": "true"})]
+
+    d.append(sec([con([
+        h("Sign and Return"),
+        rule(True),
+        p("Filling in your name below and submitting this form is your "
+          "signature. You will get a copy by email, and we countersign before "
+          "your puppy goes home.", "ph-lede"),
+        form("Sales Contract", F, "Sign and Submit",
+             "pinehillgermanshepherds@gmail.com",
+             "Signed sales contract"),
+        p("Questions first? Call 207-703-8043 or email "
+          "pinehillgermanshepherds@gmail.com.", "ph-note"),
+    ], "ph-narrow")], "sign", tone="linen"))
+
     return d
 
 
@@ -245,9 +424,25 @@ EXTRA = """
 .ph-facts a:hover{color:var(--brass)}
 .ph-card .ph-facts{width:100%}
 .ph-card .elementor-button{margin-top:6px}
+.ph-doc{max-width:760px!important;margin-inline:auto!important;padding:0!important;gap:0!important;
+ align-items:flex-start!important}
+.ph-clause .elementor-heading-title{font-size:19px!important;letter-spacing:0!important;
+ padding-top:30px!important;margin-bottom:10px!important}
+.ph-terms p{font-size:14px!important;line-height:1.85!important;padding-bottom:12px!important;
+ max-width:70ch}
+.ph-form .elementor-field-group>label{font-size:10.5px!important;letter-spacing:.14em!important;
+ text-transform:uppercase!important;color:var(--brass)!important;margin-bottom:6px!important}
+.ph-form input:not([type=checkbox]),.ph-form select,.ph-form textarea{
+ border:1px solid var(--hair)!important;border-radius:0!important;background:#FFFFFF!important;
+ padding:13px 14px!important;font-family:'Montserrat',system-ui,sans-serif!important;
+ font-size:14px!important;color:var(--espresso)!important}
+.ph-form input:focus-visible,.ph-form select:focus-visible,.ph-form textarea:focus-visible{
+ outline:2px solid var(--brass)!important;outline-offset:2px!important}
+.ph-form .elementor-field-type-acceptance label{font-size:13.5px!important;text-transform:none!important;
+ letter-spacing:0!important;color:var(--body)!important;line-height:1.7!important}
 """
 
-PAGES = {"puppies": puppies, "litters": litters}
+PAGES = {"puppies": puppies, "litters": litters, "contract": contract}
 
 if __name__ == "__main__":
     name, mode = sys.argv[1], (sys.argv[2] if len(sys.argv) > 2 else "data")

@@ -28,13 +28,14 @@ IMG = {
     "litter_band":  f"{U}/2026/09/BK700068-scaled.jpg",
     "puppies":      f"{U}/2024/10/AKC-German-Shepherd-Puppies-for-Sale-in-Maine-Pine-Hill-German-Shepherd-Breeders-scaled.jpg",
     "scholars":     f"{U}/2025/01/AKC-East-Working-Line-German-Shepherd-Puppies-for-Sale-in-Maine-Pine-Hill-German-Shepherds-scaled.jpg",
-    "rangley1":     f"{U}/2026/08/Rangley-1-1-scaled.jpg",
-    "rangley2":     f"{U}/2026/08/Rangley-2-scaled.jpg",
-    "rangley3":     f"{U}/2026/08/Rangley-3-scaled.jpg",
-    "rangley4":     f"{U}/2026/08/Rangley-4-scaled.jpg",
-    "rangley5":     f"{U}/2026/08/Rrangley-5-scaled.jpg",
-    "rangley6":     f"{U}/2026/08/Rangley-6-scaled.jpg",
-    "rangley7":     f"{U}/2026/08/Rangley-7-scaled.jpg",
+    # Rangeley - the stud. The uploaded filenames spell it "Rangley".
+    "rangeley1":    f"{U}/2026/08/Rangley-1-1-scaled.jpg",
+    "rangeley2":    f"{U}/2026/08/Rangley-2-scaled.jpg",
+    "rangeley3":    f"{U}/2026/08/Rangley-3-scaled.jpg",
+    "rangeley4":    f"{U}/2026/08/Rangley-4-scaled.jpg",
+    "rangeley5":    f"{U}/2026/08/Rrangley-5-scaled.jpg",
+    "rangeley6":    f"{U}/2026/08/Rangley-6-scaled.jpg",
+    "rangeley7":    f"{U}/2026/08/Rangley-7-scaled.jpg",
     "portrait":     f"{U}/2026/09/BK700074-Edit-scaled.jpg",
     "pair":         f"{U}/2026/09/BK706246-Edit-scaled.jpg",
     "farm":         f"{U}/2026/09/AB9405DB-D650-4947-A274-59A0754E55A6-scaled.jpg",
@@ -47,6 +48,10 @@ IMG = {
 
 ALT = {
     "freda": "Freda von Stephanitz, our foundation female",
+    "rangeley1": "Ledger Bei Mackenzie von Franzosisches Haus, called Rangeley",
+    "rangeley2": "Rangeley, our stud dog",
+    "rangeley3": "Rangeley, working-line German Shepherd sire",
+    "rangeley5": "Rangeley at work",
     "working": "AKC working-line German Shepherd in Maine",
     "montie": "Captain Montie, IGP and personal protection",
     "puppies": "German Shepherd puppies raised with Puppy Culture",
@@ -156,6 +161,31 @@ def fill(label):
 
 def pill(text, tone="open"):
     return p(f"<span class='ph-pill ph-pill--{tone}'>{text}</span>", "ph-pillwrap")
+
+
+def form(name, fields, button, email_to, subject):
+    """An Elementor Pro form. Fields are (type, label, width, extra) tuples.
+
+    Built as data rather than a shortcode so she can open it in the editor and
+    change a label or add a question without touching anything else.
+    """
+    out = []
+    for n, (ftype, label, width, extra) in enumerate(fields, 1):
+        f = {"_id": f"f{n:02d}", "field_type": ftype, "field_label": label,
+             "width": str(width)}
+        f.update(extra or {})
+        out.append(f)
+    return w("form", {
+        "form_name": name,
+        "form_fields": out,
+        "button_text": button,
+        "button_size": "sm",
+        "submit_actions": ["email"],
+        "email_to": email_to,
+        "email_subject": subject,
+        "email_content": "[all-fields]",
+        "email_from_name": "Pine Hill German Shepherds",
+    }, "ph-form")
 
 
 # ------------------------------------------------------------- page sections
