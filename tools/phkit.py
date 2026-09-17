@@ -22,7 +22,7 @@ U = "https://www.pinehillgermanshepherds.com/wp-content/uploads"
 # Real photographs from her library. No stock, no placeholders.
 IMG = {
     "hero_sunset":  f"{U}/2026/07/hero-sunset.jpg",
-    "frida":        f"{U}/2026/04/Freda-3.jpg",
+    "freda":        f"{U}/2026/04/Freda-3.jpg",
     "working":      f"{U}/2026/09/BK706350-scaled.jpg",
     "montie":       f"{U}/2026/04/Cruz-AKC-German-Shepherd-dog-in-NH--scaled.jpg",
     "litter_band":  f"{U}/2026/09/BK700068-scaled.jpg",
@@ -46,7 +46,7 @@ IMG = {
 }
 
 ALT = {
-    "frida": "Frida Von Stephanitz, our foundation female",
+    "freda": "Freda Von Stephanitz, our foundation female",
     "working": "AKC working-line German Shepherd in Maine",
     "montie": "Captain Montie, IGP and personal protection",
     "puppies": "German Shepherd puppies raised with Puppy Culture",

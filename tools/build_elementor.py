@@ -24,7 +24,7 @@ import json, re, sys
 U = "https://www.pinehillgermanshepherds.com/wp-content/uploads"
 M = {
  "hero":     f"{U}/2026/07/hero-sunset.jpg",
- "frida":    f"{U}/2026/04/Freda-3.jpg",
+ "freda":    f"{U}/2026/04/Freda-3.jpg",
  "working":  f"{U}/2026/09/BK706350-scaled.jpg",
  "puppies":  f"{U}/2024/10/AKC-German-Shepherd-Puppies-for-Sale-in-Maine-Pine-Hill-German-Shepherd-Breeders-scaled.jpg",
  "scholars": f"{U}/2025/01/AKC-East-Working-Line-German-Shepherd-Puppies-for-Sale-in-Maine-Pine-Hill-German-Shepherds-scaled.jpg",
@@ -36,7 +36,7 @@ M = {
  "s4":       f"{U}/2026/09/BK700064-scaled.jpg",
 }
 ALT = {
- "frida": "Frida, our foundation female at Pine Hill German Shepherds",
+ "freda": "Freda, our foundation female at Pine Hill German Shepherds",
  "working": "AKC working-line German Shepherd in Maine",
  "puppies": "German Shepherd puppies raised with Puppy Culture",
  "scholars": "K9 Scholars training program",
@@ -125,7 +125,7 @@ trust = con([con([
 ], "ph-trust__row", flex_direction="row")], "ph-trust")
 
 story = con([con([
-    img("frida"),
+    img("freda"),
     con([p("welcome to pine hill", "ph-script"),
          h("Family Raised Working-Line German Shepherds in Northern Maine"),
          rule(),
@@ -133,7 +133,7 @@ story = con([con([
            "countryside in the backwoods of New England. We specialize in producing high-quality German "
            "Shepherds known for their exceptional personalities, working drive, scent detection abilities, "
            "and balanced temperaments.", "ph-measure"),
-         p("With only one breeding female, Frida &mdash; our beloved family member &mdash; we have the unique "
+         p("With only one breeding female, Freda &mdash; our beloved family member &mdash; we have the unique "
            "opportunity to carefully plan each litter, dedicating countless hours to observing and working "
            "with our puppies. Raised within our home and surrounded by our family, they receive plenty of "
            "love and care from day one.", "ph-measure"),
@@ -211,7 +211,7 @@ shepherds = con([
          rule(),
          p("Carefully chosen for their outstanding personalities, balanced temperaments, and working drive.",
            "ph-lede")], "ph-head"),
-    con([dog("frida", "Frida Von Stephanitz", "Scent Detection &amp; SAR Training"),
+    con([dog("freda", "Freda Von Stephanitz", "Scent Detection &amp; SAR Training"),
          dog("montie", "Captain Montie", "IGP &amp; Personal Protection Work")],
         "ph-duo", flex_direction="row"),
     con([btn("Meet Our Beloved Shepherds", "/our-shepherds/")], "ph-cta"),

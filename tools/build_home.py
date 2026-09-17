@@ -10,7 +10,7 @@ U = "https://www.pinehillgermanshepherds.com/wp-content/uploads"
 
 MEDIA = {
     "hero":     (f"{U}/2026/07/hero-sunset.jpg", "Working-line German Shepherd at sunset in Maine"),
-    "freda":    (f"{U}/2026/04/Freda-3.jpg", "Frida, our foundation female at Pine Hill German Shepherds"),
+    "freda":    (f"{U}/2026/04/Freda-3.jpg", "Freda, our foundation female at Pine Hill German Shepherds"),
     "working":  (f"{U}/2026/09/BK706350-scaled.jpg", "AKC working-line German Shepherd in Maine"),
     "puppies":  (f"{U}/2024/10/AKC-German-Shepherd-Puppies-for-Sale-in-Maine-Pine-Hill-German-Shepherd-Breeders-scaled.jpg", "German Shepherd puppies raised with Puppy Culture"),
     "scholars": (f"{U}/2025/01/AKC-East-Working-Line-German-Shepherd-Puppies-for-Sale-in-Maine-Pine-Hill-German-Shepherds-scaled.jpg", "K9 Scholars training program"),
@@ -252,7 +252,7 @@ BODY = f"""
         <hr class="ph-rule">
       </div>
       <p class="ph-measure">We&#8217;re a small family business raising working-line German Shepherds on 40 acres of rural countryside in the backwoods of New England. We specialize in producing high-quality German Shepherds known for their exceptional personalities, working drive, scent detection abilities, and balanced temperaments.</p>
-      <p class="ph-measure">With only one breeding female, Frida &mdash; our beloved family member &mdash; we have the unique opportunity to carefully plan each litter, dedicating countless hours to observing and working with our puppies. Raised within our home and surrounded by our family, they receive plenty of love and care from day one.</p>
+      <p class="ph-measure">With only one breeding female, Freda &mdash; our beloved family member &mdash; we have the unique opportunity to carefully plan each litter, dedicating countless hours to observing and working with our puppies. Raised within our home and surrounded by our family, they receive plenty of love and care from day one.</p>
       <div><a class="ph-btn ph-btn--outline" href="/about-us-maines-german-shepherds-2-2/">Read Our Full Story</a></div>
     </div>
   </div>
@@ -365,7 +365,7 @@ BODY = f"""
     <div class="ph-duo">
       <div class="ph-dog">
         {frame('freda', '4/5')}
-        <h3>Frida Von Stephanitz</h3>
+        <h3>Freda Von Stephanitz</h3>
         <p class="ph-role">Scent Detection &amp; SAR Training</p>
       </div>
       <div class="ph-dog">

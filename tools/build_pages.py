@@ -198,7 +198,7 @@ def litters():
     d.append(sec([
         head("the parents", "Who They Come From", centred=True),
         row([
-            card([img("frida", "ph-frame ph-frame--sq"),
+            card([img("freda", "ph-frame ph-frame--sq"),
                   h(FREDA["name"], tag="h3"),
                   p("Dam · dark sable · search and rescue", "ph-role"),
                   dl([("Hips", link("Good", FREDA["hips"])),
