@@ -317,10 +317,6 @@ BODY = f"""
   </div>
 </section>
 
-<section class="ph-strip" aria-label="Life at Pine Hill">
-  <figcaption>Life at Pine Hill</figcaption>
-  {strip1}{strip2}{strip3}{strip4}
-</section>
 
 <section class="ph-band" id="litter" {BAND_BG}>
   <div class="ph-band__wrap">
