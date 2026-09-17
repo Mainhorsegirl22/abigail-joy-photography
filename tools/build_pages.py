@@ -29,7 +29,7 @@ FREDA = {
 
 
 def link(text, url):
-    return f'<a href="{url}" target="_blank" rel="noopener">{text}</a>'
+    return f"<a href='{url}' target='_blank' rel='noopener'>{text}</a>"
 
 
 # ============================================================ PUPPIES

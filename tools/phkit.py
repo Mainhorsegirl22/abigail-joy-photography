@@ -151,11 +151,11 @@ def spacer(px=24):
 
 def fill(label):
     """A value only she can supply. Renders as a visible blank, never a guess."""
-    return f'<span class="ph-fill">{label}</span>'
+    return f"<span class='ph-fill'>{label}</span>"
 
 
 def pill(text, tone="open"):
-    return p(f'<span class="ph-pill ph-pill--{tone}">{text}</span>', "ph-pillwrap")
+    return p(f"<span class='ph-pill ph-pill--{tone}'>{text}</span>", "ph-pillwrap")
 
 
 # ------------------------------------------------------------- page sections
