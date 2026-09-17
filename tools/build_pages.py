@@ -17,7 +17,7 @@ from phkit import (start, section, con, row, w, h, p, ul, dl, btn, img, rule,
 
 DOCS = "https://www.pinehillgermanshepherds.com/wp-content/uploads/2025/04"
 FREDA = {
-    "name": "Freda Von Stephanitz",
+    "name": "Freda von Stephanitz",
     "dob": "1 July 2023",
     "akc": "DN76717801",
     "pedigree": f"{DOCS}/Fredas-Pedigree-scaled-1.jpeg",

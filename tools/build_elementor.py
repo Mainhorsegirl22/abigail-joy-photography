@@ -211,7 +211,7 @@ shepherds = con([
          rule(),
          p("Carefully chosen for their outstanding personalities, balanced temperaments, and working drive.",
            "ph-lede")], "ph-head"),
-    con([dog("freda", "Freda Von Stephanitz", "Scent Detection &amp; SAR Training"),
+    con([dog("freda", "Freda von Stephanitz", "Scent Detection &amp; SAR Training"),
          dog("montie", "Captain Montie", "IGP &amp; Personal Protection Work")],
         "ph-duo", flex_direction="row"),
     con([btn("Meet Our Beloved Shepherds", "/our-shepherds/")], "ph-cta"),

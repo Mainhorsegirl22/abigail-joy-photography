@@ -365,7 +365,7 @@ BODY = f"""
     <div class="ph-duo">
       <div class="ph-dog">
         {frame('freda', '4/5')}
-        <h3>Freda Von Stephanitz</h3>
+        <h3>Freda von Stephanitz</h3>
         <p class="ph-role">Scent Detection &amp; SAR Training</p>
       </div>
       <div class="ph-dog">

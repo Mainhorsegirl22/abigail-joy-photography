@@ -46,7 +46,7 @@ IMG = {
 }
 
 ALT = {
-    "freda": "Freda Von Stephanitz, our foundation female",
+    "freda": "Freda von Stephanitz, our foundation female",
     "working": "AKC working-line German Shepherd in Maine",
     "montie": "Captain Montie, IGP and personal protection",
     "puppies": "German Shepherd puppies raised with Puppy Culture",
