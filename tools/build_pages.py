@@ -284,23 +284,11 @@ def litters():
 def contract():
     start("con")
 
-    d = [hero("Puppy Sales Contract", "read it before you pay anything",
-              "family", ypos=55, tall=False)]
-
-    d.append(sec([con([
-        h("The Terms, In Short"),
-        rule(True),
-        p("This is the agreement you sign before your puppy comes home. The "
-          "whole thing is below so you can read it now, not at the door with a "
-          "puppy in your arms.", "ph-lede"),
-        dl([("Price", "$3,000"),
-            ("Deposit", "$500 at reservation, non-refundable"),
-            ("Balance", "$2,500 at pickup, certified funds or cash"),
-            ("Registration", "AKC Limited \u2014 pet home, no breeding rights"),
-            ("Spay or neuter", "Required by twelve months"),
-            ("Vet check", "Within three days of coming home"),
-            ("Health guarantee", "Hips and elbows, twenty-four months")]),
-    ], "ph-narrow")], "summary", tone="linen", tight=True))
+    # No photograph and no summary: Abigail asked for the contract itself on a
+    # white page and nothing else. Title, clauses and signature are one column
+    # inside one section, so nothing sits in a band of its own and the page
+    # reads the way a contract on paper does.
+    d = []
 
     body = [
         ("1. Price and payment",
@@ -370,7 +358,9 @@ def contract():
          "binding on their heirs and successors. It may be signed and "
          "transmitted electronically."),
     ]
-    blocks = [p("Pine Hill German Shepherds (\u201cSeller\u201d) agrees to sell the "
+    blocks = [h("Puppy Sales Contract", "ph-title", tag="h1"),
+              rule(False),
+              p("Pine Hill German Shepherds (\u201cSeller\u201d) agrees to sell the "
                 "purebred German Shepherd puppy described below to the Buyer, on "
                 "the terms below. The puppy is AKC-registered under Limited "
                 "Registration \u2014 pet only, no breeding or show rights. Buyers "
@@ -381,7 +371,6 @@ def contract():
         if heading:
             blocks.append(h(heading, "ph-clause", tag="h3"))
         blocks.append(p(para, "ph-terms"))
-    d.append(sec([con(blocks, "ph-doc")], "terms", tone="white"))
 
     F = [("text", "Buyer name", 50, {"required": "true"}),
          ("email", "Email", 50, {"required": "true"}),
@@ -409,19 +398,19 @@ def contract():
           {"required": "true"}),
          ("date", "Date", 50, {"required": "true"})]
 
-    d.append(sec([con([
-        h("Sign and Return"),
-        rule(True),
+    blocks.append(con([
+        h("Sign and Return", "ph-clause", tag="h3"),
         p("Filling in your name below and submitting this form is your "
           "signature. You will get a copy by email, and we countersign before "
-          "your puppy goes home.", "ph-lede"),
+          "your puppy goes home.", "ph-terms"),
         form("Sales Contract", F, "Sign and Submit",
              "pinehillgermanshepherds@gmail.com",
              "Signed sales contract"),
         p("Questions first? Call 207-703-8043 or email "
           "pinehillgermanshepherds@gmail.com.", "ph-note"),
-    ], "ph-narrow")], "sign", tone="linen"))
+    ], "ph-sign"))
 
+    d.append(sec([con(blocks, "ph-doc")], "terms", tone="white"))
     return d
 
 
@@ -438,6 +427,14 @@ EXTRA = """
 .ph-card .elementor-button{margin-top:6px}
 .ph-doc{max-width:670px!important;margin-inline:auto!important;padding:0!important;gap:0!important;
  align-items:flex-start!important}
+/* Title, clauses and signature share the one column, so the page reads as a
+   single document rather than three stacked bands. */
+.ph-title .elementor-heading-title{font-size:clamp(30px,3.4vw,40px)!important;
+ margin-bottom:2px!important}
+.ph-sign{width:100%!important;max-width:none!important;gap:0!important;
+ margin-top:clamp(36px,4.4vw,56px)!important;padding:clamp(30px,3.6vw,44px) 0 0!important;
+ border-top:1px solid var(--hair)!important;align-items:flex-start!important}
+.ph-sign .elementor-heading-title{padding-top:0!important}
 .ph-clause .elementor-heading-title{font-size:19px!important;letter-spacing:0!important;
  padding-top:30px!important;margin-bottom:10px!important}
 .ph-terms p{font-size:15px!important;line-height:1.85!important;padding-bottom:12px!important}
