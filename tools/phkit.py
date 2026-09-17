@@ -301,6 +301,16 @@ body{--espresso:#1C1A18;--ivory:#F6F4F1;--linen:#F2F0EC;--sand:#DCD8D1;--sage:#2
 .elementor-button:hover,.elementor-button:focus{background-color:var(--sage-deep)!important;
  color:var(--ivory)!important;transform:translateY(-2px)}
 .elementor-button:focus-visible{outline:2px solid var(--brass)!important;outline-offset:3px!important}
+
+/* A link inside running text. Underlined in brass so it reads as a link
+   without turning the paragraph a different colour. */
+.elementor-widget-text-editor a{color:var(--espresso);text-decoration:underline;
+ text-underline-offset:3px;text-decoration-color:var(--brass);
+ transition:color .2s ease,text-decoration-color .2s ease}
+.elementor-widget-text-editor a:hover{color:var(--brass);text-decoration-color:var(--brass)}
+.elementor-widget-text-editor a:focus-visible{outline:2px solid var(--brass);outline-offset:2px;
+ text-decoration:none}
+.elementor-widget-text-editor a:active{color:var(--sage-deep)}
 .ph-ghost .elementor-button{background:transparent!important;color:var(--espresso)!important;
  border:1px solid var(--espresso)!important}
 .ph-ghost .elementor-button:hover{background:var(--espresso)!important;color:var(--ivory)!important}

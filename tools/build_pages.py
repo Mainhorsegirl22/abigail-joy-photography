@@ -36,7 +36,14 @@ RANGELEY = {
 
 
 def link(text, url):
+    """An outside link - a PDF, a registry, a health result. Opens in its own
+    tab so the reader does not lose the page they were on."""
     return f"<a href='{url}' target='_blank' rel='noopener'>{text}</a>"
+
+
+def here(text, path):
+    """A link to another page of this site. Stays in the same tab."""
+    return f"<a href='{path}'>{text}</a>"
 
 
 # ============================================================ PUPPIES
@@ -167,8 +174,9 @@ def puppies():
              "The $500 deposit is non-refundable. If the balance is not paid and "
              "the puppy not collected within fourteen days of the agreed date, "
              "the reservation ends and the puppy is offered to the next family. "
-             "Those terms are set out in the sales contract, which you can read "
-             "in full before you pay anything."),
+             "Those terms are set out in the " +
+             here("sales contract", "/sales-contract-new/") +
+             ", which you can read in full before you pay anything."),
             ("Is there a health guarantee?",
              "Yes, in writing. Debilitating genetic hip or elbow dysplasia is "
              "covered for twenty-four months from pickup, on proof from your vet. "
