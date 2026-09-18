@@ -54,6 +54,29 @@ changes.
 When the site goes live, these two lists collapse to `include/general` and the
 old templates come off - but that is a going-live decision, not a page one.
 
+### 2b. Never push data without the stylesheet  ← the page-goes-flat rule
+
+Elementor puts a widget's `_css_classes` on the widget, but **it does not put a
+container's `_css_classes` on the container**. A container renders as
+
+    <div class="elementor-element elementor-element-conxc11 e-con-full e-flex e-con">
+
+with no `ph-crow` on it. Every container-level rule in our stylesheet therefore
+only ever matches through its id twin - which is why `resolve()` writes those
+twins in the first place.
+
+Our ids are positional, so any change to the page renumbers the containers
+below it. Push `_elementor_data` without pushing the matching `custom_css` and
+every container rule aims at ids that no longer exist: the type still looks
+right, because widget classes survive, but the layout is gone and the page
+reads as one long unformatted column.
+
+**So the two writes are one operation.** Regenerate both from the same build
+and send both, every time:
+
+    python3 build_pages.py <page> wire > data
+    python3 build_pages.py <page> css  > css
+
 ### 3b. Elementor's element cache  ← the one that cost a whole afternoon
 
 Elementor 3.25+ ships an experiment called **Element Caching**. When it is on,
