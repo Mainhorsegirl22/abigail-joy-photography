@@ -48,6 +48,29 @@ changes.
 When the site goes live, these two lists collapse to `include/general` and the
 old templates come off - but that is a going-live decision, not a page one.
 
+### 3b. Elementor's element cache  ← the one that cost a whole afternoon
+
+Elementor 3.25+ ships an experiment called **Element Caching**. When it is on,
+Elementor stores the *rendered HTML* of the page in postmeta `_elementor_element_cache`
+and serves that to visitors instead of re-rendering `_elementor_data`.
+
+Writing `_elementor_data` does not invalidate it. The result looks exactly like
+a caching bug you cannot purge:
+
+* the Elementor editor shows the new page - it reads `_elementor_data`
+* the front end shows the old page - it reads `_elementor_element_cache`
+* purging LiteSpeed changes nothing, because LiteSpeed is not the cache
+* a `?v=2` cache-buster changes nothing either, for the same reason
+
+It is off now: option `elementor_experiment-e_element_cache` is set to
+`inactive`. **Leave it off for the rest of the rebuild.** If it ever comes back
+on, expire a page's copy by writing
+
+    _elementor_element_cache = {"timeout":1,"value":{"content":"","scripts":[],"styles":[]}}
+
+A timeout in the past makes Elementor re-render. `wp_delete_post_meta` on this
+key returns "Deletion failed", so overwrite it rather than deleting it.
+
 ### 4. Bump post_modified
 
 A meta-only write does not update `post_modified`, so WordPress never fires a
