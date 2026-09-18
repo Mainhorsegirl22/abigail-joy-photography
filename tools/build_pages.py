@@ -361,10 +361,12 @@ def contract():
     # A masthead, not a dropped-in title: who the agreement is with, what it is,
     # and where it is made, closed by a rule across the column the way a piece of
     # headed paper is.
-    blocks = [con([p("Pine Hill German Shepherds", "ph-mast__co"),
+    blocks = [con([p("Pine Hill German Shepherds", "ph-script ph-mast__co"),
                    h("Puppy Sales Contract", "ph-title", tag="h1"),
-                   p("Garland, Penobscot County, Maine \u00b7 "
-                     "Working-line German Shepherds", "ph-mast__meta")],
+                   p("This is not to intimidate anybody, but just to keep both "
+                     "parties safe in the process. If you have any questions "
+                     "about our sales contract, please don\u2019t hesitate to "
+                     "reach out and ask us.", "ph-mast__note")],
                   "ph-mast"),
               p("Pine Hill German Shepherds (\u201cSeller\u201d) agrees to sell the "
                 "purebred German Shepherd puppy described below to the Buyer, on "
@@ -373,10 +375,20 @@ def contract():
                 "wanting Full Registration and breeding rights must contact the "
                 "Seller in advance for approval and an additional fee.",
                 "ph-lede")]
+    # The clauses are set on a grid rather than run together: the number and the
+    # name of the clause hold a rail on the left, the wording sits in its own
+    # column on the right. A numbered heading typed into the prose is a list; a
+    # rail is a contract you can find your way around.
     for heading, para in body:
         if heading:
-            blocks.append(h(heading, "ph-clause", tag="h3"))
-        blocks.append(p(para, "ph-terms"))
+            num, _, title = heading.partition(". ")
+            blocks.append(con([
+                con([p(f"{int(num):02d}", "ph-cnum"),
+                     h(title, "ph-ctitle", tag="h3")], "ph-crow__n"),
+                con([p(para, "ph-terms")], "ph-crow__b"),
+            ], "ph-crow"))
+        else:
+            blocks[-1]["elements"][1]["elements"].append(p(para, "ph-terms"))
 
     F = [("text", "Buyer name", 50, {"required": "true"}),
          ("email", "Email", 50, {"required": "true"}),
@@ -401,17 +413,21 @@ def contract():
           {"required": "true"}),
          ("date", "Date", 50, {"required": "true"})]
 
+    # The signature block sits on the same grid as the clauses, so the form
+    # starts where every clause's wording starts.
     blocks.append(con([
-        h("Sign and Return", "ph-clause", tag="h3"),
-        p("Filling in your name below and submitting this form is your "
-          "signature. You will get a copy by email, and we countersign before "
-          "your puppy goes home.", "ph-terms"),
-        form("Sales Contract", F, "Sign and Submit",
-             "pinehillgermanshepherds@gmail.com",
-             "Signed sales contract"),
-        p("Questions first? Call 207-703-8043 or email "
-          "pinehillgermanshepherds@gmail.com.", "ph-note"),
-    ], "ph-sign"))
+        con([p("Sign", "ph-cnum"),
+             h("Sign and Return", "ph-ctitle", tag="h3")], "ph-crow__n"),
+        con([p("Filling in your name below and submitting this form is your "
+               "signature. You will get a copy by email, and we countersign "
+               "before your puppy goes home.", "ph-terms"),
+             form("Sales Contract", F, "Sign and Submit",
+                  "pinehillgermanshepherds@gmail.com",
+                  "Signed sales contract"),
+             p("Questions first? Call 207-703-8043 or email "
+               "pinehillgermanshepherds@gmail.com.", "ph-note")],
+            "ph-crow__b"),
+    ], "ph-crow ph-sign"))
 
     d.append(sec([con(blocks, "ph-doc")], "terms", tone="white"))
     return d
@@ -428,26 +444,49 @@ EXTRA = """
 .ph-facts a:hover{color:var(--brass)}
 .ph-card .ph-facts{width:100%}
 .ph-card .elementor-button{margin-top:6px}
-.ph-doc{max-width:670px!important;margin-inline:auto!important;padding:0!important;gap:0!important;
+.ph-doc{max-width:1040px!important;margin-inline:auto!important;padding:0!important;gap:0!important;
  align-items:flex-start!important}
 /* Title, clauses and signature share the one column, so the page reads as a
    single document rather than three stacked bands. */
 .ph-mast{width:100%!important;max-width:none!important;align-items:flex-start!important;
  gap:0!important;padding:0 0 clamp(26px,3vw,36px)!important;
  margin-bottom:clamp(30px,3.4vw,42px)!important;border-bottom:1px solid var(--hair)!important}
-.ph-mast__co p{font-size:10.5px!important;font-weight:600!important;letter-spacing:.22em!important;
- text-transform:uppercase!important;color:var(--brass)!important;margin-bottom:12px!important}
+.ph-mast__co p{margin-bottom:6px!important;font-size:clamp(30px,3.2vw,40px)!important}
 .ph-title .elementor-heading-title{font-size:clamp(32px,3.8vw,46px)!important;
  letter-spacing:-.02em!important;margin-bottom:12px!important}
-.ph-mast__meta p{font-size:12.5px!important;letter-spacing:.04em!important;
- color:var(--brass)!important;line-height:1.6!important}
-.ph-sign{width:100%!important;max-width:none!important;gap:0!important;
- margin-top:clamp(36px,4.4vw,56px)!important;padding:clamp(30px,3.6vw,44px) 0 0!important;
- border-top:1px solid var(--hair)!important;align-items:flex-start!important}
-.ph-sign .elementor-heading-title{padding-top:0!important}
-.ph-clause .elementor-heading-title{font-size:19px!important;letter-spacing:0!important;
- padding-top:30px!important;margin-bottom:10px!important}
-.ph-terms p{font-size:15px!important;line-height:1.85!important;padding-bottom:12px!important}
+.ph-mast__note p{font-size:14.5px!important;line-height:1.8!important;max-width:62ch!important;
+ color:var(--body)!important;padding-top:6px!important}
+.ph-doc>.ph-lede p{font-size:16.5px!important;line-height:1.8!important;max-width:74ch!important;
+ color:var(--espresso)!important;padding-bottom:clamp(14px,2vw,24px)!important}
+
+@media(max-width:820px){
+.ph-crow{flex-direction:column!important;gap:14px!important}
+.ph-crow__n{flex:0 0 auto!important;flex-direction:row!important;align-items:baseline!important;
+ gap:12px!important}
+.ph-crow__b{max-width:none!important}
+.ph-cnum p{font-size:19px!important}
+}
+.ph-sign{border-top:1px solid var(--espresso)!important;
+ margin-top:clamp(18px,2.4vw,32px)!important;padding-top:clamp(34px,4vw,48px)!important}
+.ph-sign .ph-cnum p{font-family:'Montserrat',system-ui,sans-serif!important;font-size:10.5px!important;
+ font-weight:600!important;letter-spacing:.22em!important;text-transform:uppercase!important;
+ padding-top:6px!important}
+.ph-sign .ph-terms p{padding-bottom:22px!important}
+.ph-sign .ph-note p{padding-top:16px!important}
+/* One clause: the rail on the left, the wording on the right. */
+.ph-crow{display:flex!important;flex-direction:row!important;align-items:flex-start!important;
+ gap:clamp(28px,4.5vw,72px)!important;width:100%!important;max-width:none!important;
+ padding:clamp(28px,3.2vw,40px) 0!important;border-top:1px solid var(--hair)!important}
+.ph-crow__n{flex:0 0 clamp(160px,20%,230px)!important;width:auto!important;max-width:none!important;
+ gap:8px!important;padding:0!important;align-items:flex-start!important}
+.ph-crow__b{flex:1 1 0!important;min-width:0!important;width:auto!important;max-width:680px!important;
+ gap:0!important;padding:0!important;align-items:flex-start!important}
+.ph-cnum p{font-family:'Cormorant Garamond',Georgia,serif!important;font-size:24px!important;
+ line-height:1!important;color:var(--brass)!important;letter-spacing:.04em!important}
+.ph-ctitle .elementor-heading-title{font-size:20px!important;line-height:1.25!important;
+ letter-spacing:-.005em!important}
+.ph-terms p{font-size:15px!important;line-height:1.85!important;padding-bottom:14px!important}
+.ph-terms:last-child p{padding-bottom:0!important}
 .ph-form .elementor-field-group>label{font-size:10.5px!important;letter-spacing:.14em!important;
  text-transform:uppercase!important;color:var(--brass)!important;margin-bottom:6px!important}
 .ph-form input:not([type=checkbox]),.ph-form select,.ph-form textarea{
