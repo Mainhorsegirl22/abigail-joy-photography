@@ -91,9 +91,18 @@ a caching bug you cannot purge:
 * purging LiteSpeed changes nothing, because LiteSpeed is not the cache
 * a `?v=2` cache-buster changes nothing either, for the same reason
 
-It is off now: option `elementor_experiment-e_element_cache` is set to
-`inactive`. **Leave it off for the rest of the rebuild.** If it ever comes back
-on, expire a page's copy by writing
+**There are two switches, and turning off the experiment is not enough.**
+
+    elementor_experiment-e_element_cache = inactive   <- the experiment
+    elementor_element_cache_ttl          = disable    <- the real one
+
+In Elementor 4 the caching lives in Settings > Performance > Element Caching,
+stored as `elementor_element_cache_ttl` (hours, default 24). With the
+experiment set to `inactive` but the TTL still at 24, pages kept being cached
+and kept serving the old copy. Both are now off. In the admin it is
+**Elementor > Settings > Performance > Element Caching > Disable**.
+
+**Leave it off for the rest of the rebuild.** To expire one page's copy, write
 
     _elementor_element_cache = {"timeout":1,"value":{"content":"","scripts":[],"styles":[]}}
 
