@@ -422,14 +422,16 @@ EXTRA = """
  align-items:flex-start!important}
 /* Title, clauses and signature share the one column, so the page reads as a
    single document rather than three stacked bands. */
-.ph-mast{width:100%!important;max-width:none!important;align-items:flex-start!important;
- gap:0!important;padding:0 0 clamp(26px,3vw,36px)!important;
+/* The masthead is centred like the head of a printed agreement; the clauses
+   below stay on their left rail, which is what makes them scannable. */
+.ph-mast{width:100%!important;max-width:none!important;align-items:center!important;
+ text-align:center!important;gap:0!important;padding:0 0 clamp(26px,3vw,36px)!important;
  margin-bottom:clamp(30px,3.4vw,42px)!important;border-bottom:1px solid var(--hair)!important}
-.ph-mast__co p{margin-bottom:6px!important;font-size:clamp(30px,3.2vw,40px)!important}
-.ph-title .elementor-heading-title{font-size:clamp(32px,3.8vw,46px)!important;
- letter-spacing:-.02em!important;margin-bottom:12px!important}
-.ph-mast__note p{font-size:14.5px!important;line-height:1.8!important;max-width:62ch!important;
- color:var(--body)!important;padding-top:6px!important}
+.ph-mast__co p{margin-bottom:4px!important;font-size:clamp(24px,2.4vw,30px)!important}
+.ph-title .elementor-heading-title{font-size:clamp(26px,2.8vw,34px)!important;
+ letter-spacing:-.015em!important;margin-bottom:12px!important}
+.ph-mast__note p{font-size:14px!important;line-height:1.8!important;max-width:58ch!important;
+ margin-inline:auto!important;color:var(--body)!important;padding-top:4px!important}
 .ph-doc>.ph-lede p{font-size:16.5px!important;line-height:1.8!important;max-width:74ch!important;
  color:var(--espresso)!important;padding-bottom:clamp(14px,2vw,24px)!important}
 
