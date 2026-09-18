@@ -41,6 +41,12 @@ the new page id to both lists in the option
     header.2737  += "include/singular/page/<id>"
     footer.2820  += "include/singular/page/<id>"
 
+**2737 and 2820 are the only header and footer the rebrand uses.** Older
+attempts are still in the library - headers 2581 and 2574, footers 2582 and
+2575, and the part-template 2738 - and they are attached to nothing. Never
+attach one of them to a page. Abigail has seen the footer change between
+pages once already and it was wrong both times.
+
 Leave header 32 and footer 25 on `include/general`. Elementor prefers the more
 specific condition, so the new chrome wins on the named pages and nothing else
 changes.
