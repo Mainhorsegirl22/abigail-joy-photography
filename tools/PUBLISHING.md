@@ -109,6 +109,23 @@ and kept serving the old copy. Both are now off. In the admin it is
 A timeout in the past makes Elementor re-render. `wp_delete_post_meta` on this
 key returns "Deletion failed", so overwrite it rather than deleting it.
 
+### 3c. Clear the compiled page CSS  ← why a style change never shows
+
+Writing `_elementor_page_settings.custom_css` is not enough. Elementor
+**compiles** that CSS once and stores the result in postmeta `_elementor_css`,
+then serves the compiled copy. Change `custom_css` through the MCP and the
+compiled copy is untouched, so the page keeps its old styling for ever - the
+content updates, the layout and type do not.
+
+After every CSS write, expire it:
+
+    _elementor_css = {"0":"","time":0,"fonts":[],"icons":[],
+                      "dynamic_elements_ids":[],"status":"empty","css":""}
+
+`time: 0` is older than the post's modified date, so Elementor recompiles on
+the next page load. Pass it in the tool's `meta` argument so it stores as an
+array, the same as `_elementor_page_settings`.
+
 ### 4. Bump post_modified
 
 A meta-only write does not update `post_modified`, so WordPress never fires a
