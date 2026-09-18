@@ -500,7 +500,83 @@ EXTRA = """
 .elementor-element-litherow10 img{height:auto!important;object-fit:contain!important}
 """
 
-PAGES = {"puppies": puppies, "litters": litters, "contract": contract}
+# ============================================================= OUR SHEPHERDS
+# Everything on this page is Abigail's own: registration numbers, health
+# results and the documents behind them. Nothing here is written from
+# imagination - if a fact is not in hand it is left as a visible blank.
+def shepherds():
+    start("shd")
+
+    d = [hero("Our Shepherds", "the dogs behind every litter",
+              "pair", ypos=48, tall=False)]
+
+    d.append(sec([head(None,
+                       "Two dogs, fully tested",
+                       "Every puppy we place comes from these two. Their "
+                       "registrations, hips, elbows, heart and eyes are all "
+                       "on record, and the paperwork is linked below so you "
+                       "can read it yourself rather than take our word for it.")],
+                 "intro", tone="white", tight=True))
+
+    # ---- Freda
+    freda_facts = [
+        ("Call name", "Freda"),
+        ("Registered", FREDA["name"]),
+        ("Date of birth", FREDA["dob"]),
+        ("AKC number", FREDA["akc"]),
+        ("Hips", link("PennHIP results", FREDA["hips"])),
+        ("Elbows", link("OFA elbow report", FREDA["elbows"])),
+        ("Heart", link("Cardiac result", FREDA["heart"])),
+        ("Eyes", link("OFA CAER result", FREDA["eyes"])),
+        ("Pedigree", link("Five-generation pedigree", FREDA["pedigree"])),
+    ]
+    d.append(sec([split(
+        img("freda", "ph-frame"),
+        col([p("Our foundation female", "ph-role"),
+             h("Freda von Stephanitz"),
+             rule(False),
+             p("Freda is the dam behind our litters and the reason the "
+               "kennel exists. She is health-tested in full, and every "
+               "result below is a document you can open.", "ph-lede"),
+             dl(freda_facts)]),
+    )], "freda", tone="linen"))
+
+    # ---- Rangeley
+    rang_facts = [
+        ("Call name", RANGELEY["call"]),
+        ("Registered", RANGELEY["name"]),
+        ("AKC number", RANGELEY["akc"]),
+        ("Hips and elbows", "OFA Good / Normal"),
+        ("Heart", "OFA Advanced Echocardiogram, Normal"),
+        ("Eyes", "OFA CAER, Normal"),
+        ("Genetics", "Embark, clear"),
+    ]
+    d.append(sec([split(
+        col([p("The sire of our current litter", "ph-role"),
+             h("Ledger Bei Mackenzie"),
+             rule(False),
+             p("Rangeley is the sire behind Litter A. He is fully health "
+               "tested and genetically clear.", "ph-lede"),
+             dl(rang_facts)]),
+        img("rangeley1", "ph-frame"),
+    )], "sire", tone="white"))
+
+    d.append(sec([head(None, "Rangeley at work", None),
+                  quad([img(k, "ph-frame ph-frame--sq")
+                        for k in ("rangeley2", "rangeley3", "rangeley5",
+                                  "rangeley6")])],
+                 "gallery", tone="linen"))
+
+    d.append(cta("Puppies from these two",
+                 "Litter A is on the ground. Reservations are open and the "
+                 "waiting list is short.",
+                 "See Available Litters", "/litters-new/", image_key="band2"))
+    return d
+
+
+
+PAGES = {"puppies": puppies, "litters": litters, "contract": contract,
+         "shepherds": shepherds}
 
 if __name__ == "__main__":
     name, mode = sys.argv[1], (sys.argv[2] if len(sys.argv) > 2 else "data")
