@@ -1,0 +1,173 @@
+{
+ "0": {
+  "title": "Puppy Sales Contract",
+  "description": "",
+  "labelPlacement": "top_label",
+  "descriptionPlacement": "below",
+  "button": {
+   "type": "text",
+   "text": "Sign and Submit",
+   "imageUrl": ""
+  },
+  "fields": [
+   {
+    "type": "text",
+    "id": 1,
+    "label": "Buyer name",
+    "isRequired": true,
+    "size": "large"
+   },
+   {
+    "type": "email",
+    "id": 2,
+    "label": "Email",
+    "isRequired": true,
+    "size": "large"
+   },
+   {
+    "type": "phone",
+    "id": 3,
+    "label": "Phone",
+    "isRequired": true,
+    "size": "large",
+    "phoneFormat": "standard"
+   },
+   {
+    "type": "text",
+    "id": 4,
+    "label": "Address",
+    "isRequired": true,
+    "size": "large"
+   },
+   {
+    "type": "consent",
+    "id": 5,
+    "label": "Agreement",
+    "isRequired": true,
+    "checkboxLabel": "I have read, understand and agree to this Agreement in full.",
+    "descriptionPlacement": "below",
+    "description": "",
+    "inputs": [
+     {
+      "id": "5.1",
+      "label": "Consent",
+      "name": ""
+     },
+     {
+      "id": "5.2",
+      "label": "Text",
+      "name": ""
+     },
+     {
+      "id": "5.3",
+      "label": "Description",
+      "name": ""
+     }
+    ]
+   },
+   {
+    "type": "consent",
+    "id": 6,
+    "label": "Deposit",
+    "isRequired": true,
+    "checkboxLabel": "I understand the $500 deposit is non-refundable.",
+    "descriptionPlacement": "below",
+    "description": "",
+    "inputs": [
+     {
+      "id": "6.1",
+      "label": "Consent",
+      "name": ""
+     },
+     {
+      "id": "6.2",
+      "label": "Text",
+      "name": ""
+     },
+     {
+      "id": "6.3",
+      "label": "Description",
+      "name": ""
+     }
+    ]
+   },
+   {
+    "type": "consent",
+    "id": 7,
+    "label": "Registration",
+    "isRequired": true,
+    "checkboxLabel": "I understand this puppy is sold on AKC Limited Registration — a pet home, with no breeding or show rights.",
+    "descriptionPlacement": "below",
+    "description": "",
+    "inputs": [
+     {
+      "id": "7.1",
+      "label": "Consent",
+      "name": ""
+     },
+     {
+      "id": "7.2",
+      "label": "Text",
+      "name": ""
+     },
+     {
+      "id": "7.3",
+      "label": "Description",
+      "name": ""
+     }
+    ]
+   },
+   {
+    "type": "text",
+    "id": 8,
+    "label": "Type your full legal name as your signature",
+    "isRequired": true,
+    "size": "large"
+   },
+   {
+    "type": "date",
+    "id": 9,
+    "label": "Date",
+    "isRequired": true,
+    "dateType": "datepicker",
+    "dateFormat": "mdy"
+   }
+  ],
+  "version": "2.9.0",
+  "id": 1,
+  "useCurrentUserAsAuthor": true,
+  "postContentTemplateEnabled": false,
+  "postTitleTemplateEnabled": false,
+  "notifications": {
+   "d1ec535a5e224deea4745aeeee108f26": {
+    "id": "d1ec535a5e224deea4745aeeee108f26",
+    "isActive": true,
+    "to": "pinehillgermanshepherds@gmail.com",
+    "toType": "email",
+    "name": "Signed contract to Pine Hill",
+    "event": "form_submission",
+    "subject": "Signed sales contract — {Buyer name:1}",
+    "message": "{all_fields}",
+    "from": "{admin_email}",
+    "fromName": "Pine Hill German Shepherds",
+    "replyTo": "{Email:2}"
+   }
+  },
+  "confirmations": {
+   "0997e8a96be64537a8fc142d3d2ce9ea": {
+    "id": "0997e8a96be64537a8fc142d3d2ce9ea",
+    "name": "Default Confirmation",
+    "isDefault": true,
+    "type": "message",
+    "message": "<p>Thank you. Your signed contract has been sent to Pine Hill German Shepherds, and we will be in touch to confirm.</p>",
+    "url": "",
+    "pageId": "",
+    "queryString": ""
+   }
+  },
+  "is_active": "1",
+  "date_created": "",
+  "is_trash": "0"
+ },
+ "version": "2.9.0"
+}
