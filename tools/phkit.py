@@ -115,6 +115,24 @@ def w(widget_type, settings, classes=""):
             "settings": s, "elements": []}
 
 
+def pin(node, fixed):
+    """Give a node a permanent id instead of a positional one.
+
+    Elementor's form handler finds the form widget by the id the browser posts
+    back. Our ids are positional, so adding anything above a form renumbers it,
+    and a page a visitor already had open then submits an id that is no longer
+    in the page data - Elementor answers "your submission failed because the
+    form is invalid" and the answers are lost. A pinned id survives a rebuild.
+    """
+    old = node["id"]
+    node["id"] = fixed
+    for ids in INDEX.values():
+        for n, i in enumerate(ids):
+            if i == old:
+                ids[n] = fixed
+    return node
+
+
 def h(text, classes="", tag="h2"):
     return w("heading", {"title": text, "header_size": tag}, classes)
 

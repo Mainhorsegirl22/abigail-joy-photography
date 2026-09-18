@@ -13,7 +13,7 @@ told me is written with fill(), which renders as a visible blank.
 import sys
 from phkit import (start, section, con, row, w, h, p, ul, dl, btn, img, rule, form,
                    fill, pill, hero, sec, head, split, col, trio, quad, card,
-                   stat, steps, faq, cta, emit, IMG, INDEX)
+                   stat, steps, faq, cta, emit, pin, IMG, INDEX)
 
 DOCS = "https://www.pinehillgermanshepherds.com/wp-content/uploads/2025/04"
 FREDA = {
@@ -421,9 +421,9 @@ def contract():
         con([p("Filling in your name below and submitting this form is your "
                "signature. You will get a copy by email, and we countersign "
                "before your puppy goes home.", "ph-terms"),
-             form("Sales Contract", F, "Sign and Submit",
-                  "pinehillgermanshepherds@gmail.com",
-                  "Signed sales contract"),
+             pin(form("Sales Contract", F, "Sign and Submit",
+                      "pinehillgermanshepherds@gmail.com",
+                      "Signed sales contract"), "phcontractform"),
              p("Questions first? Call 207-703-8043 or email "
                "pinehillgermanshepherds@gmail.com.", "ph-note")],
             "ph-crow__b"),
