@@ -115,6 +115,22 @@ def w(widget_type, settings, classes=""):
             "settings": s, "elements": []}
 
 
+def gform(form_id, classes="ph-gf"):
+    """A Gravity form, shown through the Ultimate Addons styler widget.
+
+    This is the widget her contact page already uses, and Gravity is the form
+    engine that actually delivers mail on this site. Elementor Pro's own form
+    widget rejected every submission here with "the form is invalid", so it is
+    not used.
+    """
+    return w("uael-gf-styler", {
+        "form_id": str(form_id),
+        "form_ajax_option": "yes",
+        "form_title_option": "none",
+        "form_description_option": "none",
+    }, classes)
+
+
 def pin(node, fixed):
     """Give a node a permanent id instead of a positional one.
 

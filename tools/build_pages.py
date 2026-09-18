@@ -13,7 +13,7 @@ told me is written with fill(), which renders as a visible blank.
 import sys
 from phkit import (start, section, con, row, w, h, p, ul, dl, btn, img, rule, form,
                    fill, pill, hero, sec, head, split, col, trio, quad, card,
-                   stat, steps, faq, cta, emit, pin, IMG, INDEX)
+                   stat, steps, faq, cta, emit, pin, gform, IMG, INDEX)
 
 DOCS = "https://www.pinehillgermanshepherds.com/wp-content/uploads/2025/04"
 FREDA = {
@@ -421,9 +421,7 @@ def contract():
         con([p("Filling in your name below and submitting this form is your "
                "signature. You will get a copy by email, and we countersign "
                "before your puppy goes home.", "ph-terms"),
-             pin(form("Sales Contract", F, "Sign and Submit",
-                      "pinehillgermanshepherds@gmail.com",
-                      "Signed sales contract"), "phcontractform"),
+             gform(6),
              p("Questions first? Call 207-703-8043 or email "
                "pinehillgermanshepherds@gmail.com.", "ph-note")],
             "ph-crow__b"),
@@ -487,16 +485,44 @@ EXTRA = """
  letter-spacing:-.005em!important}
 .ph-terms p{font-size:15px!important;line-height:1.85!important;padding-bottom:14px!important}
 .ph-terms:last-child p{padding-bottom:0!important}
-.ph-form .elementor-field-group>label{font-size:10.5px!important;letter-spacing:.14em!important;
- text-transform:uppercase!important;color:var(--brass)!important;margin-bottom:6px!important}
-.ph-form input:not([type=checkbox]),.ph-form select,.ph-form textarea{
+/* Gravity Forms, dressed to match the rest of the site. Targets Gravity's own
+   markup rather than Elementor's, because the form is a Gravity form. */
+.ph-gf .gform_wrapper .gfield_label,.ph-gf .gform_wrapper legend.gfield_label{
+ font-family:'Montserrat',system-ui,sans-serif!important;font-size:10.5px!important;
+ font-weight:600!important;letter-spacing:.14em!important;text-transform:uppercase!important;
+ color:var(--brass)!important;margin-bottom:8px!important}
+.ph-gf .gform_wrapper .gform_fields{row-gap:22px!important}
+.ph-gf .gform_wrapper input[type=text],.ph-gf .gform_wrapper input[type=email],
+.ph-gf .gform_wrapper input[type=tel],.ph-gf .gform_wrapper input[type=url],
+.ph-gf .gform_wrapper textarea,.ph-gf .gform_wrapper select{
  border:1px solid var(--hair)!important;border-radius:0!important;background:#FFFFFF!important;
  padding:13px 14px!important;font-family:'Montserrat',system-ui,sans-serif!important;
- font-size:14px!important;color:var(--espresso)!important}
-.ph-form input:focus-visible,.ph-form select:focus-visible,.ph-form textarea:focus-visible{
- outline:2px solid var(--brass)!important;outline-offset:2px!important}
-.ph-form .elementor-field-type-acceptance label{font-size:13.5px!important;text-transform:none!important;
- letter-spacing:0!important;color:var(--body)!important;line-height:1.7!important}
+ font-size:14px!important;color:var(--espresso)!important;box-shadow:none!important}
+.ph-gf .gform_wrapper input:focus,.ph-gf .gform_wrapper textarea:focus,
+.ph-gf .gform_wrapper select:focus{outline:2px solid var(--brass)!important;
+ outline-offset:2px!important;border-color:var(--brass)!important}
+.ph-gf .gform_wrapper .gfield--type-consent .gfield_consent_label,
+.ph-gf .gform_wrapper .ginput_container_consent label{
+ font-family:'Montserrat',system-ui,sans-serif!important;font-size:13.5px!important;
+ font-weight:400!important;letter-spacing:0!important;text-transform:none!important;
+ color:var(--body)!important;line-height:1.7!important}
+.ph-gf .gform_wrapper .gfield_required{color:var(--brass)!important}
+.ph-gf .gform_wrapper .gform_footer{margin-top:28px!important;padding:0!important}
+.ph-gf .gform_wrapper .gform_footer input[type=submit],
+.ph-gf .gform_wrapper .gform_button{
+ background-color:var(--sage)!important;color:var(--ivory)!important;border:0!important;
+ font-family:'Montserrat',system-ui,sans-serif!important;font-size:10.5px!important;
+ font-weight:500!important;letter-spacing:.2em!important;text-transform:uppercase!important;
+ border-radius:0!important;padding:17px 34px!important;width:auto!important;cursor:pointer;
+ transition:transform .3s cubic-bezier(.22,.9,.32,1),background-color .25s ease}
+.ph-gf .gform_wrapper .gform_footer input[type=submit]:hover{
+ background-color:var(--sage-deep)!important;transform:translateY(-2px)}
+.ph-gf .gform_wrapper .gform_footer input[type=submit]:focus-visible{
+ outline:2px solid var(--brass)!important;outline-offset:3px!important}
+.ph-gf .gform_wrapper .gform_confirmation_message{
+ font-family:'Montserrat',system-ui,sans-serif!important;font-size:15px!important;
+ color:var(--espresso)!important;line-height:1.8!important}
+.ph-gf .gform_wrapper .gform_validation_errors{border-radius:0!important}
 .elementor-element-litherow10 img{height:auto!important;object-fit:contain!important}
 """
 
