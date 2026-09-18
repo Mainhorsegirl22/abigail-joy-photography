@@ -333,10 +333,6 @@ def contract():
         ("5. Buyer's responsibilities",
          "The Buyer will keep the dog safe, well-fed, appropriately exercised "
          "and under veterinary care, and will not neglect or mistreat it."),
-        (None,
-         "Spay or neuter is required by 12 months of age under Limited "
-         "Registration, unless the Seller has approved Full Registration in "
-         "writing. Proof is due to the Seller on request."),
         ("6. Seller's responsibilities",
          "Before pickup the Seller worms, vet-checks and vaccinates the puppy as "
          "described in Section 2, and provides AKC papers reflecting Limited "
@@ -382,7 +378,7 @@ def contract():
     for heading, para in body:
         if heading:
             num, _, title = heading.partition(". ")
-            blocks.append(con([
+            blocks.append(row([
                 con([p(f"{int(num):02d}", "ph-cnum"),
                      h(title, "ph-ctitle", tag="h3")], "ph-crow__n"),
                 con([p(para, "ph-terms")], "ph-crow__b"),
@@ -390,32 +386,36 @@ def contract():
         else:
             blocks[-1]["elements"][1]["elements"].append(p(para, "ph-terms"))
 
+    # Plain text for the phone and the date. Elementor's tel and date fields
+    # carry their own format validation, and a field type that rejects what
+    # somebody typed is worse here than no check at all - this form is the one
+    # place on the site where a rejected submission loses a sale.
     F = [("text", "Buyer name", 50, {"required": "true"}),
          ("email", "Email", 50, {"required": "true"}),
-         ("tel", "Phone", 50, {"required": "true"}),
+         ("text", "Phone", 50, {"required": "true"}),
          ("text", "Address", 50, {"required": "true"}),
          # No puppy or litter details here. Which puppy it is gets settled
          # between Abigail and the buyer, not typed into a web form by someone
          # who may not know the sire's name yet.
-         ("acceptance", "", 100,
-          {"required": "true",
+         ("acceptance", "Agreement", 100,
+          {"required": "true", "checked_by_default": "",
            "acceptance_text": "I have read, understand and agree to this "
                               "Agreement in full."}),
-         ("acceptance", "", 100,
-          {"required": "true",
+         ("acceptance", "Deposit", 100,
+          {"required": "true", "checked_by_default": "",
            "acceptance_text": "I understand the $500 deposit is non-refundable."}),
-         ("acceptance", "", 100,
-          {"required": "true",
-           "acceptance_text": "I understand this puppy is sold on Limited "
-                              "Registration and must be spayed or neutered by "
-                              "twelve months of age."}),
+         ("acceptance", "Registration", 100,
+          {"required": "true", "checked_by_default": "",
+           "acceptance_text": "I understand this puppy is sold on AKC Limited "
+                              "Registration \u2014 a pet home, with no breeding "
+                              "or show rights."}),
          ("text", "Type your full legal name as your signature", 50,
           {"required": "true"}),
-         ("date", "Date", 50, {"required": "true"})]
+         ("text", "Today\u2019s date", 50, {"required": "true"})]
 
     # The signature block sits on the same grid as the clauses, so the form
     # starts where every clause's wording starts.
-    blocks.append(con([
+    blocks.append(row([
         con([p("Sign", "ph-cnum"),
              h("Sign and Return", "ph-ctitle", tag="h3")], "ph-crow__n"),
         con([p("Filling in your name below and submitting this form is your "

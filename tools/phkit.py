@@ -207,6 +207,7 @@ def form(name, fields, button, email_to, subject):
         "email_to": email_to,
         "email_subject": subject,
         "email_content": "[all-fields]",
+        "email_from": "pinehillgermanshepherds@gmail.com",
         "email_from_name": "Pine Hill German Shepherds",
     }, "ph-form")
 
