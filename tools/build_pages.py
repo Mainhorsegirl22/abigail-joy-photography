@@ -508,16 +508,32 @@ EXTRA = """
  color:var(--body)!important;line-height:1.7!important}
 .ph-gf .gform_wrapper .gfield_required{color:var(--brass)!important}
 .ph-gf .gform_wrapper .gform_footer{margin-top:28px!important;padding:0!important}
-.ph-gf .gform_wrapper .gform_footer input[type=submit],
-.ph-gf .gform_wrapper .gform_button{
- background-color:var(--sage)!important;color:var(--ivory)!important;border:0!important;
+/* The submit button. Written wide and with body in front of it because the
+   styler widget paints its own blue over anything weaker, and Gravity renders
+   the button as an input on some versions and a button element on others. */
+body .ph-gf .gform_footer input[type=submit],
+body .ph-gf .gform_footer button[type=submit],
+body .ph-gf .gform_footer .gform_button,
+body .ph-gf input.gform_button,
+body .ph-gf button.gform_button,
+body .ph-gf .gform_wrapper .gform_footer input,
+body .ph-gf .gform_wrapper .gform_footer button{
+ background:var(--sage)!important;background-color:var(--sage)!important;
+ background-image:none!important;color:var(--ivory)!important;
+ border:0!important;border-color:var(--sage)!important;
  font-family:'Montserrat',system-ui,sans-serif!important;font-size:10.5px!important;
  font-weight:500!important;letter-spacing:.2em!important;text-transform:uppercase!important;
- border-radius:0!important;padding:17px 34px!important;width:auto!important;cursor:pointer;
- transition:transform .3s cubic-bezier(.22,.9,.32,1),background-color .25s ease}
-.ph-gf .gform_wrapper .gform_footer input[type=submit]:hover{
- background-color:var(--sage-deep)!important;transform:translateY(-2px)}
-.ph-gf .gform_wrapper .gform_footer input[type=submit]:focus-visible{
+ border-radius:0!important;padding:17px 34px!important;width:auto!important;
+ box-shadow:none!important;text-shadow:none!important;cursor:pointer!important;
+ transition:transform .3s cubic-bezier(.22,.9,.32,1),background-color .25s ease!important}
+body .ph-gf .gform_footer input[type=submit]:hover,
+body .ph-gf .gform_footer button[type=submit]:hover,
+body .ph-gf .gform_footer .gform_button:hover{
+ background:var(--sage-deep)!important;background-color:var(--sage-deep)!important;
+ color:var(--ivory)!important;transform:translateY(-2px)}
+body .ph-gf .gform_footer input[type=submit]:focus-visible,
+body .ph-gf .gform_footer button[type=submit]:focus-visible,
+body .ph-gf .gform_footer .gform_button:focus-visible{
  outline:2px solid var(--brass)!important;outline-offset:3px!important}
 .ph-gf .gform_wrapper .gform_confirmation_message{
  font-family:'Montserrat',system-ui,sans-serif!important;font-size:15px!important;
