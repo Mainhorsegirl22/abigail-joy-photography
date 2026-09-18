@@ -1,0 +1,71 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link rel="stylesheet" href="/fonts/fonts.css">
+<style>
+:root{--espresso:#1C1A18;--ivory:#F6F4F1;--linen:#F2F0EC;--brass:#7C7369;--sand:#DCD8D1;
+ --open:#8FA08A;--taken:#6F6862}
+*{box-sizing:border-box;margin:0}
+body{background:#555;display:flex;align-items:center;justify-content:center;min-height:100vh}
+.card{width:1200px;height:630px;background:var(--espresso);color:var(--ivory);
+ display:grid;grid-template-columns:1fr 1fr;overflow:hidden;position:relative}
+
+/* left: the litter graphic */
+.shot{position:relative;background:#241F1B;overflow:hidden}
+.shot img{width:100%;height:100%;object-fit:cover;display:block}
+.shot::after{content:'';position:absolute;inset:0;
+ background:linear-gradient(90deg,rgba(28,26,24,0) 55%,rgba(28,26,24,.9) 100%)}
+.ph{position:absolute;inset:26px;display:flex;flex-direction:column;align-items:center;
+ justify-content:center;gap:10px;border:1px dashed rgba(246,244,241,.28);color:rgba(246,244,241,.5);
+ font-family:'Montserrat',sans-serif;font-size:12px;letter-spacing:.18em;text-transform:uppercase}
+
+/* right: the message */
+.body{padding:56px 62px 50px;display:flex;flex-direction:column;justify-content:space-between;gap:26px}
+.script{font-family:'Mrs Saint Delafield',cursive;font-size:52px;line-height:1;color:var(--brass);
+ letter-spacing:.06em}
+.litter{font-family:'Montserrat',sans-serif;font-size:11px;font-weight:600;letter-spacing:.34em;
+ text-transform:uppercase;color:var(--sand);margin-top:16px}
+h1{font-family:'Cormorant Garamond',Georgia,serif;font-weight:500;font-size:60px;line-height:1.02;
+ letter-spacing:-.02em;margin-top:10px}
+h1 em{font-style:normal;color:var(--brass)}
+
+.spots{margin-top:34px}
+.row{display:flex;gap:12px}
+.dot{width:62px;height:62px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+ font-family:'Montserrat',sans-serif;font-size:13px;font-weight:600;letter-spacing:.02em}
+.dot--taken{background:var(--taken);color:rgba(246,244,241,.55)}
+.dot--open{border:2px solid var(--open);color:var(--open)}
+.key{display:flex;gap:26px;margin-top:16px;font-family:'Montserrat',sans-serif;font-size:11px;
+ font-weight:500;letter-spacing:.18em;text-transform:uppercase}
+.key span{display:flex;align-items:center;gap:9px;color:rgba(246,244,241,.72)}
+.key i{width:11px;height:11px;border-radius:50%;display:block}
+.key .t{background:var(--taken)}
+.key .o{border:2px solid var(--open)}
+
+.foot{display:flex;justify-content:space-between;align-items:flex-end;
+ border-top:1px solid rgba(246,244,241,.16);padding-top:20px}
+.pair{font-family:'Cormorant Garamond',Georgia,serif;font-size:19px;line-height:1.35;color:var(--sand)}
+.pair b{font-weight:500;color:var(--ivory)}
+.site{font-family:'Montserrat',sans-serif;font-size:11px;font-weight:600;letter-spacing:.2em;
+ text-transform:uppercase;color:var(--brass);text-align:right;line-height:1.7}
+</style></head><body>
+<div class="card">
+  <div class="shot"><div class="ph"><span>Litter A graphic</span><span>drops in here</span></div></div>
+  <div class="body">
+    <div>
+      <div class="script">Pine Hill German Shepherds</div>
+      <div class="litter">Litter&nbsp;A &nbsp;·&nbsp; Working Line</div>
+      <h1>Three spots<br><em>still open</em></h1>
+      <div class="spots">
+        <div class="row">
+          <div class="dot dot--taken">1</div><div class="dot dot--taken">2</div>
+          <div class="dot dot--taken">3</div><div class="dot dot--open">4</div>
+          <div class="dot dot--open">5</div><div class="dot dot--open">6</div>
+        </div>
+        <div class="key"><span><i class="t"></i>3 reserved</span><span><i class="o"></i>3 available</span></div>
+      </div>
+    </div>
+    <div class="foot">
+      <div class="pair"><b>Ledger</b> &times; <b>Freda</b><br>Garland, Maine</div>
+      <div class="site">Reserve a puppy<br>pinehillgermanshepherds.com</div>
+    </div>
+  </div>
+</div></body></html>
