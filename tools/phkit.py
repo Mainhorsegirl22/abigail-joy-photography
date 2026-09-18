@@ -171,8 +171,13 @@ def form(name, fields, button, email_to, subject):
     """
     out = []
     for n, (ftype, label, width, extra) in enumerate(fields, 1):
-        f = {"_id": f"f{n:02d}", "field_type": ftype, "field_label": label,
-             "width": str(width)}
+        # custom_id is the one Elementor actually renders with: it becomes the
+        # input's name (form_fields[<custom_id>]) and the label's for=. Leave it
+        # out and every field submits under an empty key, so the email arrives
+        # with the questions and none of the answers. _id alone is not enough.
+        fid = f"f{n:02d}"
+        f = {"_id": fid, "custom_id": fid, "field_type": ftype,
+             "field_label": label, "width": str(width)}
         f.update(extra or {})
         out.append(f)
     return w("form", {

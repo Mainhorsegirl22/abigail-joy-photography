@@ -358,8 +358,14 @@ def contract():
          "binding on their heirs and successors. It may be signed and "
          "transmitted electronically."),
     ]
-    blocks = [h("Puppy Sales Contract", "ph-title", tag="h1"),
-              rule(False),
+    # A masthead, not a dropped-in title: who the agreement is with, what it is,
+    # and where it is made, closed by a rule across the column the way a piece of
+    # headed paper is.
+    blocks = [con([p("Pine Hill German Shepherds", "ph-mast__co"),
+                   h("Puppy Sales Contract", "ph-title", tag="h1"),
+                   p("Garland, Penobscot County, Maine \u00b7 "
+                     "Working-line German Shepherds", "ph-mast__meta")],
+                  "ph-mast"),
               p("Pine Hill German Shepherds (\u201cSeller\u201d) agrees to sell the "
                 "purebred German Shepherd puppy described below to the Buyer, on "
                 "the terms below. The puppy is AKC-registered under Limited "
@@ -376,12 +382,9 @@ def contract():
          ("email", "Email", 50, {"required": "true"}),
          ("tel", "Phone", 50, {"required": "true"}),
          ("text", "Address", 50, {"required": "true"}),
-         ("text", "Puppy name", 50, {}),
-         ("select", "Gender", 50, {"field_options": "Male\nFemale"}),
-         ("date", "Puppy date of birth", 50, {}),
-         ("text", "Markings and colour", 50, {}),
-         ("text", "Sire", 50, {}),
-         ("text", "Dam", 50, {}),
+         # No puppy or litter details here. Which puppy it is gets settled
+         # between Abigail and the buyer, not typed into a web form by someone
+         # who may not know the sire's name yet.
          ("acceptance", "", 100,
           {"required": "true",
            "acceptance_text": "I have read, understand and agree to this "
@@ -429,8 +432,15 @@ EXTRA = """
  align-items:flex-start!important}
 /* Title, clauses and signature share the one column, so the page reads as a
    single document rather than three stacked bands. */
-.ph-title .elementor-heading-title{font-size:clamp(30px,3.4vw,40px)!important;
- margin-bottom:2px!important}
+.ph-mast{width:100%!important;max-width:none!important;align-items:flex-start!important;
+ gap:0!important;padding:0 0 clamp(26px,3vw,36px)!important;
+ margin-bottom:clamp(30px,3.4vw,42px)!important;border-bottom:1px solid var(--hair)!important}
+.ph-mast__co p{font-size:10.5px!important;font-weight:600!important;letter-spacing:.22em!important;
+ text-transform:uppercase!important;color:var(--brass)!important;margin-bottom:12px!important}
+.ph-title .elementor-heading-title{font-size:clamp(32px,3.8vw,46px)!important;
+ letter-spacing:-.02em!important;margin-bottom:12px!important}
+.ph-mast__meta p{font-size:12.5px!important;letter-spacing:.04em!important;
+ color:var(--brass)!important;line-height:1.6!important}
 .ph-sign{width:100%!important;max-width:none!important;gap:0!important;
  margin-top:clamp(36px,4.4vw,56px)!important;padding:clamp(30px,3.6vw,44px) 0 0!important;
  border-top:1px solid var(--hair)!important;align-items:flex-start!important}
