@@ -133,3 +133,30 @@ save and LiteSpeed never purges the page. Abigail sees a stale render and
 reports that nothing changed. Finish every page with a real field write:
 
     wp_update_post(ID, fields={"post_excerpt": "..."})
+
+## (3d) NEVER hand-write or blank `_elementor_css`
+
+`_elementor_css` is Elementor's **compiled** stylesheet record. Writing
+`{"status":"empty","css":""}` does not mean "rebuild me" — it means "this post
+needs no CSS", and Elementor obeys it forever. Deleting the meta is safe;
+blanking it is not. Hand-writing a replacement is worse: a `time` value in the
+future permanently blocks regeneration.
+
+The only safe way to force a rebuild is to make `post_modified` newer than the
+stored `time`:
+
+    wp_update_post(ID, fields={"post_modified": "<now>", "post_modified_gmt": "<now utc>"})
+
+Elementor compares the two on the next front-end view and recompiles from
+`_elementor_data` + `_elementor_page_settings.custom_css`. Verify `custom_css`
+is still present before relying on this.
+
+The one-click equivalent, which also covers the kit and every template, is
+**Elementor -> Tools -> Regenerate Files & Data**.
+
+## (5) LiteSpeed Cache is installed on this site
+
+LiteSpeed Cache 7.9.1 is active. It is a full-page cache and it is NOT purged
+by MCP meta writes. Logged-in admins normally bypass it, but logged-out
+visitors can keep seeing an old page long after the database is correct.
+After any publish, purge it: admin bar -> LiteSpeed -> Purge All.
