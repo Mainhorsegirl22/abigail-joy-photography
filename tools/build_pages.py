@@ -292,65 +292,57 @@ def contract():
 
     body = [
         ("1. Price and payment",
-         "Price: $3,000.00, paid as a $500 deposit at reservation "
-         "(non-refundable, no exceptions) and a $2,500 balance due in full at "
-         "pickup, before the puppy leaves the Seller's possession. Personal "
-         "cheques are not accepted at pickup; certified funds or cash only."),
+         "The price is the amount agreed at reservation. A deposit holds the "
+         "puppy and is non-refundable. The balance is due in full at pickup, "
+         "before the puppy leaves, by cash or certified funds."),
         (None,
-         "No-show: if the Buyer has not paid the balance and collected the puppy "
-         "within 14 days of the agreed date, with no written alternate "
-         "arrangement, this Agreement ends, the deposit is forfeited, and the "
-         "Seller may resell the puppy."),
+         "If the Buyer has not paid the balance and collected the puppy within "
+         "14 days of the agreed date, and has made no other written "
+         "arrangement, this Agreement ends, the deposit is kept, and the Seller "
+         "may resell the puppy."),
         ("2. Health and vaccination",
-         "Sire and dam are health-tested breeding stock. Puppies are raised "
-         "in-home and wormed at 4, 6 and 8 weeks."),
+         "Sire and dam are health-tested. Puppies are raised in-home and wormed "
+         "before going home."),
         (None,
          "At 7 weeks of age, or before the puppy leaves our premises, it "
          "receives its first vaccination. This is the first in a series \u2014 the "
          "Buyer continues the schedule with their own veterinarian. The "
          "vaccination record is handed over at pickup, and the puppy is "
          "believed to be in good health at that time."),
-        ("3. Vet check and return, three days",
-         "The Buyer must have the puppy vet-checked within 3 days of coming "
-         "home. If the vet certifies in writing that the puppy is unfit for "
-         "sale, the Buyer may return it, in the same condition as sold, within "
-         "that same 3-day window, for a refund of the purchase price paid "
-         "(deposit excluded). Return expenses and distress claims are not "
-         "covered. Beyond this window the Seller is not responsible for "
-         "conditions that develop later, except as covered by the Genetic Health "
-         "Guarantee below."),
-        ("4. Genetic health guarantee \u2014 hips and elbows",
-         "The Seller warrants against debilitating genetic hip or elbow "
-         "dysplasia for 24 months from pickup. To qualify, the puppy must be "
-         "vet-evaluated with written or radiographic proof, kept at an "
-         "appropriate weight and activity level, and not bred. If these "
-         "conditions are met the Seller will replace the puppy from a future "
-         "litter when available, at the Seller's choice, with no cash refund. "
-         "Injury, environment, diet or exercise issues, and non-heritable "
+        ("3. Vet check and return",
+         "The Buyer must have the puppy examined by their own veterinarian "
+         "within 3 days of coming home. If that vet certifies in writing that "
+         "the puppy is unfit for sale, the Buyer may return it, in the same "
+         "condition as sold, within those same 3 days, for a refund of the "
+         "purchase price less the deposit. Travel and other costs are not "
+         "covered. After that window the Seller is not responsible for "
+         "conditions that develop later, except under the guarantee below."),
+        ("4. Genetic health guarantee",
+         "The Seller guarantees the puppy against debilitating genetic hip or "
+         "elbow dysplasia for 24 months from pickup. To qualify, the dog must "
+         "have written veterinary proof, must have been kept at a sensible "
+         "weight and activity level, and must not have been bred. The Seller "
+         "will replace the puppy from a future litter when one is available. "
+         "There is no cash refund. Injury, diet, exercise and non-genetic "
          "conditions are not covered."),
-        ("5. Buyer's responsibilities",
-         "The Buyer will keep the dog safe, well-fed, appropriately exercised "
-         "and under veterinary care, and will not neglect or mistreat it."),
-        ("6. Seller's responsibilities",
-         "Before pickup the Seller worms, vet-checks and vaccinates the puppy as "
-         "described in Section 2, and provides AKC papers reflecting Limited "
+        ("5. Buyer\u2019s responsibilities",
+         "The Buyer will keep the dog safe, well fed, properly exercised and "
+         "under veterinary care, and will not neglect or mistreat it."),
+        ("6. Seller\u2019s responsibilities",
+         "Before pickup the Seller worms, vet-checks and vaccinates the puppy "
+         "as described above, and provides AKC papers showing Limited "
          "Registration unless otherwise agreed in writing."),
         ("7. General terms",
-         "Liability release: once the Buyer takes possession, the Buyer releases "
-         "Pine Hill German Shepherds from all liability for damage or injury the "
-         "dog causes to any person or property, assumes full responsibility for "
-         "the dog going forward, and will indemnify the Seller for any related "
-         "costs the Seller incurs because of the Buyer's dog."),
+         "Once the Buyer takes the puppy home, the Buyer is responsible for the "
+         "dog and releases the Seller from liability for anything the dog does "
+         "to any person or property."),
         (None,
-         "Disputes and venue: the losing party in any legal action to enforce "
-         "this Agreement pays the winner's costs and attorney's fees. Suits must "
-         "be filed in Penobscot County, Maine, or, at the Seller's option, near "
-         "the Buyer. If any provision is unenforceable, the rest of this "
-         "Agreement remains in effect."),
+         "This Agreement is governed by Maine law. If either party goes to law "
+         "to enforce it, the losing party pays the winner\u2019s costs. If any "
+         "part of this Agreement cannot be enforced, the rest still stands."),
         (None,
-         "Entire agreement: this is the complete agreement between the parties, "
-         "binding on their heirs and successors. It may be signed and "
-         "transmitted electronically."),
+         "This is the entire agreement between the parties, binding on their "
+         "heirs and successors, and may be signed electronically."),
     ]
     # A masthead, not a dropped-in title: who the agreement is with, what it is,
     # and where it is made, closed by a rule across the column the way a piece of
