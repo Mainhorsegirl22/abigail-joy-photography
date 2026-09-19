@@ -305,13 +305,11 @@ def contract():
          "Sire and dam are health-tested breeding stock. Puppies are raised "
          "in-home and wormed at 4, 6 and 8 weeks."),
         (None,
-         "Before pickup the puppy receives its first vaccination (e.g. DHPP) "
-         "from a licensed veterinarian. This is one dose in a multi-dose series, "
-         "not full protection. The Buyer must continue the series with a vet on "
-         "schedule, and should limit the puppy's exposure to other dogs and "
-         "public places until the series is complete. The Seller provides "
-         "written proof of the vaccine given \u2014 date, product and lot \u2014 at "
-         "pickup. The puppy is believed to be in good health at pickup."),
+         "At 7 weeks of age, or before the puppy leaves our premises, it "
+         "receives its first vaccination. This is the first in a series \u2014 the "
+         "Buyer continues the schedule with their own veterinarian. The "
+         "vaccination record is handed over at pickup, and the puppy is "
+         "believed to be in good health at that time."),
         ("3. Vet check and return, three days",
          "The Buyer must have the puppy vet-checked within 3 days of coming "
          "home. If the vet certifies in writing that the puppy is unfit for "
