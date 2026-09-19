@@ -42,7 +42,9 @@ IMG = {
     "wks":          f"{U}/2026/04/WKS-scaled.jpg",
     "breeders":     f"{U}/2026/03/EN7A9779-scaled.jpg",
     "sunlit":       f"{U}/2026/07/EN7A8251-scaled-Edit-scaled.jpg",
-    "family":       f"{U}/2026/09/Pine-Hill-German-Shepherds-scaled.jpg",
+    # NOT a photograph - this is the Litter A announcement GRAPHIC, with
+    # burned-in text and health results. Never use it behind a hero title.
+    "litter_graphic": f"{U}/2026/09/Pine-Hill-German-Shepherds-scaled.jpg",
     "band2":        f"{U}/2026/09/BK700064-scaled.jpg",
 }
 
@@ -58,7 +60,7 @@ ALT = {
     "scholars": "Puppies in the K9 Scholars training programme",
     "portrait": "Working-line German Shepherd portrait",
     "farm": "Pine Hill, Garland, Maine",
-    "family": "Pine Hill German Shepherds",
+    "litter_graphic": "Pine Hill German Shepherds Litter A announcement",
 }
 
 # --------------------------------------------------------------------- state

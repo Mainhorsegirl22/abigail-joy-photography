@@ -591,7 +591,8 @@ def shepherds():
 # the heading "Scent Dedectino and SAR Taining".
 def about():
     start("abt")
-    d = [hero("About Pine Hill", "our family", "family", ypos=58, tall=False)]
+    d = [hero("About Pine Hill", "our family", "hero_sunset", ypos=58,
+              tall=False)]
 
     d.append(sec([
         head("welcome", "Family-Raised Working Line German Shepherds",
