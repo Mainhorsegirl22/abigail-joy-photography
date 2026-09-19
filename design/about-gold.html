@@ -1,0 +1,137 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>About Pine Hill</title>
+<link rel="stylesheet" href="/fonts/fonts.css">
+<style>
+:root{--espresso:#1C1A18;--ivory:#FBF9F6;--linen:#F2F0EC;--sand:#EDE6DF;
+ --brass:#A48760;--body:#55504A;--hair:rgba(28,26,24,.12);
+ --gut:clamp(24px,5vw,56px);--wrap:1180px}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ivory);color:var(--body);
+ font-family:'Montserrat',system-ui,sans-serif;font-size:14.5px;line-height:1.85}
+h1,h2,h3{font-family:'Cormorant Garamond',Georgia,serif;font-weight:500;
+ color:var(--espresso);margin:0;letter-spacing:-.02em;line-height:1.08}
+p{margin:0 0 18px}
+.script{font-family:'Mrs Saint Delafield',cursive;color:var(--brass);line-height:1.1}
+
+/* 1 — inset hero, type over photo */
+.hero{padding:0 20px}
+.hero__in{position:relative;height:clamp(440px,78vh,780px);overflow:hidden;
+ display:flex;flex-direction:column;justify-content:flex-end;align-items:center;
+ background:#5b5449 center/cover no-repeat}
+.hero__in::after{content:'';position:absolute;inset:0;
+ background:linear-gradient(180deg,rgba(26,19,13,.10) 40%,rgba(26,19,13,.42) 100%)}
+.hero__t{position:relative;z-index:2;text-align:center;padding:0 24px 9%}
+.hero__t .script{font-size:clamp(30px,3.4vw,46px);color:#fff;margin-bottom:2px}
+.hero__t h1{color:#fff;font-size:clamp(34px,5.2vw,68px);line-height:1.12}
+.hero__t h1 em{font-style:italic}
+
+/* 2 — centred intro */
+.intro{padding:clamp(64px,8vw,110px) var(--gut) clamp(40px,5vw,66px);text-align:center}
+.intro h2{color:var(--brass);font-size:clamp(30px,4.2vw,54px);max-width:30ch;
+ margin:0 auto 24px;line-height:1.12}
+.strap{font-size:12px;letter-spacing:.14em;text-transform:uppercase;
+ color:var(--body);max-width:none;margin:0 auto 34px}
+.intro p.lede{max-width:74ch;margin:0 auto;text-align:center}
+
+/* 3 — split */
+.split{max-width:var(--wrap);margin:0 auto;padding:clamp(40px,6vw,86px) var(--gut);
+ display:flex;gap:clamp(36px,5vw,84px);align-items:center}
+.split__img{flex:0 0 44%;background:#fff;padding:14px;
+ box-shadow:0 2px 6px rgba(28,26,24,.05),0 22px 50px -24px rgba(28,26,24,.22)}
+.split__img div{aspect-ratio:4/5;background:#6d6355 center/cover no-repeat}
+.split__t{flex:1 1 0;min-width:0}
+.btn{display:inline-block;margin-top:10px;padding:16px 34px;background:var(--sand);
+ color:var(--espresso);font-size:10.5px;font-weight:600;letter-spacing:.2em;
+ text-transform:uppercase;text-decoration:none;border-radius:999px;
+ transition:transform .3s cubic-bezier(.22,.9,.32,1),background-color .25s ease}
+.btn:hover{background:var(--brass);color:#fff;transform:translateY(-2px)}
+.btn:focus-visible{outline:2px solid var(--brass);outline-offset:3px}
+
+/* 4 — committed to */
+.vals{padding:clamp(56px,7vw,100px) var(--gut);text-align:center}
+.vals h2{color:var(--brass);font-size:clamp(26px,3.4vw,44px);margin-bottom:14px}
+.vals .strap{margin-bottom:44px}
+.vals__row{display:flex;justify-content:center;gap:clamp(34px,6vw,96px);flex-wrap:wrap}
+.val{width:170px}
+.val svg{width:58px;height:58px;stroke:var(--espresso);stroke-width:1.1;fill:none;
+ stroke-linecap:round;stroke-linejoin:round}
+.val span{display:block;margin-top:18px;font-size:11.5px;letter-spacing:.14em;
+ text-transform:uppercase;color:var(--espresso)}
+
+/* 5 — trivia */
+.triv{background:var(--sand);padding:clamp(56px,7vw,100px) var(--gut)}
+.triv__in{max-width:var(--wrap);margin:0 auto;display:flex;
+ gap:clamp(36px,5vw,84px);align-items:center}
+.triv__l{flex:1 1 0;min-width:0}
+.triv__k{font-size:11px;letter-spacing:.3em;text-transform:uppercase;
+ color:var(--brass);margin-bottom:6px}
+.triv__s{font-family:'Mrs Saint Delafield',cursive;color:var(--espresso);
+ font-size:clamp(34px,4vw,54px);line-height:1;margin-bottom:34px}
+.triv dl{margin:0;display:flex;flex-direction:column;gap:30px}
+.triv .row{display:flex;gap:26px;align-items:flex-start}
+.triv .n{font-family:'Cormorant Garamond',Georgia,serif;font-size:64px;
+ line-height:.78;color:var(--brass);flex:0 0 auto;min-width:64px;
+ font-variant-numeric:lining-nums}
+.triv .row p{margin:0;font-size:14px;line-height:1.8}
+.triv__img{flex:0 0 44%;background:#fff;padding:14px;
+ box-shadow:0 2px 6px rgba(28,26,24,.05),0 22px 50px -24px rgba(28,26,24,.22)}
+.triv__img div{aspect-ratio:4/3;background:#6d6355 center/cover no-repeat}
+
+@media(max-width:880px){
+ .split,.triv__in{flex-direction:column}
+ .split__img,.triv__img{flex:1 1 auto;width:100%}
+ .hero__t{margin-top:8vh}
+}
+</style></head><body>
+
+<div style="display:flex;font-family:'Montserrat',sans-serif;font-size:10.5px;
+ letter-spacing:.16em;text-transform:uppercase">
+ <div style="flex:1;background:#7C7369;color:#fff;padding:14px 20px">now &mdash; #7C7369</div>
+ <div style="flex:1;background:#A48760;color:#fff;padding:14px 20px">logo gold &mdash; #A48760</div>
+</div>
+<section class="hero"><div class="hero__in"><div class="hero__t">
+  <p class="script">welcome to Pine Hill</p>
+  <h1>Raised In Our Home,<br>Not In A <em>Kennel</em>.</h1>
+</div></div></section>
+
+<section class="intro">
+  <h2>Small Family Breeder of Working Line German Shepherds</h2>
+  <p class="strap">Based in Garland, Maine &mdash; raised for work, for sport, and for family life.</p>
+  <p class="lede">We are a small family business raising working-line German Shepherds on 40 acres of rural countryside in the backwoods of New England. We specialise in dogs known for their personalities, working drive, scent detection ability and balanced temperaments, and our focus is early puppy socialisation, development and training.</p>
+</section>
+
+<section class="split">
+  <div class="split__img"><div></div></div>
+  <div class="split__t">
+    <p>With only one breeding female &mdash; Freda, our beloved family member &mdash; we can plan each litter carefully and spend countless hours observing and working with the puppies. That lets us shape their early training and socialisation using tested, proven methods.</p>
+    <p>Raised inside our home and surrounded by our family, our puppies get plenty of love and care from day one. Every puppy has its own personality, just as every person does, and our goal is to match each one to the family that suits it best.</p>
+    <a class="btn" href="/our-shepherds-new/">Meet Our Shepherds</a>
+  </div>
+</section>
+
+<section class="vals">
+  <h2>When It Comes To Our Dogs And Our Families</h2>
+  <p class="strap">We're committed to&hellip;</p>
+  <div class="vals__row">
+    <div class="val"><svg viewBox="0 0 48 48"><path d="M24 5l14 5v12c0 10-6 17-14 21-8-4-14-11-14-21V10z"/><path d="M17 23l5 5 10-11"/></svg><span>Health Testing</span></div>
+    <div class="val"><svg viewBox="0 0 48 48"><path d="M24 40s-14-8-14-18a7.5 7.5 0 0114-4 7.5 7.5 0 0114 4c0 10-14 18-14 18z"/><ellipse cx="24" cy="24" rx="3.6" ry="3"/><ellipse cx="18.5" cy="19" rx="1.8" ry="2.4"/><ellipse cx="23" cy="17" rx="1.8" ry="2.4"/><ellipse cx="27.5" cy="18.4" rx="1.8" ry="2.4"/></svg><span>Puppy Culture</span></div>
+    <div class="val"><svg viewBox="0 0 48 48"><path d="M17 12l-3-5-3 5v6c0 4 2 7 5 9"/><path d="M14 22c0 8 5 13 12 13h8"/><path d="M34 35V23c0-5-4-9-9-9h-8"/><path d="M34 35h4"/><circle cx="16" cy="17" r="1"/></svg><span>Responsible Breeding</span></div>
+    <div class="val"><svg viewBox="0 0 48 48"><path d="M6 12h21v15H17l-8 6v-6H6z"/><path d="M25 22h17v13h-6l-6 5v-5h-5z"/></svg><span>Lifetime Support</span></div>
+  </div>
+</section>
+
+<section class="triv"><div class="triv__in">
+  <div class="triv__l">
+    <p class="triv__k">Rapid fire</p>
+    <p class="triv__s">Pine Hill Edition</p>
+    <dl>
+      <div class="row"><span class="n">01</span><p>We have exactly one breeding female. Freda is a family member first and a foundation dam second.</p></div>
+      <div class="row"><span class="n">02</span><p>Hiking, swimming, horseback riding &mdash; our shepherds come along for all of it.</p></div>
+      <div class="row"><span class="n">03</span><p>Every puppy is raised inside our home, underfoot, from the day it is born.</p></div>
+    </dl>
+  </div>
+  <div class="triv__img"><div></div></div>
+</div></section>
+
+</body></html>
