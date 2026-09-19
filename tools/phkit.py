@@ -263,6 +263,61 @@ def opener(title, kicker, image_key, lede=None):
                 img(image_key, "ph-open__img")], "ph-open")
 
 
+def ph_img(slot, wd, ht, classes="ph-frame2"):
+    """A LABELLED placeholder image widget. It is a real Elementor image
+    widget, so swapping it is: click the image -> Choose Image -> pick yours.
+    Nothing else on the page has to change."""
+    return w_img(f"https://placehold.co/{wd}x{ht}/EDE6DF/8A7A66?text={slot}",
+                 classes, alt=slot.replace("+", " "))
+
+
+def w_img(url, classes, alt=""):
+    return w("image", {"image": {"url": url, "id": 0, "size": "",
+                                 "alt": alt, "source": "library"},
+                       "image_size": "full"}, classes)
+
+
+def bighero(title_html, kicker, image_url=None, slot="Hero+photo"):
+    """Inset full-bleed photo with the type set low over it. The photo is a
+    CONTAINER BACKGROUND, so it is swapped from the container's Style tab ->
+    Background -> Image, not by clicking the picture."""
+    section("bhero")
+    url = image_url or f"https://placehold.co/2400x1400/EDE6DF/8A7A66?text={slot}"
+    inner = con([con([p(kicker, "ph-script"), h(title_html, tag="h1")],
+                     "ph-bhero__t")], "ph-bhero__in",
+                background_background="classic",
+                background_image={"url": url, "id": 0, "size": "",
+                                  "alt": "", "source": "library"},
+                background_position="center 50%", background_size="cover")
+    return con([inner], "ph-bhero")
+
+
+def intro(title, strap, lede):
+    section("intro")
+    return con([h(title, "ph-introh"), p(strap, "ph-strap"),
+                p(lede, "ph-ilede")], "ph-intro")
+
+
+def vals(title, strap, items):
+    """items: list of (svg_markup, label)."""
+    section("vals")
+    cards = [con([w("html", {"html": svg}, "ph-vicon"), p(label, "ph-vlabel")],
+                 "ph-val") for svg, label in items]
+    return con([h(title, "ph-valsh"), p(strap, "ph-strap"),
+                row(cards, "ph-valsrow")], "ph-vals")
+
+
+def trivia(kicker, script, items, image=None):
+    """items: list of (number, text)."""
+    section("triv")
+    rows = [con([p(n, "ph-tnum"), p(t, "ph-ttext")], "ph-trow")
+            for n, t in items]
+    left = con([p(kicker, "ph-tkick"), p(script, "ph-tscript")] + rows,
+               "ph-trivl")
+    right = image or ph_img("Family+photo", 1200, 900, "ph-frame2")
+    return con([con([left, right], "ph-trivin")], "ph-triv")
+
+
 def sec(children, name, tone="white", tight=False, extra=""):
     section(name)
     cls = f"ph-sec ph-{tone}" + (" ph-sec--tight" if tight else "")
@@ -520,6 +575,81 @@ body{--espresso:#1C1A18;--ivory:#F6F4F1;--linen:#F2F0EC;--sand:#DCD8D1;--sage:#2
 .ph-formwrap{max-width:820px!important;width:100%!important;margin-inline:auto!important;
  padding:0!important;gap:0!important;text-align:left!important}
 @media(max-width:880px){.ph-open__img img{height:clamp(300px,46vh,420px)!important}}
+
+.ph-bhero{padding:0 20px!important;gap:0!important;background:#FBF9F6!important}
+.ph-bhero__in{position:relative!important;min-height:clamp(440px,78vh,780px)!important;
+ overflow:hidden!important;display:flex!important;flex-direction:column!important;
+ justify-content:flex-end!important;align-items:center!important;
+ background-repeat:no-repeat!important;padding:0!important}
+.ph-bhero__in::after{content:''!important;position:absolute!important;inset:0!important;
+ z-index:1!important;pointer-events:none!important;
+ background:linear-gradient(180deg,rgba(26,19,13,.10) 40%,rgba(26,19,13,.42) 100%)!important}
+.ph-bhero__t{position:relative!important;z-index:2!important;text-align:center!important;
+ align-items:center!important;padding:0 24px 9%!important;gap:0!important;max-width:none!important}
+.ph-bhero__t .ph-script p{font-size:clamp(30px,3.4vw,46px)!important;color:#fff!important;
+ margin-bottom:2px!important}
+.ph-bhero__t .elementor-heading-title{color:#fff!important;
+ font-size:clamp(34px,5.2vw,68px)!important;line-height:1.12!important}
+.ph-bhero__t em{font-style:italic!important}
+.ph-intro{padding:clamp(64px,8vw,110px) var(--gut) clamp(40px,5vw,66px)!important;
+ text-align:center!important;align-items:center!important;gap:0!important;
+ max-width:none!important;background:#FBF9F6!important}
+.ph-introh .elementor-heading-title{color:var(--brass)!important;
+ font-size:clamp(30px,4.2vw,54px)!important;max-width:30ch!important;
+ margin:0 auto 24px!important;line-height:1.12!important}
+.ph-strap p{font-size:12px!important;letter-spacing:.14em!important;
+ text-transform:uppercase!important;color:var(--body)!important;margin:0 auto 34px!important}
+.ph-ilede p{max-width:74ch!important;margin:0 auto!important;text-align:center!important}
+.ph-asplit{max-width:var(--wrap)!important;width:100%!important;margin-inline:auto!important;
+ display:flex!important;flex-direction:row!important;align-items:center!important;
+ gap:clamp(36px,5vw,84px)!important;padding:clamp(40px,6vw,86px) 0!important}
+.ph-frame2{flex:0 0 44%!important;background:#fff!important;padding:14px!important;
+ box-shadow:0 2px 6px rgba(28,26,24,.05),0 22px 50px -24px rgba(28,26,24,.22)!important}
+.ph-frame2 img{width:100%!important;height:auto!important;display:block!important}
+.ph-acol{flex:1 1 0!important;min-width:0!important;gap:18px!important;padding:0!important;
+ align-items:flex-start!important;max-width:none!important}
+.ph-pillbtn .elementor-button{border-radius:999px!important;background:var(--sand)!important;
+ color:var(--espresso)!important;padding:16px 34px!important}
+.ph-pillbtn .elementor-button:hover{background:var(--brass)!important;color:#fff!important}
+.ph-vals{padding:clamp(56px,7vw,100px) var(--gut)!important;text-align:center!important;
+ align-items:center!important;gap:0!important;max-width:none!important;background:#FBF9F6!important}
+.ph-valsh .elementor-heading-title{color:var(--brass)!important;
+ font-size:clamp(26px,3.4vw,44px)!important;margin-bottom:14px!important}
+.ph-valsrow{display:flex!important;justify-content:center!important;
+ gap:clamp(34px,6vw,96px)!important;flex-wrap:wrap!important;max-width:var(--wrap)!important;
+ width:100%!important;margin-inline:auto!important;padding:0!important}
+.ph-val{width:170px!important;flex:0 0 170px!important;align-items:center!important;
+ text-align:center!important;gap:0!important;padding:0!important;max-width:none!important}
+.ph-vicon svg{width:58px!important;height:58px!important;stroke:var(--espresso)!important;
+ stroke-width:1.1!important;fill:none!important;stroke-linecap:round!important;
+ stroke-linejoin:round!important}
+.ph-vlabel p{margin-top:18px!important;font-size:11.5px!important;letter-spacing:.14em!important;
+ text-transform:uppercase!important;color:var(--espresso)!important;line-height:1.5!important}
+.ph-triv{background:var(--sand)!important;padding:clamp(56px,7vw,100px) var(--gut)!important;
+ gap:0!important;max-width:none!important}
+.ph-trivin{max-width:var(--wrap)!important;width:100%!important;margin-inline:auto!important;
+ display:flex!important;flex-direction:row!important;align-items:center!important;
+ gap:clamp(36px,5vw,84px)!important;padding:0!important}
+.ph-trivl{flex:1 1 0!important;min-width:0!important;gap:0!important;padding:0!important;
+ align-items:flex-start!important;max-width:none!important}
+.ph-tkick p{font-size:11px!important;letter-spacing:.3em!important;text-transform:uppercase!important;
+ color:var(--brass)!important;margin-bottom:6px!important}
+.ph-tscript p{font-family:'Mrs Saint Delafield',cursive!important;color:var(--espresso)!important;
+ font-size:clamp(34px,4vw,54px)!important;line-height:1!important;margin-bottom:34px!important}
+.ph-trow{display:flex!important;flex-direction:row!important;gap:26px!important;
+ align-items:flex-start!important;padding:0 0 30px!important;width:100%!important;
+ max-width:none!important}
+.ph-tnum p{font-family:'Cormorant Garamond',Georgia,serif!important;font-size:64px!important;
+ line-height:.78!important;color:var(--brass)!important;font-variant-numeric:lining-nums!important}
+.ph-tnum{flex:0 0 64px!important;width:auto!important;max-width:none!important;padding:0!important}
+.ph-ttext{flex:1 1 0!important;min-width:0!important;max-width:none!important;padding:0!important}
+.ph-ttext p{font-size:14px!important;line-height:1.8!important}
+@media(max-width:880px){
+ .ph-asplit,.ph-trivin{flex-direction:column!important}
+ .ph-frame2{flex:1 1 auto!important;width:100%!important}
+ .ph-bhero__t{padding-bottom:14%!important}
+ .ph-trow{gap:18px!important}
+}
 """
 
 

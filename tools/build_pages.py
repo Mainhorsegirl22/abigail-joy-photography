@@ -12,6 +12,7 @@ told me is written with fill(), which renders as a visible blank.
 """
 import sys
 from phkit import (start, section, con, row, w, h, p, ul, dl, btn, img, rule, form, opener,
+                   bighero, intro, vals, trivia, ph_img, col as pcol,
                    fill, pill, hero, sec, head, split, col, trio, quad, card,
                    stat, steps, faq, cta, emit, pin, gform, IMG, INDEX)
 
@@ -591,67 +592,49 @@ def shepherds():
 # the heading "Scent Dedectino and SAR Taining".
 def about():
     start("abt")
-    d = [opener("About Pine Hill", "our family", "hero_sunset")]
+    d = [bighero("Raised In Our Home,<br>Not In A <em>Kennel</em>.",
+                 "welcome to Pine Hill", slot="Hero+photo")]
 
-    d.append(sec([
-        head("welcome", "Family-Raised Working Line German Shepherds",
-             "We are a small family business raising working-line German "
-             "Shepherds on 40 acres of rural countryside in the backwoods of "
-             "New England."),
-        con([split(
-            img("wks", "ph-frame"),
-            col([
-                p("We specialise in German Shepherds known for their "
-                  "personalities, working drive, scent detection ability and "
-                  "balanced temperaments. Our focus is early puppy "
-                  "socialisation, development and training.", "ph-measure"),
-                p("With only one breeding female \u2014 Freda, our beloved family "
-                  "member \u2014 we can plan each litter carefully and spend "
-                  "countless hours observing and working with the puppies. "
-                  "That lets us shape their early training and socialisation "
-                  "using tested, proven methods.", "ph-measure"),
-                p("Raised inside our home and surrounded by our family, our "
-                  "puppies get plenty of love and care from day one. Every "
-                  "puppy has its own personality, just as every person does, "
-                  "and our goal is to match each one to the family that suits "
-                  "it best.", "ph-measure"),
-            ]),
-        )], "ph-about"),
-    ], "who", tone="white"))
+    d.append(intro(
+        "Small Family Breeder of Working Line German Shepherds",
+        "Based in Garland, Maine \u2014 raised for work, for sport, and for "
+        "family life.",
+        "We are a small family business raising working-line German Shepherds "
+        "on 40 acres of rural countryside in the backwoods of New England. We "
+        "specialise in dogs known for their personalities, working drive, "
+        "scent detection ability and balanced temperaments, and our focus is "
+        "early puppy socialisation, development and training."))
 
-    d.append(sec([
-        head("health", "Beyond the Paperwork",
-             "All of our dogs are registered with the AKC. We believe in going "
-             "the extra mile."),
-        con([p("Every breeding dog is screened through reputable "
-               "veterinarians: hips, elbows, eyes and heart evaluated by the "
-               "OFA, plus testing for the twelve most common genetic diseases "
-               "in German Shepherds. The goal is puppies that have excellent "
-               "temperaments and thrive in health.", "ph-measure"),
-             btn("See Our Health Testing", "/our-shepherds-new/", "ph-ghost")],
-            "ph-mid"),
-    ], "health", tone="linen"))
+    d.append(sec([row([
+        ph_img("Portrait+photo", 900, 1125),
+        con([p("With only one breeding female \u2014 Freda, our beloved family "
+               "member \u2014 we can plan each litter carefully and spend "
+               "countless hours observing and working with the puppies. That "
+               "lets us shape their early training and socialisation using "
+               "tested, proven methods."),
+             p("Raised inside our home and surrounded by our family, our "
+               "puppies get plenty of love and care from day one. Every puppy "
+               "has its own personality, just as every person does, and our "
+               "goal is to match each one to the family that suits it best."),
+             btn("Meet Our Shepherds", "/our-shepherds-new/", "ph-pillbtn")],
+            "ph-acol"),
+    ], "ph-asplit")], "story", tone="white", tight=True))
 
-    d.append(sec([
-        head("where we are", "Garland, Penobscot County",
-             "About an hour from Bangor and two hours from Portland."),
-        con([split(
-            col([
-                p("We are in the rural backwoods of northern Maine. All of our "
-                  "puppies can be collected from our home.", "ph-measure"),
-                p("For families unable to make the trip we offer delivery "
-                  "options. Ask us \u2014 we are happy to work something out.",
-                  "ph-measure"),
-                btn("Get in Touch", "/contact-new/", "ph-ghost"),
-            ]),
-            img("farm", "ph-frame"), reverse=True,
-        )], "ph-about"),
-    ], "where", tone="white"))
+    d.append(vals("When It Comes To Our Dogs And Our Families",
+                  "We\u2019re committed to\u2026",
+                  [("<svg viewBox='0 0 48 48'><path d='M24 5l14 5v12c0 10-6 17-14 21-8-4-14-11-14-21V10z'/><path d='M17 23l5 5 10-11'/></svg>", "Health Testing"),
+                   ("<svg viewBox='0 0 48 48'><path d='M24 40s-14-8-14-18a7.5 7.5 0 0114-4 7.5 7.5 0 0114 4c0 10-14 18-14 18z'/><ellipse cx='24' cy='24' rx='3.6' ry='3'/><ellipse cx='18.5' cy='19' rx='1.8' ry='2.4'/><ellipse cx='23' cy='17' rx='1.8' ry='2.4'/><ellipse cx='27.5' cy='18.4' rx='1.8' ry='2.4'/></svg>", "Puppy Culture"),
+                   ("<svg viewBox='0 0 48 48'><path d='M17 12l-3-5-3 5v6c0 4 2 7 5 9'/><path d='M14 22c0 8 5 13 12 13h8'/><path d='M34 35V23c0-5-4-9-9-9h-8'/><path d='M34 35h4'/><circle cx='16' cy='17' r='1'/></svg>", "Responsible Breeding"),
+                   ("<svg viewBox='0 0 48 48'><path d='M6 12h21v15H17l-8 6v-6H6z'/><path d='M25 22h17v13h-6l-6 5v-5h-5z'/></svg>", "Lifetime Support")]))
 
-    d.append(cta("Meet Our Shepherds",
-                 "Freda and Rangeley, with every health result on file and the "
-                 "paperwork linked.",
-                 "Meet Them", "/our-shepherds-new/", image_key="band2"))
+    d.append(trivia("Rapid fire", "Pine Hill Edition", [
+        ("01", "We have exactly one breeding female. Freda is a family member "
+               "first and a foundation dam second."),
+        ("02", "Hiking, swimming, horseback riding \u2014 our shepherds come "
+               "along for all of it."),
+        ("03", "Every puppy is raised inside our home, underfoot, from the day "
+               "it is born."),
+    ]))
     return d
 
 
