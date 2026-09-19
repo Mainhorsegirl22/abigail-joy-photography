@@ -12,7 +12,7 @@ told me is written with fill(), which renders as a visible blank.
 """
 import sys
 from phkit import (start, section, con, row, w, h, p, ul, dl, btn, img, rule, form, opener,
-                   bighero, intro, vals, trivia, ph_img, col as pcol,
+                   bighero, intro, vals, trivia, ph_img, splittop, quiettop,
                    fill, pill, hero, sec, head, split, col, trio, quad, card,
                    stat, steps, faq, cta, emit, pin, gform, IMG, INDEX)
 
@@ -639,230 +639,191 @@ def about():
 
 
 # =========================================================== RESERVE A PUPPY
-# The conversion page. Her copy, plus a real sequence for how a reservation
-# actually runs, and Gravity form 5 (the Puppy Application) wired in.
-# The live page links the contract to a file path on her own laptop
-# (/Users/abigailhall/Downloads/...), which is broken for every visitor.
-# That link now points at the Sales Contract page.
+# Top: opener() - title on clean ground above a wide photograph. Rhythm:
+# intro, reversed split, numbered process, form. Deliberately not About's.
 def reserve():
     start("res")
-    d = [hero("Reserve a Puppy", "if you treat them well, they will give you "
-              "their heart", "portrait", ypos=45, tall=False)]
+    d = [opener("Reserve a Puppy", "your next companion", "portrait",
+                "Carefully planned litters, bred for personal protection, "
+                "detection work, search and rescue, and active family life.")]
 
-    d.append(sec([
-        head(None, "Carefully Planned Litters",
-             "Bred for personal protection, detection work, search and rescue, "
-             "and active family life."),
-        con([p("Each of our puppies is precious to us, and we dedicate many "
-               "hours to early socialisation, early puppy development and "
-               "Early Scent Introduction. Because their welfare matters to us, "
-               "we guide every potential buyer through a thorough application "
-               "process, to be sure one of our puppies is genuinely a good fit. "
-               "We will do our best to match you with the right puppy.",
-               "ph-measure")], "ph-mid"),
-    ], "intro", tone="white"))
+    d.append(sec([con([
+        p("Each of our puppies is precious to us, and we dedicate many hours "
+          "to early socialisation, early puppy development and Early Scent "
+          "Introduction. Because their welfare matters to us, we guide every "
+          "potential buyer through a thorough application process, to be sure "
+          "one of our puppies is genuinely a good fit. We will do our best to "
+          "match you with the right puppy."),
+    ], "ph-mid")], "intro", tone="white", tight=True))
 
-    d.append(sec([
-        head("read this first", "Before You Apply",
-             "This is the honest version. Please read it."),
-        con([split(
-            img("scholars", "ph-frame"),
-            col([
-                p("Buying a working-line German Shepherd is a significant "
-                  "commitment. We strongly encourage you to research the breed "
-                  "thoroughly before bringing a puppy home.", "ph-measure"),
-                p("These are not typical German Shepherds. They are bred for "
-                  "work \u2014 protection, tracking, detection. They are highly "
-                  "energetic and are not suited to a sedentary household.",
-                  "ph-measure"),
-                p("Only buyers confident they have the time, the resources and "
-                  "the willingness to train and properly care for a "
-                  "working-line puppy should apply.", "ph-measure"),
-                p("Our " + here("sales contract", "/sales-contract-new/") +
-                  " is published in full, so you can read every term before "
-                  "you commit to anything.", "ph-measure"),
-            ]),
-        )], "ph-about"),
-    ], "consider", tone="linen"))
+    # photo on the RIGHT here, the mirror of About's split
+    d.append(sec([row([
+        con([h("Before You Apply", tag="h2"), rule(False),
+             p("Buying a working-line German Shepherd is a significant "
+               "commitment. We strongly encourage you to research the breed "
+               "thoroughly before bringing a puppy home."),
+             p("These are not typical German Shepherds. They are bred for "
+               "work \u2014 protection, tracking, detection. They are highly "
+               "energetic and are not suited to a sedentary household."),
+             p("Only buyers confident they have the time, the resources and "
+               "the willingness to train and properly care for a working-line "
+               "puppy should apply. Our " +
+               here("sales contract", "/sales-contract-new/") +
+               " is published in full, so you can read every term before you "
+               "commit to anything.")], "ph-acol"),
+        img("scholars", "ph-frame2"),
+    ], "ph-asplit")], "consider", tone="linen"))
 
-    d.append(sec([
-        head("the process", "How a Reservation Works"),
-        steps([
-            ("01", "Apply",
-             "Fill in the application below. It tells us about your home, your "
-             "experience and what you are looking for in a dog."),
-            ("02", "We talk",
-             "We read every application and get back to you. If we think a "
-             "puppy from us is not right for your situation, we will say so."),
-            ("03", "Deposit",
-             "A deposit holds your place. Reservations are taken in the order "
-             "deposits are received, and the waiting list is kept by gender."),
-            ("04", "Matching",
-             "Puppies are matched to families at around six weeks, once their "
-             "temperaments are clear. We match on temperament, not on who "
-             "asked first."),
-            ("05", "Home",
-             "The balance is due at pickup. You collect your puppy from us in "
-             "Garland, or we arrange delivery."),
-        ]),
-    ], "process", tone="white"))
+    d.append(sec([head("the process", "How a Reservation Works"), steps([
+        ("01", "Apply", "Fill in the application below. It tells us about "
+                        "your home, your experience and what you want in a dog."),
+        ("02", "We talk", "We read every application and reply. If a puppy "
+                          "from us is not right for your situation, we say so."),
+        ("03", "Deposit", "A deposit holds your place. Reservations are taken "
+                          "in the order deposits arrive, and the waiting list "
+                          "is kept by gender."),
+        ("04", "Matching", "Puppies are matched to families at around six "
+                           "weeks, on temperament rather than who asked first."),
+        ("05", "Home", "The balance is due at pickup. Collect from us in "
+                       "Garland, or ask about delivery."),
+    ])], "process", tone="white"))
 
-    d.append(sec([
-        head("apply", "Puppy Application",
-             "Take your time with this. The more we know, the better we can "
-             "match you."),
-        con([gform(5)], "ph-formwrap"),
-    ], "apply", tone="linen"))
+    d.append(sec([head("apply", "Puppy Application",
+                       "Take your time with this. The more we know, the "
+                       "better we can match you."),
+                  con([gform(5)], "ph-formwrap")], "apply", tone="linen"))
 
     d.append(cta("Questions First?",
-                 "Call 207-703-8043 or send us a message. We would rather "
-                 "answer a question now than have a puppy go to the wrong home.",
+                 "Call 207-703-8043. We would rather answer a question now "
+                 "than have a puppy go to the wrong home.",
                  "Contact Us", "/contact-new/", image_key="band2"))
     return d
 
 
 # ================================================================== CONTACT
+# Top: quiettop() - no photograph at all. A short, practical page.
 def contact():
     start("con2")
-    d = [hero("Contact Us", "we would love to hear from you", "farm",
-              ypos=55, tall=False)]
+    d = [quiettop("Get in Touch", "we would love to hear from you",
+                  "Questions about a puppy, a litter, or the breed \u2014 ask.",
+                  tone="linen")]
 
-    d.append(sec([
-        head(None, "Get in Touch",
-             "Have a question about a puppy, a litter, or the breed? Ask."),
-        con([split(
-            col([
-                dl([("Phone", "207-703-8043"),
-                    ("Email", "pinehillgermanshepherds@gmail.com"),
-                    ("Where", "Garland, Penobscot County, Maine"),
-                    ("From Bangor", "About one hour"),
-                    ("From Portland", "About two hours")]),
-                p("Puppies are collected from our home. If you cannot make the "
-                  "trip, ask about delivery \u2014 we are happy to work with you.",
-                  "ph-measure"),
-            ]),
-            img("pair", "ph-frame"),
-        )], "ph-about"),
-    ], "details", tone="white"))
-
-    d.append(sec([
-        head("message us", "Send a Message"),
+    d.append(sec([row([
+        con([dl([("Phone", "207-703-8043"),
+                 ("Email", "pinehillgermanshepherds@gmail.com"),
+                 ("Where", "Garland, Penobscot County, Maine"),
+                 ("From Bangor", "About one hour"),
+                 ("From Portland", "About two hours")]),
+             p("Puppies are collected from our home. If you cannot make the "
+               "trip, ask about delivery \u2014 we are happy to work with you.",
+               "ph-measure")], "ph-acol"),
         con([gform(1)], "ph-formwrap"),
-    ], "form", tone="linen"))
+    ], "ph-asplit")], "reach", tone="white"))
 
     d.append(cta("Ready to Apply?",
-                 "If you have read the contract and you know a working-line "
-                 "Shepherd suits your home, start the application.",
+                 "If you have read the contract and a working-line Shepherd "
+                 "suits your home, start the application.",
                  "Reserve a Puppy", "/reserve-a-puppy-new/", image_key="band2"))
     return d
 
 
 # ================================================================== GALLERY
+# Top: quiettop() on sand, then the page is almost entirely photographs.
 def gallery():
     start("gal")
-    d = [hero("Gallery", "our shepherds", "sunlit", ypos=50, tall=False)]
+    d = [quiettop("Gallery", "our shepherds", tone="sand")]
 
-    d.append(sec([
-        head(None, "Our German Shepherds",
-             "Freda, Rangeley, and the puppies they have produced."),
-        quad([img(k, "ph-frame ph-frame--sq")
-              for k in ("freda", "rangeley1", "working", "portrait")]),
-    ], "dogs", tone="white"))
+    d.append(sec([head(None, "Freda and Rangeley"),
+                  row([img(k, "ph-frame ph-frame--sq")
+                       for k in ("freda", "rangeley1", "portrait")], "ph-trio"),
+                  ], "dogs", tone="white"))
 
-    d.append(sec([
-        head("puppies", "Litters at Home"),
-        quad([img(k, "ph-frame ph-frame--sq")
-              for k in ("puppies", "scholars", "litter_band", "breeders")]),
-    ], "pups", tone="linen"))
+    d.append(sec([head("puppies", "Litters at Home"),
+                  quad([img(k, "ph-frame ph-frame--sq")
+                        for k in ("puppies", "scholars", "litter_band",
+                                  "breeders")])], "pups", tone="linen"))
 
-    d.append(sec([
-        head("at work", "Out on the Land"),
-        quad([img(k, "ph-frame ph-frame--sq")
-              for k in ("rangeley2", "rangeley3", "rangeley5", "farm")]),
-    ], "work", tone="white"))
+    d.append(sec([head("at work", "Out on the Land"),
+                  quad([img(k, "ph-frame ph-frame--sq")
+                        for k in ("rangeley2", "rangeley3", "rangeley5",
+                                  "working")])], "work", tone="white"))
 
     d.append(cta("Interested in a Puppy?",
-                 "Reservations for our next litter are open and the waiting "
-                 "list is short.",
+                 "Reservations for our next litter are open.",
                  "Reserve a Puppy", "/reserve-a-puppy-new/", image_key="band2"))
     return d
 
 
 # ===================================================================== NEWS
+# Top: quiettop() on linen. The quietest page on the site, deliberately.
 def news():
     start("nws")
-    d = [hero("News", "from the kennel", "band2", ypos=55, tall=False)]
+    d = [quiettop("News", "from the kennel",
+                  "Litter announcements, health testing results, training "
+                  "updates and the occasional photograph of a very muddy dog.",
+                  tone="linen")]
 
-    d.append(sec([
-        head(None, "What's Happening at Pine Hill",
-             "Litter announcements, health testing results, training updates "
-             "and the occasional photograph of a very muddy dog."),
-        con([p("Post feed goes here \u2014 " + fill("wire to the blog") +
-               ". The most reliable way to hear about a litter first is the "
-               "waiting list.", "ph-measure"),
-             btn("Join the Waiting List", "/reserve-a-puppy-new/")], "ph-mid"),
-    ], "feed", tone="white"))
+    d.append(sec([con([
+        p("Post feed goes here \u2014 " + fill("wire to the blog") + "."),
+        p("The most reliable way to hear about a litter first is the waiting "
+          "list. People on it hear before an announcement goes anywhere else."),
+        btn("Join the Waiting List", "/reserve-a-puppy-new/"),
+    ], "ph-mid")], "feed", tone="white"))
 
     d.append(cta("Want to Hear First?",
-                 "People on the waiting list hear about a litter before it is "
-                 "announced anywhere else.",
+                 "The waiting list is short and it moves.",
                  "Join the Waiting List", "/reserve-a-puppy-new/",
                  image_key="litter_band"))
     return d
 
 
 # ============================================================= PUPPY CULTURE
+# Top: splittop() - photograph beside the title, a third silhouette again.
 def puppy_culture():
     start("pc")
-    d = [hero("Puppy Culture", "the first nine weeks", "puppies",
-              ypos=52, tall=False)]
+    d = [splittop("Puppy Culture", "the first nine weeks",
+                  "As breeders we have an almost magical ability to influence "
+                  "what happens later in our puppies\u2019 lives. We take that "
+                  "seriously.", slot="Puppies+photo")]
 
-    d.append(sec([
-        head(None, "Unleashing the Best in Each Puppy",
-             "As breeders we have an almost magical ability to influence what "
-             "happens later in our puppies' lives. We take that seriously."),
-        con([split(
-            img("scholars", "ph-frame"),
-            col([
-                p("Our puppies are raised using Puppy Culture, ESI (Early "
-                  "Scent Introduction) and early socialisation techniques.",
-                  "ph-measure"),
-                p("Every puppy has a unique personality, and we have the "
-                  "opportunity to be part of the first nine weeks of their "
-                  "lives \u2014 shaping and nurturing that potential before they "
-                  "ever come home to you.", "ph-measure"),
-                p(link("Read more about Puppy Culture",
-                       "https://shoppuppyculture.com/pages/about-puppy-culture"),
-                  "ph-measure"),
-            ]),
-        )], "ph-about"),
-    ], "culture", tone="white"))
+    d.append(sec([con([
+        p("Our puppies are raised using Puppy Culture, ESI (Early Scent "
+          "Introduction) and early socialisation techniques."),
+        p("Every puppy has a unique personality, and we have the opportunity "
+          "to be part of the first nine weeks of their lives \u2014 shaping and "
+          "nurturing that potential before they ever come home to you."),
+        p(link("Read more about Puppy Culture",
+               "https://shoppuppyculture.com/pages/about-puppy-culture")),
+    ], "ph-mid")], "culture", tone="white", tight=True))
 
-    d.append(sec([
-        head("k9 scholars", "The Five-Week Programme",
-             "Puppies learn remarkably fast. Given a structured environment "
-             "suited to their rapidly developing brains, their potential is "
-             "enormous. Over five weeks they learn advanced manners and meet "
-             "new situations."),
-        con([ul([
-            "Advanced manners \u2014 sit, stay, come, leash training",
-            "Introduction to car rides",
-            "Crate training",
-            "Manding \u2014 the automatic sit",
-            "Food manners",
-            "Advanced socialisation",
-            "Daily handling, and a great deal of love",
-            "Problem-solving exercises",
-            "Scent detection exercises",
-            "Confidence-building exercises",
-            "Being well behaved around children and seniors",
-            "Manners in public",
-        ])], "ph-mid"),
-    ], "scholars", tone="linen"))
+    d.append(sec([head("k9 scholars", "The Five-Week Programme",
+                       "Given a structured environment suited to their rapidly "
+                       "developing brains, puppies learn remarkably fast. Over "
+                       "five weeks they learn advanced manners and meet new "
+                       "situations."),
+                  con([ul([
+                      "Advanced manners \u2014 sit, stay, come, leash training",
+                      "Introduction to car rides",
+                      "Crate training",
+                      "Manding \u2014 the automatic sit",
+                      "Food manners",
+                      "Advanced socialisation",
+                      "Daily handling, and a great deal of love",
+                      "Problem-solving exercises",
+                      "Scent detection exercises",
+                      "Confidence-building exercises",
+                      "Being well behaved around children and seniors",
+                      "Manners in public",
+                  ])], "ph-narrow")], "scholars", tone="linen"))
 
-    d.append(cta("See Our Puppies",
-                 "Every litter is raised this way, in our home, from day one.",
-                 "About Our Puppies", "/puppies-new/", image_key="puppies"))
+    d.append(trivia("What it means", "Why We Bother", [
+        ("01", "A puppy that has met noise, surfaces, crates and strangers "
+               "before nine weeks meets the rest of life the same way."),
+        ("02", "Early Scent Introduction is a few seconds a day. The dogs it "
+               "produces work with their noses for a lifetime."),
+        ("03", "We would rather do the hard weeks here than hand you a puppy "
+               "that has to unlearn something."),
+    ]))
     return d
 
 

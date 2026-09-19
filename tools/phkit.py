@@ -292,6 +292,26 @@ def bighero(title_html, kicker, image_url=None, slot="Hero+photo"):
     return con([inner], "ph-bhero")
 
 
+def splittop(title, kicker, lede, slot="Header+photo", reverse=False):
+    """A masthead where the photograph sits beside the title rather than
+    behind or above it. Different silhouette from bighero() and opener()."""
+    section("stop")
+    text = con([p(kicker, "ph-script"), h(title, tag="h1"), rule(False),
+                p(lede, "ph-lede")], "ph-stop__t")
+    pic = ph_img(slot, 1200, 900, "ph-stop__i")
+    kids = [pic, text] if reverse else [text, pic]
+    return con([row(kids, "ph-stop__r")], "ph-stop")
+
+
+def quiettop(title, kicker, lede=None, tone="sand"):
+    """A title band with no photograph at all, on a tinted ground."""
+    section("qtop")
+    kids = [p(kicker, "ph-script"), h(title, tag="h1"), rule(True)]
+    if lede:
+        kids.append(p(lede, "ph-lede"))
+    return con([con(kids, "ph-qtop__t")], f"ph-qtop ph-qtop--{tone}")
+
+
 def intro(title, strap, lede):
     section("intro")
     return con([h(title, "ph-introh"), p(strap, "ph-strap"),
@@ -649,6 +669,36 @@ body{--espresso:#1C1A18;--ivory:#F6F4F1;--linen:#F2F0EC;--sand:#DCD8D1;--sage:#2
  .ph-frame2{flex:1 1 auto!important;width:100%!important}
  .ph-bhero__t{padding-bottom:14%!important}
  .ph-trow{gap:18px!important}
+}
+
+.ph-stop{padding:clamp(40px,5vw,72px) var(--gut) clamp(32px,4vw,56px)!important;
+ gap:0!important;max-width:none!important;background-color:#FBF9F6!important}
+.ph-stop__r{max-width:var(--wrap)!important;width:100%!important;margin-inline:auto!important;
+ display:flex!important;flex-direction:row!important;align-items:center!important;
+ gap:clamp(36px,5vw,80px)!important;padding:0!important}
+.ph-stop__t{flex:1 1 0!important;min-width:0!important;align-items:flex-start!important;
+ text-align:left!important;gap:12px!important;padding:0!important;max-width:none!important}
+.ph-stop__t .elementor-heading-title{font-size:clamp(32px,4.4vw,58px)!important;
+ line-height:1.06!important;letter-spacing:-.025em!important}
+.ph-stop__t .ph-script p{font-size:clamp(28px,2.8vw,38px)!important;margin-bottom:0!important}
+.ph-stop__i{flex:0 0 46%!important;background:#fff!important;padding:14px!important;
+ box-shadow:0 2px 6px rgba(28,26,24,.05),0 22px 50px -24px rgba(28,26,24,.22)!important}
+.ph-stop__i img{width:100%!important;height:clamp(320px,42vh,480px)!important;
+ object-fit:cover!important;display:block!important}
+.ph-qtop{padding:clamp(64px,8vw,116px) var(--gut)!important;gap:0!important;
+ max-width:none!important;align-items:center!important}
+.ph-qtop--sand{background-color:var(--sand)!important}
+.ph-qtop--linen{background-color:var(--linen)!important}
+.ph-qtop__t{max-width:820px!important;margin-inline:auto!important;align-items:center!important;
+ text-align:center!important;gap:10px!important;padding:0!important;max-width:820px!important}
+.ph-qtop__t .elementor-heading-title{font-size:clamp(34px,4.6vw,60px)!important;
+ line-height:1.06!important;letter-spacing:-.025em!important}
+.ph-qtop__t .ph-script p{font-size:clamp(28px,2.8vw,38px)!important;margin-bottom:0!important}
+.ph-gridsec{padding:clamp(40px,5vw,72px) var(--gut)!important;gap:0!important;
+ max-width:none!important}
+@media(max-width:880px){
+ .ph-stop__r{flex-direction:column!important}
+ .ph-stop__i{flex:1 1 auto!important;width:100%!important}
 }
 """
 
