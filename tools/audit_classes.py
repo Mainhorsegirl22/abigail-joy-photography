@@ -25,6 +25,8 @@ for page in PAGES:
     used = set()
     for group in re.findall(r'"_css_classes":"([^"]+)"', data):
         used.update(group.split())
+    for group in re.findall(r"class=\\?['\"]([^'\"\\]+)", data):
+        used.update(group.split())
     missing = sorted(c for c in used if c not in have)
     slashes = data.count("\\")
     note = []

@@ -757,6 +757,9 @@ def prune(css, data_json):
     """
     import re
     names = set(re.findall(r'"_css_classes":"([^"]+)"', data_json))
+    # classes also appear inside editor HTML, e.g. <span class='ph-fill'>,
+    # and those are invisible to a _css_classes-only scan
+    names |= set(re.findall(r"class=\\?['\"]([^'\"\\]+)", data_json))
     used = {c for group in names for c in group.split()}
     used |= set(re.findall(r'"id":"([a-z0-9]+)"', data_json))
 
