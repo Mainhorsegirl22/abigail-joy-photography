@@ -52,3 +52,29 @@
 - Do not stop after one screenshot pass
 - Do not use `transition-all`
 - Do not use default Tailwind blue/indigo as primary color
+
+## Live WordPress Site — Hard Rules
+
+This project writes to a **live production site** (pinehillgermanshepherds.com)
+that the sandbox **cannot load**. The proxy returns 403 on that domain, so
+`curl` and WebFetch are both dead ends. Every change is therefore blind. These
+rules exist because ignoring them unstyled seven live pages.
+
+- **Read before write.** Never write to a WordPress field or meta key without
+  reading its current value first and knowing what the value *means*. Elementor
+  meta is not free-form — `_elementor_css` is compiled output, and blanking it
+  is an instruction ("this post needs no CSS"), not a reset.
+- **Never invent a mechanism.** If the fix isn't verifiable, say "I don't know,
+  here's what I'd try and why" and let the user decide. Do not ship an
+  experiment to a live page and describe it as a fix.
+- **Screenshot locally before pushing to WordPress.** Build the page as a local
+  mirror (`el_*.html`), serve it with `node serve.mjs`, screenshot it with
+  `node screenshot.mjs http://localhost:3000`, and *look at it* — per the
+  Screenshot Workflow above. This catches layout, spacing, type and colour
+  before the user ever sees it. It does **not** catch WordPress plumbing
+  (caching, meta semantics, the Elementor compile pipeline); only the
+  read-before-write rule catches those.
+- **Never report a live fix as verified.** The site cannot be loaded from here.
+  State what changed and what is still unconfirmed.
+- **Nothing goes public without explicit permission.** The live homepage (51),
+  live header (32) and live footer (25) are not to be touched.
