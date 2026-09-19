@@ -9,7 +9,7 @@ That is exactly how ph-mid shipped. Run this before every push.
 import re, subprocess, sys
 
 PAGES = ("about", "reserve", "contact", "gallery", "news", "puppyculture",
-         "contract", "puppies", "litters", "shepherds")
+         "contract", "puppies", "litters", "shepherds", "freda", "rangeley")
 
 def build(page, mode):
     r = subprocess.run([sys.executable, "tools/build_pages.py", page, mode],

@@ -536,7 +536,7 @@ def shepherds():
                  ("Heart", link("OFA Normal \u2014 see result", FREDA["heart"])),
                  ("Eyes", link("OFA Normal \u2014 see result", FREDA["eyes"])),
                  ("Genetics", "Clear")]),
-             btn("Read Her Pedigree", FREDA["pedigree"], "ph-pillbtn")],
+             btn("Meet Freda", "/freda-new/", "ph-pillbtn")],
             "ph-dog"),
     ], "ph-asplit")], "freda", tone="white"))
 
@@ -551,7 +551,7 @@ def shepherds():
                  ("Heart", "OFA Advanced Echocardiogram, Normal"),
                  ("Eyes", "OFA CAER Normal"),
                  ("Genetics", "Embark, clear")]),
-             btn("See the Litter", "/litters-new/", "ph-pillbtn")],
+             btn("Meet Rangeley", "/rangeley-new/", "ph-pillbtn")],
             "ph-dog"),
         img("rangeley1", "ph-frame2"),
     ], "ph-asplit")], "rangeley", tone="linen"))
@@ -565,6 +565,90 @@ def shepherds():
                  "Litter A is on the ground. The waiting list is short.",
                  "See Available Litters", "/litters-new/", image_key="band2"))
     return d
+
+# =============================================================== EACH DOG
+# One page per dog, reached by clicking through from Meet Our Shepherds.
+# Registered name, a write-up, the full results, and that dog's own photos.
+def _dog(tag, call, kicker, lede, story, facts, photos, hero_key,
+         reverse=False):
+    start(tag)
+    pic = img(hero_key, "ph-frame2")
+    txt = con([p(kicker, "ph-dogname"), h(call, tag="h1"), rule(False),
+               p(lede, "ph-lede")], "ph-dog")
+    # the photo falls on the opposite side for the second dog, so the two
+    # pages do not read as the same page twice
+    d = [sec([row([txt, pic] if reverse else [pic, txt], "ph-asplit")],
+             "top", tone="sand")]
+
+    d.append(sec([con([p(s) for s in story], "ph-mid")],
+                 "story", tone="white", tight=True))
+
+    d.append(sec([head("on file", "Health and Registration",
+                       "Every result below is a real document. Click any of "
+                       "them."),
+                  con([dl(facts)], "ph-narrow")], "health", tone="linen"))
+
+    d.append(sec([head(None, f"{call} in Pictures"),
+                  row([img(k, "ph-gcell") for k in photos], "ph-grid")],
+                 "gal", tone="white"))
+
+    d.append(cta("Puppies From Our Programme",
+                 "Reservations for the next litter are open.",
+                 "Reserve a Puppy", "/reserve-a-puppy-new/", image_key="band2"))
+    return d
+
+
+def freda():
+    return _dog(
+        "fre", "Freda", "Dam \u00b7 dark sable \u00b7 search and rescue",
+        FREDA["name"],
+        ["Freda is our main breeding female here at Pine Hill German "
+         "Shepherds, and a beloved family member. There are truly no words to "
+         "express what a special dog Freda is to me. She has been a huge part "
+         "of my life, and I am very thankful for her.",
+         "Because she is our only breeding female, we can plan every litter "
+         "around her and give each one the same attention. She is trained in "
+         "scent detection and search and rescue work, and she passes that "
+         "drive and that steadiness on to her puppies.",
+         "Her full health testing is below, with every certificate linked so "
+         "you can read the results yourself rather than take our word for it."],
+        [("Registered name", FREDA["name"]),
+         ("Call name", "Freda"),
+         ("Date of birth", FREDA["dob"]),
+         ("AKC registration", FREDA["akc"]),
+         ("Hips", link("PennHIP \u2014 see result", FREDA["hips"])),
+         ("Elbows", link("OFA Normal \u2014 see result", FREDA["elbows"])),
+         ("Heart", link("OFA Normal \u2014 see result", FREDA["heart"])),
+         ("Eyes", link("OFA Normal \u2014 see result", FREDA["eyes"])),
+         ("Genetic panel", "Clear"),
+         ("Pedigree", link("Read her pedigree", FREDA["pedigree"]))],
+        ["freda", "portrait", "sunlit", "pair", "breeders", "farm"],
+        "freda")
+
+
+def rangeley():
+    return _dog(
+        "ran", "Rangeley", f"Sire \u00b7 {RANGELEY['akc']}",
+        RANGELEY["name"],
+        ["Rangeley is the sire of our current litter. He is a working-line "
+         "male with full OFA health testing behind him \u2014 hips, elbows, "
+         "heart and eyes \u2014 and an Embark genetic panel that came back clear.",
+         "More about his temperament and his work: " +
+         fill("Abigail to write") + ".",
+         "His results are on file with the OFA and are searchable under his "
+         "registration number."],
+        [("Registered name", RANGELEY["name"]),
+         ("Call name", RANGELEY["call"]),
+         ("AKC registration", RANGELEY["akc"]),
+         ("Hips", "OFA Good"),
+         ("Elbows", "OFA Normal"),
+         ("Heart", "OFA Advanced Echocardiogram, Normal"),
+         ("Eyes", "OFA CAER Normal"),
+         ("Genetic panel", "Embark, clear")],
+        ["rangeley1", "rangeley2", "rangeley3", "rangeley4",
+         "rangeley5", "rangeley6", "rangeley7", "working", "montie"],
+        "rangeley1", reverse=True)
+
 
 # ==================================================================== ABOUT
 # Abigail's own copy from the live About page, restructured rather than
@@ -800,7 +884,8 @@ def puppy_culture():
 PAGES = {"puppies": puppies, "litters": litters, "contract": contract,
          "shepherds": shepherds, "about": about, "reserve": reserve,
          "contact": contact, "gallery": gallery, "news": news,
-         "puppyculture": puppy_culture}
+         "puppyculture": puppy_culture, "freda": freda,
+         "rangeley": rangeley}
 
 if __name__ == "__main__":
     name, mode = sys.argv[1], (sys.argv[2] if len(sys.argv) > 2 else "data")
