@@ -516,75 +516,55 @@ body .ph-gf .gform_footer .gform_button:focus-visible{
 # results and the documents behind them. Nothing here is written from
 # imagination - if a fact is not in hand it is left as a visible blank.
 def shepherds():
-    start("shd")
+    start("shp")
+    d = [quiettop("Meet Our Shepherds", "our family",
+                  "Two dogs. Every health result is on file, and the paperwork "
+                  "is linked so you can read it yourself.", tone="sand")]
 
-    d = [hero("Our Shepherds", "the dogs behind every litter",
-              "pair", ypos=48, tall=False)]
+    # Each dog gets a full row, the photograph alternating side to side.
+    d.append(sec([row([
+        img("freda", "ph-frame2"),
+        con([p("Dam \u00b7 dark sable \u00b7 search and rescue", "ph-dogname"),
+             h(FREDA["name"], tag="h2"), rule(False),
+             p("Freda is our only breeding female, and a family member first. "
+               "Everything we plan is built around her, which is why we raise "
+               "one litter at a time."),
+             dl([("Date of birth", FREDA["dob"]),
+                 ("AKC", FREDA["akc"]),
+                 ("Hips", link("PennHIP \u2014 see result", FREDA["hips"])),
+                 ("Elbows", link("OFA Normal \u2014 see result", FREDA["elbows"])),
+                 ("Heart", link("OFA Normal \u2014 see result", FREDA["heart"])),
+                 ("Eyes", link("OFA Normal \u2014 see result", FREDA["eyes"])),
+                 ("Genetics", "Clear")]),
+             btn("Read Her Pedigree", FREDA["pedigree"], "ph-pillbtn")],
+            "ph-dog"),
+    ], "ph-asplit")], "freda", tone="white"))
 
-    d.append(sec([head(None,
-                       "Two dogs, fully tested",
-                       "Every puppy we place comes from these two. Their "
-                       "registrations, hips, elbows, heart and eyes are all "
-                       "on record, and the paperwork is linked below so you "
-                       "can read it yourself rather than take our word for it.")],
-                 "intro", tone="white", tight=True))
+    d.append(sec([row([
+        con([p(f"Sire \u00b7 called {RANGELEY['call']}", "ph-dogname"),
+             h(RANGELEY["name"], tag="h2"), rule(False),
+             p("Rangeley is the sire of our current litter. His results are "
+               "searchable on the OFA site under his registration number."),
+             dl([("AKC", RANGELEY["akc"]),
+                 ("Hips", "OFA Good"),
+                 ("Elbows", "OFA Normal"),
+                 ("Heart", "OFA Advanced Echocardiogram, Normal"),
+                 ("Eyes", "OFA CAER Normal"),
+                 ("Genetics", "Embark, clear")]),
+             btn("See the Litter", "/litters-new/", "ph-pillbtn")],
+            "ph-dog"),
+        img("rangeley1", "ph-frame2"),
+    ], "ph-asplit")], "rangeley", tone="linen"))
 
-    # ---- Freda
-    freda_facts = [
-        ("Call name", "Freda"),
-        ("Registered", FREDA["name"]),
-        ("Date of birth", FREDA["dob"]),
-        ("AKC number", FREDA["akc"]),
-        ("Hips", link("PennHIP results", FREDA["hips"])),
-        ("Elbows", link("OFA elbow report", FREDA["elbows"])),
-        ("Heart", link("Cardiac result", FREDA["heart"])),
-        ("Eyes", link("OFA CAER result", FREDA["eyes"])),
-        ("Pedigree", link("Five-generation pedigree", FREDA["pedigree"])),
-    ]
-    d.append(sec([split(
-        img("freda", "ph-frame"),
-        col([p("Our foundation female", "ph-role"),
-             h("Freda von Stephanitz"),
-             rule(False),
-             p("Freda is the dam behind our litters and the reason the "
-               "kennel exists. She is health-tested in full, and every "
-               "result below is a document you can open.", "ph-lede"),
-             dl(freda_facts)]),
-    )], "freda", tone="linen"))
+    d.append(vals("What We Test For, Every Time",
+                  "On both parents, before any breeding\u2026",
+                  [("<svg viewBox='0 0 48 48'><path d='M24 6v12'/><path d='M24 18c-7 0-12 5-12 12v12'/><path d='M24 18c7 0 12 5 12 12v12'/><circle cx='16' cy='30' r='4'/><circle cx='32' cy='30' r='4'/></svg>", "Hips and Elbows"), ("<svg viewBox='0 0 48 48'><path d='M24 40s-14-8-14-18a7.5 7.5 0 0114-4 7.5 7.5 0 0114 4c0 10-14 18-14 18z'/><path d='M12 22h6l3-5 4 10 3-5h8'/></svg>", "Heart"),
+                   ("<svg viewBox='0 0 48 48'><path d='M4 24s8-11 20-11 20 11 20 11-8 11-20 11S4 24 4 24z'/><circle cx='24' cy='24' r='6'/></svg>", "Eyes"), ("<svg viewBox='0 0 48 48'><path d='M16 6c0 12 16 12 16 24s-16 12-16 12'/><path d='M32 6c0 12-16 12-16 24s16 12 16 12'/><path d='M18 14h12M16 22h16M16 30h16M18 38h12'/></svg>", "Genetic Panel")]))
 
-    # ---- Rangeley
-    rang_facts = [
-        ("Call name", RANGELEY["call"]),
-        ("Registered", RANGELEY["name"]),
-        ("AKC number", RANGELEY["akc"]),
-        ("Hips and elbows", "OFA Good / Normal"),
-        ("Heart", "OFA Advanced Echocardiogram, Normal"),
-        ("Eyes", "OFA CAER, Normal"),
-        ("Genetics", "Embark, clear"),
-    ]
-    d.append(sec([split(
-        col([p("The sire of our current litter", "ph-role"),
-             h("Ledger Bei Mackenzie"),
-             rule(False),
-             p("Rangeley is the sire behind Litter A. He is fully health "
-               "tested and genetically clear.", "ph-lede"),
-             dl(rang_facts)]),
-        img("rangeley1", "ph-frame"),
-    )], "sire", tone="white"))
-
-    d.append(sec([head(None, "Rangeley at work", None),
-                  quad([img(k, "ph-frame ph-frame--sq")
-                        for k in ("rangeley2", "rangeley3", "rangeley5",
-                                  "rangeley6")])],
-                 "gallery", tone="linen"))
-
-    d.append(cta("Puppies from these two",
-                 "Litter A is on the ground. Reservations are open and the "
-                 "waiting list is short.",
+    d.append(cta("Puppies From These Two",
+                 "Litter A is on the ground. The waiting list is short.",
                  "See Available Litters", "/litters-new/", image_key="band2"))
     return d
-
-
 
 # ==================================================================== ABOUT
 # Abigail's own copy from the live About page, restructured rather than
@@ -733,26 +713,16 @@ def gallery():
     start("gal")
     d = [quiettop("Gallery", "our shepherds", tone="sand")]
 
-    d.append(sec([head(None, "Freda and Rangeley"),
-                  row([img(k, "ph-frame ph-frame--sq")
-                       for k in ("freda", "rangeley1", "portrait")], "ph-trio"),
-                  ], "dogs", tone="white"))
-
-    d.append(sec([head("puppies", "Litters at Home"),
-                  quad([img(k, "ph-frame ph-frame--sq")
-                        for k in ("puppies", "scholars", "litter_band",
-                                  "breeders")])], "pups", tone="linen"))
-
-    d.append(sec([head("at work", "Out on the Land"),
-                  quad([img(k, "ph-frame ph-frame--sq")
-                        for k in ("rangeley2", "rangeley3", "rangeley5",
-                                  "working")])], "work", tone="white"))
+    # One gallery, not three sections. Every photograph in a single grid.
+    d.append(sec([row([img(k, "ph-gcell") for k in (
+        "freda", "rangeley1", "portrait", "puppies", "scholars", "litter_band",
+        "breeders", "rangeley2", "rangeley3", "rangeley5", "working", "farm",
+        "pair", "sunlit", "rangeley6")], "ph-grid")], "all", tone="white"))
 
     d.append(cta("Interested in a Puppy?",
                  "Reservations for our next litter are open.",
                  "Reserve a Puppy", "/reserve-a-puppy-new/", image_key="band2"))
     return d
-
 
 # ===================================================================== NEWS
 # Top: quiettop() on linen. The quietest page on the site, deliberately.

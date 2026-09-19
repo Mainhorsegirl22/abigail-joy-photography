@@ -700,6 +700,20 @@ body{--espresso:#1C1A18;--ivory:#F6F4F1;--linen:#F2F0EC;--sand:#DCD8D1;--sage:#2
  .ph-stop__r{flex-direction:column!important}
  .ph-stop__i{flex:1 1 auto!important;width:100%!important}
 }
+
+.ph-grid{display:grid!important;grid-template-columns:repeat(3,1fr)!important;
+ gap:clamp(14px,1.8vw,24px)!important;max-width:1440px!important;width:100%!important;
+ margin-inline:auto!important;padding:0!important}
+.ph-grid img,.ph-gcell img{width:100%!important;height:clamp(240px,24vw,340px)!important;
+ object-fit:cover!important;display:block!important;box-shadow:none!important}
+@media(max-width:980px){.ph-grid{grid-template-columns:repeat(2,1fr)!important}}
+@media(max-width:600px){.ph-grid{grid-template-columns:1fr!important}
+ .ph-grid img,.ph-gcell img{height:clamp(240px,62vw,320px)!important}}
+.ph-dog{align-items:flex-start!important;gap:14px!important;padding:0!important;
+ max-width:none!important;flex:1 1 0!important;min-width:0!important}
+.ph-dog .elementor-heading-title{font-size:clamp(26px,3vw,38px)!important}
+.ph-dogname p{font-size:10.5px!important;letter-spacing:.2em!important;
+ text-transform:uppercase!important;color:var(--brass)!important}
 """
 
 
