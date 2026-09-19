@@ -733,6 +733,63 @@ def minify(css):
     return re.sub(r";\}", "}", css)
 
 
+def split_rules(css):
+    """Split minified CSS into top-level chunks, keeping @media blocks whole."""
+    out, depth, start = [], 0, 0
+    for i, ch in enumerate(css):
+        if ch == "{":
+            depth += 1
+        elif ch == "}":
+            depth -= 1
+            if depth == 0:
+                out.append(css[start:i + 1])
+                start = i + 1
+    return out
+
+
+def prune(css, data_json):
+    """Drop rules that can never match this page.
+
+    A rule is kept when any of its selectors is NOT page-specific - global
+    rules like body, .elementor-button, .elementor-widget-heading - or when it
+    names a ph- class or an element id this page actually contains. An @media
+    block is pruned the same way from the inside, and dropped if it empties.
+    """
+    import re
+    names = set(re.findall(r'"_css_classes":"([^"]+)"', data_json))
+    used = {c for group in names for c in group.split()}
+    used |= set(re.findall(r'"id":"([a-z0-9]+)"', data_json))
+
+    def keep(selector):
+        for sel in selector.split(","):
+            sel = sel.strip()
+            tokens = re.findall(r"[.#]([\w-]+)", sel)
+            specific = [t for t in tokens
+                        if t.startswith("ph-") or t.startswith("elementor-element-")]
+            if not specific:
+                return True                      # global rule
+            for t in specific:
+                if t.startswith("elementor-element-"):
+                    if t[len("elementor-element-"):] in used:
+                        return True
+                elif t in used:
+                    return True
+        return False
+
+    out = []
+    for chunk in split_rules(css):
+        if chunk.startswith("@media"):
+            head = chunk[:chunk.index("{") + 1]
+            inner = chunk[chunk.index("{") + 1:-1]
+            kept = [r for r in split_rules(inner)
+                    if keep(r[:r.index("{")])]
+            if kept:
+                out.append(head + "".join(kept) + "}")
+        elif "{" in chunk and keep(chunk[:chunk.index("{")]):
+            out.append(chunk)
+    return "".join(out)
+
+
 def emit(data, extra_css=""):
-    return (json.dumps(data, separators=(",", ":"), ensure_ascii=False),
-            minify(resolve(CSS + "\n" + extra_css)))
+    j = json.dumps(data, separators=(",", ":"), ensure_ascii=False)
+    return (j, prune(minify(resolve(CSS + "\n" + extra_css)), j))
