@@ -518,5 +518,5 @@ def minify(css):
 
 
 def emit(data, extra_css=""):
-    return (json.dumps(data, separators=(",", ":")),
+    return (json.dumps(data, separators=(",", ":"), ensure_ascii=False),
             minify(resolve(CSS + "\n" + extra_css)))

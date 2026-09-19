@@ -31,6 +31,15 @@ real character either way; only the backslash needs the doubling.
 Test any uncertainty cheaply: write a throwaway meta key, read it back, then
 `wp_delete_post_meta` it.
 
+**Superseded (2026-09-19): `emit()` now passes `ensure_ascii=False`, so the
+JSON carries real characters instead of `\uXXXX` escapes and contains NO
+backslashes at all.** Audited across all ten pages: zero. With nothing for
+`stripslashes` to eat, `data` and `wire` are byte-identical and the doubling
+dance is gone. Keep `wire` for the moment in case a future page introduces a
+literal backslash, but re-run the audit before trusting it:
+
+    python3 build_pages.py <page> data | grep -c '\\\\'
+
 ### 3. Attach the new header and footer  ← the one that gets forgotten
 
 The rebrand header (2737) and footer (2820) are attached to named pages only,
