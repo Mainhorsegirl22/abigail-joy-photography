@@ -11,7 +11,7 @@ certificate links kept so a buyer can open the paperwork. Anything nobody has
 told me is written with fill(), which renders as a visible blank.
 """
 import sys
-from phkit import (start, section, con, row, w, h, p, ul, dl, btn, img, rule, form,
+from phkit import (start, section, con, row, w, h, p, ul, dl, btn, img, rule, form, opener,
                    fill, pill, hero, sec, head, split, col, trio, quad, card,
                    stat, steps, faq, cta, emit, pin, gform, IMG, INDEX)
 
@@ -591,8 +591,7 @@ def shepherds():
 # the heading "Scent Dedectino and SAR Taining".
 def about():
     start("abt")
-    d = [hero("About Pine Hill", "our family", "hero_sunset", ypos=58,
-              tall=False)]
+    d = [opener("About Pine Hill", "our family", "hero_sunset")]
 
     d.append(sec([
         head("welcome", "Family-Raised Working Line German Shepherds",

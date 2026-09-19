@@ -247,6 +247,22 @@ def hero(title, kicker, image_key, ypos=70, button=None, tall=True):
                background_size="cover")
 
 
+def opener(title, kicker, image_key, lede=None):
+    """An alternative to hero(): the title sits on clean ground and the
+    photograph runs full width underneath it, large. Nothing is set over the
+    image, so a busy photograph can never collide with the type."""
+    section("open")
+    head_kids = []
+    if kicker:
+        head_kids.append(p(kicker, "ph-script"))
+    head_kids.append(h(title, tag="h1"))
+    head_kids.append(rule(True))
+    if lede:
+        head_kids.append(p(lede, "ph-lede"))
+    return con([con(head_kids, "ph-open__t"),
+                img(image_key, "ph-open__img")], "ph-open")
+
+
 def sec(children, name, tone="white", tight=False, extra=""):
     section(name)
     cls = f"ph-sec ph-{tone}" + (" ph-sec--tight" if tight else "")
@@ -486,7 +502,25 @@ body{--espresso:#1C1A18;--ivory:#F6F4F1;--linen:#F2F0EC;--sand:#DCD8D1;--sage:#2
 .ph-hero{min-height:clamp(340px,52vh,440px)!important;padding-inline:var(--gut)!important}
 .ph-facts li{flex-direction:column;gap:2px}
 .ph-facts li em{text-align:left}
-}"""
+}
+.ph-open{padding:clamp(56px,6vw,90px) 0 0!important;gap:0!important;background:#FFFFFF!important}
+.ph-open__t{max-width:900px!important;margin-inline:auto!important;align-items:center!important;
+ text-align:center!important;gap:10px!important;
+ padding:0 var(--gut) clamp(38px,4.2vw,58px)!important}
+.ph-open__t .elementor-heading-title{font-size:clamp(34px,5vw,62px)!important;
+ letter-spacing:-.025em!important;line-height:1.04!important}
+.ph-open__t .ph-script p{font-size:clamp(28px,2.8vw,38px)!important;margin-bottom:2px!important}
+.ph-open__img img{width:100%!important;height:clamp(400px,56vh,660px)!important;
+ object-fit:cover!important;display:block!important;box-shadow:none!important}
+.ph-about{max-width:var(--wrap)!important;width:100%!important;margin-inline:auto!important;
+ padding:0!important;gap:0!important}
+.ph-mid{max-width:820px!important;width:100%!important;margin-inline:auto!important;
+ padding:0!important;gap:22px!important;align-items:center!important;text-align:center!important}
+.ph-mid p{margin-inline:auto!important}
+.ph-formwrap{max-width:820px!important;width:100%!important;margin-inline:auto!important;
+ padding:0!important;gap:0!important;text-align:left!important}
+@media(max-width:880px){.ph-open__img img{height:clamp(300px,46vh,420px)!important}}
+"""
 
 
 def resolve(css, index=None):
