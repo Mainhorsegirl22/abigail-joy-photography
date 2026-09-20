@@ -185,11 +185,24 @@ strip = con([
 # these five lines instead would renumber the whole back half of the
 # page and unstyle everything from the litter band down.
 
+def stat(num, label):
+    return con([p(num, "ph-stat__n"), p(label, "ph-stat__l")], "ph-stat")
+
+# Two numbers, not three. "Reserved" is inferable from these two, and a third
+# editable number is a third chance for them to contradict each other on a
+# page she updates by hand between litters.
+spots = con([
+    p("Taking reservations", "ph-spotpill"),
+    con([stat("4", "Still available"), stat("7", "In this litter")], "ph-stats",
+        flex_direction="row"),
+], "ph-spots")
+
 litterbox = con([
     con([p("Open reservations", "ph-kicker"),
          h("Our Upcoming Litter"),
          rule(),
          img("litter_graphic", "ph-litter__img"),
+         spots,
          p("We very occasionally have puppies available. If you&#8217;re interested in getting on our waiting "
            "list for our upcoming litter, we&#8217;d love to hear from you.", "ph-lede"),
          btn("Join the Waiting List", "/reserve-a-puppy/")], "ph-litter__in"),
@@ -421,6 +434,21 @@ body{--espresso:#1C1A18;--ivory:#F6F4F1;--linen:#F2F0EC;--taupe:#C6C1B8;--sand:#
 .ph-litter__img{background-color:#FFFFFF!important;padding:14px!important;max-width:620px!important;
  width:100%!important;box-shadow:0 2px 6px rgba(28,26,24,.05),0 22px 50px -24px rgba(28,26,24,.22)!important}
 .ph-litter__img img{width:100%!important;height:auto!important;display:block!important}
+.ph-spots{align-items:center!important;text-align:center!important;gap:20px!important;
+ padding:0!important;max-width:none!important;width:100%!important}
+.ph-spotpill p{display:inline-block!important;font-size:9.5px!important;font-weight:600!important;
+ letter-spacing:.2em!important;text-transform:uppercase!important;color:#4A5F46!important;
+ border:1px solid currentColor!important;padding:6px 12px!important}
+.ph-stats{display:flex!important;flex-direction:row!important;justify-content:center!important;
+ align-items:stretch!important;gap:0!important;width:auto!important;max-width:none!important;padding:0!important}
+.ph-stat{width:auto!important;flex:0 0 auto!important;align-items:center!important;gap:4px!important;
+ max-width:none!important;padding:0 clamp(26px,4vw,52px)!important}
+.ph-stat + .ph-stat{border-left:1px solid var(--hair)!important}
+.ph-stat__n p{font-family:'Cormorant Garamond',Georgia,serif!important;
+ font-size:clamp(44px,5.2vw,68px)!important;line-height:1!important;color:var(--brass)!important;
+ font-variant-numeric:lining-nums!important}
+.ph-stat__l p{font-size:10px!important;letter-spacing:.2em!important;text-transform:uppercase!important;
+ color:var(--brass-ink)!important;white-space:nowrap!important}
 /* was clamp(420px,54vh,560px): on a wide monitor that is a 3.6:1 letterbox
    and the photograph behind it reads as squashed */
 .ph-band{position:relative!important;min-height:clamp(520px,74vh,760px)!important;display:flex!important;
