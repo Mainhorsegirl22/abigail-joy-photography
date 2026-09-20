@@ -687,8 +687,8 @@ def about():
     d.append(vals("When It Comes To Our Dogs And Our Families",
                   "We\u2019re committed to\u2026",
                   [("<svg viewBox='0 0 48 48'><path d='M24 5l14 5v12c0 10-6 17-14 21-8-4-14-11-14-21V10z'/><path d='M17 23l5 5 10-11'/></svg>", "Health Testing"),
-                   ("<svg viewBox='0 0 48 48'><path d='M24 40s-14-8-14-18a7.5 7.5 0 0114-4 7.5 7.5 0 0114 4c0 10-14 18-14 18z'/><ellipse cx='24' cy='24' rx='3.6' ry='3'/><ellipse cx='18.5' cy='19' rx='1.8' ry='2.4'/><ellipse cx='23' cy='17' rx='1.8' ry='2.4'/><ellipse cx='27.5' cy='18.4' rx='1.8' ry='2.4'/></svg>", "Puppy Culture"),
-                   ("<svg viewBox='0 0 48 48'><path d='M17 12l-3-5-3 5v6c0 4 2 7 5 9'/><path d='M14 22c0 8 5 13 12 13h8'/><path d='M34 35V23c0-5-4-9-9-9h-8'/><path d='M34 35h4'/><circle cx='16' cy='17' r='1'/></svg>", "Responsible Breeding"),
+                   ("<svg viewBox='0 0 48 48'><path d='M24 41s-14-8.5-14-18.5A7.6 7.6 0 0124 18a7.6 7.6 0 0114 4.5c0 10-14 18.5-14 18.5z'/><ellipse cx='24' cy='28' rx='3.8' ry='3.1'/><ellipse cx='18.6' cy='23.4' rx='1.7' ry='2.2'/><ellipse cx='24' cy='21.6' rx='1.7' ry='2.2'/><ellipse cx='29.4' cy='23.4' rx='1.7' ry='2.2'/></svg>", "Puppy Culture"),
+                   ("<svg viewBox='0 0 48 48'><path d='M13 41V27c0-4 1-7 3-9.5L17 6l6.5 9.5L26 13l5 8.5c2 1.5 3.5 3 4.5 4.5L43 29l-1 2.5-6-1.5'/><path d='M31 30c0 5-3 9-8 11'/><circle cx='25' cy='21' r='1.1'/></svg>", "Responsible Breeding"),
                    ("<svg viewBox='0 0 48 48'><path d='M6 12h21v15H17l-8 6v-6H6z'/><path d='M25 22h17v13h-6l-6 5v-5h-5z'/></svg>", "Lifetime Support")]))
 
     d.append(trivia("Rapid fire", "Pine Hill Edition", [
