@@ -76,11 +76,10 @@ DATA = [con("phf001", [
             h("phf008", "Explore"),
             links("phf009", [("About Us", "/about-us-maines-german-shepherds-2-2/"),
                              ("Our Shepherds", "/our-shepherds/"),
-                             ("Puppies", "/puppies/"),
+                             ("Puppies", "/workinglinegermanshepherdpuppies/"),
                              ("Available Litters", "/tgermanshepherdlitterspuppies/"),
                              ("Reserve a Puppy", "/reserve-a-puppy/"),
                              ("Puppy Culture", "/puppy-culture/"),
-                             ("Sales Contract", "/sales-contract/"),
                              ("Gallery", "/gallery/")]),
         ], "ph-foot__col"),
 
