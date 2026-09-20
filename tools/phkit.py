@@ -423,7 +423,7 @@ body{--espresso:#1C1A18;--ivory:#F6F4F1;--linen:#F2F0EC;--sand:#E4DFD5;--pill:#D
  font-family:'Montserrat',system-ui,sans-serif!important;font-size:14.5px!important;
  line-height:1.85!important;color:var(--body)!important;margin:0!important}
 .ph-script,.ph-script p{font-family:'Mrs Saint Delafield',cursive!important;color:var(--brass)!important;
- font-size:clamp(34px,3.8vw,48px)!important;line-height:1.1!important}
+ font-size:clamp(44px,5vw,64px)!important;line-height:1.08!important}
 .ph-lede p{font-size:15px!important}
 .ph-measure p{max-width:62ch}
 
@@ -466,14 +466,14 @@ body{--espresso:#1C1A18;--ivory:#F6F4F1;--linen:#F2F0EC;--sand:#E4DFD5;--pill:#D
  padding-block:clamp(96px,11vh,140px) clamp(44px,6vh,72px)!important}
 .ph-hero::after{content:''!important;position:absolute!important;inset:0!important;z-index:1!important;
  pointer-events:none!important;
- background:linear-gradient(100deg,rgba(26,19,13,.66) 0%,rgba(26,19,13,.36) 42%,rgba(26,19,13,.06) 78%)!important}
+ background:linear-gradient(100deg,rgba(26,19,13,.56) 0%,rgba(26,19,13,.28) 46%,rgba(26,19,13,.04) 80%)!important}
 .ph-hero>*{position:relative!important;z-index:2!important}
 .ph-hero__in{max-width:640px!important;width:auto!important;gap:10px!important;
  align-items:flex-start!important;padding:0!important}
 .ph-hero .elementor-heading-title{color:#FFFFFF!important;font-size:clamp(28px,3.4vw,44px)!important;
  line-height:1.06!important;letter-spacing:-.02em!important}
 .ph-hero .ph-script p{color:rgba(246,244,241,.92)!important;
- font-size:clamp(26px,2.4vw,32px)!important;margin-bottom:2px!important}
+ font-size:clamp(34px,3.2vw,44px)!important;margin-bottom:2px!important}
 
 .ph-head{max-width:820px!important;margin-inline:auto!important;align-items:center!important;
  text-align:center!important;gap:10px!important;padding:0 0 48px!important}
@@ -554,7 +554,7 @@ body{--espresso:#1C1A18;--ivory:#F6F4F1;--linen:#F2F0EC;--sand:#E4DFD5;--pill:#D
  flex-direction:column!important;justify-content:center!important;align-items:center!important;
  padding:clamp(64px,8vw,96px) var(--gut)!important;background-repeat:no-repeat!important;overflow:hidden!important}
 .ph-band::after{content:''!important;position:absolute!important;inset:0!important;z-index:1!important;
- pointer-events:none!important;background:rgba(26,19,13,.52)!important}
+ pointer-events:none!important;background:radial-gradient(ellipse 74% 82% at 50% 50%,rgba(26,19,13,.56) 0%,rgba(26,19,13,.34) 58%,rgba(26,19,13,.14) 100%)!important}
 .ph-band>*{position:relative!important;z-index:2!important}
 .ph-band .elementor-heading-title{color:#FFFFFF!important}
 .ph-band p{color:rgba(246,244,241,.92)!important}
@@ -584,7 +584,7 @@ body{--espresso:#1C1A18;--ivory:#F6F4F1;--linen:#F2F0EC;--sand:#E4DFD5;--pill:#D
  padding:0 var(--gut) clamp(38px,4.2vw,58px)!important}
 .ph-open__t .elementor-heading-title{font-size:clamp(34px,5vw,62px)!important;
  letter-spacing:-.025em!important;line-height:1.04!important}
-.ph-open__t .ph-script p{font-size:clamp(28px,2.8vw,38px)!important;margin-bottom:2px!important}
+.ph-open__t .ph-script p{font-size:clamp(38px,4vw,54px)!important;margin-bottom:2px!important}
 .ph-open__img img{width:100%!important;height:clamp(400px,56vh,660px)!important;
  object-fit:cover!important;display:block!important;box-shadow:none!important}
 .ph-about{max-width:var(--wrap)!important;width:100%!important;margin-inline:auto!important;
@@ -606,7 +606,7 @@ body{--espresso:#1C1A18;--ivory:#F6F4F1;--linen:#F2F0EC;--sand:#E4DFD5;--pill:#D
  background:linear-gradient(180deg,rgba(26,19,13,.10) 40%,rgba(26,19,13,.42) 100%)!important}
 .ph-bhero__t{position:relative!important;z-index:2!important;text-align:center!important;
  align-items:center!important;padding:0 24px 9%!important;gap:0!important;max-width:none!important}
-.ph-bhero__t .ph-script p{font-size:clamp(30px,3.4vw,46px)!important;color:#fff!important;
+.ph-bhero__t .ph-script p{font-size:clamp(40px,4.6vw,62px)!important;color:#fff!important;
  margin-bottom:2px!important}
 .ph-bhero__t .elementor-heading-title{color:#fff!important;
  font-size:clamp(34px,5.2vw,68px)!important;line-height:1.12!important}
@@ -653,9 +653,9 @@ body{--espresso:#1C1A18;--ivory:#F6F4F1;--linen:#F2F0EC;--sand:#E4DFD5;--pill:#D
 .ph-trivl{flex:1 1 0!important;min-width:0!important;gap:0!important;padding:0!important;
  align-items:flex-start!important;max-width:none!important}
 .ph-tkick p{font-size:11px!important;letter-spacing:.3em!important;text-transform:uppercase!important;
- color:var(--brass-ink)!important;margin-bottom:6px!important}
+ color:var(--brass-ink)!important;margin-bottom:14px!important}
 .ph-tscript p{font-family:'Mrs Saint Delafield',cursive!important;color:var(--espresso)!important;
- font-size:clamp(34px,4vw,54px)!important;line-height:1!important;margin-bottom:34px!important}
+ font-size:clamp(46px,5.4vw,72px)!important;line-height:1.05!important;margin-bottom:34px!important}
 .ph-trow{display:flex!important;flex-direction:row!important;gap:26px!important;
  align-items:flex-start!important;padding:0 0 30px!important;width:100%!important;
  max-width:none!important}
@@ -680,7 +680,7 @@ body{--espresso:#1C1A18;--ivory:#F6F4F1;--linen:#F2F0EC;--sand:#E4DFD5;--pill:#D
  text-align:left!important;gap:12px!important;padding:0!important;max-width:none!important}
 .ph-stop__t .elementor-heading-title{font-size:clamp(32px,4.4vw,58px)!important;
  line-height:1.06!important;letter-spacing:-.025em!important}
-.ph-stop__t .ph-script p{font-size:clamp(28px,2.8vw,38px)!important;margin-bottom:0!important}
+.ph-stop__t .ph-script p{font-size:clamp(38px,4vw,54px)!important;margin-bottom:0!important}
 .ph-stop__i{flex:0 0 46%!important;background:#fff!important;padding:14px!important;
  box-shadow:0 2px 6px rgba(28,26,24,.05),0 22px 50px -24px rgba(28,26,24,.22)!important}
 .ph-stop__i img{width:100%!important;height:clamp(320px,42vh,480px)!important;
@@ -693,7 +693,7 @@ body{--espresso:#1C1A18;--ivory:#F6F4F1;--linen:#F2F0EC;--sand:#E4DFD5;--pill:#D
  text-align:center!important;gap:10px!important;padding:0!important;max-width:820px!important}
 .ph-qtop__t .elementor-heading-title{font-size:clamp(34px,4.6vw,60px)!important;
  line-height:1.06!important;letter-spacing:-.025em!important}
-.ph-qtop__t .ph-script p{font-size:clamp(28px,2.8vw,38px)!important;margin-bottom:0!important}
+.ph-qtop__t .ph-script p{font-size:clamp(38px,4vw,54px)!important;margin-bottom:0!important}
 .ph-gridsec{padding:clamp(40px,5vw,72px) var(--gut)!important;gap:0!important;
  max-width:none!important}
 @media(max-width:880px){
