@@ -411,7 +411,7 @@ def cta(title, body, label, url, image_key=None):
 # ------------------------------------------------------------------ the css
 CSS = """@font-face{font-family:'Mrs Saint Delafield';font-style:normal;font-weight:400;font-display:swap;
  src:url(https://fonts.gstatic.com/s/mrssaintdelafield/v14/v6-IGZDIOVXH9xtmTZfRagunqBw5WC62QKknLw.woff2) format('woff2')}
-body{--espresso:#1C1A18;--ivory:#F6F4F1;--linen:#F2F0EC;--sand:#DCD8D1;--sage:#232020;
+body{--espresso:#1C1A18;--ivory:#F6F4F1;--linen:#F2F0EC;--sand:#E4DFD5;--pill:#DCD8D1;--sage:#232020;
  --sage-deep:#3A3633;--brass:#A48760;--brass-ink:#7A5F35;--body:#55504A;--hair:rgba(28,26,24,.12);
  --gut:clamp(24px,5vw,56px);--wrap:1180px;--sy:clamp(60px,7vw,100px);
  background:#FFFFFF;color:var(--body)}
@@ -628,7 +628,7 @@ body{--espresso:#1C1A18;--ivory:#F6F4F1;--linen:#F2F0EC;--sand:#DCD8D1;--sage:#2
 .ph-frame2 img{width:100%!important;height:auto!important;display:block!important}
 .ph-acol{flex:1 1 0!important;min-width:0!important;gap:18px!important;padding:0!important;
  align-items:flex-start!important;max-width:none!important}
-.ph-pillbtn .elementor-button{border-radius:999px!important;background-color:var(--sand)!important;
+.ph-pillbtn .elementor-button{border-radius:999px!important;background-color:var(--pill)!important;
  color:var(--espresso)!important;padding:16px 34px!important}
 .ph-pillbtn .elementor-button:hover{background:var(--brass)!important;color:#fff!important}
 .ph-vals{padding:clamp(56px,7vw,100px) var(--gut)!important;text-align:center!important;
