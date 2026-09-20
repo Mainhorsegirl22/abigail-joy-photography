@@ -30,6 +30,10 @@ M = {
  "scholars": f"{U}/2025/01/AKC-East-Working-Line-German-Shepherd-Puppies-for-Sale-in-Maine-Pine-Hill-German-Shepherds-scaled.jpg",
  "montie":   f"{U}/2026/04/Cruz-AKC-German-Shepherd-dog-in-NH--scaled.jpg",
  "band":     f"{U}/2026/09/BK700068-scaled.jpg",
+ # a slot, not a photograph: she drops her own litter announcement graphic
+ # in from the Elementor panel. Displayed at its own aspect ratio because
+ # these posters carry burned-in text that a cover crop would cut off.
+ "litter_graphic": "https://placehold.co/1000x1100/EDE6DF/8A7A66?text=Upcoming+litter+graphic",
  "s1":       f"{U}/2026/08/Rangley-1-1-scaled.jpg",
  "s2":       f"{U}/2026/08/Rangley-3-scaled.jpg",
  "s3":       f"{U}/2026/08/Rrangley-5-scaled.jpg",
@@ -41,6 +45,7 @@ ALT = {
  "puppies": "German Shepherd puppies raised with Puppy Culture",
  "scholars": "K9 Scholars training program",
  "montie": "Captain Montie, IGP and personal protection",
+ "litter_graphic": "Pine Hill German Shepherds upcoming litter announcement",
  "s1": "Pine Hill German Shepherds in the Maine woods",
  "s2": "Working-line German Shepherd on the trail",
  "s3": "German Shepherd at Rangeley, Maine",
@@ -180,12 +185,27 @@ strip = con([
 # these five lines instead would renumber the whole back half of the
 # page and unstyle everything from the litter band down.
 
-litter = con([
-    con([p("Open reservations for 2026", "ph-kicker"),
-         h("Upcoming Litter &mdash; Late Fall 2026"),
+litterbox = con([
+    con([p("Open reservations", "ph-kicker"),
+         h("Our Upcoming Litter"),
+         rule(),
+         img("litter_graphic", "ph-litter__img"),
          p("We very occasionally have puppies available. If you&#8217;re interested in getting on our waiting "
            "list for our upcoming litter, we&#8217;d love to hear from you.", "ph-lede"),
-         btn("Join the Waiting List", "/reserve-a-puppy/")], "ph-band__card"),
+         btn("Join the Waiting List", "/reserve-a-puppy/")], "ph-litter__in"),
+], "ph-sec ph-litter")
+
+# Same treatment as the old litter band - photograph behind, copy on a white
+# card - carrying the one thing the homepage never said. It is the question
+# that decides whether a visitor is a good fit, so it belongs before the
+# puppy photographs do their work, not after the enquiry lands.
+why = con([
+    con([p("Before you apply", "ph-kicker"),
+         h("Why a Working Line?"),
+         p("Our dogs are bred for a job &mdash; protection, tracking, scent detection and sport. They are "
+           "intense, driven and genuinely hard work, and they are not suited to a quiet household. If that "
+           "is the dog you want, we would love to hear from you.", "ph-lede"),
+         btn("See What We Look For", "/reserve-a-puppy/")], "ph-band__card"),
 ], "ph-band", **BG("band"))
 
 scholars = con([con([
@@ -251,7 +271,7 @@ follow = con([con([
     w("shortcode", {"shortcode": "[instagram-feed feed=1]"}, "ph-feed"),
 ], "ph-narrow")], "ph-sec ph-linen")
 
-DATA = [hero, trust, story, health, culture, litter, scholars, shepherds,
+DATA = [hero, trust, story, health, culture, litterbox, why, scholars, shepherds,
         quote, contact, newsletter, follow]
 
 # ------------------------------------------------------------------ stylesheet
@@ -392,7 +412,18 @@ body{--espresso:#1C1A18;--ivory:#F6F4F1;--linen:#F2F0EC;--taupe:#C6C1B8;--sand:#
  text-transform:uppercase!important;color:rgba(247,244,238,.72)!important}
 
 /* ---- litter band: the photograph carries it, copy sits on a card ---- */
-.ph-band{position:relative!important;min-height:clamp(420px,54vh,560px)!important;display:flex!important;
+.ph-litter{background-color:var(--sand)!important}
+.ph-litter__in{max-width:720px!important;margin-inline:auto!important;align-items:center!important;
+ text-align:center!important;gap:22px!important;padding:0!important}
+.ph-litter__in .elementor-divider{display:flex!important;justify-content:center!important}
+/* the graphic carries its own text, so it is matted and never cropped:
+   height:auto, not the cover crop .ph-frame uses for photographs */
+.ph-litter__img{background-color:#FFFFFF!important;padding:14px!important;max-width:620px!important;
+ width:100%!important;box-shadow:0 2px 6px rgba(28,26,24,.05),0 22px 50px -24px rgba(28,26,24,.22)!important}
+.ph-litter__img img{width:100%!important;height:auto!important;display:block!important}
+/* was clamp(420px,54vh,560px): on a wide monitor that is a 3.6:1 letterbox
+   and the photograph behind it reads as squashed */
+.ph-band{position:relative!important;min-height:clamp(520px,74vh,760px)!important;display:flex!important;
  flex-direction:column!important;justify-content:center!important;
  padding:88px var(--gut)!important;overflow:hidden!important}
 .ph-band::after{content:""!important;position:absolute!important;inset:0!important;z-index:1!important;
@@ -408,6 +439,8 @@ body{--espresso:#1C1A18;--ivory:#F6F4F1;--linen:#F2F0EC;--taupe:#C6C1B8;--sand:#
 @media(max-width:880px){
 .ph-hero__side{display:none!important}
 .ph-hero{min-height:clamp(480px,74vh,620px)!important;padding-inline:var(--gut)!important}
+.ph-band{min-height:clamp(460px,64vh,600px)!important}
+.ph-litter__img{max-width:none!important}
 .ph-split,.ph-edge,.ph-duo{flex-direction:column!important;gap:36px!important}
 .ph-strip__row{flex-wrap:wrap!important;gap:3px!important}
 .ph-strip__img{flex:0 0 calc(50% - 1.5px)!important}
