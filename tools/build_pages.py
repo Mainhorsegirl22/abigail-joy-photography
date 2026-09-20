@@ -686,10 +686,10 @@ def about():
 
     d.append(vals("When It Comes To Our Dogs And Our Families",
                   "We\u2019re committed to\u2026",
-                  [("<svg viewBox='0 0 48 48'><path d='M24 5l14 5v12c0 10-6 17-14 21-8-4-14-11-14-21V10z'/><path d='M17 23l5 5 10-11'/></svg>", "Health Testing"),
-                   ("<svg viewBox='0 0 48 48'><path d='M24 41s-14-8.5-14-18.5A7.6 7.6 0 0124 18a7.6 7.6 0 0114 4.5c0 10-14 18.5-14 18.5z'/><ellipse cx='24' cy='28' rx='3.8' ry='3.1'/><ellipse cx='18.6' cy='23.4' rx='1.7' ry='2.2'/><ellipse cx='24' cy='21.6' rx='1.7' ry='2.2'/><ellipse cx='29.4' cy='23.4' rx='1.7' ry='2.2'/></svg>", "Puppy Culture"),
-                   ("<svg viewBox='0 0 48 48'><path d='M13 41V27c0-4 1-7 3-9.5L17 6l6.5 9.5L26 13l5 8.5c2 1.5 3.5 3 4.5 4.5L43 29l-1 2.5-6-1.5'/><path d='M31 30c0 5-3 9-8 11'/><circle cx='25' cy='21' r='1.1'/></svg>", "Responsible Breeding"),
-                   ("<svg viewBox='0 0 48 48'><path d='M6 12h21v15H17l-8 6v-6H6z'/><path d='M25 22h17v13h-6l-6 5v-5h-5z'/></svg>", "Lifetime Support")]))
+                  [("<svg viewBox='0 0 48 48'><path d='M24 4.5l15.5 5.6v11.9c0 10.9-6.4 18.4-15.5 22.2C14.9 40.4 8.5 32.9 8.5 22V10.1z'/><path d='M16.8 23.4l5.4 5.4L32 17.6'/></svg>", "Health Testing"),
+                   ("<svg viewBox='0 0 48 48'><path d='M24 42.5S8.5 33 8.5 22.6A8.3 8.3 0 0124 18.2a8.3 8.3 0 0115.5 4.4C39.5 33 24 42.5 24 42.5z'/><ellipse cx='24' cy='30.4' rx='4.6' ry='3.6'/><ellipse cx='17.2' cy='24.4' rx='2.1' ry='2.7'/><ellipse cx='24' cy='22.2' rx='2.1' ry='2.7'/><ellipse cx='30.8' cy='24.4' rx='2.1' ry='2.7'/></svg>", "Puppy Culture"),
+                   ("<svg viewBox='0 0 48 48'><circle cx='12.5' cy='11' r='5.5'/><circle cx='35.5' cy='11' r='5.5'/><path d='M12.5 16.5v6h23v-6'/><path d='M24 22.5v9'/><circle cx='24' cy='37.5' r='6'/></svg>", "Responsible Breeding"),
+                   ("<svg viewBox='0 0 48 48'><path d='M7 7.5h19a3 3 0 013 3v10a3 3 0 01-3 3H16l-6 4.6V23.5H7a3 3 0 01-3-3v-10a3 3 0 013-3z'/><path d='M25 27.5h16a3 3 0 013 3v8a3 3 0 01-3 3h-2.5v4.2L32.5 41.5H25a3 3 0 01-3-3v-8a3 3 0 013-3z'/></svg>", "Lifetime Support")]))
 
     d.append(trivia("Rapid fire", "Pine Hill Edition", [
         ("01", "We have exactly one breeding female. Freda is a family member "

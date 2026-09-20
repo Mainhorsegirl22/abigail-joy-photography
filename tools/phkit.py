@@ -641,7 +641,7 @@ body{--espresso:#1C1A18;--ivory:#F6F4F1;--linen:#F2F0EC;--sand:#E4DFD5;--pill:#D
 .ph-val{width:170px!important;flex:0 0 170px!important;align-items:center!important;
  text-align:center!important;gap:0!important;padding:0!important;max-width:none!important}
 .ph-vicon svg{width:58px!important;height:58px!important;stroke:var(--espresso)!important;
- stroke-width:1.1!important;fill:none!important;stroke-linecap:round!important;
+ stroke-width:1.4!important;fill:none!important;stroke-linecap:round!important;
  stroke-linejoin:round!important}
 .ph-vlabel p{margin-top:18px!important;font-size:11.5px!important;letter-spacing:.14em!important;
  text-transform:uppercase!important;color:var(--espresso)!important;line-height:1.5!important}
