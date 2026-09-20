@@ -258,8 +258,8 @@ DATA = [hero, trust, story, health, culture, litter, scholars, shepherds,
 CSS = """@font-face{font-family:'Mrs Saint Delafield';font-style:normal;font-weight:400;font-display:swap;
   src:url(https://fonts.gstatic.com/s/mrssaintdelafield/v14/v6-IGZDIOVXH9xtmTZfRagunqBw5WC62QKknLw.woff2) format('woff2')}
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Montserrat:wght@300;400;500;600&family=Mrs+Saint+Delafield&display=swap');
-body{--espresso:#1C1A18;--ivory:#F6F4F1;--linen:#F2F0EC;--taupe:#C6C1B8;--sand:#DCD8D1;
- --sage:#232020;--sage-deep:#3A3633;--brass:#7C7369;--body:#55504A;--hair:rgba(28,26,24,.12);
+body{--espresso:#1C1A18;--ivory:#F6F4F1;--linen:#F2F0EC;--taupe:#C6C1B8;--sand:#E4DFD5;--pill:#DCD8D1;
+ --sage:#232020;--sage-deep:#3A3633;--brass:#A48760;--brass-ink:#7A5F35;--body:#55504A;--hair:rgba(28,26,24,.12);
  --gut:clamp(24px,5vw,56px);--wrap:1180px;--sy:clamp(60px,7vw,100px);
  background:#FFFFFF;color:var(--body)}
 
@@ -275,15 +275,15 @@ body{--espresso:#1C1A18;--ivory:#F6F4F1;--linen:#F2F0EC;--taupe:#C6C1B8;--sand:#
 .ph-sub .elementor-heading-title,.ph-step .elementor-icon-box-title{
  font-size:18px!important;line-height:1.35!important;letter-spacing:0!important}
 .ph-script,.ph-script p{font-family:'Mrs Saint Delafield',cursive!important;color:var(--brass)!important;
- font-size:clamp(34px,3.8vw,48px)!important;line-height:1.1!important;font-style:normal!important}
+ font-size:clamp(40px,4.6vw,60px)!important;line-height:1.08!important;font-style:normal!important}
 .ph-kicker p{font-size:10.5px!important;font-weight:600!important;letter-spacing:.18em!important;
- text-transform:uppercase!important;color:var(--brass)!important}
+ text-transform:uppercase!important;color:var(--brass-ink)!important}
 .ph-lede p{font-size:15px!important;max-width:58ch}
 .ph-measure p{max-width:62ch}
 .ph-quote p{font-family:'Cormorant Garamond',Georgia,serif!important;font-style:italic!important;
  font-size:clamp(24px,3.1vw,40px)!important;line-height:1.45!important;color:var(--espresso)!important}
 .ph-by p,.ph-role p{font-size:10.5px!important;letter-spacing:.2em!important;
- text-transform:uppercase!important;color:var(--brass)!important}
+ text-transform:uppercase!important;color:var(--brass-ink)!important}
 .ph-list ul{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:6px 24px}
 .ph-list li{font-size:13.5px!important;line-height:1.7!important;padding-left:18px;position:relative}
 .ph-list li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:1px;background:var(--brass)}
@@ -331,7 +331,7 @@ body{--espresso:#1C1A18;--ivory:#F6F4F1;--linen:#F2F0EC;--taupe:#C6C1B8;--sand:#
 .ph-strip{padding:clamp(36px,4vw,56px) 0 clamp(48px,5.5vw,80px)!important;gap:0!important;
  background-color:#FFFFFF!important}
 .ph-strip__cap p{text-align:center!important;font-size:10.5px!important;font-weight:600!important;
- letter-spacing:.2em!important;text-transform:uppercase!important;color:var(--brass)!important;
+ letter-spacing:.2em!important;text-transform:uppercase!important;color:var(--brass-ink)!important;
  padding-bottom:24px!important}
 .ph-strip__row{display:flex!important;flex-direction:row!important;gap:3px!important;
  width:100%!important;max-width:none!important;padding:0!important}
@@ -343,7 +343,7 @@ body{--espresso:#1C1A18;--ivory:#F6F4F1;--linen:#F2F0EC;--taupe:#C6C1B8;--sand:#
 .ph-steps{gap:40px!important;padding:8px 0!important;max-width:none!important}
 .ph-step .elementor-icon-box-wrapper{display:flex!important;gap:24px!important;
  align-items:flex-start!important;text-align:left!important}
-.ph-step .elementor-icon{background:var(--sand)!important;color:var(--espresso)!important;
+.ph-step .elementor-icon{background-color:var(--pill)!important;color:var(--espresso)!important;
  width:68px!important;height:68px!important;border-radius:50%!important;display:flex!important;
  align-items:center!important;justify-content:center!important;font-size:22px!important;flex:none!important}
 .ph-step .elementor-icon-box-description{font-size:13.5px!important;line-height:1.7!important}
@@ -377,13 +377,13 @@ body{--espresso:#1C1A18;--ivory:#F6F4F1;--linen:#F2F0EC;--taupe:#C6C1B8;--sand:#
  padding:120px clamp(56px,7vw,110px) clamp(56px,9vh,104px) var(--gut)!important;overflow:hidden!important}
 .ph-hero::after{content:""!important;position:absolute!important;inset:0!important;z-index:1!important;
  pointer-events:none!important;
- background:linear-gradient(105deg,rgba(26,19,13,.62) 0%,rgba(26,19,13,.34) 38%,transparent 66%)!important}
+ background:linear-gradient(105deg,rgba(26,19,13,.56) 0%,rgba(26,19,13,.28) 42%,rgba(26,19,13,.04) 72%)!important}
 .ph-hero>*{position:relative!important;z-index:2!important}
 .ph-hero__in{max-width:600px!important;width:auto!important;gap:10px!important;
  align-items:flex-start!important;padding:0!important}
 .ph-hero .elementor-heading-title{color:#FFFFFF!important;font-size:clamp(27px,3.1vw,40px)!important;
  line-height:1.06!important;letter-spacing:-.02em!important}
-.ph-hero .ph-script p{color:rgba(246,244,241,.95)!important;font-size:clamp(30px,3.4vw,44px)!important}
+.ph-hero .ph-script p{color:rgba(246,244,241,.95)!important;font-size:clamp(32px,4vw,56px)!important}
 .ph-hero__side{position:absolute!important;right:calc(var(--gut)*.55)!important;top:50%!important;
  transform:translateY(-50%) rotate(180deg)!important;writing-mode:vertical-rl!important;z-index:2!important;
  white-space:nowrap!important;border-right:1px solid rgba(247,244,238,.28)!important;
