@@ -412,7 +412,7 @@ def cta(title, body, label, url, image_key=None):
 CSS = """@font-face{font-family:'Mrs Saint Delafield';font-style:normal;font-weight:400;font-display:swap;
  src:url(https://fonts.gstatic.com/s/mrssaintdelafield/v14/v6-IGZDIOVXH9xtmTZfRagunqBw5WC62QKknLw.woff2) format('woff2')}
 body{--espresso:#1C1A18;--ivory:#F6F4F1;--linen:#F2F0EC;--sand:#DCD8D1;--sage:#232020;
- --sage-deep:#3A3633;--brass:#7C7369;--body:#55504A;--hair:rgba(28,26,24,.12);
+ --sage-deep:#3A3633;--brass:#A48760;--brass-ink:#7A5F35;--body:#55504A;--hair:rgba(28,26,24,.12);
  --gut:clamp(24px,5vw,56px);--wrap:1180px;--sy:clamp(60px,7vw,100px);
  background:#FFFFFF;color:var(--body)}
 
@@ -510,7 +510,7 @@ body{--espresso:#1C1A18;--ivory:#F6F4F1;--linen:#F2F0EC;--sand:#DCD8D1;--sage:#2
 .ph-stat__v p{font-family:'Cormorant Garamond',Georgia,serif!important;font-size:30px!important;
  color:var(--espresso)!important;line-height:1.1!important}
 .ph-stat__l p{font-size:10.5px!important;letter-spacing:.18em!important;text-transform:uppercase!important;
- color:var(--brass)!important}
+ color:var(--brass-ink)!important}
 
 .ph-steps{display:flex!important;flex-direction:row!important;align-items:flex-start!important;
  gap:clamp(20px,2.6vw,36px)!important;max-width:var(--wrap)!important;width:100%!important;
@@ -519,7 +519,7 @@ body{--espresso:#1C1A18;--ivory:#F6F4F1;--linen:#F2F0EC;--sand:#DCD8D1;--sage:#2
 .ph-step{gap:8px!important;padding:14px 0 0!important;border-top:1px solid var(--brass)!important;
  align-items:flex-start!important;max-width:none!important}
 .ph-step__n p{font-size:10.5px!important;font-weight:600!important;letter-spacing:.18em!important;
- text-transform:uppercase!important;color:var(--brass)!important}
+ text-transform:uppercase!important;color:var(--brass-ink)!important}
 .ph-step__t .elementor-heading-title{font-size:19px!important;letter-spacing:0!important}
 .ph-step p{font-size:13.5px!important;line-height:1.7!important}
 
@@ -532,7 +532,7 @@ body{--espresso:#1C1A18;--ivory:#F6F4F1;--linen:#F2F0EC;--sand:#DCD8D1;--sage:#2
 .ph-facts li{display:flex;gap:18px;justify-content:space-between;align-items:baseline;
  padding:11px 0;border-bottom:1px solid var(--hair)}
 .ph-facts li span{font-size:10.5px!important;letter-spacing:.16em;text-transform:uppercase;
- color:var(--brass);flex:0 0 auto}
+ color:var(--brass-ink);flex:0 0 auto}
 .ph-facts li em{font-style:normal;font-size:14px;color:var(--espresso);text-align:right}
 
 .ph-q .elementor-heading-title{font-size:18px!important;letter-spacing:0!important;
@@ -653,7 +653,7 @@ body{--espresso:#1C1A18;--ivory:#F6F4F1;--linen:#F2F0EC;--sand:#DCD8D1;--sage:#2
 .ph-trivl{flex:1 1 0!important;min-width:0!important;gap:0!important;padding:0!important;
  align-items:flex-start!important;max-width:none!important}
 .ph-tkick p{font-size:11px!important;letter-spacing:.3em!important;text-transform:uppercase!important;
- color:var(--brass)!important;margin-bottom:6px!important}
+ color:var(--brass-ink)!important;margin-bottom:6px!important}
 .ph-tscript p{font-family:'Mrs Saint Delafield',cursive!important;color:var(--espresso)!important;
  font-size:clamp(34px,4vw,54px)!important;line-height:1!important;margin-bottom:34px!important}
 .ph-trow{display:flex!important;flex-direction:row!important;gap:26px!important;
@@ -713,7 +713,7 @@ body{--espresso:#1C1A18;--ivory:#F6F4F1;--linen:#F2F0EC;--sand:#DCD8D1;--sage:#2
  max-width:none!important;flex:1 1 0!important;min-width:0!important}
 .ph-dog .elementor-heading-title{font-size:clamp(26px,3vw,38px)!important}
 .ph-dogname p{font-size:10.5px!important;letter-spacing:.2em!important;
- text-transform:uppercase!important;color:var(--brass)!important}
+ text-transform:uppercase!important;color:var(--brass-ink)!important}
 """
 
 
