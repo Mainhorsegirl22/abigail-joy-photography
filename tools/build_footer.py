@@ -11,16 +11,17 @@ and a renumber would unstyle it. New elements take new ids at the end.
   python3 build_footer.py data -> _elementor_data JSON
   python3 build_footer.py css  -> Elementor Custom CSS
 """
-import json, sys
+import json, re, sys
 
 MAIL = "pinehillgermanshepherds@gmail.com"
 TEL_H, TEL_L = "207-703-8043", "+12077038043"
 LOGO = ("https://www.pinehillgermanshepherds.com/wp-content/uploads/"
         "2026/09/Pine-Hill-Logo.png")
-# Placeholders on purpose. The live footer has had "#" here since it was built
-# and I will not guess at her handles - a wrong Facebook URL sends her buyers
-# to a stranger's page. She pastes the real two in from the Elementor panel.
-FB = IG = "#"
+# Both supplied by her. Worth noting the Instagram handle is
+# "pinehillshepherds", not "pinehillgermanshepherds" - which is exactly why
+# guessing it would have sent her buyers to a stranger's account.
+FB = "https://www.facebook.com/profile.php?id=61564685349435"
+IG = "https://www.instagram.com/pinehillshepherds/"
 
 def con(i, children, classes="", **s):
     st = {"content_width": "full"}
@@ -117,8 +118,9 @@ CSS = """.ph-foot{background-color:var(--linen,#F2F0EC)!important;
 
 .ph-foot .elementor-heading-title{font-family:'Cormorant Garamond',Georgia,serif!important;
  font-weight:500!important;color:#1C1A18!important;margin:0!important}
-.ph-foot__logo img{max-width:200px!important;width:auto!important;height:auto!important;
- display:block!important;margin-bottom:4px!important}
+.ph-foot__logo .elementor-widget-container{text-align:left!important}
+.ph-foot__logo img{max-width:240px!important;width:auto!important;height:auto!important;
+ display:block!important;margin:0 auto 4px 0!important}
 /* column headings: the darker gold, because the display gold is too faint
    to read at 10.5px */
 .ph-foot__col .elementor-heading-title{font-family:'Montserrat',system-ui,sans-serif!important;
@@ -178,11 +180,39 @@ CSS = """.ph-foot{background-color:var(--linen,#F2F0EC)!important;
  align-items:flex-start!important;gap:8px!important}
 }"""
 
+def flatten(css):
+    """One line, no comments.
+
+    The MCP meta write runs stripslashes on the value, and a newline arrives
+    as the two characters backslash-n, so stripslashes leaves a literal "n"
+    welded into the rule ("!important;n border-top:..."). Verified by reading
+    the value back. So nothing that crosses that wire may contain a newline.
+    """
+    css = re.sub(r"/\*.*?\*/", "", css, flags=re.S)
+    css = re.sub(r"\s*\n\s*", "", css)
+    return re.sub(r"\s{2,}", " ", css).strip()
+
+
+def settings(css):
+    """custom_css as PHP-serialized page settings.
+
+    The length prefix is a byte count and must be exact - a wrong one makes
+    unserialize fail, which Elementor reads as "no custom CSS" and the footer
+    renders naked.
+    """
+    b = css.encode("utf-8")
+    return 'a:1:{s:10:"custom_css";s:%d:"%s";}' % (len(b), css)
+
+
 if __name__ == "__main__":
     mode = sys.argv[1] if len(sys.argv) > 1 else "data"
     if mode == "data":
         out = json.dumps(DATA, separators=(",", ":"), ensure_ascii=False)
         assert "\\" not in out, "backslash will not survive the MCP write"
         sys.stdout.write(out)
+    elif mode == "settings":
+        css = flatten(CSS)
+        assert "\\" not in css and "\n" not in css
+        sys.stdout.write(settings(css))
     else:
         sys.stdout.write(CSS)
