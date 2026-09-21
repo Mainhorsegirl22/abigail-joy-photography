@@ -201,18 +201,27 @@ def stat(num, label):
 # out of DATA renumbers nothing. Verified by diffing both builds - identical.
 SPOTS = os.environ.get("PH_SPOTS") == "1"
 
-spots = con([
-    p("Taking reservations", "ph-spotpill"),
-    con([stat("4", "Still available"), stat("7", "In this litter")], "ph-stats",
-        flex_direction="row"),
-], "ph-spots")
+def spots():
+    """Built lazily, on purpose.
+
+    con() and friends hand out element ids as they are CALLED, so a block
+    constructed at import time consumes ids even when it is left out of
+    DATA - which silently shifted every id after the litter section by 9
+    and would have pointed the whole lower half of the stylesheet at
+    elements that do not exist on the live page.
+    """
+    return con([
+        p("Taking reservations", "ph-spotpill"),
+        con([stat("4", "Still available"), stat("7", "In this litter")], "ph-stats",
+            flex_direction="row"),
+    ], "ph-spots")
 
 litterbox = con([
     con([p("Open reservations", "ph-kicker"),
          h("Our Upcoming Litter"),
          rule(),
          img("litter_graphic", "ph-litter__img"),
-         *([spots] if SPOTS else []),
+         *([spots()] if SPOTS else []),
          p("We very occasionally have puppies available. If you&#8217;re interested in getting on our waiting "
            "list for our upcoming litter, we&#8217;d love to hear from you.", "ph-lede"),
          btn("Join the Waiting List", "/reserve-a-puppy/")], "ph-litter__in"),
@@ -562,5 +571,14 @@ if __name__ == "__main__":
         sys.stdout.write(json.dumps(DATA, separators=(",", ":")))
     elif mode == "css":
         sys.stdout.write(resolve(CSS + CSS_FEED))
+    elif mode == "push":
+        # What actually goes into the meta write. The MCP write mangles a
+        # newline into a literal "n" inside the rule, so nothing crossing
+        # that wire may contain one - see build_footer.flatten.
+        out = re.sub(r"/\*.*?\*/", "", resolve(CSS + CSS_FEED), flags=re.S)
+        out = re.sub(r"\s*\n\s*", "", out)
+        out = re.sub(r"\s{2,}", " ", out).strip()
+        assert "\n" not in out and "\\" not in out
+        sys.stdout.write(out)
     elif mode == "index":
         sys.stdout.write(json.dumps(INDEX, indent=1))

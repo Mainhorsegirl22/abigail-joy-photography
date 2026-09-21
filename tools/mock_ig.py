@@ -8,13 +8,18 @@ hooks, with half the tiles drawn the background-image way and half with a
 real <img>, because the page cannot be loaded from here to see which one
 6.13 emits - the stylesheet has to survive both.
 """
-import base64, json, subprocess, sys
+import base64, json, os, subprocess, sys
 sys.path.insert(0, "tools")
 import build_elementor as be
 
 S = "/tmp/claude-0/-home-user-abigail-joy-photography/e575f777-2c94-5737-948b-2e39a7522532/scratchpad"
 json.dump([be.DATA[-1]], open(f"{S}/ig.json", "w"), separators=(",", ":"))
-open(f"{S}/ig.css", "w").write(be.resolve(be.CSS + be.CSS_FEED))
+css = be.resolve(be.CSS + be.CSS_FEED)
+if os.environ.get("PH_FLAT") == "1":
+    # exactly the bytes the meta write will carry
+    css = subprocess.run([sys.executable, "tools/build_elementor.py", "push"],
+                         capture_output=True, text=True, check=True).stdout
+open(f"{S}/ig.css", "w").write(css)
 raw = subprocess.run([sys.executable, "tools/emulate_elementor.py",
                       f"{S}/ig.json", f"{S}/ig.css"],
                      capture_output=True, text=True, check=True).stdout
