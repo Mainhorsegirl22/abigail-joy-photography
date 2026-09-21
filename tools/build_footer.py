@@ -193,6 +193,98 @@ def flatten(css):
     return re.sub(r"\s{2,}", " ", css).strip()
 
 
+# Which element each class lives on. The stylesheet is written against
+# readable classes and then rewritten to target Elementor's own
+# .elementor-element-{id} hooks, which Elementor always emits. The class
+# hooks depend on _css_classes surviving the round trip; the id hooks do
+# not, and the version of this footer that demonstrably rendered on the
+# live site used ids.
+HOOKS = {
+    "ph-foot": ["phf001"],
+    "ph-foot__top": ["phf002"],
+    "ph-foot__brand": ["phf003"],
+    "ph-foot__col": ["phf007", "phf017"],
+    "ph-foot__reach": ["phf017"],
+    "ph-foot__logo": ["phf004"],
+    "ph-script": ["phf006"],
+    "ph-foot__links": ["phf009", "phf019"],
+    "ph-foot__contact": ["phf019"],
+    "ph-foot__addr": ["phf021"],
+    "ph-foot__social": ["phf020"],
+    "ph-foot__rule": ["phf013"],
+    "ph-foot__legal": ["phf014"],
+}
+
+
+def hook(css):
+    """Rewrite .ph-* class selectors to .elementor-element-{id} selectors.
+
+    A class that sits on more than one element expands into more than one
+    selector, so this splits the selector list first and expands each
+    selector on its own - a blind string replace would turn
+    ".ph-foot__col>.e-con-inner" into a selector list where only the last
+    branch keeps the child part.
+    """
+    names = sorted(HOOKS, key=len, reverse=True)
+
+    def expand(sel):
+        out = [sel]
+        for name in names:
+            if "." + name not in sel:
+                continue
+            nxt = []
+            for s in out:
+                for eid in HOOKS[name]:
+                    nxt.append(s.replace("." + name, ".elementor-element-" + eid))
+            out = nxt
+        return out
+
+    def rewrite(block):
+        head, brace, rest = block.partition("{")
+        if not brace:
+            return block
+        sels = []
+        for sel in head.split(","):
+            sels.extend(expand(sel.strip()))
+        return ",".join(sels) + brace + rest
+
+    parts, depth, buf, out = [], 0, "", []
+    # split on top-level rules, keeping @media blocks intact
+    i = 0
+    while i < len(css):
+        ch = css[i]
+        buf += ch
+        if ch == "{":
+            depth += 1
+        elif ch == "}":
+            depth -= 1
+            if depth == 0:
+                parts.append(buf)
+                buf = ""
+        i += 1
+    for part in parts:
+        if part.lstrip().startswith("@media"):
+            head, _, body = part.partition("{")
+            inner = body.rstrip()[:-1]
+            sub = []
+            d, b = 0, ""
+            for ch in inner:
+                b += ch
+                if ch == "{":
+                    d += 1
+                elif ch == "}":
+                    d -= 1
+                    if d == 0:
+                        sub.append(rewrite(b))
+                        b = ""
+            out.append(head + "{" + "".join(sub) + "}")
+        else:
+            out.append(rewrite(part))
+    result = "".join(out)
+    assert ".ph-" not in result, "a class hook was left unmapped"
+    return result
+
+
 def settings(css):
     """custom_css as page settings, for the MCP write's "meta" object.
 
@@ -216,7 +308,7 @@ if __name__ == "__main__":
         assert "\\" not in out, "backslash will not survive the MCP write"
         sys.stdout.write(out)
     elif mode == "settings":
-        css = flatten(CSS)
+        css = hook(flatten(CSS))
         assert "\\" not in css and "\n" not in css
         sys.stdout.write(json.dumps({"_elementor_page_settings": settings(css)},
                                     ensure_ascii=False))
