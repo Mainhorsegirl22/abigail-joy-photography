@@ -19,7 +19,7 @@ Two things make this survive Elementor where the hand-coded page did not:
   python3 build_elementor.py data  -> _elementor_data JSON
   python3 build_elementor.py css   -> the page stylesheet (Elementor Custom CSS)
 """
-import json, re, sys
+import json, os, re, sys
 
 U = "https://www.pinehillgermanshepherds.com/wp-content/uploads"
 M = {
@@ -191,6 +191,16 @@ def stat(num, label):
 # Two numbers, not three. "Reserved" is inferable from these two, and a third
 # editable number is a third chance for them to contradict each other on a
 # page she updates by hand between litters.
+# The availability counter is built but NOT on the live page - it was held
+# back so pushing it would not collide with her unsaved Elementor edits.
+# Off by default so a plain build matches what is actually live; build with
+# PH_SPOTS=1 when it is finally pushed, data and css together.
+#
+# It does not affect the stylesheet either way: con() numbers an element when
+# the block is constructed, not when the tree is walked, so leaving a block
+# out of DATA renumbers nothing. Verified by diffing both builds - identical.
+SPOTS = os.environ.get("PH_SPOTS") == "1"
+
 spots = con([
     p("Taking reservations", "ph-spotpill"),
     con([stat("4", "Still available"), stat("7", "In this litter")], "ph-stats",
@@ -202,7 +212,7 @@ litterbox = con([
          h("Our Upcoming Litter"),
          rule(),
          img("litter_graphic", "ph-litter__img"),
-         spots,
+         *([spots] if SPOTS else []),
          p("We very occasionally have puppies available. If you&#8217;re interested in getting on our waiting "
            "list for our upcoming litter, we&#8217;d love to hear from you.", "ph-lede"),
          btn("Join the Waiting List", "/reserve-a-puppy/")], "ph-litter__in"),
@@ -483,6 +493,52 @@ body{--espresso:#1C1A18;--ivory:#F6F4F1;--linen:#F2F0EC;--taupe:#C6C1B8;--sand:#
 }"""
 
 
+# --------------------------------------------------- instagram strip
+# The feed is a Smash Balloon shortcode sitting inside .ph-narrow (820px),
+# which is what made it read as cropped. These rules break it out to the
+# full viewport and size the tiles to ~240px, so the column count follows
+# the screen instead of being fixed - a fixed column count either shrinks
+# the tiles on a laptop or bloats them on a wide monitor.
+#
+# Everything below the wrapper keys off the plugin's own ids, which do
+# not depend on Elementor's element numbering at all. Only the
+# full-bleed wrapper needs an Elementor hook, and it names both the
+# element class and .elementor-widget-shortcode (the feed is the only
+# shortcode widget on this page) so a renumber cannot silently drop it.
+# Only the plugin's long-stable hooks are targeted (#sb_instagram,
+# #sbi_images, .sbi_item, .sbi_photo, .sbi_info, #sbi_load). The photo
+# rule covers both of Smash Balloon's image techniques - a background
+# image on the anchor, and a real <img> inside it - because I cannot load
+# the page from here to see which one 6.13 emits.
+CSS_FEED = """
+.ph-feed,.elementor-widget-shortcode{align-self:center!important;width:100vw!important;max-width:100vw!important;
+ margin-top:clamp(36px,4vw,56px)!important;
+ /* pull the strip down over the section's own bottom padding so the photos
+    run into the footer, as they do in the reference, instead of floating
+    above a dead band of linen */
+ margin-bottom:calc(var(--sy) * -1)!important}
+.ph-feed .elementor-widget-container,
+.elementor-widget-shortcode .elementor-widget-container{width:100%!important;padding:0!important}
+#sb_instagram{padding:0!important;width:100%!important;max-width:none!important}
+#sb_instagram .sb_instagram_header,#sb_instagram #sbi_load,
+#sb_instagram .sbi_info,#sb_instagram .sbi_caption_wrap,
+#sb_instagram .sbi_meta,#sb_instagram .sbi_caption{display:none!important}
+#sbi_images{display:grid!important;
+ grid-template-columns:repeat(auto-fill,minmax(min(210px,33.333%),1fr))!important;
+ grid-template-rows:auto!important;grid-auto-rows:0!important;overflow:hidden!important;
+ gap:0!important;padding:0!important;margin:0!important;width:100%!important}
+#sbi_images .sbi_item{width:auto!important;padding:0!important;margin:0!important;
+ float:none!important;min-width:0!important}
+#sb_instagram .sbi_photo_wrap{height:100%!important;margin:0!important;padding:0!important}
+#sb_instagram .sbi_photo{position:relative!important;display:block!important;height:0!important;
+ padding-bottom:112%!important;overflow:hidden!important;margin:0!important;
+ background-size:cover!important;background-position:center!important}
+#sb_instagram .sbi_photo img{position:absolute!important;top:0!important;left:0!important;
+ width:100%!important;height:100%!important;object-fit:cover!important;margin:0!important;
+ max-width:none!important}
+"""
+
+
 def resolve(css):
     """Rewrite every .ph-name selector to also match the real element ids.
 
@@ -505,6 +561,6 @@ if __name__ == "__main__":
     if mode == "data":
         sys.stdout.write(json.dumps(DATA, separators=(",", ":")))
     elif mode == "css":
-        sys.stdout.write(resolve(CSS))
+        sys.stdout.write(resolve(CSS + CSS_FEED))
     elif mode == "index":
         sys.stdout.write(json.dumps(INDEX, indent=1))
