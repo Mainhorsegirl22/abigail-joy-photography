@@ -194,14 +194,19 @@ def flatten(css):
 
 
 def settings(css):
-    """custom_css as PHP-serialized page settings.
+    """custom_css as page settings, for the MCP write's "meta" object.
 
-    The length prefix is a byte count and must be exact - a wrong one makes
-    unserialize fail, which Elementor reads as "no custom CSS" and the footer
-    renders naked.
+    Do NOT hand-serialize this. WordPress update_post_meta() runs the value
+    through maybe_serialize(), which serializes a string that already looks
+    serialized a SECOND time. Elementor then reads a string where it expects
+    an array and the site throws a critical error - not at write time, but
+    later, whenever something forces the page settings to be parsed. Pass a
+    real object and let WordPress serialize it once.
+
+    _elementor_data is the opposite case: Elementor stores it as a JSON
+    string, so it goes over the wire as a string and must stay one.
     """
-    b = css.encode("utf-8")
-    return 'a:1:{s:10:"custom_css";s:%d:"%s";}' % (len(b), css)
+    return {"custom_css": css}
 
 
 if __name__ == "__main__":
@@ -213,6 +218,7 @@ if __name__ == "__main__":
     elif mode == "settings":
         css = flatten(CSS)
         assert "\\" not in css and "\n" not in css
-        sys.stdout.write(settings(css))
+        sys.stdout.write(json.dumps({"_elementor_page_settings": settings(css)},
+                                    ensure_ascii=False))
     else:
         sys.stdout.write(CSS)
