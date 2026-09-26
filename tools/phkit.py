@@ -748,8 +748,9 @@ body{--espresso:#1C1A18;--ivory:#F6F4F1;--linen:#F2F0EC;--sand:#E4DFD5;--pill:#D
 .ph-pro__name .elementor-heading-title{font-size:clamp(44px,5vw,64px)!important;line-height:1!important;
  color:var(--brass-ink)!important;letter-spacing:-.02em!important;margin:14px 0 12px!important}
 .ph-pro__by p{font-family:'Cormorant Garamond',Georgia,serif!important;font-style:italic!important;
- font-size:17px!important;max-width:none!important;letter-spacing:.02em!important;color:var(--body)!important;
- margin:0 0 26px!important}
+ font-size:16px!important;max-width:none!important;letter-spacing:0!important;color:var(--body)!important;
+ margin:0 0 26px!important;white-space:nowrap!important}
+@media(max-width:1100px){.ph-pro__by p{white-space:normal!important}}
 .ph-pro__by a{color:var(--brass-ink)!important;text-decoration:underline!important;text-underline-offset:3px!important}
 .ph-spec ul{list-style:none!important;margin:0!important;padding:0!important}
 .ph-spec li{font-size:13px!important;letter-spacing:.06em!important;text-transform:uppercase!important;

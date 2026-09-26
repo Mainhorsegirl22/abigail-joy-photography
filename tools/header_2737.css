@@ -16,6 +16,10 @@ html,body{overflow-x:clip;max-width:100%}
 .elementor-element-ph1a004{flex:0 0 auto!important}
 
 /* 2026-09-26, her review: bar smaller, its text much smaller, logo bigger.
+   The same values are ALSO set on the widgets themselves in _elementor_data
+   (ph1a001 padding 6px, ph1a002 8.5px / 1.6px tracking / 1.5 line-height,
+   ph1a004 236px, ph1a003 min-height 104px) - the editor preview ignored the
+   override, so the settings carry it and these rules are belt and braces.
    Widget settings had the bar at 11px padding / 10.5px text and the logo at
    170px; these win over them. */
 .elementor-element-ph1a001{padding:6px 16px!important;min-height:0!important}
