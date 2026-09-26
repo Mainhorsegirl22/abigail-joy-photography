@@ -153,9 +153,17 @@ CSS = """.ph-foot{background-color:var(--linen,#F2F0EC)!important;
  width:36px!important;height:36px!important;font-size:14px!important;
  border-radius:0!important;margin:0 8px 0 0!important;
  transition:background-color .25s ease,color .25s ease,border-color .25s ease}
+/* Elementor colours the glyph itself white (i{color} / svg{fill}), so
+   recolouring the box alone left white icons on a transparent box */
+.ph-foot__social .elementor-social-icon i{color:#1C1A18!important}
+.ph-foot__social .elementor-social-icon svg{fill:#1C1A18!important}
 .ph-foot__social .elementor-social-icon:hover,
 .ph-foot__social .elementor-social-icon:focus-visible{background-color:#232020!important;
  border-color:#232020!important;color:#F6F4F1!important}
+.ph-foot__social .elementor-social-icon:hover i,
+.ph-foot__social .elementor-social-icon:focus-visible i{color:#F6F4F1!important}
+.ph-foot__social .elementor-social-icon:hover svg,
+.ph-foot__social .elementor-social-icon:focus-visible svg{fill:#F6F4F1!important}
 
 .ph-foot__rule .elementor-divider{padding-block:0!important}
 .ph-foot__rule .elementor-divider-separator{border-top:1px solid rgba(28,26,24,.14)!important;
@@ -165,7 +173,7 @@ CSS = """.ph-foot{background-color:var(--linen,#F2F0EC)!important;
  width:100%!important;margin-inline:auto!important;margin-top:clamp(20px,2.4vw,28px)!important;
  padding:0!important}
 .ph-foot__legal>*,.ph-foot__legal>.e-con-inner>*{width:auto!important;flex:0 0 auto!important;max-width:none!important}
-.ph-foot__legal p{font-size:10px!important;letter-spacing:.16em!important;
+.ph-foot__legal p{font-size:8.5px!important;letter-spacing:.18em!important;
  text-transform:uppercase!important;color:#55504A!important}
 
 @media(max-width:980px){
