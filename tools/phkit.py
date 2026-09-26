@@ -714,6 +714,14 @@ body{--espresso:#1C1A18;--ivory:#F6F4F1;--linen:#F2F0EC;--sand:#E4DFD5;--pill:#D
 .ph-dog .elementor-heading-title{font-size:clamp(26px,3vw,38px)!important}
 .ph-dogname p{font-size:10.5px!important;letter-spacing:.2em!important;
  text-transform:uppercase!important;color:var(--brass-ink)!important}
+/* Elementor's lightbox fits an image DOWN to the viewport but never up, so
+   a small scan opens at its native pixel size in the middle of a dark
+   screen. Fill the viewport instead. Capped at 1600px: upscaling further
+   only adds blur. This cannot make a low-resolution screenshot sharp - the
+   real fix for a certificate is uploading the document itself. */
+.elementor-lightbox .elementor-lightbox-image{width:min(94vw,1600px)!important;
+ max-width:94vw!important;height:auto!important;max-height:90vh!important;
+ object-fit:contain!important}
 """
 
 
