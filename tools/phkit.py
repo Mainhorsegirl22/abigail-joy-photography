@@ -42,6 +42,9 @@ IMG = {
     "pair":         f"{U}/2026/09/BK706246-Edit-scaled.jpg",
     "farm":         f"{U}/2026/09/AB9405DB-D650-4947-A274-59A0754E55A6-scaled.jpg",
     "wks":          f"{U}/2026/04/WKS-scaled.jpg",
+    # her About page picks, 2026-09-26
+    "about_hero":   f"{U}/2026/09/BK702976-Edit-Edit-scaled.jpg",
+    "about_triv":   f"{U}/2026/09/BK706368-scaled.jpg",
     "breeders":     f"{U}/2026/03/EN7A9779-scaled.jpg",
     "sunlit":       f"{U}/2026/07/EN7A8251-scaled-Edit-scaled.jpg",
     # NOT a photograph - this is the Litter A announcement GRAPHIC, with
@@ -69,6 +72,8 @@ ALT = {
     "scholars": "Puppies in the K9 Scholars training program",
     "portrait": "Working-line German Shepherd portrait",
     "farm": "Pine Hill, Garland, Maine",
+    "about_hero": "Maine working line German shepherd breeders",
+    "about_triv": "German shepherd breeders in Maine",
     "litter_graphic": "Pine Hill German Shepherds Litter A announcement",
     "breeders": "working line german shepherd in the snow",
     "freda_g1": "German Shepherd puppy checklist",
@@ -362,8 +367,8 @@ def trivia(kicker, script, items, image=None):
     section("triv")
     rows = [con([p(n, "ph-tnum"), p(t, "ph-ttext")], "ph-trow")
             for n, t in items]
-    left = con([p(kicker, "ph-tkick"), p(script, "ph-tscript")] + rows,
-               "ph-trivl")
+    head = ([p(kicker, "ph-tkick")] if kicker else []) + [p(script, "ph-tscript")]
+    left = con(head + rows, "ph-trivl")
     right = image or ph_img("Family+photo", 1200, 900, "ph-frame2")
     return con([con([left, right], "ph-trivin")], "ph-triv")
 
@@ -629,6 +634,7 @@ body{--espresso:#1C1A18;--ivory:#F6F4F1;--linen:#F2F0EC;--sand:#E4DFD5;--pill:#D
 .ph-igwrap #sb_instagram{padding:0!important;width:100%!important}
 .ph-igwrap #sb_instagram .sbi_item img{display:block!important}
 .ph-igwrap .elementor-widget-container{width:100%!important}
+.ph-acol .elementor-widget-text-editor p+p{margin-top:14px!important}
 @media(max-width:880px){.ph-open__img img{height:clamp(300px,46vh,420px)!important}}
 
 .ph-bhero{padding:0 20px!important;gap:0!important;background-color:#FBF9F6!important}

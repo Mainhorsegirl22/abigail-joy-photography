@@ -477,9 +477,13 @@ body{--espresso:#1C1A18;--ivory:#F6F4F1;--linen:#F2F0EC;--taupe:#C6C1B8;--sand:#
  pointer-events:none!important;
  background:linear-gradient(100deg,rgba(26,19,13,.22) 0%,rgba(26,19,13,.08) 52%,rgba(26,19,13,0) 100%)!important}
 .ph-band>*{position:relative!important;z-index:2!important}
-.ph-band__card{max-width:480px!important;width:100%!important;background-color:#FFFFFF!important;
- margin-left:max(0px,calc((100% - var(--wrap))/2))!important;
- padding:clamp(30px,3.4vw,46px) clamp(28px,3.2vw,44px) clamp(32px,3.6vw,48px)!important;
+/* The photograph is width-bound under cover at every desktop ratio, so the
+   dog cannot be shifted sideways: the card has to get out of its way instead.
+   Pinned to the left gutter and held under a third of the width, it clears
+   the dog's face from 1280px up. */
+.ph-band__card{max-width:380px!important;width:100%!important;background-color:#FFFFFF!important;
+ margin-left:0!important;
+ padding:clamp(26px,3vw,38px) clamp(24px,2.8vw,36px) clamp(28px,3.2vw,40px)!important;
  gap:18px!important;align-items:flex-start!important;
  box-shadow:0 18px 44px -28px rgba(28,26,24,.34),0 2px 10px -6px rgba(28,26,24,.16)!important}
 
@@ -545,6 +549,16 @@ CSS_FEED = """
 #sb_instagram .sbi_photo img{position:absolute!important;top:0!important;left:0!important;
  width:100%!important;height:100%!important;object-fit:cover!important;margin:0!important;
  max-width:none!important}
+
+@media(max-width:600px){
+.elementor-widget-text-editor,.elementor-widget-text-editor p,.elementor-widget-text-editor li{font-size:14px!important;line-height:1.75!important}
+.elementor-widget-heading .elementor-heading-title{font-size:clamp(22px,6.2vw,26px)!important}
+.ph-hero .elementor-heading-title{font-size:clamp(24px,7vw,30px)!important}
+.ph-script p,.ph-hero .ph-script p{font-size:clamp(30px,8.6vw,36px)!important}
+.ph-quote p{font-size:22px!important}
+.ph-lede p{font-size:14.5px!important}
+.elementor-button{font-size:10px!important;padding:15px 26px!important}
+}
 """
 
 

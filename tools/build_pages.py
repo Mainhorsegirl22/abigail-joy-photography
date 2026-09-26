@@ -412,37 +412,42 @@ EXTRA = """
  align-items:flex-start!important}
 /* Title, clauses and signature share the one column, so the page reads as a
    single document rather than three stacked bands. */
-/* The masthead is centred like the head of a printed agreement; the clauses
-   below stay on their left rail, which is what makes them scannable. */
-.ph-mast{width:100%!important;max-width:none!important;align-items:center!important;
- text-align:center!important;gap:0!important;padding:0 0 clamp(26px,3vw,36px)!important;
+/* One left edge for the whole document: masthead, preamble and the clause
+   rail all start on the same line, the way headed paper does. */
+.ph-mast{width:100%!important;max-width:none!important;align-items:flex-start!important;
+ text-align:left!important;gap:0!important;padding:0 0 clamp(26px,3vw,36px)!important;
  margin-bottom:clamp(30px,3.4vw,42px)!important;border-bottom:1px solid var(--hair)!important}
 .ph-mast__co p{margin-bottom:4px!important;font-size:clamp(24px,2.4vw,30px)!important}
 .ph-title .elementor-heading-title{font-size:clamp(26px,2.8vw,34px)!important;
  letter-spacing:-.015em!important;margin-bottom:12px!important}
 .ph-mast__note p{font-size:14px!important;line-height:1.8!important;max-width:58ch!important;
- margin-inline:auto!important;color:var(--body)!important;padding-top:4px!important}
+ margin-inline:0!important;color:var(--body)!important;padding-top:4px!important}
 .ph-doc>.ph-lede p{font-size:16.5px!important;line-height:1.8!important;max-width:74ch!important;
  color:var(--espresso)!important;padding-bottom:clamp(14px,2vw,24px)!important}
 
 .ph-sign{border-top:1px solid var(--espresso)!important;
  margin-top:clamp(18px,2.4vw,32px)!important;padding-top:clamp(34px,4vw,48px)!important}
+.ph-sign .ph-crow__n{flex-direction:column!important;align-items:flex-start!important;gap:8px!important}
 .ph-sign .ph-cnum p{font-family:'Montserrat',system-ui,sans-serif!important;font-size:10.5px!important;
  font-weight:600!important;letter-spacing:.22em!important;text-transform:uppercase!important;
- padding-top:6px!important}
+ padding-top:6px!important;line-height:1.5!important}
 .ph-sign .ph-terms p{padding-bottom:22px!important}
 .ph-sign .ph-note p{padding-top:16px!important}
 /* One clause: the rail on the left, the wording on the right. */
 .ph-crow{display:flex!important;flex-direction:row!important;align-items:flex-start!important;
  gap:clamp(28px,4.5vw,72px)!important;width:100%!important;max-width:none!important;
  padding:clamp(28px,3.2vw,40px) 0!important;border-top:1px solid var(--hair)!important}
-.ph-crow__n{flex:0 0 clamp(160px,20%,230px)!important;width:auto!important;max-width:none!important;
- gap:8px!important;padding:0!important;align-items:flex-start!important}
+/* Number and clause name share one line, on the same baseline, so the name sits
+   level with the first line of the wording beside it instead of a line below. */
+.ph-crow__n{flex:0 0 clamp(160px,22%,250px)!important;width:auto!important;max-width:none!important;
+ flex-direction:row!important;align-items:baseline!important;gap:14px!important;padding:0!important}
+.ph-crow__n>*{width:auto!important}
 .ph-crow__b{flex:1 1 0!important;min-width:0!important;width:auto!important;max-width:680px!important;
  gap:0!important;padding:0!important;align-items:flex-start!important}
-.ph-cnum p{font-family:'Cormorant Garamond',Georgia,serif!important;font-size:24px!important;
- line-height:1!important;color:var(--brass)!important;letter-spacing:.04em!important}
-.ph-ctitle .elementor-heading-title{font-size:20px!important;line-height:1.25!important;
+.ph-cnum p{font-family:'Cormorant Garamond',Georgia,serif!important;font-size:20px!important;
+ line-height:1.4!important;color:var(--brass)!important;letter-spacing:.04em!important;
+ font-variant-numeric:lining-nums!important}
+.ph-ctitle .elementor-heading-title{font-size:20px!important;line-height:1.4!important;
  letter-spacing:-.005em!important}
 .ph-terms p{font-size:15px!important;line-height:1.85!important;padding-bottom:14px!important}
 .ph-terms:last-child p{padding-bottom:0!important}
@@ -509,6 +514,26 @@ body .ph-gf .gform_footer .gform_button:focus-visible{
  color:var(--espresso)!important;line-height:1.8!important}
 .ph-gf .gform_wrapper .gform_validation_errors{border-radius:0!important}
 .elementor-element-litherow10 img{height:auto!important;object-fit:contain!important}
+
+/* Phone: her review 2026-09-26, "make the text a little smaller". Sits last so
+   it wins over every desktop rule of equal weight. */
+@media(max-width:600px){
+.elementor-widget-text-editor,.elementor-widget-text-editor p,.elementor-widget-text-editor li{font-size:14px!important;line-height:1.75!important}
+.elementor-widget-heading .elementor-heading-title{font-size:clamp(22px,6.2vw,26px)!important}
+.ph-hero .elementor-heading-title{font-size:clamp(24px,7vw,30px)!important}
+.ph-script p,.ph-hero .ph-script p{font-size:clamp(30px,8.6vw,36px)!important}
+.ph-introh .elementor-heading-title,.ph-valsh .elementor-heading-title{font-size:clamp(24px,6.8vw,28px)!important}
+.ph-tscript p{font-size:clamp(34px,9.5vw,40px)!important;margin-bottom:24px!important}
+.ph-tnum p{font-size:44px!important}
+.ph-tnum{flex:0 0 48px!important}
+.ph-lede p,.ph-doc>.ph-lede p{font-size:14.5px!important}
+.ph-pro__name .elementor-heading-title{font-size:38px!important}
+.ph-strap p{font-size:11px!important;letter-spacing:.12em!important}
+.ph-vlabel p{font-size:10.5px!important}
+.ph-title .elementor-heading-title{font-size:26px!important}
+.ph-mast__co p{font-size:22px!important}
+.elementor-button{font-size:10px!important;padding:15px 26px!important}
+}
 """
 
 # ============================================================= OUR SHEPHERDS
@@ -688,31 +713,42 @@ def rangeley():
 # the heading "Scent Dedectino and SAR Taining".
 def about():
     start("abt")
-    d = [hero("Raised In Our Home,<br>Not In A <em>Kennel</em>.",
-              "welcome to Pine Hill", "sunlit", ypos=50,
+    # Wording, photographs and headings below are hers, saved from the
+    # Elementor editor on 2026-09-26; the page is regenerated from them so a
+    # push never wipes what she typed.
+    d = [hero("Family Raised German Shepherds", "welcome to Pine Hill",
+              "about_hero", ypos=50,
               button=("Meet Our Shepherds", "/our-shepherds-new/"))]
 
     d.append(intro(
-        "Small Family Breeder of Working Line German Shepherds",
-        "Based in Garland, Maine \u2014 raised for work, for sport, and for "
-        "family life.",
-        "We are a small family business raising working-line German Shepherds "
-        "on 40 acres of rural countryside in the backwoods of New England. We "
-        "specialize in dogs known for their personalities, working drive, "
-        "scent detection ability and balanced temperaments, and our focus is "
-        "early puppy socialization, development and training."))
+        "Family Raised Working Line German Shepherds",
+        "Based in the rural hills of Northern Maine",
+        "<strong>Welcome to Pine Hill German Shepherds!</strong></p>"
+        "<p>We\u2019re a small family business raising working-line German "
+        "Shepherds on 40 acres in the backwoods of New England. Our dogs are "
+        "known for their great personalities, balanced temperaments, the "
+        "ability to work but also a good off switch."))
 
     d.append(sec([row([
-        img("pair", "ph-frame2"),
-        con([p("With only one breeding female \u2014 Freda, our beloved family "
-               "member \u2014 we can plan each litter carefully and spend "
-               "countless hours observing and working with the puppies. That "
-               "lets us shape their early training and socialization using "
-               "tested, proven methods."),
-             p("Raised inside our home and surrounded by our family, our "
-               "puppies get plenty of love and care from day one. Every puppy "
-               "has its own personality, just as every person does, and our "
-               "goal is to match each one to the family that suits it best."),
+        img("wks", "ph-frame2", alt="maine dog breeder"),
+        con([p("Early socialization, development, and training are our primary "
+               "focus. With just one breeding female, Freda, we carefully plan "
+               "every litter and spend countless hours observing and working "
+               "with our puppies. Using proven methods, we lay the groundwork "
+               "in those first weeks that prepares each puppy to excel in "
+               "whatever training comes next. Our puppies are raised in our "
+               "home, surrounded by family and plenty of love from day one. "
+               "Like people, every puppy has its own personality, so we take "
+               "care to match each one with the family that best fits its "
+               "temperament and needs. All of our dogs are AKC registered, "
+               "however that\u2019s just the bare minimum \u2014 just because a "
+               "dog is AKC registered doesn\u2019t mean it\u2019s a good dog. We "
+               "perform OFA evaluations of hips, elbows, eyes, and heart, plus "
+               "DNA testing for the 12 most common genetic diseases in German "
+               "Shepherds before we breed a dog. The result: puppies with "
+               "excellent temperaments and a healthy start in life.</p>"
+               "<p>We offer litters from time to time and look forward to "
+               "helping you find your perfect companion!"),
              btn("Meet Our Shepherds", "/our-shepherds-new/")],
             "ph-acol"),
     ], "ph-asplit")], "story", tone="white", tight=True))
@@ -724,14 +760,14 @@ def about():
                    ("<svg viewBox='0 0 48 48'><circle cx='12.5' cy='11' r='5.5'/><circle cx='35.5' cy='11' r='5.5'/><path d='M12.5 16.5v6h23v-6'/><path d='M24 22.5v9'/><circle cx='24' cy='37.5' r='6'/></svg>", "Responsible Breeding"),
                    ("<svg viewBox='0 0 48 48'><path d='M7 7.5h19a3 3 0 013 3v10a3 3 0 01-3 3H16l-6 4.6V23.5H7a3 3 0 01-3-3v-10a3 3 0 013-3z'/><path d='M25 27.5h16a3 3 0 013 3v8a3 3 0 01-3 3h-2.5v4.2L32.5 41.5H25a3 3 0 01-3-3v-8a3 3 0 013-3z'/></svg>", "Lifetime Support")]))
 
-    d.append(trivia("Rapid fire", "Pine Hill Edition", [
+    d.append(trivia(None, "What Makes Us Different?", [
         ("01", "We only have one female. Freda is a family member first and a "
                "foundation dam second."),
         ("02", "Hiking, swimming, horseback riding \u2014 our shepherds come "
                "along for all of it."),
         ("03", "Every puppy is raised inside our home, being safely exposed to "
                "daily household sounds and life!"),
-    ], image=img("farm", "ph-frame2")))
+    ], image=img("about_triv", "ph-frame2")))
 
     # Her Instagram feed (Smash Balloon, feed 1 - the one the live homepage
     # shows), under the same centred heading every other section uses.

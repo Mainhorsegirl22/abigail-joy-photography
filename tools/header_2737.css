@@ -30,3 +30,21 @@ html,body{overflow-x:clip;max-width:100%}
 .elementor-element-ph1a004 img{width:160px!important}
 .elementor-element-ph1a003{min-height:84px!important}
 }
+
+/* 2026-09-26, her phone screenshot: no menu button. ph1a005 was allowed to
+   shrink to nothing and its parents clip overflow, so the toggle vanished.
+   Below the menu breakpoint the toggle must keep its width, the dropdown
+   must be free to open below the bar, and on phones the application button
+   gives way to it (Reserve a Puppy is in the menu). */
+@media(max-width:1024px){
+.elementor-element-ph1a003,.elementor-element-ph1a006{overflow:visible!important}
+.elementor-element-ph1a005{flex:0 0 auto!important;min-width:44px!important;position:static!important}
+.elementor-element-ph1a005 .elementor-menu-toggle{display:flex!important;margin-left:auto!important}
+.elementor-element-ph1a005 .elementor-nav-menu--dropdown{background:#FFFFFF!important;border-top:1px solid rgba(43,37,31,.12)!important;box-shadow:0 18px 40px -20px rgba(28,26,24,.3)!important}
+.elementor-element-ph1a005 .elementor-nav-menu--dropdown a{font-size:12px!important;letter-spacing:.16em!important;padding:15px 24px!important;color:#2B251F!important}
+.elementor-element-ph1a005 .elementor-nav-menu--dropdown .sub-menu a{padding-left:40px!important;font-size:11px!important}
+}
+@media(max-width:767px){
+.elementor-element-ph1a007{display:none!important}
+.elementor-element-ph1a006{gap:0!important}
+}
