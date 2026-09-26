@@ -317,7 +317,9 @@ def quiettop(title, kicker, lede=None, tone="sand"):
     """A title band with no photograph at all, on a tinted ground."""
     section("qtop")
     # title=None drops the serif h1 and lets the script line carry the band.
-    kids = [p(kicker, "ph-script")]
+    # With no serif title the script line is a real h1, so the page keeps
+    # one heading for search engines. It is styled to look the same.
+    kids = [p(kicker, "ph-script") if title else h(kicker, "ph-script", tag="h1")]
     if title:
         kids.append(h(title, tag="h1"))
     kids.append(rule(True))
@@ -714,6 +716,9 @@ body{--espresso:#1C1A18;--ivory:#F6F4F1;--linen:#F2F0EC;--sand:#E4DFD5;--pill:#D
 .ph-qtop__t .elementor-heading-title{font-size:clamp(34px,4.6vw,60px)!important;
  line-height:1.06!important;letter-spacing:-.025em!important}
 .ph-qtop__t .ph-script p{font-size:clamp(38px,4vw,54px)!important;margin-bottom:0!important}
+.ph-qtop__t .ph-script .elementor-heading-title{font-family:'Mrs Saint Delafield',cursive!important;
+ font-weight:400!important;color:var(--brass)!important;font-size:clamp(38px,4vw,54px)!important;
+ line-height:1.08!important;letter-spacing:0!important;margin:0!important}
 .ph-qtop__t .ph-lede p+p{margin-top:14px!important}
 .ph-gridsec{padding:clamp(40px,5vw,72px) var(--gut)!important;gap:0!important;
  max-width:none!important}
