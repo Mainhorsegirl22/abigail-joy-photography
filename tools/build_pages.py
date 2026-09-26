@@ -569,7 +569,7 @@ def shepherds():
          ("Eyes", "OFA CAER Normal"),
          ("Genetics", "Embark, clear")],
         "/rangeley-new/")],
-        "rangeley", tone="linen"))
+        "rangeley", tone="white"))
 
     d.append(vals("What We Test For, Every Time",
                   "On both parents, before any breeding\u2026",
