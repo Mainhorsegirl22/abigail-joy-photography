@@ -573,8 +573,8 @@ def shepherds():
 
     d.append(vals("What We Test For, Every Time",
                   "On both parents, before any breeding\u2026",
-                  [("<svg viewBox='0 0 48 48'><path d='M24 6v12'/><path d='M24 18c-7 0-12 5-12 12v12'/><path d='M24 18c7 0 12 5 12 12v12'/><circle cx='16' cy='30' r='4'/><circle cx='32' cy='30' r='4'/></svg>", "Hips and Elbows"), ("<svg viewBox='0 0 48 48'><path d='M24 40s-14-8-14-18a7.5 7.5 0 0114-4 7.5 7.5 0 0114 4c0 10-14 18-14 18z'/><path d='M12 22h6l3-5 4 10 3-5h8'/></svg>", "Heart"),
-                   ("<svg viewBox='0 0 48 48'><path d='M4 24s8-11 20-11 20 11 20 11-8 11-20 11S4 24 4 24z'/><circle cx='24' cy='24' r='6'/></svg>", "Eyes"), ("<svg viewBox='0 0 48 48'><path d='M16 6c0 12 16 12 16 24s-16 12-16 12'/><path d='M32 6c0 12-16 12-16 24s16 12 16 12'/><path d='M18 14h12M16 22h16M16 30h16M18 38h12'/></svg>", "Genetic Panel")]))
+                  [("<svg viewBox='0 0 48 48'><path d='M17.9 21A5 5 0 1 0 10 24a5 5 0 1 0 7.9 3h12.2A5 5 0 1 0 38 24a5 5 0 1 0-7.9-3z'/></svg>", "Hips and Elbows"), ("<svg viewBox='0 0 48 48'><path d='M24 41s-15-9-15-19.5A8 8 0 0 1 24 17a8 8 0 0 1 15 4.5C39 32 24 41 24 41z'/><path d='M15 26h5l2.5-4 3.5 8 2.5-4h4.5'/></svg>", "Heart"),
+                   ("<svg viewBox='0 0 48 48'><path d='M5 24s7.5-11 19-11 19 11 19 11-7.5 11-19 11S5 24 5 24z'/><circle cx='24' cy='24' r='5.5'/></svg>", "Eyes"), ("<svg viewBox='0 0 48 48'><path d='M16 6c0 9 16 9 16 18s-16 9-16 18'/><path d='M32 6c0 9-16 9-16 18s16 9 16 18'/><path d='M16.6 8.5h14.8M19 12h10M17.5 24h13M19 36h10M16.6 39.5h14.8'/></svg>", "Genetic Panel")]))
 
     d.append(cta("Puppies From These Two",
                  "Litter A is on the ground. The waiting list is short.",
