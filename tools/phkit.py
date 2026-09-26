@@ -44,6 +44,11 @@ IMG = {
     "wks":          f"{U}/2026/04/WKS-scaled.jpg",
     # her About page picks, 2026-09-26
     "about_hero":   f"{U}/2026/09/BK702976-Edit-Edit-scaled.jpg",
+    # her Litters page picks, 2026-09-26
+    "lit_hero":     f"{U}/2024/10/AdobeStock_616450859.jpg",
+    "lit_pups":     f"{U}/2026/09/Pine-Hill-German-Shepherds-scaled.jpg",
+    "lit_freda":    f"{U}/2024/11/EN7A2317.jpg",
+    "lit_band":     f"{U}/2024/10/black-7729619_640.jpg",
     "about_triv":   f"{U}/2026/09/BK706368-scaled.jpg",
     "breeders":     f"{U}/2026/03/EN7A9779-scaled.jpg",
     "sunlit":       f"{U}/2026/07/EN7A8251-scaled-Edit-scaled.jpg",
@@ -73,6 +78,10 @@ ALT = {
     "portrait": "Working-line German Shepherd portrait",
     "farm": "Pine Hill, Garland, Maine",
     "about_hero": "Maine working line German shepherd breeders",
+    "lit_hero": "Working line german shepherd breeder in maine",
+    "lit_pups": "Reserve a German Shepherd puppy in Maine.",
+    "lit_freda": "Czech German Shepherd dog laying on a gravel path in Bangor Maine",
+    "lit_band": "German Shepherds",
     "about_triv": "German shepherd breeders in Maine",
     "litter_graphic": "Pine Hill German Shepherds Litter A announcement",
     "breeders": "working line german shepherd in the snow",

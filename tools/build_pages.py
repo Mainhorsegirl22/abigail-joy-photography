@@ -204,77 +204,64 @@ def puppies():
 # her before pushing litters data again; the stylesheet is safe to push.
 def litters():
     start("lit")
-
+    # Photographs, dates, counts and wording are hers, from the Elementor
+    # editor on 2026-09-26. Rebuilt here so a push keeps them.
     d = [hero("Current and Upcoming Litters", "reserve your puppy",
-              "litter_band", ypos=62,
+              "lit_hero", ypos=0,
               button=("Join the Waiting List", "/reserve-a-puppy-new/"))]
 
     d.append(sec([
-        head("what's planned", "Late Fall 2026",
+        head("what's planned", "November 2026",
              "We plan one litter at a time, so that every puppy gets the same "
              "attention. This is everything currently planned."),
         con([split(
-            img("puppies", "ph-frame"),
+            img("lit_pups", "ph-frame"),
             col([
-                h(f"Freda \u00d7 {RANGELEY['call']} \u2014 Late Fall 2026", tag="h3"),
+                h(f"Freda \u00d7 {RANGELEY['call']} \u2014 November 2026", tag="h3"),
                 dl([("Dam", FREDA["name"]),
                     ("Sire", RANGELEY["name"]),
-                    ("Expected", "Late fall 2026"),
-                    ("Puppies expected", fill("estimate")),
-                    ("Colors", fill("sable, bi-color?")),
+                    ("Born", "September 13, 2026"),
+                    ("Puppies", "4 males, 2 females"),
+                    ("Available", "1 male, 1 female"),
+                    ("Colors", "Dark and black sable"),
                     ("Registration", "AKC, Limited"),
                     ("Price", "$3,000 \u00b7 $500 deposit")]),
-                p("Reservations are taken in the order deposits are received. "
-                  "Puppies are matched to families at six weeks, once their "
-                  "temperaments are clear.", "ph-measure"),
-                btn("Reserve a Puppy", "/reserve-a-puppy-new/"),
+                p("These pups will be nice balanced pups with medium to low "
+                  "working drive, suitable for active family companion homes, "
+                  "service prospects, scent work, sports and more.", "ph-measure"),
+                btn("Apply for a Puppy", "/reserve-a-puppy-new/"),
             ]),
         )], "ph-litter"),
     ], "current", tone="white"))
 
-    # Both parents, with every result printed and the paperwork linked where
-    # she has published it. This is the page a serious buyer actually reads.
+    # Meet the parents: a photograph, a name, one line, and the way to their
+    # own page. The health testing lives on those pages now, not here.
     d.append(sec([
-        head("the parents", "Health Testing, In Full",
-             "Every result below is on file. Freda's certificates open in a new "
-             "tab. Rangeley's OFA results are searchable on his registration "
-             "number."),
+        head("meet the parents", "Meet the Parents"),
         row([
-            card([img("freda", "ph-frame ph-frame--sq"),
+            card([img("lit_freda", "ph-frame ph-frame--sq"),
                   h(FREDA["name"], tag="h3"),
                   p("Dam \u00b7 dark sable \u00b7 search and rescue", "ph-role"),
-                  dl([("AKC", FREDA["akc"]),
-                      ("Hips", link("Good", FREDA["hips"])),
-                      ("Elbows", link("Good", FREDA["elbows"])),
-                      ("Heart", link("Normal", FREDA["heart"])),
-                      ("Eyes", link("Normal", FREDA["eyes"])),
-                      ("Genetics", "Clear")]),
-                  btn("Read Her Pedigree", FREDA["pedigree"])]),
+                  btn("Meet Freda", "/freda-new/")]),
             card([img("rangeley1", "ph-frame ph-frame--sq"),
                   h(RANGELEY["name"], tag="h3"),
                   p(f"Sire \u00b7 called {RANGELEY['call']}", "ph-role"),
-                  dl([("AKC", RANGELEY["akc"]),
-                      ("Hips", "OFA Good"),
-                      ("Elbows", "OFA Normal"),
-                      ("Heart", "OFA Advanced Echocardiogram, Normal"),
-                      ("Eyes", "OFA CAER, Normal"),
-                      ("Genetics", "Embark, Clear")]),
-                  p("An advanced echocardiogram is a step beyond the basic "
-                    "cardiac exam most breeders stop at.", "ph-note")]),
+                  btn(f"Meet {RANGELEY['call']}", "/rangeley-new/")]),
         ], "ph-split"),
     ], "parents", tone="linen"))
 
+    # Puppy photographs. Four to start; she swaps or adds in the editor.
     d.append(sec([
-        head("the sire", RANGELEY["call"],
-             "A dark sable working-line male with a full OFA panel behind him."),
+        head("the puppies", "Puppy Pictures",
+             "New photographs as they grow."),
         quad([img(k, "ph-frame ph-frame--sq")
-              for k in ("rangeley2", "rangeley3", "rangeley5", "rangeley7")]),
-    ], "sire", tone="white"))
+              for k in ("lit_pups", "puppies", "freda_g1", "scholars")]),
+    ], "pups", tone="white"))
 
     d.append(cta("Nothing Available Right Now?",
                  "Join the waiting list and you will hear about the next litter "
                  "before it is announced anywhere else.",
-                 "Join the Waiting List", "/reserve-a-puppy-new/", image_key="band2"))
+                 "Join the Waiting List", "/reserve-a-puppy-new/", image_key="lit_band"))
     return d
 
 
