@@ -60,7 +60,7 @@ ALT = {
     "working": "AKC working-line German Shepherd in Maine",
     "montie": "Captain Montie, IGP and personal protection",
     "puppies": "German Shepherd puppies raised with Puppy Culture",
-    "scholars": "Puppies in the K9 Scholars training programme",
+    "scholars": "Puppies in the K9 Scholars training program",
     "portrait": "Working-line German Shepherd portrait",
     "farm": "Pine Hill, Garland, Maine",
     "litter_graphic": "Pine Hill German Shepherds Litter A announcement",
@@ -542,7 +542,7 @@ body{--espresso:#1C1A18;--ivory:#F6F4F1;--linen:#F2F0EC;--sand:#E4DFD5;--pill:#D
 .ph-step p{font-size:13.5px!important;line-height:1.7!important}
 
 .ph-list ul{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:6px 24px}
-.ph-list li{font-size:13.5px!important;line-height:1.7!important;padding-left:18px;position:relative}
+.ph-list li{font-size:13.5px!important;line-height:1.7!important;padding-left:18px;position:relative;text-align:left!important}
 .ph-list li::before{content:'';position:absolute;left:0;top:11px;width:7px;height:1px;background:var(--brass)}
 .ph-list--one ul{grid-template-columns:1fr}
 

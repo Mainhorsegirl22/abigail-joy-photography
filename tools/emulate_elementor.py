@@ -68,6 +68,8 @@ def widget_inner(t, s):
     if t == "google_maps":
         return ('<div class="elementor-custom-embed">'
                 '<iframe src="about:blank" style="background:#dcd8d1;height:400px"></iframe></div>')
+    if t == "html":
+        return s.get("html", "")
     if t == "shortcode":
         return '<div style="min-height:220px;background:#E8E5DF"></div>'
     return ""
@@ -81,10 +83,11 @@ def render(node):
         full = s.get("content_width") == "full"
         cls = (f'elementor-element elementor-element-{i} e-flex e-con '
                f'{"e-con-full" if full else "e-con-boxed"} {extra}')
-        style = ""
+        st = f'flex-direction:{s.get("flex_direction", "column")};'
         if s.get("background_image"):
-            style = (f' style="background-image:url(\'{s["background_image"]["url"]}\');'
-                     f'background-position:center center;background-size:cover"')
+            st += (f'background-image:url(\'{s["background_image"]["url"]}\');'
+                   'background-position:center center;background-size:cover')
+        style = f' style="{st}"'
         kids = "".join(render(k) for k in node.get("elements", []))
         return f'<div class="{cls}" data-id="{i}"{style}>{kids}</div>'
     t = node["widgetType"]

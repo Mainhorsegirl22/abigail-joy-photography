@@ -104,7 +104,7 @@ def puppies():
                 "Vet-checked before pickup",
                 "AKC papers, Limited Registration"], "ph-list ph-list--one"),
             p("The balance is due in full at pickup, in certified funds or cash. "
-              "Personal cheques are not accepted at pickup.", "ph-measure"),
+              "Personal checks are not accepted at pickup.", "ph-measure"),
             btn("Reserve a Puppy", "/reserve-a-puppy/"),
         ]),
         img("portrait"),
@@ -113,7 +113,7 @@ def puppies():
     # --- how they are raised
     d.append(sec([
         head("how they're raised", "The First Nine Weeks",
-             "Every puppy goes through the same programme, from the day they are "
+             "Every puppy goes through the same program, from the day they are "
              "born until the day they go home."),
         steps([
             ("Days 3–16", "Early Neurological Stimulation",
@@ -139,13 +139,13 @@ def puppies():
             p("k9 scholars", "ph-script"),
             h("Taking Training Further"),
             rule(),
-            p("Our own five-week programme, run after the Puppy Culture weeks for "
+            p("Our own five-week program, run after the Puppy Culture weeks for "
               "families who want a head start. Puppies learn advanced manners and "
               "meet situations most puppies do not see until much later.",
               "ph-measure"),
             ul(["Sit, stay, come and leash work", "Crate training",
                 "Manding — the automatic sit", "Food manners",
-                "Advanced socialisation", "Scent detection games",
+                "Advanced socialization", "Scent detection games",
                 "Confidence building", "Manners in public"]),
             p(f"Price and dates: {fill('to be confirmed')}", "ph-measure"),
             btn("Learn More", "/k9-scholars/", "ph-ghost"),
@@ -193,7 +193,7 @@ def puppies():
 
     d.append(cta("Ready to Start?",
                  "Tell us about your family and what you are looking for. "
-                 "We answer every enquiry ourselves.",
+                 "We answer every inquiry ourselves.",
                  "Join the Waiting List", "/reserve-a-puppy/", image_key="litter_band"))
     return d
 
@@ -222,7 +222,7 @@ def litters():
                     ("Sire", RANGELEY["name"]),
                     ("Expected", "Late fall 2026"),
                     ("Puppies expected", fill("estimate")),
-                    ("Colours", fill("sable, bi-colour?")),
+                    ("Colors", fill("sable, bi-color?")),
                     ("Registration", "AKC, Limited"),
                     ("Price", "$3,000 \u00b7 $500 deposit")]),
                 p("Reservations are taken in the order deposits are received. "
@@ -426,13 +426,6 @@ EXTRA = """
 .ph-doc>.ph-lede p{font-size:16.5px!important;line-height:1.8!important;max-width:74ch!important;
  color:var(--espresso)!important;padding-bottom:clamp(14px,2vw,24px)!important}
 
-@media(max-width:820px){
-.ph-crow{flex-direction:column!important;gap:14px!important}
-.ph-crow__n{flex:0 0 auto!important;flex-direction:row!important;align-items:baseline!important;
- gap:12px!important}
-.ph-crow__b{max-width:none!important}
-.ph-cnum p{font-size:19px!important}
-}
 .ph-sign{border-top:1px solid var(--espresso)!important;
  margin-top:clamp(18px,2.4vw,32px)!important;padding-top:clamp(34px,4vw,48px)!important}
 .ph-sign .ph-cnum p{font-family:'Montserrat',system-ui,sans-serif!important;font-size:10.5px!important;
@@ -454,6 +447,14 @@ EXTRA = """
  letter-spacing:-.005em!important}
 .ph-terms p{font-size:15px!important;line-height:1.85!important;padding-bottom:14px!important}
 .ph-terms:last-child p{padding-bottom:0!important}
+/* Phone: the rail sits above the wording. Must come after the desktop rules. */
+@media(max-width:820px){
+.ph-crow{flex-direction:column!important;gap:14px!important}
+.ph-crow__n{flex:0 0 auto!important;flex-direction:row!important;align-items:baseline!important;
+ gap:12px!important}
+.ph-crow__b{max-width:none!important}
+.ph-cnum p{font-size:19px!important}
+}
 /* Gravity Forms, dressed to match the rest of the site. Targets Gravity's own
    markup rather than Elementor's, because the form is a Gravity form. */
 .ph-gf .gform_wrapper .gfield_label,.ph-gf .gform_wrapper legend.gfield_label{
@@ -680,16 +681,16 @@ def about():
         "family life.",
         "We are a small family business raising working-line German Shepherds "
         "on 40 acres of rural countryside in the backwoods of New England. We "
-        "specialise in dogs known for their personalities, working drive, "
+        "specialize in dogs known for their personalities, working drive, "
         "scent detection ability and balanced temperaments, and our focus is "
-        "early puppy socialisation, development and training."))
+        "early puppy socialization, development and training."))
 
     d.append(sec([row([
         ph_img("Portrait+photo", 900, 1125),
         con([p("With only one breeding female \u2014 Freda, our beloved family "
                "member \u2014 we can plan each litter carefully and spend "
                "countless hours observing and working with the puppies. That "
-               "lets us shape their early training and socialisation using "
+               "lets us shape their early training and socialization using "
                "tested, proven methods."),
              p("Raised inside our home and surrounded by our family, our "
                "puppies get plenty of love and care from day one. Every puppy "
@@ -728,7 +729,7 @@ def reserve():
 
     d.append(sec([con([
         p("Each of our puppies is precious to us, and we dedicate many hours "
-          "to early socialisation, early puppy development and Early Scent "
+          "to early socialization, early puppy development and Early Scent "
           "Introduction. Because their welfare matters to us, we guide every "
           "potential buyer through a thorough application process, to be sure "
           "one of our puppies is genuinely a good fit. We will do our best to "
@@ -857,7 +858,7 @@ def puppy_culture():
 
     d.append(sec([con([
         p("Our puppies are raised using Puppy Culture, ESI (Early Scent "
-          "Introduction) and early socialisation techniques."),
+          "Introduction) and early socialization techniques."),
         p("Every puppy has a unique personality, and we have the opportunity "
           "to be part of the first nine weeks of their lives \u2014 shaping and "
           "nurturing that potential before they ever come home to you."),
@@ -876,7 +877,7 @@ def puppy_culture():
                       "Crate training",
                       "Manding \u2014 the automatic sit",
                       "Food manners",
-                      "Advanced socialisation",
+                      "Advanced socialization",
                       "Daily handling, and a great deal of love",
                       "Problem-solving exercises",
                       "Scent detection exercises",
