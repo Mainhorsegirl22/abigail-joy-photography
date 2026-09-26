@@ -603,10 +603,19 @@ def shepherds():
 # One page per dog, reached by clicking through from Meet Our Shepherds.
 # Registered name, a write-up, the full results, and that dog's own photos.
 def _dog(tag, call, kicker, lede, story, facts, photos, hero_key,
-         reverse=False):
+         reverse=False, more=None):
     start(tag)
     d = [sec([profile_block(hero_key, lede, call, kicker, story, facts,
                             name_tag="h1")], "top", tone="white")]
+
+    # A longer write-up with a photograph beside it, per her request: text
+    # on the left in a box she can keep typing into, picture on the right.
+    if more:
+        title, paras, key = more
+        d.append(sec([row([con([h(title), rule(False)] + [p(x) for x in paras],
+                               "ph-acol"),
+                           img(key, "ph-frame2")], "ph-asplit")],
+                     "more", tone="linen", tight=True))
 
     d.append(sec([head(None, f"{call} in Pictures"),
                   row([img(k, "ph-gcell") for k in photos], "ph-grid")],
@@ -636,7 +645,15 @@ def freda():
          ("Genetic panel", "Clear"),
          ("Pedigree", link("Read her pedigree", FREDA["pedigree"]))],
         ["freda", "portrait", "sunlit", "pair", "breeders", "farm"],
-        "freda")
+        "freda",
+        more=("More About Freda",
+              ["Freda is a dark sable with a lean, agile build and a big "
+               "heart. She\u2019s a medium-drive working German Shepherd who "
+               "loves a job, with great ball drive and experience in tracking "
+               "and scent work. She has an intense drive to please and will do "
+               "anything for you and a ball! Just as important, she has a "
+               "great off switch."],
+              "pair"))
 
 
 def rangeley():
