@@ -48,6 +48,12 @@ IMG = {
     # burned-in text and health results. Never use it behind a hero title.
     "litter_graphic": f"{U}/2026/09/Pine-Hill-German-Shepherds-scaled.jpg",
     "band2":        f"{U}/2026/09/BK700064-scaled.jpg",
+    # Freda's gallery, as she picked it in Elementor on 2026-09-26.
+    "freda_g1":     f"{U}/2025/01/Pine-Hill-German-Shepherds-DDR-German-Shepherd-puppies-for-Sale-in-Bangor-Maine-scaled.jpg",
+    "freda_g2":     f"{U}/2025/01/EN7A0662-2-scaled.jpg",
+    "freda_g3":     f"{U}/2026/02/CAMP9905-Edit-scaled.jpg",
+    "freda_g4":     f"{U}/2024/10/20240707_183320-scaled.jpg",
+    "freda_g5":     f"{U}/2024/12/Pine-Hill-German-Shepherds-Best-German-Shepeherd-Breeders-in-New-England-East-Working-Line-German-Shepherd-Puppies.jpg",
 }
 
 ALT = {
@@ -64,6 +70,12 @@ ALT = {
     "portrait": "Working-line German Shepherd portrait",
     "farm": "Pine Hill, Garland, Maine",
     "litter_graphic": "Pine Hill German Shepherds Litter A announcement",
+    "breeders": "working line german shepherd in the snow",
+    "freda_g1": "German Shepherd puppy checklist",
+    "freda_g2": "Purchasing a German shepherd puppy",
+    "freda_g3": "German Shepherd breeders in New England",
+    "freda_g4": "Pros and Cons Of Owning A Working Line German Shepherd",
+    "freda_g5": "German Shepherd breeders in New England",
 }
 
 # --------------------------------------------------------------------- state

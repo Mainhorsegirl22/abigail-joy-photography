@@ -631,11 +631,18 @@ def freda():
     return _dog(
         "fre", "Freda", "Dam \u00b7 dark sable \u00b7 search and rescue",
         FREDA["name"],
-        ["Freda is our main breeding female here at Pine Hill German "
-         "Shepherds, and a beloved family member. There are truly no words to "
-         "express what a special dog Freda is to me. She has been a huge part "
-         "of my life, and I am very thankful for her."],
+        # Her write-up, typed in Elementor on 2026-09-26 and read back.
+        ["Freda is a dark sable with a lean, agile build and a big heart. "
+         "She\u2019s a medium-drive working German Shepherd who loves a job, "
+         "with great ball drive and experience in tracking and scent work. "
+         "She has an intense drive to please and will do anything for you "
+         "and a ball! Just as important, she has a great off switch: when "
+         "we\u2019re busy, she\u2019s happy to snooze around the house. Freda "
+         "is wonderful with kids and other animals, a little reserved with "
+         "strangers, and fiercely loyal to her family. Her favorite things? "
+         "Sticks and rubber bands."],
         [("DOB", FREDA["dob"]),
+         ("Weight", "70lbs"),
          ("Color", "Dark sable"),
          ("AKC#", FREDA["akc"]),
          ("Hips", link("PennHIP \u2014 see result", FREDA["hips"])),
@@ -644,15 +651,14 @@ def freda():
          ("Eyes", link("OFA Normal \u2014 see result", FREDA["eyes"])),
          ("Genetic panel", "Clear"),
          ("Pedigree", link("Read her pedigree", FREDA["pedigree"]))],
-        ["freda", "portrait", "sunlit", "pair", "breeders", "farm"],
-        "freda",
+        # Her gallery pick and her hero photo, both read back from Elementor.
+        ["freda_g1", "portrait", "freda_g2", "freda_g3", "freda_g4", "freda_g5"],
+        "breeders",
         more=("More About Freda",
-              ["Freda is a dark sable with a lean, agile build and a big "
-               "heart. She\u2019s a medium-drive working German Shepherd who "
-               "loves a job, with great ball drive and experience in tracking "
-               "and scent work. She has an intense drive to please and will do "
-               "anything for you and a ball! Just as important, she has a "
-               "great off switch."],
+              ["Freda is our main breeding female here at Pine Hill German "
+               "Shepherds, and a beloved family member. There are truly no "
+               "words to express what a special dog Freda is to me. She has "
+               "been a huge part of my life, and I am very thankful for her."],
               "pair"))
 
 
