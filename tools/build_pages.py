@@ -633,8 +633,6 @@ def rangeley():
         ["Rangeley is the sire of our current litter. He is a working-line "
          "male with full OFA health testing behind him \u2014 hips, elbows, "
          "heart and eyes \u2014 and an Embark genetic panel that came back clear.",
-         "More about his temperament and his work: " +
-         fill("Abigail to write") + ".",
          "His results are on file with the OFA and are searchable under his "
          "registration number."],
         [("Registered name", RANGELEY["name"]),
@@ -645,8 +643,8 @@ def rangeley():
          ("Heart", "OFA Advanced Echocardiogram, Normal"),
          ("Eyes", "OFA CAER Normal"),
          ("Genetic panel", "Embark, clear")],
-        ["rangeley1", "rangeley2", "rangeley3", "rangeley4",
-         "rangeley5", "rangeley6", "rangeley7", "working", "montie"],
+        ["rangeley2", "rangeley3", "rangeley4",
+         "rangeley5", "rangeley6", "rangeley7"],
         "rangeley1", reverse=True)
 
 
