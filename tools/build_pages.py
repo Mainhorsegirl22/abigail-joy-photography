@@ -615,7 +615,7 @@ def _dog(tag, call, kicker, lede, story, facts, photos, hero_key,
         d.append(sec([row([con([h(title), rule(False)] + [p(x) for x in paras],
                                "ph-acol"),
                            img(key, "ph-frame2")], "ph-asplit")],
-                     "more", tone="linen", tight=True))
+                     "more", tone="white", tight=True))
 
     d.append(sec([head(None, f"{call} in Pictures"),
                   row([img(k, "ph-gcell") for k in photos], "ph-grid")],
