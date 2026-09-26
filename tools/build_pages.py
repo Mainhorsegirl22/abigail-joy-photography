@@ -53,7 +53,7 @@ def puppies():
 
     d = [hero("AKC Working-Line German Shepherd Puppies",
               "raised in our home, not a kennel", "puppies", ypos=60,
-              button=("Join the Waiting List", "/reserve-a-puppy/"))]
+              button=("Join the Waiting List", "/reserve-a-puppy-new/"))]
 
     # --- what's happening right now, at the top, because it's why they came
     d.append(sec([con([
@@ -62,7 +62,7 @@ def puppies():
         p("Freda is expecting in late fall. Reservations are taken in the order "
           "deposits are received, and puppies are matched to families at six weeks.",
           "ph-lede"),
-        btn("Join the Waiting List", "/reserve-a-puppy/"),
+        btn("Join the Waiting List", "/reserve-a-puppy-new/"),
     ], "ph-narrow")], "status", tone="linen", tight=True))
 
     # --- the offer, plainly
@@ -105,7 +105,7 @@ def puppies():
                 "AKC papers, Limited Registration"], "ph-list ph-list--one"),
             p("The balance is due in full at pickup, in certified funds or cash. "
               "Personal checks are not accepted at pickup.", "ph-measure"),
-            btn("Reserve a Puppy", "/reserve-a-puppy/"),
+            btn("Reserve a Puppy", "/reserve-a-puppy-new/"),
         ]),
         img("portrait"),
     )], "price", tone="linen"))
@@ -129,7 +129,7 @@ def puppies():
              "Crate-started, handled daily, and used to the noise of a working "
              "family home."),
         ]),
-        con([btn("More About Puppy Culture", "/puppy-culture/", "ph-ghost")], "ph-cta__in"),
+        con([btn("More About Puppy Culture", "/puppy-culture-new/")], "ph-cta__in"),
     ], "raised", tone="white"))
 
     # --- K9 Scholars, marked as the example it is
@@ -148,7 +148,7 @@ def puppies():
                 "Advanced socialization", "Scent detection games",
                 "Confidence building", "Manners in public"]),
             p(f"Price and dates: {fill('to be confirmed')}", "ph-measure"),
-            btn("Learn More", "/k9-scholars/", "ph-ghost"),
+            btn("Learn More", "/puppy-culture-new/"),
         ]),
     )], "schol", tone="linen"))
 
@@ -194,7 +194,7 @@ def puppies():
     d.append(cta("Ready to Start?",
                  "Tell us about your family and what you are looking for. "
                  "We answer every inquiry ourselves.",
-                 "Join the Waiting List", "/reserve-a-puppy/", image_key="litter_band"))
+                 "Join the Waiting List", "/reserve-a-puppy-new/", image_key="litter_band"))
     return d
 
 
@@ -207,7 +207,8 @@ def litters():
     start("lit")
 
     d = [hero("Current and Upcoming Litters", "reserve your puppy",
-              "litter_band", ypos=62, tall=False)]
+              "litter_band", ypos=62,
+              button=("Join the Waiting List", "/reserve-a-puppy-new/"))]
 
     d.append(sec([
         head("what's planned", "Late Fall 2026",
@@ -228,7 +229,7 @@ def litters():
                 p("Reservations are taken in the order deposits are received. "
                   "Puppies are matched to families at six weeks, once their "
                   "temperaments are clear.", "ph-measure"),
-                btn("Reserve a Puppy", "/reserve-a-puppy/"),
+                btn("Reserve a Puppy", "/reserve-a-puppy-new/"),
             ]),
         )], "ph-litter"),
     ], "current", tone="white"))
@@ -250,7 +251,7 @@ def litters():
                       ("Heart", link("Normal", FREDA["heart"])),
                       ("Eyes", link("Normal", FREDA["eyes"])),
                       ("Genetics", "Clear")]),
-                  btn("Read Her Pedigree", FREDA["pedigree"], "ph-ghost")]),
+                  btn("Read Her Pedigree", FREDA["pedigree"])]),
             card([img("rangeley1", "ph-frame ph-frame--sq"),
                   h(RANGELEY["name"], tag="h3"),
                   p(f"Sire \u00b7 called {RANGELEY['call']}", "ph-role"),
@@ -275,7 +276,7 @@ def litters():
     d.append(cta("Nothing Available Right Now?",
                  "Join the waiting list and you will hear about the next litter "
                  "before it is announced anywhere else.",
-                 "Join the Waiting List", "/reserve-a-puppy/", image_key="band2"))
+                 "Join the Waiting List", "/reserve-a-puppy-new/", image_key="band2"))
     return d
 
 
@@ -666,8 +667,9 @@ def rangeley():
 # the heading "Scent Dedectino and SAR Taining".
 def about():
     start("abt")
-    d = [bighero("Raised In Our Home,<br>Not In A <em>Kennel</em>.",
-                 "welcome to Pine Hill", slot="Hero+photo")]
+    d = [hero("Raised In Our Home,<br>Not In A <em>Kennel</em>.",
+              "welcome to Pine Hill", "sunlit", ypos=50,
+              button=("Meet Our Shepherds", "/our-shepherds-new/"))]
 
     d.append(intro(
         "Small Family Breeder of Working Line German Shepherds",
@@ -680,7 +682,7 @@ def about():
         "early puppy socialization, development and training."))
 
     d.append(sec([row([
-        ph_img("Portrait+photo", 900, 1125),
+        img("pair", "ph-frame2"),
         con([p("With only one breeding female \u2014 Freda, our beloved family "
                "member \u2014 we can plan each litter carefully and spend "
                "countless hours observing and working with the puppies. That "
@@ -690,7 +692,7 @@ def about():
                "puppies get plenty of love and care from day one. Every puppy "
                "has its own personality, just as every person does, and our "
                "goal is to match each one to the family that suits it best."),
-             btn("Meet Our Shepherds", "/our-shepherds-new/", "ph-pillbtn")],
+             btn("Meet Our Shepherds", "/our-shepherds-new/")],
             "ph-acol"),
     ], "ph-asplit")], "story", tone="white", tight=True))
 
@@ -708,7 +710,7 @@ def about():
                "along for all of it."),
         ("03", "Every puppy is raised inside our home, underfoot, from the day "
                "it is born."),
-    ]))
+    ], image=img("farm", "ph-frame2")))
     return d
 
 
@@ -717,9 +719,7 @@ def about():
 # intro, reversed split, numbered process, form. Deliberately not About's.
 def reserve():
     start("res")
-    d = [opener("Reserve a Puppy", "your next companion", "portrait",
-                "Carefully planned litters, bred for personal protection, "
-                "detection work, search and rescue, and active family life.")]
+    d = [hero("Reserve a Puppy", "your next companion", "portrait", ypos=40)]
 
     d.append(sec([con([
         p("Each of our puppies is precious to us, and we dedicate many hours "
@@ -778,9 +778,8 @@ def reserve():
 # Top: quiettop() - no photograph at all. A short, practical page.
 def contact():
     start("con2")
-    d = [quiettop("Get in Touch", "we would love to hear from you",
-                  "Questions about a puppy, a litter, or the breed \u2014 ask.",
-                  tone="linen")]
+    d = [hero("Get in Touch", "we would love to hear from you", "breeders",
+              ypos=50, button=("Reserve a Puppy", "/reserve-a-puppy-new/"))]
 
     d.append(sec([row([
         con([dl([("Phone", "207-703-8043"),
@@ -805,7 +804,8 @@ def contact():
 # Top: quiettop() on sand, then the page is almost entirely photographs.
 def gallery():
     start("gal")
-    d = [quiettop("Gallery", "our shepherds", tone="sand")]
+    d = [hero("Gallery", "our shepherds", "working", ypos=45,
+              button=("Reserve a Puppy", "/reserve-a-puppy-new/"))]
 
     # One gallery, not three sections. Every photograph in a single grid.
     d.append(sec([row([img(k, "ph-gcell") for k in (
@@ -822,10 +822,8 @@ def gallery():
 # Top: quiettop() on linen. The quietest page on the site, deliberately.
 def news():
     start("nws")
-    d = [quiettop("News", "from the kennel",
-                  "Litter announcements, health testing results, training "
-                  "updates and the occasional photograph of a very muddy dog.",
-                  tone="linen")]
+    d = [hero("News", "from the kennel", "wks", ypos=50,
+              button=("Join the Waiting List", "/reserve-a-puppy-new/"))]
 
     d.append(sec([con([
         p("Post feed goes here \u2014 " + fill("wire to the blog") + "."),
@@ -845,10 +843,8 @@ def news():
 # Top: splittop() - photograph beside the title, a third silhouette again.
 def puppy_culture():
     start("pc")
-    d = [splittop("Puppy Culture", "the first nine weeks",
-                  "As breeders we have an almost magical ability to influence "
-                  "what happens later in our puppies\u2019 lives. We take that "
-                  "seriously.", slot="Puppies+photo")]
+    d = [hero("Puppy Culture", "the first nine weeks", "puppies", ypos=55,
+              button=("Reserve a Puppy", "/reserve-a-puppy-new/"))]
 
     d.append(sec([con([
         p("Our puppies are raised using Puppy Culture, ESI (Early Scent "
@@ -887,7 +883,7 @@ def puppy_culture():
                "produces work with their noses for a lifetime."),
         ("03", "We would rather do the hard weeks here than hand you a puppy "
                "that has to unlearn something."),
-    ]))
+    ], image=img("scholars", "ph-frame2")))
     return d
 
 
