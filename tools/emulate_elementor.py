@@ -72,6 +72,12 @@ def widget_inner(t, s):
         return s.get("html", "")
     if t == "shortcode":
         return '<div style="min-height:220px;background:#E8E5DF"></div>'
+    if t == "sbi-widget":
+        # Smash Balloon feed: stand in with six tinted squares so the section
+        # can be judged for rhythm before it ever touches the live site.
+        cells = "".join('<div style="aspect-ratio:1;background:#DCD8D1"></div>' for _ in range(6))
+        return ('<div id="sb_instagram" style="display:grid;grid-template-columns:repeat(6,1fr);gap:8px">'
+                + cells + "</div>")
     return ""
 
 

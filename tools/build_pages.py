@@ -725,13 +725,23 @@ def about():
                    ("<svg viewBox='0 0 48 48'><path d='M7 7.5h19a3 3 0 013 3v10a3 3 0 01-3 3H16l-6 4.6V23.5H7a3 3 0 01-3-3v-10a3 3 0 013-3z'/><path d='M25 27.5h16a3 3 0 013 3v8a3 3 0 01-3 3h-2.5v4.2L32.5 41.5H25a3 3 0 01-3-3v-8a3 3 0 013-3z'/></svg>", "Lifetime Support")]))
 
     d.append(trivia("Rapid fire", "Pine Hill Edition", [
-        ("01", "We have exactly one breeding female. Freda is a family member "
-               "first and a foundation dam second."),
+        ("01", "We only have one female. Freda is a family member first and a "
+               "foundation dam second."),
         ("02", "Hiking, swimming, horseback riding \u2014 our shepherds come "
                "along for all of it."),
-        ("03", "Every puppy is raised inside our home, underfoot, from the day "
-               "it is born."),
+        ("03", "Every puppy is raised inside our home, being safely exposed to "
+               "daily household sounds and life!"),
     ], image=img("farm", "ph-frame2")))
+
+    # Her Instagram feed (Smash Balloon, feed 1 - the one the live homepage
+    # shows), under the same centred heading every other section uses.
+    d.append(sec([
+        head("follow along", "Pine Hill on Instagram",
+             "Puppies, training days and life on the hill, as it happens."),
+        con([w("sbi-widget", {"feed_id": "1"})], "ph-igwrap"),
+        con([btn("Follow @pinehillshepherds",
+                 "https://www.instagram.com/pinehillshepherds/")], "ph-mid"),
+    ], "ig", tone="white"))
     return d
 
 

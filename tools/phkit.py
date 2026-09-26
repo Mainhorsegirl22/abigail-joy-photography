@@ -624,6 +624,11 @@ body{--espresso:#1C1A18;--ivory:#F6F4F1;--linen:#F2F0EC;--sand:#E4DFD5;--pill:#D
 .ph-mid p{margin-inline:auto!important}
 .ph-formwrap{max-width:820px!important;width:100%!important;margin-inline:auto!important;
  padding:0!important;gap:0!important;text-align:left!important}
+.ph-igwrap{max-width:var(--wrap)!important;width:100%!important;margin-inline:auto!important;
+ padding:0 0 40px!important;gap:0!important}
+.ph-igwrap #sb_instagram{padding:0!important;width:100%!important}
+.ph-igwrap #sb_instagram .sbi_item img{display:block!important}
+.ph-igwrap .elementor-widget-container{width:100%!important}
 @media(max-width:880px){.ph-open__img img{height:clamp(300px,46vh,420px)!important}}
 
 .ph-bhero{padding:0 20px!important;gap:0!important;background-color:#FBF9F6!important}
