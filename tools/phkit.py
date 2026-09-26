@@ -756,7 +756,7 @@ body{--espresso:#1C1A18;--ivory:#F6F4F1;--linen:#F2F0EC;--sand:#E4DFD5;--pill:#D
  margin-top:32px!important;max-width:none!important;width:auto!important}
 .ph-pro__btns>*{width:auto!important;flex:0 0 auto!important}
 .ph-pro__btn .elementor-button{background-color:var(--sand)!important;color:var(--espresso)!important;
- font-size:11.5px!important;letter-spacing:.16em!important;padding:23px 44px!important}
+ font-size:9.5px!important;letter-spacing:.16em!important;padding:15px 28px!important}
 .ph-pro__btn .elementor-button:hover,.ph-pro__btn .elementor-button:focus{background-color:var(--pill)!important;
  color:var(--espresso)!important;transform:none!important}
 @media(max-width:880px){
