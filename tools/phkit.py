@@ -170,6 +170,13 @@ def dl(pairs, classes="ph-facts"):
     return w("text-editor", {"editor": f"<ul>{rows}</ul>"}, classes)
 
 
+def spec(pairs, classes="ph-spec"):
+    """Inline facts, LABEL: value, one per line - the shape of the reference
+    she sent (AKC#, colour, weight...). dl() is the two-column table."""
+    rows = "".join(f"<li><b>{k}:</b> {v}</li>" for k, v in pairs)
+    return w("text-editor", {"editor": f"<ul>{rows}</ul>"}, classes)
+
+
 def btn(text, url, classes="", variant=""):
     cls = (classes + " " + variant).strip()
     return w("button", {"text": text,
@@ -717,6 +724,45 @@ body{--espresso:#1C1A18;--ivory:#F6F4F1;--linen:#F2F0EC;--sand:#E4DFD5;--pill:#D
 .ph-dog .elementor-heading-title{font-size:clamp(26px,3vw,38px)!important}
 .ph-dogname p{font-size:10.5px!important;letter-spacing:.2em!important;
  text-transform:uppercase!important;color:var(--brass-ink)!important}
+/* Dog profile block, after the reference she sent 2026-09-26: portrait
+   left at half the row (5:6, no mat), registered name as the kicker, call
+   name large in the darker gold, an italic byline, the write-up, inline
+   LABEL: value facts, two flat sand buttons. */
+.ph-pro{max-width:var(--wrap)!important;width:100%!important;margin-inline:auto!important;
+ display:flex!important;flex-direction:row!important;align-items:flex-start!important;
+ gap:clamp(32px,4.8vw,68px)!important;padding:clamp(24px,3vw,40px) 0!important}
+.ph-pro__pic{flex:0 0 50%!important;min-width:0!important;padding:0!important}
+.ph-pro__pic img{width:100%!important;aspect-ratio:5/6!important;height:auto!important;
+ object-fit:cover!important;display:block!important}
+.ph-pro__txt{flex:1 1 0!important;min-width:0!important;align-items:flex-start!important;
+ text-align:left!important;gap:0!important;padding:6px 0 0!important;max-width:none!important}
+.ph-pro__txt .elementor-widget-text-editor p{font-size:15px!important;line-height:1.9!important;
+ max-width:52ch!important;margin:0 0 18px!important}
+.ph-pro__kick p{font-size:12.5px!important;font-weight:500!important;letter-spacing:.08em!important;
+ text-transform:uppercase!important;color:var(--espresso)!important;line-height:1.6!important;
+ margin:0!important}
+.ph-pro__name .elementor-heading-title{font-size:clamp(44px,5vw,64px)!important;line-height:1!important;
+ color:var(--brass-ink)!important;letter-spacing:-.02em!important;margin:14px 0 12px!important}
+.ph-pro__by p{font-family:'Cormorant Garamond',Georgia,serif!important;font-style:italic!important;
+ font-size:18px!important;letter-spacing:.02em!important;color:var(--body)!important;
+ margin:0 0 26px!important}
+.ph-spec ul{list-style:none!important;margin:0!important;padding:0!important}
+.ph-spec li{font-size:13px!important;letter-spacing:.06em!important;text-transform:uppercase!important;
+ line-height:2.15!important;color:var(--espresso)!important}
+.ph-spec li b{font-weight:600!important}
+.ph-spec a{color:var(--brass-ink)!important;text-decoration:underline!important;
+ text-underline-offset:3px!important;text-transform:none!important;letter-spacing:.02em!important}
+.ph-pro__btns{flex-direction:row!important;flex-wrap:wrap!important;gap:24px!important;padding:0!important;
+ margin-top:32px!important;max-width:none!important;width:auto!important}
+.ph-pro__btns>*{width:auto!important;flex:0 0 auto!important}
+.ph-pro__btn .elementor-button{background-color:var(--sand)!important;color:var(--espresso)!important;
+ font-size:11.5px!important;letter-spacing:.16em!important;padding:23px 44px!important}
+.ph-pro__btn .elementor-button:hover,.ph-pro__btn .elementor-button:focus{background-color:var(--pill)!important;
+ color:var(--espresso)!important;transform:none!important}
+@media(max-width:880px){
+.ph-pro{flex-direction:column!important}
+.ph-pro__pic{flex:1 1 auto!important;width:100%!important}
+}
 /* Elementor's lightbox fits an image DOWN to the viewport but never up, so
    a small scan opens at its native pixel size in the middle of a dark
    screen. Fill the viewport instead. Capped at 1600px: upscaling further

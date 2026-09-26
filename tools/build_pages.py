@@ -14,7 +14,7 @@ import sys
 from phkit import (start, section, con, row, w, h, p, ul, dl, btn, img, rule, form, opener,
                    bighero, intro, vals, trivia, ph_img, splittop, quiettop,
                    fill, pill, hero, sec, head, split, col, trio, quad, card,
-                   stat, steps, faq, cta, emit, pin, gform, IMG, INDEX)
+                   stat, steps, faq, cta, emit, pin, gform, IMG, INDEX, spec)
 
 DOCS = "https://www.pinehillgermanshepherds.com/wp-content/uploads/2025/04"
 FREDA = {
@@ -521,40 +521,59 @@ def shepherds():
                   "Two dogs. Every health result is on file, and the paperwork "
                   "is linked so you can read it yourself.", tone="sand")]
 
-    # Each dog gets a full row, the photograph alternating side to side.
-    d.append(sec([row([
-        img("freda", "ph-frame2"),
-        con([p("Dam \u00b7 dark sable \u00b7 search and rescue", "ph-dogname"),
-             h(FREDA["name"], tag="h2"), rule(False),
-             p("Freda is our only breeding female, and a family member first. "
-               "Everything we plan is built around her, which is why we raise "
-               "one litter at a time."),
-             dl([("Date of birth", FREDA["dob"]),
-                 ("AKC", FREDA["akc"]),
-                 ("Hips", link("PennHIP \u2014 see result", FREDA["hips"])),
-                 ("Elbows", link("OFA Normal \u2014 see result", FREDA["elbows"])),
-                 ("Heart", link("OFA Normal \u2014 see result", FREDA["heart"])),
-                 ("Eyes", link("OFA Normal \u2014 see result", FREDA["eyes"])),
-                 ("Genetics", "Clear")]),
-             btn("Meet Freda", "/freda-new/", "ph-pillbtn")],
-            "ph-dog"),
-    ], "ph-asplit")], "freda", tone="white"))
+    # Each dog is a profile block after the reference she sent: portrait
+    # left, registered name, call name, byline, write-up, inline facts and
+    # two buttons. There are no separate dog pages any more.
+    BTNS = [("Reserve a Puppy", "/reserve-a-puppy-new/"),
+            ("See Available Litters", "/litters-new/")]
 
-    d.append(sec([row([
-        con([p(f"Sire \u00b7 called {RANGELEY['call']}", "ph-dogname"),
-             h(RANGELEY["name"], tag="h2"), rule(False),
-             p("Rangeley is the sire of our current litter. His results are "
-               "searchable on the OFA site under his registration number."),
-             dl([("AKC", RANGELEY["akc"]),
-                 ("Hips", "OFA Good"),
-                 ("Elbows", "OFA Normal"),
-                 ("Heart", "OFA Advanced Echocardiogram, Normal"),
-                 ("Eyes", "OFA CAER Normal"),
-                 ("Genetics", "Embark, clear")]),
-             btn("Meet Rangeley", "/rangeley-new/", "ph-pillbtn")],
-            "ph-dog"),
-        img("rangeley1", "ph-frame2"),
-    ], "ph-asplit")], "rangeley", tone="linen"))
+    def profile(hero_key, kicker, call, byline, story, facts):
+        txt = con([p(kicker, "ph-pro__kick"),
+                   h(call, "ph-pro__name", tag="h2"),
+                   p(byline, "ph-pro__by"),
+                   *[p(x) for x in story],
+                   spec(facts),
+                   row([btn(t, u, "ph-pro__btn") for t, u in BTNS], "ph-pro__btns")],
+                  "ph-pro__txt")
+        return row([img(hero_key, "ph-pro__pic"), txt], "ph-pro")
+
+    d.append(sec([profile(
+        "freda", FREDA["name"], "Freda",
+        "Dam \u00b7 dark sable \u00b7 search and rescue",
+        ["Freda is our main breeding female here at Pine Hill German "
+         "Shepherds, and a beloved family member. There are truly no words to "
+         "express what a special dog Freda is to me. She has been a huge part "
+         "of my life, and I am very thankful for her.",
+         "Because she is our only breeding female, we can plan every litter "
+         "around her and give each one the same attention. She is trained in "
+         "scent detection and search and rescue work, and she passes that "
+         "drive and that steadiness on to her puppies."],
+        [("AKC#", FREDA["akc"]),
+         ("DOB", FREDA["dob"]),
+         ("Color", "Dark sable"),
+         ("Hips", link("PennHIP \u2014 see result", FREDA["hips"])),
+         ("Elbows", link("OFA Normal \u2014 see result", FREDA["elbows"])),
+         ("Heart", link("OFA Normal \u2014 see result", FREDA["heart"])),
+         ("Eyes", link("OFA Normal \u2014 see result", FREDA["eyes"])),
+         ("Genetics", "Clear"),
+         ("Pedigree", link("Read her pedigree", FREDA["pedigree"]))])],
+        "freda", tone="white"))
+
+    d.append(sec([profile(
+        "rangeley1", RANGELEY["name"], RANGELEY["call"],
+        "Sire of our current litter",
+        ["Rangeley is the sire of our current litter. He is a working-line "
+         "male with full OFA health testing behind him \u2014 hips, elbows, "
+         "heart and eyes \u2014 and an Embark genetic panel that came back clear.",
+         "His results are on file with the OFA and are searchable under his "
+         "registration number."],
+        [("AKC#", RANGELEY["akc"]),
+         ("Hips", "OFA Good"),
+         ("Elbows", "OFA Normal"),
+         ("Heart", "OFA Advanced Echocardiogram, Normal"),
+         ("Eyes", "OFA CAER Normal"),
+         ("Genetics", "Embark, clear")])],
+        "rangeley", tone="linen"))
 
     d.append(vals("What We Test For, Every Time",
                   "On both parents, before any breeding\u2026",
