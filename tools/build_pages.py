@@ -625,10 +625,6 @@ def freda():
          "Shepherds, and a beloved family member. There are truly no words to "
          "express what a special dog Freda is to me. She has been a huge part "
          "of my life, and I am very thankful for her.",
-         "Because she is our only breeding female, we can plan every litter "
-         "around her and give each one the same attention. She is trained in "
-         "scent detection and search and rescue work, and she passes that "
-         "drive and that steadiness on to her puppies.",
          "Her full health testing is below, with every certificate linked so "
          "you can read the results yourself rather than take our word for it."],
         [("DOB", FREDA["dob"]),
