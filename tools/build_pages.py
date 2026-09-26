@@ -57,7 +57,6 @@ def puppies():
 
     # --- what's happening right now, at the top, because it's why they came
     d.append(sec([con([
-        pill("Waiting list open", "open"),
         h("Next Litter — Late Fall 2026"),
         p("Freda is expecting in late fall. Reservations are taken in the order "
           "deposits are received, and puppies are matched to families at six weeks.",
@@ -217,7 +216,6 @@ def litters():
         con([split(
             img("puppies", "ph-frame"),
             col([
-                pill("Waiting list open", "open"),
                 h(f"Freda \u00d7 {RANGELEY['call']} \u2014 Late Fall 2026", tag="h3"),
                 dl([("Dam", FREDA["name"]),
                     ("Sire", RANGELEY["name"]),
