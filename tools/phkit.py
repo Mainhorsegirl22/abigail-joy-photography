@@ -626,6 +626,9 @@ body{--espresso:#1C1A18;--ivory:#F6F4F1;--linen:#F2F0EC;--sand:#E4DFD5;--pill:#D
 .ph-frame2{flex:0 0 44%!important;background:#fff!important;padding:14px!important;
  box-shadow:0 2px 6px rgba(28,26,24,.05),0 22px 50px -24px rgba(28,26,24,.22)!important}
 .ph-frame2 img{width:100%!important;height:auto!important;display:block!important}
+/* the dog pages' own hero (sand): the portrait is the point of the page, so it
+   takes the larger share of the row there. The Shepherds page rows keep 44%. */
+.ph-sand .ph-frame2{flex:0 0 56%!important}
 .ph-acol{flex:1 1 0!important;min-width:0!important;gap:18px!important;padding:0!important;
  align-items:flex-start!important;max-width:none!important}
 .ph-pillbtn .elementor-button{border-radius:999px!important;background-color:var(--pill)!important;
