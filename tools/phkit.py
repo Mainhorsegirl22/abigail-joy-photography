@@ -316,8 +316,14 @@ def splittop(title, kicker, lede, slot="Header+photo", reverse=False):
 def quiettop(title, kicker, lede=None, tone="sand"):
     """A title band with no photograph at all, on a tinted ground."""
     section("qtop")
-    kids = [p(kicker, "ph-script"), h(title, tag="h1"), rule(True)]
+    # title=None drops the serif h1 and lets the script line carry the band.
+    kids = [p(kicker, "ph-script")]
+    if title:
+        kids.append(h(title, tag="h1"))
+    kids.append(rule(True))
     if lede:
+        if isinstance(lede, (list, tuple)):
+            lede = "</p><p>".join(lede)
         kids.append(p(lede, "ph-lede"))
     return con([con(kids, "ph-qtop__t")], f"ph-qtop ph-qtop--{tone}")
 
@@ -708,6 +714,7 @@ body{--espresso:#1C1A18;--ivory:#F6F4F1;--linen:#F2F0EC;--sand:#E4DFD5;--pill:#D
 .ph-qtop__t .elementor-heading-title{font-size:clamp(34px,4.6vw,60px)!important;
  line-height:1.06!important;letter-spacing:-.025em!important}
 .ph-qtop__t .ph-script p{font-size:clamp(38px,4vw,54px)!important;margin-bottom:0!important}
+.ph-qtop__t .ph-lede p+p{margin-top:14px!important}
 .ph-gridsec{padding:clamp(40px,5vw,72px) var(--gut)!important;gap:0!important;
  max-width:none!important}
 @media(max-width:880px){

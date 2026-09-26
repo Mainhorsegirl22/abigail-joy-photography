@@ -533,9 +533,18 @@ def profile_block(hero_key, kicker, call, byline, story, facts, button=None,
 
 def shepherds():
     start("shp")
-    d = [quiettop("Meet Our Shepherds", "our family",
-                  "Two dogs. Every health result is on file, and the paperwork "
-                  "is linked so you can read it yourself.", tone="white")]
+    # No serif h1 here, per her note: the script line is the title. The
+    # wording below is hers, copied from her Elementor edit.
+    d = [quiettop(None, "Meet Shepherds",
+                  ["Meet our small family of AKC German Shepherds, each chosen "
+                   "for outstanding personality, balanced temperament, and "
+                   "strong working drive.",
+                   "Every dog in our program undergoes thorough health testing, "
+                   "including hips, elbows, heart, and eyes, along with "
+                   "comprehensive genetic screening. Their health and longevity "
+                   "come first, and we give each dog the individual care they "
+                   "need to thrive. Our goal is simple: healthy, happy, "
+                   "well-balanced German Shepherds."], tone="white")]
 
     # Each dog is a profile block after the reference she sent: portrait
     # left, registered name, call name, byline, write-up, inline facts and
