@@ -515,11 +515,27 @@ body .ph-gf .gform_footer .gform_button:focus-visible{
 # Everything on this page is Abigail's own: registration numbers, health
 # results and the documents behind them. Nothing here is written from
 # imagination - if a fact is not in hand it is left as a visible blank.
+def profile_block(hero_key, kicker, call, byline, story, facts, button=None,
+                  name_tag="h2"):
+    """The dog profile after the reference she sent: portrait left at half
+    the row, registered name as the kicker, call name large, italic byline,
+    the write-up, inline facts, and optionally one button."""
+    kids = [p(kicker, "ph-pro__kick"),
+            h(call, "ph-pro__name", tag=name_tag),
+            p(byline, "ph-pro__by"),
+            *[p(x) for x in story],
+            spec(facts)]
+    if button:
+        kids.append(row([btn(button[0], button[1], "ph-pro__btn")], "ph-pro__btns"))
+    txt = con(kids, "ph-pro__txt")
+    return row([img(hero_key, "ph-pro__pic"), txt], "ph-pro")
+
+
 def shepherds():
     start("shp")
     d = [quiettop("Meet Our Shepherds", "our family",
                   "Two dogs. Every health result is on file, and the paperwork "
-                  "is linked so you can read it yourself.", tone="sand")]
+                  "is linked so you can read it yourself.", tone="white")]
 
     # Each dog is a profile block after the reference she sent: portrait
     # left, registered name, call name, byline, write-up, inline facts and
@@ -528,19 +544,14 @@ def shepherds():
     # every certificate and the photo grid live on the dog's own page, which
     # the button opens. The band at the foot of the page covers reservations.
     def profile(hero_key, kicker, call, byline, story, facts, details_url):
-        txt = con([p(kicker, "ph-pro__kick"),
-                   h(call, "ph-pro__name", tag="h2"),
-                   p(byline, "ph-pro__by"),
-                   p(story),
-                   spec(facts),
-                   row([btn(f"View {call}\u2019s Details", details_url, "ph-pro__btn")],
-                       "ph-pro__btns")],
-                  "ph-pro__txt")
-        return row([img(hero_key, "ph-pro__pic"), txt], "ph-pro")
+        return profile_block(hero_key, kicker, call, byline, [story], facts,
+                             button=(f"View {call}\u2019s Details", details_url))
 
+    # Photo, byline, Rangeley's owner line and the closing band are hers,
+    # saved in Elementor 2026-09-26 and copied here so a push keeps them.
     d.append(sec([profile(
-        "freda", FREDA["name"], "Freda",
-        "Dam \u00b7 dark sable \u00b7 search and rescue",
+        "freda_pro", FREDA["name"], "Freda",
+        "dark sable",
         "Freda is our only breeding female and a family member first. She is "
         "trained in scent detection and search and rescue work, and she passes "
         "that drive and that steadiness on to her puppies.",
@@ -557,11 +568,12 @@ def shepherds():
         "freda", tone="white"))
 
     d.append(sec([profile(
-        "rangeley1", RANGELEY["name"], RANGELEY["call"],
-        "Sire of our current litter",
-        "Rangeley is the sire of our current litter: a working-line male with "
-        "full OFA health testing behind him and an Embark genetic panel that "
-        "came back clear.",
+        "farm", RANGELEY["name"], RANGELEY["call"],
+        "<a href='https://mackenzielabradors.com'>Owned by Mackenzie Labradors "
+        "Mackenzie German Shepherds</a>",
+        "Rangeley is the sire of our current litter, owned by "
+        "<a href='https://mackenzielabradors.com/our-boys'>Mackenzie Labradors "
+        "Mackenzie German Shepherds</a>.",
         [("AKC#", RANGELEY["akc"]),
          ("Hips", "OFA Good"),
          ("Elbows", "OFA Normal"),
@@ -571,14 +583,9 @@ def shepherds():
         "/rangeley-new/")],
         "rangeley", tone="white"))
 
-    d.append(vals("What We Test For, Every Time",
-                  "On both parents, before any breeding\u2026",
-                  [("<svg viewBox='0 0 48 48'><path d='M17.9 21A5 5 0 1 0 10 24a5 5 0 1 0 7.9 3h12.2A5 5 0 1 0 38 24a5 5 0 1 0-7.9-3z'/></svg>", "Hips and Elbows"), ("<svg viewBox='0 0 48 48'><path d='M24 41s-15-9-15-19.5A8 8 0 0 1 24 17a8 8 0 0 1 15 4.5C39 32 24 41 24 41z'/><path d='M15 26h5l2.5-4 3.5 8 2.5-4h4.5'/></svg>", "Heart"),
-                   ("<svg viewBox='0 0 48 48'><path d='M5 24s7.5-11 19-11 19 11 19 11-7.5 11-19 11S5 24 5 24z'/><circle cx='24' cy='24' r='5.5'/></svg>", "Eyes"), ("<svg viewBox='0 0 48 48'><path d='M16 6c0 9 16 9 16 18s-16 9-16 18'/><path d='M32 6c0 9-16 9-16 18s16 9 16 18'/><path d='M16.6 8.5h14.8M19 12h10M17.5 24h13M19 36h10M16.6 39.5h14.8'/></svg>", "Genetic Panel")]))
-
-    d.append(cta("Puppies From These Two",
-                 "Litter A is on the ground. The waiting list is short.",
-                 "See Available Litters", "/litters-new/", image_key="band2"))
+    d.append(cta("Interested in a puppy?",
+                 "The first step is to fill out the puppy application form.",
+                 "View Current Litters", "/litters-new/", image_key="band2"))
     return d
 
 # =============================================================== EACH DOG
@@ -587,21 +594,8 @@ def shepherds():
 def _dog(tag, call, kicker, lede, story, facts, photos, hero_key,
          reverse=False):
     start(tag)
-    pic = img(hero_key, "ph-frame2")
-    txt = con([p(kicker, "ph-dogname"), h(call, tag="h1"), rule(False),
-               p(lede, "ph-lede")], "ph-dog")
-    # the photo falls on the opposite side for the second dog, so the two
-    # pages do not read as the same page twice
-    d = [sec([row([txt, pic] if reverse else [pic, txt], "ph-asplit")],
-             "top", tone="sand")]
-
-    d.append(sec([con([p(s) for s in story], "ph-mid")],
-                 "story", tone="white", tight=True))
-
-    d.append(sec([head("on file", "Health and Registration",
-                       "Every result below is a real document. Click any of "
-                       "them."),
-                  con([dl(facts)], "ph-narrow")], "health", tone="linen"))
+    d = [sec([profile_block(hero_key, lede, call, kicker, story, facts,
+                            name_tag="h1")], "top", tone="white")]
 
     d.append(sec([head(None, f"{call} in Pictures"),
                   row([img(k, "ph-gcell") for k in photos], "ph-grid")],
@@ -627,10 +621,9 @@ def freda():
          "drive and that steadiness on to her puppies.",
          "Her full health testing is below, with every certificate linked so "
          "you can read the results yourself rather than take our word for it."],
-        [("Registered name", FREDA["name"]),
-         ("Call name", "Freda"),
-         ("Date of birth", FREDA["dob"]),
-         ("AKC registration", FREDA["akc"]),
+        [("DOB", FREDA["dob"]),
+         ("Color", "Dark sable"),
+         ("AKC#", FREDA["akc"]),
          ("Hips", link("PennHIP \u2014 see result", FREDA["hips"])),
          ("Elbows", link("OFA Normal \u2014 see result", FREDA["elbows"])),
          ("Heart", link("OFA Normal \u2014 see result", FREDA["heart"])),
@@ -643,16 +636,16 @@ def freda():
 
 def rangeley():
     return _dog(
-        "ran", "Rangeley", f"Sire \u00b7 {RANGELEY['akc']}",
+        "ran", "Rangeley",
+        "<a href='https://mackenzielabradors.com'>Owned by Mackenzie Labradors "
+        "Mackenzie German Shepherds</a>",
         RANGELEY["name"],
         ["Rangeley is the sire of our current litter. He is a working-line "
          "male with full OFA health testing behind him \u2014 hips, elbows, "
          "heart and eyes \u2014 and an Embark genetic panel that came back clear.",
          "His results are on file with the OFA and are searchable under his "
          "registration number."],
-        [("Registered name", RANGELEY["name"]),
-         ("Call name", RANGELEY["call"]),
-         ("AKC registration", RANGELEY["akc"]),
+        [("AKC#", RANGELEY["akc"]),
          ("Hips", "OFA Good"),
          ("Elbows", "OFA Normal"),
          ("Heart", "OFA Advanced Echocardiogram, Normal"),

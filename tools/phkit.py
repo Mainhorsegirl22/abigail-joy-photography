@@ -23,6 +23,8 @@ U = "https://www.pinehillgermanshepherds.com/wp-content/uploads"
 IMG = {
     "hero_sunset":  f"{U}/2026/07/hero-sunset.jpg",
     "freda":        f"{U}/2026/04/Freda-3.jpg",
+    # the one she chose for her profile on 2026-09-26
+    "freda_pro":    f"{U}/2025/02/Edited-1-scaled.jpg",
     "working":      f"{U}/2026/09/BK706350-scaled.jpg",
     "montie":       f"{U}/2026/04/Cruz-AKC-German-Shepherd-dog-in-NH--scaled.jpg",
     "litter_band":  f"{U}/2026/09/BK700068-scaled.jpg",
@@ -50,6 +52,7 @@ IMG = {
 
 ALT = {
     "freda": "Freda von Stephanitz, our foundation female",
+    "freda_pro": "Working Line German Shepherd Breeder in Maine",
     "rangeley1": "Ledger Bei Mackenzie von Franzosisches Haus, called Rangeley",
     "rangeley2": "Rangeley, our stud dog",
     "rangeley3": "Rangeley, working-line German Shepherd sire",
@@ -698,6 +701,7 @@ body{--espresso:#1C1A18;--ivory:#F6F4F1;--linen:#F2F0EC;--sand:#E4DFD5;--pill:#D
 .ph-qtop{padding:clamp(64px,8vw,116px) var(--gut)!important;gap:0!important;
  max-width:none!important;align-items:center!important}
 .ph-qtop--sand{background-color:var(--sand)!important}
+.ph-qtop--white{background-color:#FFFFFF!important}
 .ph-qtop--linen{background-color:var(--linen)!important}
 .ph-qtop__t{max-width:820px!important;margin-inline:auto!important;align-items:center!important;
  text-align:center!important;gap:10px!important;padding:0!important;max-width:820px!important}
@@ -744,8 +748,9 @@ body{--espresso:#1C1A18;--ivory:#F6F4F1;--linen:#F2F0EC;--sand:#E4DFD5;--pill:#D
 .ph-pro__name .elementor-heading-title{font-size:clamp(44px,5vw,64px)!important;line-height:1!important;
  color:var(--brass-ink)!important;letter-spacing:-.02em!important;margin:14px 0 12px!important}
 .ph-pro__by p{font-family:'Cormorant Garamond',Georgia,serif!important;font-style:italic!important;
- font-size:18px!important;letter-spacing:.02em!important;color:var(--body)!important;
+ font-size:17px!important;max-width:none!important;letter-spacing:.02em!important;color:var(--body)!important;
  margin:0 0 26px!important}
+.ph-pro__by a{color:var(--brass-ink)!important;text-decoration:underline!important;text-underline-offset:3px!important}
 .ph-spec ul{list-style:none!important;margin:0!important;padding:0!important}
 .ph-spec li{font-size:13px!important;letter-spacing:.06em!important;text-transform:uppercase!important;
  line-height:2.15!important;color:var(--espresso)!important}
