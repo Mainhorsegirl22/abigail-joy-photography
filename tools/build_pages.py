@@ -524,8 +524,9 @@ def shepherds():
     # Each dog is a profile block after the reference she sent: portrait
     # left, registered name, call name, byline, write-up, inline facts and
     # two buttons. There are no separate dog pages any more.
-    BTNS = [("Reserve a Puppy", "/reserve-a-puppy-new/"),
-            ("See Available Litters", "/litters-new/")]
+    # One button, per her review. The band at the foot of the page already
+    # sends people to the litters.
+    BTNS = [("Reserve a Puppy", "/reserve-a-puppy-new/")]
 
     def profile(hero_key, kicker, call, byline, story, facts):
         txt = con([p(kicker, "ph-pro__kick"),
