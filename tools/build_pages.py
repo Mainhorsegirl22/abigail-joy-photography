@@ -610,7 +610,7 @@ def _dog(tag, call, kicker, lede, story, facts, photos, hero_key,
                   row([img(k, "ph-gcell") for k in photos], "ph-grid")],
                  "gal", tone="white"))
 
-    d.append(cta("Puppies From Our Programme",
+    d.append(cta("Puppies From Our Program",
                  "Reservations for the next litter are open.",
                  "Reserve a Puppy", "/reserve-a-puppy-new/", image_key="band2"))
     return d
@@ -865,7 +865,7 @@ def puppy_culture():
                "https://shoppuppyculture.com/pages/about-puppy-culture")),
     ], "ph-mid")], "culture", tone="white", tight=True))
 
-    d.append(sec([head("k9 scholars", "The Five-Week Programme",
+    d.append(sec([head("k9 scholars", "The Five-Week Program",
                        "Given a structured environment suited to their rapidly "
                        "developing brains, puppies learn remarkably fast. Over "
                        "five weeks they learn advanced manners and meet new "
