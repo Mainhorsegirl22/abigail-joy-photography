@@ -624,9 +624,7 @@ def freda():
         ["Freda is our main breeding female here at Pine Hill German "
          "Shepherds, and a beloved family member. There are truly no words to "
          "express what a special dog Freda is to me. She has been a huge part "
-         "of my life, and I am very thankful for her.",
-         "Her full health testing is below, with every certificate linked so "
-         "you can read the results yourself rather than take our word for it."],
+         "of my life, and I am very thankful for her."],
         [("DOB", FREDA["dob"]),
          ("Color", "Dark sable"),
          ("AKC#", FREDA["akc"]),
