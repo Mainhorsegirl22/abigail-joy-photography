@@ -786,7 +786,7 @@ def reserve():
     d.append(sec([head("apply", "Puppy Application",
                        "Take your time with this. The more we know, the "
                        "better we can match you."),
-                  con([gform(5)], "ph-formwrap")], "apply", tone="linen"))
+                  con([gform(7)], "ph-formwrap")], "apply", tone="linen"))
 
     d.append(cta("Questions First?",
                  "Call 207-703-8043. We would rather answer a question now "
