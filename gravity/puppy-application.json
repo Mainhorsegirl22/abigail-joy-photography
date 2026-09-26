@@ -1,0 +1,901 @@
+{
+ "0": {
+  "title": "Puppy Application (2026)",
+  "description": "",
+  "labelPlacement": "top_label",
+  "descriptionPlacement": "below",
+  "subLabelPlacement": "below",
+  "button": {
+   "type": "text",
+   "text": "Submit Application",
+   "imageUrl": "",
+   "conditionalLogic": null,
+   "width": "auto",
+   "location": "bottom",
+   "layoutGridColumnSpan": 12
+  },
+  "fields": [
+   {
+    "type": "name",
+    "id": 1,
+    "label": "Name",
+    "isRequired": true,
+    "size": "large",
+    "visibility": "visible",
+    "formId": 0,
+    "description": "",
+    "descriptionPlacement": "",
+    "placeholder": "",
+    "cssClass": "",
+    "inputs": [
+     {
+      "id": "1.2",
+      "label": "Prefix",
+      "name": "",
+      "isHidden": true,
+      "choices": [],
+      "inputType": "radio"
+     },
+     {
+      "id": "1.3",
+      "label": "First",
+      "name": "",
+      "autocompleteAttribute": "given-name"
+     },
+     {
+      "id": "1.4",
+      "label": "Middle",
+      "name": "",
+      "isHidden": true
+     },
+     {
+      "id": "1.6",
+      "label": "Last",
+      "name": "",
+      "autocompleteAttribute": "family-name"
+     },
+     {
+      "id": "1.8",
+      "label": "Suffix",
+      "name": "",
+      "isHidden": true
+     }
+    ],
+    "adminLabel": "",
+    "errorMessage": "",
+    "labelPlacement": "",
+    "allowsPrepopulate": false,
+    "inputMask": false,
+    "inputMaskValue": "",
+    "inputType": "",
+    "defaultValue": "",
+    "noDuplicates": false,
+    "useRichTextEditor": false,
+    "nameFormat": "advanced"
+   },
+   {
+    "type": "email",
+    "id": 2,
+    "label": "Email",
+    "isRequired": true,
+    "size": "large",
+    "visibility": "visible",
+    "formId": 0,
+    "description": "",
+    "descriptionPlacement": "",
+    "placeholder": "",
+    "cssClass": "",
+    "inputs": [
+     {
+      "id": "2",
+      "label": "Enter Email",
+      "name": "",
+      "autocompleteAttribute": "email"
+     },
+     {
+      "id": "2.2",
+      "label": "Confirm Email",
+      "name": ""
+     }
+    ],
+    "adminLabel": "",
+    "errorMessage": "",
+    "labelPlacement": "",
+    "allowsPrepopulate": false,
+    "inputMask": false,
+    "inputMaskValue": "",
+    "inputType": "",
+    "defaultValue": "",
+    "noDuplicates": false,
+    "useRichTextEditor": false,
+    "emailConfirmEnabled": true
+   },
+   {
+    "type": "phone",
+    "id": 3,
+    "label": "Phone",
+    "isRequired": true,
+    "size": "large",
+    "visibility": "visible",
+    "formId": 0,
+    "description": "",
+    "descriptionPlacement": "",
+    "placeholder": "",
+    "cssClass": "",
+    "inputs": null,
+    "adminLabel": "",
+    "errorMessage": "",
+    "labelPlacement": "",
+    "allowsPrepopulate": false,
+    "inputMask": false,
+    "inputMaskValue": "",
+    "inputType": "",
+    "defaultValue": "",
+    "noDuplicates": false,
+    "useRichTextEditor": false,
+    "phoneFormat": "standard"
+   },
+   {
+    "type": "address",
+    "id": 4,
+    "label": "Address",
+    "isRequired": true,
+    "size": "large",
+    "visibility": "visible",
+    "formId": 0,
+    "description": "",
+    "descriptionPlacement": "",
+    "placeholder": "",
+    "cssClass": "",
+    "inputs": [
+     {
+      "id": "4.1",
+      "label": "Street Address",
+      "name": "",
+      "autocompleteAttribute": "address-line1"
+     },
+     {
+      "id": "4.2",
+      "label": "Address Line 2",
+      "name": "",
+      "isHidden": true
+     },
+     {
+      "id": "4.3",
+      "label": "City",
+      "name": "",
+      "autocompleteAttribute": "address-level2"
+     },
+     {
+      "id": "4.4",
+      "label": "State",
+      "name": "",
+      "autocompleteAttribute": "address-level1"
+     },
+     {
+      "id": "4.5",
+      "label": "ZIP Code",
+      "name": "",
+      "autocompleteAttribute": "postal-code"
+     },
+     {
+      "id": "4.6",
+      "label": "Country",
+      "name": "",
+      "isHidden": true
+     }
+    ],
+    "adminLabel": "",
+    "errorMessage": "",
+    "labelPlacement": "",
+    "allowsPrepopulate": false,
+    "inputMask": false,
+    "inputMaskValue": "",
+    "inputType": "",
+    "defaultValue": "",
+    "noDuplicates": false,
+    "useRichTextEditor": false,
+    "addressType": "us"
+   },
+   {
+    "type": "select",
+    "id": 5,
+    "label": "How did you find us?",
+    "isRequired": true,
+    "size": "large",
+    "visibility": "visible",
+    "formId": 0,
+    "description": "",
+    "descriptionPlacement": "",
+    "placeholder": "Please select",
+    "cssClass": "",
+    "inputs": null,
+    "adminLabel": "",
+    "errorMessage": "",
+    "labelPlacement": "",
+    "allowsPrepopulate": false,
+    "inputMask": false,
+    "inputMaskValue": "",
+    "inputType": "",
+    "defaultValue": "",
+    "noDuplicates": false,
+    "useRichTextEditor": false,
+    "choices": [
+     {
+      "text": "Google or another search engine",
+      "value": "Google or another search engine",
+      "isSelected": false,
+      "price": ""
+     },
+     {
+      "text": "Social media",
+      "value": "Social media",
+      "isSelected": false,
+      "price": ""
+     },
+     {
+      "text": "AKC Marketplace",
+      "value": "AKC Marketplace",
+      "isSelected": false,
+      "price": ""
+     },
+     {
+      "text": "Word of mouth",
+      "value": "Word of mouth",
+      "isSelected": false,
+      "price": ""
+     },
+     {
+      "text": "Previous buyer",
+      "value": "Previous buyer",
+      "isSelected": false,
+      "price": ""
+     },
+     {
+      "text": "Other",
+      "value": "Other",
+      "isSelected": false,
+      "price": ""
+     }
+    ],
+    "enableChoiceValue": false
+   },
+   {
+    "type": "radio",
+    "id": 6,
+    "label": "When are you hoping to bring a puppy home?",
+    "isRequired": true,
+    "size": "large",
+    "visibility": "visible",
+    "formId": 0,
+    "description": "",
+    "descriptionPlacement": "",
+    "placeholder": "",
+    "cssClass": "",
+    "inputs": null,
+    "adminLabel": "",
+    "errorMessage": "",
+    "labelPlacement": "",
+    "allowsPrepopulate": false,
+    "inputMask": false,
+    "inputMaskValue": "",
+    "inputType": "",
+    "defaultValue": "",
+    "noDuplicates": false,
+    "useRichTextEditor": false,
+    "choices": [
+     {
+      "text": "This litter (late fall 2026)",
+      "value": "This litter (late fall 2026)",
+      "isSelected": false,
+      "price": ""
+     },
+     {
+      "text": "Next year",
+      "value": "Next year",
+      "isSelected": false,
+      "price": ""
+     },
+     {
+      "text": "I am flexible",
+      "value": "I am flexible",
+      "isSelected": false,
+      "price": ""
+     }
+    ],
+    "enableOtherChoice": false
+   },
+   {
+    "type": "radio",
+    "id": 7,
+    "label": "Would you prefer a male or a female puppy?",
+    "isRequired": true,
+    "size": "large",
+    "visibility": "visible",
+    "formId": 0,
+    "description": "Our waiting list is kept separately for males and females.",
+    "descriptionPlacement": "below",
+    "placeholder": "",
+    "cssClass": "",
+    "inputs": null,
+    "adminLabel": "",
+    "errorMessage": "",
+    "labelPlacement": "",
+    "allowsPrepopulate": false,
+    "inputMask": false,
+    "inputMaskValue": "",
+    "inputType": "",
+    "defaultValue": "",
+    "noDuplicates": false,
+    "useRichTextEditor": false,
+    "choices": [
+     {
+      "text": "Male",
+      "value": "Male",
+      "isSelected": false,
+      "price": ""
+     },
+     {
+      "text": "Female",
+      "value": "Female",
+      "isSelected": false,
+      "price": ""
+     },
+     {
+      "text": "No preference",
+      "value": "No preference",
+      "isSelected": false,
+      "price": ""
+     }
+    ],
+    "enableOtherChoice": false
+   },
+   {
+    "type": "select",
+    "id": 8,
+    "label": "Coat color preference",
+    "isRequired": false,
+    "size": "large",
+    "visibility": "visible",
+    "formId": 0,
+    "description": "",
+    "descriptionPlacement": "",
+    "placeholder": "Please select",
+    "cssClass": "",
+    "inputs": null,
+    "adminLabel": "",
+    "errorMessage": "",
+    "labelPlacement": "",
+    "allowsPrepopulate": false,
+    "inputMask": false,
+    "inputMaskValue": "",
+    "inputType": "",
+    "defaultValue": "",
+    "noDuplicates": false,
+    "useRichTextEditor": false,
+    "choices": [
+     {
+      "text": "Sable",
+      "value": "Sable",
+      "isSelected": false,
+      "price": ""
+     },
+     {
+      "text": "Bi-color",
+      "value": "Bi-color",
+      "isSelected": false,
+      "price": ""
+     },
+     {
+      "text": "No preference",
+      "value": "No preference",
+      "isSelected": false,
+      "price": ""
+     }
+    ],
+    "enableChoiceValue": false
+   },
+   {
+    "type": "radio",
+    "id": 9,
+    "label": "Do you own or rent your home?",
+    "isRequired": true,
+    "size": "large",
+    "visibility": "visible",
+    "formId": 0,
+    "description": "",
+    "descriptionPlacement": "",
+    "placeholder": "",
+    "cssClass": "",
+    "inputs": null,
+    "adminLabel": "",
+    "errorMessage": "",
+    "labelPlacement": "",
+    "allowsPrepopulate": false,
+    "inputMask": false,
+    "inputMaskValue": "",
+    "inputType": "",
+    "defaultValue": "",
+    "noDuplicates": false,
+    "useRichTextEditor": false,
+    "choices": [
+     {
+      "text": "Own",
+      "value": "Own",
+      "isSelected": false,
+      "price": ""
+     },
+     {
+      "text": "Rent",
+      "value": "Rent",
+      "isSelected": false,
+      "price": ""
+     }
+    ],
+    "enableOtherChoice": false
+   },
+   {
+    "type": "radio",
+    "id": 10,
+    "label": "Does your landlord allow a large-breed dog?",
+    "isRequired": true,
+    "size": "large",
+    "visibility": "visible",
+    "formId": 0,
+    "description": "",
+    "descriptionPlacement": "",
+    "placeholder": "",
+    "cssClass": "",
+    "inputs": null,
+    "adminLabel": "",
+    "errorMessage": "",
+    "labelPlacement": "",
+    "allowsPrepopulate": false,
+    "inputMask": false,
+    "inputMaskValue": "",
+    "inputType": "",
+    "defaultValue": "",
+    "noDuplicates": false,
+    "useRichTextEditor": false,
+    "choices": [
+     {
+      "text": "Yes",
+      "value": "Yes",
+      "isSelected": false,
+      "price": ""
+     },
+     {
+      "text": "No",
+      "value": "No",
+      "isSelected": false,
+      "price": ""
+     },
+     {
+      "text": "I have not asked yet",
+      "value": "I have not asked yet",
+      "isSelected": false,
+      "price": ""
+     }
+    ],
+    "enableOtherChoice": false,
+    "conditionalLogic": {
+     "actionType": "show",
+     "logicType": "all",
+     "rules": [
+      {
+       "fieldId": "9",
+       "operator": "is",
+       "value": "Rent"
+      }
+     ]
+    }
+   },
+   {
+    "type": "radio",
+    "id": 11,
+    "label": "Is your yard fenced?",
+    "isRequired": true,
+    "size": "large",
+    "visibility": "visible",
+    "formId": 0,
+    "description": "",
+    "descriptionPlacement": "",
+    "placeholder": "",
+    "cssClass": "",
+    "inputs": null,
+    "adminLabel": "",
+    "errorMessage": "",
+    "labelPlacement": "",
+    "allowsPrepopulate": false,
+    "inputMask": false,
+    "inputMaskValue": "",
+    "inputType": "",
+    "defaultValue": "",
+    "noDuplicates": false,
+    "useRichTextEditor": false,
+    "choices": [
+     {
+      "text": "Yes, fully",
+      "value": "Yes, fully",
+      "isSelected": false,
+      "price": ""
+     },
+     {
+      "text": "Partly",
+      "value": "Partly",
+      "isSelected": false,
+      "price": ""
+     },
+     {
+      "text": "No",
+      "value": "No",
+      "isSelected": false,
+      "price": ""
+     }
+    ],
+    "enableOtherChoice": false
+   },
+   {
+    "type": "textarea",
+    "id": 12,
+    "label": "Who lives in your household?",
+    "isRequired": true,
+    "size": "medium",
+    "visibility": "visible",
+    "formId": 0,
+    "description": "Adults, children and their ages, and any other animals.",
+    "descriptionPlacement": "below",
+    "placeholder": "",
+    "cssClass": "",
+    "inputs": null,
+    "adminLabel": "",
+    "errorMessage": "",
+    "labelPlacement": "",
+    "allowsPrepopulate": false,
+    "inputMask": false,
+    "inputMaskValue": "",
+    "inputType": "",
+    "defaultValue": "",
+    "noDuplicates": false,
+    "useRichTextEditor": false
+   },
+   {
+    "type": "select",
+    "id": 13,
+    "label": "On a typical day, how many hours would the dog be alone?",
+    "isRequired": true,
+    "size": "large",
+    "visibility": "visible",
+    "formId": 0,
+    "description": "",
+    "descriptionPlacement": "",
+    "placeholder": "Please select",
+    "cssClass": "",
+    "inputs": null,
+    "adminLabel": "",
+    "errorMessage": "",
+    "labelPlacement": "",
+    "allowsPrepopulate": false,
+    "inputMask": false,
+    "inputMaskValue": "",
+    "inputType": "",
+    "defaultValue": "",
+    "noDuplicates": false,
+    "useRichTextEditor": false,
+    "choices": [
+     {
+      "text": "Under 2 hours",
+      "value": "Under 2 hours",
+      "isSelected": false,
+      "price": ""
+     },
+     {
+      "text": "2 to 4 hours",
+      "value": "2 to 4 hours",
+      "isSelected": false,
+      "price": ""
+     },
+     {
+      "text": "4 to 6 hours",
+      "value": "4 to 6 hours",
+      "isSelected": false,
+      "price": ""
+     },
+     {
+      "text": "6 to 8 hours",
+      "value": "6 to 8 hours",
+      "isSelected": false,
+      "price": ""
+     },
+     {
+      "text": "More than 8 hours",
+      "value": "More than 8 hours",
+      "isSelected": false,
+      "price": ""
+     }
+    ],
+    "enableChoiceValue": false
+   },
+   {
+    "type": "textarea",
+    "id": 14,
+    "label": "Have you owned a German Shepherd or another high-drive working breed before?",
+    "isRequired": true,
+    "size": "medium",
+    "visibility": "visible",
+    "formId": 0,
+    "description": "Tell us about them: breed, how long, what you did with them.",
+    "descriptionPlacement": "below",
+    "placeholder": "",
+    "cssClass": "",
+    "inputs": null,
+    "adminLabel": "",
+    "errorMessage": "",
+    "labelPlacement": "",
+    "allowsPrepopulate": false,
+    "inputMask": false,
+    "inputMaskValue": "",
+    "inputType": "",
+    "defaultValue": "",
+    "noDuplicates": false,
+    "useRichTextEditor": false
+   },
+   {
+    "type": "textarea",
+    "id": 15,
+    "label": "What do you plan to do with your German Shepherd, and what temperament are you hoping for?",
+    "isRequired": true,
+    "size": "medium",
+    "visibility": "visible",
+    "formId": 0,
+    "description": "Training, sport, protection, search and rescue, an active family dog. High drive, or a steadier dog.",
+    "descriptionPlacement": "below",
+    "placeholder": "",
+    "cssClass": "",
+    "inputs": null,
+    "adminLabel": "",
+    "errorMessage": "",
+    "labelPlacement": "",
+    "allowsPrepopulate": false,
+    "inputMask": false,
+    "inputMaskValue": "",
+    "inputType": "",
+    "defaultValue": "",
+    "noDuplicates": false,
+    "useRichTextEditor": false
+   },
+   {
+    "type": "radio",
+    "id": 16,
+    "label": "Do you intend to breed this dog?",
+    "isRequired": true,
+    "size": "large",
+    "visibility": "visible",
+    "formId": 0,
+    "description": "Our puppies go home on AKC Limited Registration. Full Registration is only by written agreement beforehand.",
+    "descriptionPlacement": "below",
+    "placeholder": "",
+    "cssClass": "",
+    "inputs": null,
+    "adminLabel": "",
+    "errorMessage": "",
+    "labelPlacement": "",
+    "allowsPrepopulate": false,
+    "inputMask": false,
+    "inputMaskValue": "",
+    "inputType": "",
+    "defaultValue": "",
+    "noDuplicates": false,
+    "useRichTextEditor": false,
+    "choices": [
+     {
+      "text": "No",
+      "value": "No",
+      "isSelected": false,
+      "price": ""
+     },
+     {
+      "text": "Yes",
+      "value": "Yes",
+      "isSelected": false,
+      "price": ""
+     },
+     {
+      "text": "Not sure",
+      "value": "Not sure",
+      "isSelected": false,
+      "price": ""
+     }
+    ],
+    "enableOtherChoice": false
+   },
+   {
+    "type": "text",
+    "id": 17,
+    "label": "Current or previous veterinarian",
+    "isRequired": false,
+    "size": "large",
+    "visibility": "visible",
+    "formId": 0,
+    "description": "Clinic name and town.",
+    "descriptionPlacement": "below",
+    "placeholder": "",
+    "cssClass": "",
+    "inputs": null,
+    "adminLabel": "",
+    "errorMessage": "",
+    "labelPlacement": "",
+    "allowsPrepopulate": false,
+    "inputMask": false,
+    "inputMaskValue": "",
+    "inputType": "",
+    "defaultValue": "",
+    "noDuplicates": false,
+    "useRichTextEditor": false
+   },
+   {
+    "type": "radio",
+    "id": 18,
+    "label": "Have you read the Puppies page and the Sales Contract?",
+    "isRequired": true,
+    "size": "large",
+    "visibility": "visible",
+    "formId": 0,
+    "description": "They cover the price, the deposit, what comes with every puppy, and the health guarantee.",
+    "descriptionPlacement": "below",
+    "placeholder": "",
+    "cssClass": "",
+    "inputs": null,
+    "adminLabel": "",
+    "errorMessage": "",
+    "labelPlacement": "",
+    "allowsPrepopulate": false,
+    "inputMask": false,
+    "inputMaskValue": "",
+    "inputType": "",
+    "defaultValue": "",
+    "noDuplicates": false,
+    "useRichTextEditor": false,
+    "choices": [
+     {
+      "text": "Yes, both",
+      "value": "Yes, both",
+      "isSelected": false,
+      "price": ""
+     },
+     {
+      "text": "Not yet",
+      "value": "Not yet",
+      "isSelected": false,
+      "price": ""
+     }
+    ],
+    "enableOtherChoice": false
+   },
+   {
+    "type": "textarea",
+    "id": 19,
+    "label": "Anything else you would like us to know?",
+    "isRequired": false,
+    "size": "medium",
+    "visibility": "visible",
+    "formId": 0,
+    "description": "",
+    "descriptionPlacement": "",
+    "placeholder": "",
+    "cssClass": "",
+    "inputs": null,
+    "adminLabel": "",
+    "errorMessage": "",
+    "labelPlacement": "",
+    "allowsPrepopulate": false,
+    "inputMask": false,
+    "inputMaskValue": "",
+    "inputType": "",
+    "defaultValue": "",
+    "noDuplicates": false,
+    "useRichTextEditor": false
+   },
+   {
+    "type": "captcha",
+    "id": 20,
+    "label": "CAPTCHA",
+    "isRequired": false,
+    "size": "large",
+    "visibility": "visible",
+    "formId": 0,
+    "description": "",
+    "descriptionPlacement": "",
+    "placeholder": "",
+    "cssClass": "",
+    "inputs": null,
+    "adminLabel": "",
+    "errorMessage": "",
+    "labelPlacement": "",
+    "allowsPrepopulate": false,
+    "inputMask": false,
+    "inputMaskValue": "",
+    "inputType": "",
+    "defaultValue": "",
+    "noDuplicates": false,
+    "useRichTextEditor": false,
+    "captchaType": "recaptcha",
+    "captchaTheme": "light",
+    "captchaSize": "normal"
+   }
+  ],
+  "version": "2.9.0",
+  "id": 0,
+  "nextFieldId": 21,
+  "useCurrentUserAsAuthor": true,
+  "postContentTemplateEnabled": false,
+  "postTitleTemplateEnabled": false,
+  "postTitleTemplate": "",
+  "postContentTemplate": "",
+  "lastPageButton": null,
+  "pagination": null,
+  "firstPageCssClass": null,
+  "enableHoneypot": true,
+  "honeypotAction": "spam",
+  "enableAnimation": false,
+  "save": {
+   "enabled": false
+  },
+  "limitEntries": false,
+  "scheduleForm": false,
+  "requireLogin": false,
+  "markupVersion": 2,
+  "confirmations": {
+   "c1": {
+    "id": "c1",
+    "name": "Default Confirmation",
+    "isDefault": true,
+    "type": "message",
+    "message": "Thank you. Your application has reached us and we read every one ourselves. Expect to hear from us within a few days.",
+    "url": "",
+    "pageId": "",
+    "queryString": "",
+    "disableAutoformat": false,
+    "conditionalLogic": []
+   }
+  },
+  "notifications": {
+   "n1": {
+    "id": "n1",
+    "isActive": true,
+    "to": "{admin_email}",
+    "name": "Admin Notification",
+    "event": "form_submission",
+    "toType": "email",
+    "subject": "Puppy application from {Name (First):1.3} {Name (Last):1.6}",
+    "message": "{all_fields}",
+    "from": "{admin_email}",
+    "fromName": "Pine Hill German Shepherds website",
+    "replyTo": "{Email:2}",
+    "routing": null,
+    "bcc": "",
+    "disableAutoformat": false,
+    "enableAttachments": false
+   },
+   "n2": {
+    "id": "n2",
+    "isActive": true,
+    "to": "{Email:2}",
+    "name": "Applicant Confirmation",
+    "event": "form_submission",
+    "toType": "field",
+    "toField": "2",
+    "subject": "We received your application: Pine Hill German Shepherds",
+    "message": "Hello {Name (First):1.3},\n\nThank you for applying for a Pine Hill puppy. We have your application and will be in touch within a few days.\n\nA copy of your answers is below.\n\n{all_fields}",
+    "from": "{admin_email}",
+    "fromName": "Pine Hill German Shepherds",
+    "replyTo": "{admin_email}",
+    "routing": null,
+    "bcc": "",
+    "disableAutoformat": false,
+    "enableAttachments": false
+   }
+  }
+ },
+ "version": "2.9.0"
+}
