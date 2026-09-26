@@ -496,9 +496,21 @@ body .ph-gf .gform_footer input[type=submit]:focus-visible,
 body .ph-gf .gform_footer button[type=submit]:focus-visible,
 body .ph-gf .gform_footer .gform_button:focus-visible{
  outline:2px solid var(--brass)!important;outline-offset:3px!important}
-.ph-gf .gform_wrapper .gform_confirmation_message{
- font-family:'Montserrat',system-ui,sans-serif!important;font-size:15px!important;
- color:var(--espresso)!important;line-height:1.8!important}
+/* After an AJAX submit Gravity replaces the whole .gform_wrapper with
+   .gform_confirmation_wrapper, so the wrapper class must NOT be in these
+   selectors or they never match (which is why the message showed unstyled). */
+.ph-gf .gform_confirmation_wrapper{max-width:560px!important;margin:0 auto!important;
+ padding:clamp(8px,1vw,16px) 0 0!important;text-align:center!important}
+.ph-gf .gform_confirmation_message{font-family:'Cormorant Garamond',Georgia,serif!important;
+ font-size:clamp(23px,2.5vw,30px)!important;font-weight:500!important;line-height:1.3!important;
+ letter-spacing:-.01em!important;color:var(--espresso)!important;text-align:center!important;
+ max-width:560px!important;margin:0 auto!important;padding:0!important}
+.ph-gf .gform_confirmation_message p{font-family:inherit!important;font-size:inherit!important;
+ line-height:inherit!important;color:inherit!important;margin:0!important}
+.ph-gf .gform_confirmation_message p+p{margin-top:12px!important}
+.ph-gf .gform_confirmation_message::before{content:'';display:block;width:100%;aspect-ratio:4/3;
+ margin:0 auto 32px;background:url(https://www.pinehillgermanshepherds.com/wp-content/uploads/2026/09/Pine-Hill-German-Shepherds-1024x768.jpg) center/cover no-repeat;
+ box-shadow:0 2px 6px rgba(28,26,24,.06),0 18px 40px -16px rgba(28,26,24,.20)}
 .ph-gf .gform_wrapper .gform_validation_errors{border-radius:0!important}
 .elementor-element-litherow10 img{height:auto!important;object-fit:contain!important}
 
