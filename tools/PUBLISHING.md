@@ -135,13 +135,31 @@ After every CSS write, expire it:
 the next page load. Pass it in the tool's `meta` argument so it stores as an
 array, the same as `_elementor_page_settings`.
 
-### 4. Bump post_modified
+### 4. Bump post_modified  (changed 2026-09-27: the excerpt is public)
 
 A meta-only write does not update `post_modified`, so WordPress never fires a
 save and LiteSpeed never purges the page. Abigail sees a stale render and
-reports that nothing changed. Finish every page with a real field write:
+reports that nothing changed. Finish every page with a real field write.
 
-    wp_update_post(ID, fields={"post_excerpt": "..."})
+**Do not put the revision note in the excerpt.** Rank Math's page template
+uses `%excerpt%` as the meta description, so "Rev 2026-09-26b (phone scale)"
+was going out to Google as the page's description. The excerpt is now the
+real one-sentence description of the page and `rank_math_description`
+carries the same text. The revision note lives in a private meta key:
+
+    wp_update_post(ID,
+        fields={"post_excerpt": "<the page's real description, unchanged>"},
+        meta_input={"_ph_rev": "Rev 2026-09-27a (what changed)"})
+
+`wp_update_post` sets `post_modified` to now on every update whatever the
+fields contain, so re-sending the same excerpt is enough to trigger the save.
+
+### 4b. The rebuilt pages are noindex until go-live  (2026-09-27)
+
+Every published `*-new` page carries `rank_math_robots = ["noindex"]` so it
+does not compete with the live page it will replace, and Rank Math drops it
+from the sitemap. The page is still public and reachable by link. Remove the
+meta at go-live, after the slug swap; the checklist is in `seo/README.md`.
 
 ## (3d) NEVER hand-write or blank `_elementor_css`
 
@@ -244,3 +262,14 @@ way Rangeley already did. To undo, write `_menu_item_object_id` back to
 The remaining eight items (About, Contact, Our Shepherds, Reserve A Puppy,
 Gallery, Puppies, News, Litters) still point at the live pages and should
 stay that way until the slug swap.
+
+## (9) Rank Math local business schema  (2026-09-27)
+
+`rank-math-options-titles` now says `LocalBusiness` with the phone, the
+business email, and Garland / ME / 04939. The street address is left blank on
+purpose: the site should not publish her home address in structured data
+until she says so (Yelp already lists 591 Dexter Rd; that is her call, not
+ours). Opening hours are hidden because the 9-to-5, seven-days block was a
+default, not a fact. The option as it was before the change is in
+`tools/backups/rank-math-options-titles-2026-09-27.json`; writing that file
+back with `wp_update_option` is the full revert.
