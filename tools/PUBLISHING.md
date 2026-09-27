@@ -187,3 +187,29 @@ positional ids (`conxc11`, `conxw05`, ...) because Elementor does not apply
   the whole document. Before regenerating a page, ask whether it has been edited
   in Elementor since the last push, and fold those changes into the source
   first.
+
+## Live since 2026-09-27: the rebrand is IN the old page ids
+
+Go-live was done by writing the rebrand data + stylesheet into the pages
+the menu, the footer and Google already point at, so nothing outside the
+pages had to change. Push to THESE ids now (build with `PH_LIVE=1` so
+links carry the final addresses):
+
+    about        -> 66    /about/            (was /about-us-maines-german-shepherds-2-2/, auto-redirects)
+    shepherds    -> 435   /our-shepherds/
+    freda        -> 650   /freda/            (was Females, /females/)
+    rangeley     -> 2907  /rangeley/         (old Males 1042 is a draft)
+    puppies      -> 920   /puppies/          (was /workinglinegermanshepherdpuppies/; old duplicate 2287 is a draft)
+    litters      -> 243   /litters/          (was /tgermanshepherdlitterspuppies/)
+    reserve      -> 475   /reserve-a-puppy/
+    contract     -> 2870  /sales-contract/
+    contact      -> 37    /contact/          (was /contac-us-german-shepherd-puppies/)
+    gallery      -> 433   /gallery/
+    news         -> 499   /news/
+    puppyculture -> 1003  /puppy-culture/
+    home         -> 2804  /  (page_on_front; 51 untouched, reachable at /home/)
+
+The "-new" pages (2857, 2858, 2879, 2889, 2900-2904, 2906) are private
+working copies. Header 2737 and footer 2820 are attached to the ids above
+by page id (option + `_elementor_conditions` on both templates); 32 and
+25 still hold `include/general` for everything else.

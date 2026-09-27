@@ -943,7 +943,10 @@ def live_links(j):
     if not LIVE:
         return j
     for a, b in LIVE_LINKS.items():
+        # Button links are JSON strings; links inside editor HTML are
+        # single-quoted href='...' attributes. Both must be rewritten.
         j = j.replace('"' + a + '"', '"' + b + '"')
+        j = j.replace("href='" + a + "'", "href='" + b + "'")
     return j
 
 
