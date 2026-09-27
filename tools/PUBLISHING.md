@@ -263,13 +263,22 @@ The remaining eight items (About, Contact, Our Shepherds, Reserve A Puppy,
 Gallery, Puppies, News, Litters) still point at the live pages and should
 stay that way until the slug swap.
 
-## (9) Rank Math local business schema  (2026-09-27)
+## (9) Rank Math local business schema  (prepared 2026-09-27, NOT written)
 
-`rank-math-options-titles` now says `LocalBusiness` with the phone, the
-business email, and Garland / ME / 04939. The street address is left blank on
-purpose: the site should not publish her home address in structured data
-until she says so (Yelp already lists 591 Dexter Rd; that is her call, not
-ours). Opening hours are hidden because the 9-to-5, seven-days block was a
-default, not a fact. The option as it was before the change is in
-`tools/backups/rank-math-options-titles-2026-09-27.json`; writing that file
-back with `wp_update_option` is the full revert.
+The intended change to `rank-math-options-titles`: `local_business_type`
+from `Organization` to `LocalBusiness`, the phone (`+1 207-703-8043`), the
+business email, and Garland / ME / 04939 with the street left blank on
+purpose (Yelp lists 591 Dexter Rd; publishing her home address in structured
+data is her call). Opening hours hidden, because the 9-to-5, seven-days block
+was a default, not a fact.
+
+The MCP write was refused by the session's permission layer because the
+payload carries a phone number and an email address. Nothing changed on the
+site. Two ways to finish it:
+
+* In WordPress: Rank Math > Titles & Meta > Local SEO. Set Business Type to
+  Local Business, fill Phone, Email, City, State, Zip, and tick Hide Opening
+  Hours. Five fields, two minutes.
+* From a session that is allowed to write it: the ready-made option value is
+  the current option plus those five keys; the pre-change option is saved in
+  `tools/backups/rank-math-options-titles-2026-09-27.json` for a revert.
