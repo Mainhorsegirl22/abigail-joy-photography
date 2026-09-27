@@ -187,3 +187,60 @@ positional ids (`conxc11`, `conxw05`, ...) because Elementor does not apply
   the whole document. Before regenerating a page, ask whether it has been edited
   in Elementor since the last push, and fold those changes into the source
   first.
+
+## (7) Gravity form 7: the emails live in Gravity's tables, not in the build
+
+Form 7 (Puppy Application) was imported from the *first* cut of
+`gravity/puppy-application.json`. Her wording for the applicant email and the
+thank-you landed in the file afterwards, so the live form still sends the old
+applicant email ("Hello ..., Thank you for applying for a Pine Hill puppy").
+The on-page thank-you is drawn by the Reserve stylesheet, so it is already
+right; only the two emails are behind.
+
+The MCP has no way into Gravity's tables (`wp_gf_form_meta`), so the emails are
+pushed over the Gravity Forms REST API v2, which is enabled under
+Forms > Settings > REST API:
+
+    WP_USER=<user> WP_APP_PASSWORD='<application password>' \
+        python3 tools/gf_push_form.py            # dry run: shows live vs file
+    ... --apply                                  # write, then read back
+
+The script GETs the live form, checks every `{Field:ID}` in the new wording
+against the live field ids, replaces only `notifications` and `confirmations`,
+and PUTs the whole form back (GFAPI::update_form wants all of it). Field edits
+made in the form editor survive. Credentials are read from the environment
+only. In a Claude cloud session the site host must be on the environment's
+allowed domains, or the request never leaves the container.
+
+Two things to settle with Abigail before `--apply`:
+
+* `n1` (admin notification) goes to `{admin_email}`, which is
+  `webmaster@abundantdesigns.com`, not her inbox. The footer gives
+  `pinehillgermanshepherds@gmail.com`. Change `to` in the JSON if she wants
+  applications herself.
+* `n2` (applicant confirmation) uses `{admin_email}` as `from` and `replyTo`,
+  so an applicant who hits Reply writes to the webmaster. FluentSMTP may
+  rewrite `from` anyway; `replyTo` it will not.
+
+## (8) The Primary Menu (term 12) is shared by the live header and the rebrand
+
+There is one menu. Header 32 (live) and header 2737 (rebrand) both render
+`primary-menu`, and the rebrand footer links to the *old* slugs on purpose:
+the working assumption is that at go-live the new pages take over the old
+slugs, so neither the menu nor the footer needs re-pointing then.
+
+The two dog pages are the exception - there is no old "Freda" or "Rangeley"
+page for them to replace - so their items under Our Shepherds (item 472)
+were re-pointed directly:
+
+    1044  Males   (page 1042)  -> 2907 Rangeley   (before 2026-09-27)
+     662  Females (page 650)   -> 2906 Freda      (2026-09-27, MCP meta write)
+
+Item titles are blank, so each takes its page title; nothing else to rename.
+This does reach the live site through the old header's dropdown, the same
+way Rangeley already did. To undo, write `_menu_item_object_id` back to
+`1042` / `650`. LiteSpeed will serve the old menu until purged.
+
+The remaining eight items (About, Contact, Our Shepherds, Reserve A Puppy,
+Gallery, Puppies, News, Litters) still point at the live pages and should
+stay that way until the slug swap.
