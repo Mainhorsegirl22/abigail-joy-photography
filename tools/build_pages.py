@@ -14,7 +14,7 @@ import sys
 from phkit import (start, section, con, row, w, h, p, ul, dl, btn, img, rule, form, opener,
                    bighero, intro, vals, trivia, ph_img, splittop, quiettop,
                    fill, pill, hero, sec, head, split, col, trio, quad, card,
-                   stat, steps, faq, cta, emit, pin, gform, IMG, INDEX, spec)
+                   stat, steps, faq, cta, emit, pin, gform, posts, IMG, INDEX, spec)
 
 DOCS = "https://www.pinehillgermanshepherds.com/wp-content/uploads/2025/04"
 FREDA = {
@@ -385,6 +385,70 @@ def contract():
 
 
 EXTRA = """
+/* News: the Posts widget's own markup, dressed like the rest of the site.
+   Three across, date above the title in the brass label style, serif title,
+   a clamped excerpt and an underlined Read More. */
+.ph-feed{max-width:var(--wrap)!important;width:100%!important;margin-inline:auto!important;
+ padding:0!important}
+.ph-feed .elementor-posts-container{display:grid!important;
+ grid-template-columns:repeat(3,minmax(0,1fr))!important;
+ gap:clamp(40px,4.4vw,60px) clamp(22px,2.8vw,40px)!important;padding:0!important;margin:0!important}
+.ph-feed .elementor-post{display:flex!important;flex-direction:column!important;margin:0!important;
+ padding:0!important;background:none!important;border:0!important;box-shadow:none!important}
+.ph-feed .elementor-post__thumbnail__link{display:block!important;width:100%!important;
+ margin:0 0 18px!important}
+.ph-feed .elementor-post__thumbnail{position:relative!important;aspect-ratio:4/3!important;
+ padding:0!important;overflow:hidden!important;background-color:var(--sand)!important}
+.ph-feed .elementor-post__thumbnail img{position:absolute!important;inset:0!important;
+ width:100%!important;height:100%!important;object-fit:cover!important;
+ transition:transform .7s cubic-bezier(.22,.9,.32,1)}
+.ph-feed .elementor-post:hover .elementor-post__thumbnail img{transform:scale(1.035)}
+.ph-feed .elementor-post__text{display:flex!important;flex-direction:column!important;
+ gap:8px!important;padding:0!important}
+.ph-feed .elementor-post__meta-data{order:-1;margin:0!important;
+ font-family:'Montserrat',system-ui,sans-serif!important;font-size:10.5px!important;
+ font-weight:500!important;letter-spacing:.2em!important;text-transform:uppercase!important;
+ color:var(--brass)!important}
+.ph-feed .elementor-post__title{margin:0!important;
+ font-family:'Cormorant Garamond',Georgia,serif!important;font-weight:500!important;
+ font-size:clamp(21px,1.9vw,25px)!important;line-height:1.2!important;letter-spacing:-.01em!important;
+ text-wrap:balance}
+.ph-feed .elementor-post__title a{color:var(--espresso)!important;text-decoration:none!important;
+ transition:color .2s ease}
+.ph-feed .elementor-post__title a:hover{color:var(--brass)!important}
+.ph-feed .elementor-post__title a:focus-visible{outline:2px solid var(--brass);outline-offset:3px}
+.ph-feed .elementor-post__title a:active{color:var(--sage-deep)!important}
+.ph-feed .elementor-post__excerpt{margin:0!important}
+.ph-feed .elementor-post__excerpt p{margin:0!important;
+ font-family:'Montserrat',system-ui,sans-serif!important;font-size:13.5px!important;
+ line-height:1.8!important;color:var(--body)!important;
+ display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.ph-feed .elementor-post__read-more{align-self:flex-start;margin-top:6px!important;
+ padding:0 0 3px!important;font-family:'Montserrat',system-ui,sans-serif!important;
+ font-size:10.5px!important;font-weight:600!important;letter-spacing:.2em!important;
+ text-transform:uppercase!important;color:var(--espresso)!important;text-decoration:none!important;
+ border-bottom:1px solid var(--brass)!important;transition:color .2s ease}
+.ph-feed .elementor-post__read-more:hover{color:var(--brass)!important}
+.ph-feed .elementor-post__read-more:focus-visible{outline:2px solid var(--brass);outline-offset:3px}
+.ph-feed .elementor-post__read-more:active{color:var(--sage-deep)!important}
+.ph-feed .elementor-pagination{display:flex!important;flex-wrap:wrap!important;
+ justify-content:center!important;gap:4px!important;margin-top:clamp(44px,5vw,64px)!important;
+ padding-top:clamp(24px,3vw,32px)!important;border-top:1px solid var(--hair)!important;
+ font-family:'Montserrat',system-ui,sans-serif!important;font-size:11px!important;
+ letter-spacing:.16em!important;text-transform:uppercase!important}
+.ph-feed .elementor-pagination .page-numbers{display:inline-block!important;padding:10px 12px!important;
+ line-height:1!important;color:var(--body)!important;text-decoration:none!important;
+ border-bottom:1px solid transparent!important;transition:color .2s ease,border-color .2s ease}
+.ph-feed .elementor-pagination a.page-numbers:hover{color:var(--espresso)!important;
+ border-bottom-color:var(--brass)!important}
+.ph-feed .elementor-pagination a.page-numbers:focus-visible{outline:2px solid var(--brass);outline-offset:2px}
+.ph-feed .elementor-pagination .page-numbers.current{color:var(--espresso)!important;
+ border-bottom-color:var(--espresso)!important}
+.ph-feed__after{margin-top:clamp(48px,6vw,80px)!important;padding-top:clamp(32px,4vw,48px)!important;
+ border-top:1px solid var(--hair)!important}
+@media(max-width:880px){.ph-feed .elementor-posts-container{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
+@media(max-width:600px){.ph-feed .elementor-posts-container{grid-template-columns:1fr!important;gap:36px!important}
+ .ph-feed .elementor-post__title{font-size:22px!important}}
 .ph-role p{font-size:10.5px!important;letter-spacing:.2em!important;
  text-transform:uppercase!important;color:var(--brass)!important}
 .ph-note p{font-size:12.5px!important;color:var(--brass)!important}
@@ -900,12 +964,17 @@ def news():
     d = [hero("News", "from the kennel", "wks", ypos=50,
               button=("Join the Waiting List", "/reserve-a-puppy-new/"))]
 
-    d.append(sec([con([
-        p("Post feed goes here \u2014 " + fill("wire to the blog") + "."),
-        p("The most reliable way to hear about a litter first is the waiting "
-          "list. People on it hear before an announcement goes anywhere else."),
-        btn("Join the Waiting List", "/reserve-a-puppy-new/"),
-    ], "ph-mid")], "feed", tone="white"))
+    # The feed is the page. Elementor Pro's Posts widget lists every published
+    # post newest first, nine to a page, with the older pages behind it.
+    d.append(sec([
+        posts(),
+        con([
+            p("The most reliable way to hear about a litter first is the "
+              "waiting list. People on it hear before an announcement goes "
+              "anywhere else."),
+            btn("Join the Waiting List", "/reserve-a-puppy-new/"),
+        ], "ph-mid ph-feed__after"),
+    ], "feed", tone="white"))
 
     d.append(cta("Want to Hear First?",
                  "The waiting list is short and it moves.",

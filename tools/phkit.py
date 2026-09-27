@@ -162,6 +162,40 @@ def gform(form_id, classes="ph-gf"):
     }, classes)
 
 
+def posts(per_page=9, columns=3, classes="ph-feed"):
+    """The blog feed, through Elementor Pro's own Posts widget (classic skin).
+
+    The widget queries published posts itself, so the News page stays current
+    without anybody touching it. Column count and per-page are the skin's own
+    controls; the look is entirely ours, applied to the widget's markup
+    (.elementor-post, .elementor-post__title, .elementor-pagination) from the
+    page stylesheet under .ph-feed.
+    """
+    return w("posts", {
+        "_skin": "classic",
+        "classic_columns": str(columns),
+        "classic_columns_tablet": "2",
+        "classic_columns_mobile": "1",
+        "classic_posts_per_page": str(per_page),
+        "classic_thumbnail_size": "medium_large",
+        "classic_show_title": "yes",
+        "classic_title_tag": "h3",
+        "classic_show_excerpt": "yes",
+        "classic_excerpt_length": "22",
+        "classic_show_read_more": "yes",
+        "classic_read_more_text": "Read More",
+        "classic_meta_data": ["date"],
+        "posts_post_type": "post",
+        "posts_orderby": "date",
+        "posts_order": "desc",
+        "posts_ignore_sticky_posts": "yes",
+        "pagination_type": "numbers_and_prev_next",
+        "pagination_page_limit": "5",
+        "pagination_prev_label": "Newer",
+        "pagination_next_label": "Older",
+    }, classes)
+
+
 def pin(node, fixed):
     """Give a node a permanent id instead of a positional one.
 

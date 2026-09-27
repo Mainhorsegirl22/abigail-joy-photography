@@ -72,6 +72,50 @@ def widget_inner(t, s):
         return s.get("html", "")
     if t == "shortcode":
         return '<div style="min-height:220px;background:#E8E5DF"></div>'
+    if t == "posts":
+        # Elementor Pro Posts widget, classic skin: the front-end DOM it emits,
+        # filled with real titles and featured images from her blog so the
+        # grid is judged on the content it will actually carry.
+        U = "https://www.pinehillgermanshepherds.com/wp-content/uploads"
+        sample = [
+            ("German Shepherd Breeders in New England: A Smart Buyer Guide for Finding the Right Program",
+             "September 19, 2026", f"{U}/2026/02/ghows-LK-91aec015-bcf2-408a-a9fb-61a6f5ea16a4-4886035b.webp",
+             "Searching for German Shepherd breeders in New England turns up a long list very quickly, and the listings tend to look alike. Same photos of puppies in grass, same phrases about health…"),
+            ("German Shepherd Puppy Checklist: 25 Must Haves to Prepare Before Pickup Day",
+             "September 12, 2026", f"{U}/2026/02/CAMP9905-Edit-scaled.jpg",
+             "This German Shepherd puppy checklist exists because of a phone call we get every litter, usually on the evening of go home day, usually about a crate that turned out…"),
+            ("German Shepherd Puppy Training: 10 Powerful Habits to Build in the First 30 Days",
+             "September 5, 2026", f"{U}/2025/01/AKC-East-Working-Line-German-Shepherd-Puppies-for-Sale-in-Maine-Pine-Hill-German-Shepherds-scaled.jpg",
+             "German Shepherd puppy training starts the moment the crate door opens in your driveway, whether you meant to start or not. This breed learns constantly, so your puppy…"),
+            ("Early Puppy Socialization: The Vital First 16 Weeks Behind Every Confident Shepherd",
+             "August 29, 2026", f"{U}/2026/09/BK700068-scaled.jpg",
+             "Early puppy socialization is the closest thing to a guarantee that exists in dog raising. It does not fix genetics and it does not replace training, but it decides…"),
+            ("German Shepherd Health Testing: The 5 Clearances That Truly Protect Your Puppy",
+             "August 22, 2026", f"{U}/2026/09/BK700074-Edit-scaled.jpg",
+             "German Shepherd health testing is the part of a breeding program a buyer never sees and then feels for the next twelve years. Two puppies can look identical in…"),
+            ("German Shepherd Puppies Maine: 7 Essential Facts About Freda's Fall 2026 Litter",
+             "August 15, 2026", f"{U}/2024/10/AKC-German-Shepherd-Puppies-for-Sale-in-Maine-Pine-Hill-German-Shepherd-Breeders-scaled.jpg",
+             "We are so excited to announce that Freda is expecting, and by the end of September we should have working line German Shepherd puppies Maine families can bring…"),
+        ]
+        n = int(s.get("classic_posts_per_page", 6))
+        arts = "".join(
+            '<article class="elementor-post elementor-grid-item post">'
+            f'<a class="elementor-post__thumbnail__link" href="#"><div class="elementor-post__thumbnail">'
+            f'<img src="{im}" alt=""></div></a>'
+            '<div class="elementor-post__text">'
+            f'<h3 class="elementor-post__title"><a href="#">{html.escape(ti)}</a></h3>'
+            f'<div class="elementor-post__meta-data"><span class="elementor-post-date">{dt}</span></div>'
+            f'<div class="elementor-post__excerpt"><p>{html.escape(ex)}</p></div>'
+            f'<a class="elementor-post__read-more" href="#">{s.get("classic_read_more_text", "Read More")}</a>'
+            '</div></article>'
+            for ti, dt, im, ex in (sample * 3)[:n])
+        pag = ('<nav class="elementor-pagination" aria-label="Pagination">'
+               '<span aria-current="page" class="page-numbers current">1</span>'
+               '<a class="page-numbers" href="#">2</a><a class="page-numbers" href="#">3</a>'
+               '<a class="page-numbers" href="#">4</a><a class="page-numbers" href="#">5</a>'
+               f'<a class="next page-numbers" href="#">{s.get("pagination_next_label", "Next")} &raquo;</a></nav>')
+        return ('<div class="elementor-posts-container elementor-posts elementor-posts--skin-classic elementor-grid">'
+                + arts + "</div>" + pag)
     if t == "sbi-widget":
         # Smash Balloon feed: stand in with six tinted squares so the section
         # can be judged for rhythm before it ever touches the live site.
