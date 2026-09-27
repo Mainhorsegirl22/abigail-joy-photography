@@ -14,9 +14,18 @@ footer, which is what happened to Puppies and Available Litters.
 ### 2. Write the content
 
 Two meta writes: `_elementor_data` (the JSON from `build_pages.py <page> wire`)
-and `_elementor_page_settings` as a nested object `{custom_css: "..."}` passed
-in the tool's `meta` argument, not `key`/`value` - `meta` is what the server
-reads when both are present, and only `meta` can carry a nested object.
+and `_elementor_page_settings` as a nested object
+`{hide_title: "yes", custom_css: "..."}` passed in the tool's `meta` argument,
+not `key`/`value` - `meta` is what the server reads when both are present, and
+only `meta` can carry a nested object.
+
+**Always include `hide_title: "yes"`.** The write replaces the whole settings
+array. Without that key the Hello theme prints the WordPress page title as a
+bare sans-serif h1 above the Elementor content (2026-09-27: "Our Shepherds"
+appeared over every page after a custom_css-only write). The theme's own
+site-wide switch (`hello_elementor_settings_page_title`) needs the literal
+string `true`, which the MCP option tool cannot store - it JSON-decodes the
+value to a boolean - so the per-page flag is the only route from here.
 
 **The write runs stripslashes on the value, so a lone backslash never
 survives the trip.** `Male\nFemale` arrives as `MalenFemale`; JSON's own `\"`
