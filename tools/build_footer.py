@@ -139,7 +139,7 @@ CSS = """.ph-foot{background-color:var(--linen,#F2F0EC)!important;
 .ph-foot__links ul{list-style:none!important;margin:0!important;padding:0!important;
  display:grid!important;gap:11px!important}
 .ph-foot__links a,.ph-foot__links li{text-decoration:none!important;color:#1C1A18!important;
- font-size:13px!important;letter-spacing:.01em!important;text-transform:none!important}
+ font-size:13px!important;letter-spacing:0!important;text-transform:none!important}
 .ph-foot__links a{border-bottom:1px solid transparent!important;
  transition:color .25s ease,border-color .25s ease}
 .ph-foot__links a:hover,.ph-foot__links a:focus-visible{color:var(--brass-ink,#7A5F35)!important;

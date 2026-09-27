@@ -480,7 +480,7 @@ EXTRA = """
  margin-top:clamp(18px,2.4vw,32px)!important;padding-top:clamp(34px,4vw,48px)!important}
 .ph-sign .ph-crow__n{flex-direction:column!important;align-items:flex-start!important;gap:8px!important}
 .ph-sign .ph-cnum p{font-family:'Montserrat',system-ui,sans-serif!important;font-size:10.5px!important;
- font-weight:600!important;letter-spacing:.22em!important;text-transform:uppercase!important;
+ font-weight:600!important;letter-spacing:.2em!important;text-transform:uppercase!important;
  padding-top:6px!important;line-height:1.5!important}
 .ph-sign .ph-terms p{padding-bottom:22px!important}
 .ph-sign .ph-note p{padding-top:16px!important}
@@ -496,10 +496,10 @@ EXTRA = """
 .ph-crow__b{flex:1 1 0!important;min-width:0!important;width:auto!important;max-width:680px!important;
  gap:0!important;padding:0!important;align-items:flex-start!important}
 .ph-cnum p{font-family:'Cormorant Garamond',Georgia,serif!important;font-size:20px!important;
- line-height:1.4!important;color:var(--brass)!important;letter-spacing:.04em!important;
+ line-height:1.4!important;color:var(--brass)!important;letter-spacing:0!important;
  font-variant-numeric:lining-nums!important}
 .ph-ctitle .elementor-heading-title{font-size:20px!important;line-height:1.4!important;
- letter-spacing:-.005em!important}
+ letter-spacing:-.01em!important}
 .ph-terms p{font-size:15px!important;line-height:1.85!important;padding-bottom:14px!important}
 .ph-terms:last-child p{padding-bottom:0!important}
 /* Phone: the rail sits above the wording. Must come after the desktop rules. */
@@ -514,7 +514,7 @@ EXTRA = """
    markup rather than Elementor's, because the form is a Gravity form. */
 .ph-gf .gform_wrapper .gfield_label,.ph-gf .gform_wrapper legend.gfield_label{
  font-family:'Montserrat',system-ui,sans-serif!important;font-size:10.5px!important;
- font-weight:600!important;letter-spacing:.14em!important;text-transform:uppercase!important;
+ font-weight:600!important;letter-spacing:.2em!important;text-transform:uppercase!important;
  color:var(--brass)!important;margin-bottom:8px!important}
 .ph-gf .gform_wrapper .gform_fields{row-gap:22px!important}
 .ph-gf .gform_wrapper input[type=text],.ph-gf .gform_wrapper input[type=email],
@@ -600,7 +600,7 @@ body .ph-gf .gform_footer .gform_button:focus-visible{
 .ph-tnum{flex:0 0 48px!important}
 .ph-lede p,.ph-doc>.ph-lede p{font-size:14.5px!important}
 .ph-pro__name .elementor-heading-title{font-size:38px!important}
-.ph-strap p{font-size:11px!important;letter-spacing:.12em!important}
+.ph-strap p{font-size:11px!important;letter-spacing:.2em!important}
 .ph-vlabel p{font-size:10.5px!important}
 .ph-title .elementor-heading-title{font-size:26px!important}
 .ph-mast__co p{font-size:22px!important}
