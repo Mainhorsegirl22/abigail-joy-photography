@@ -496,30 +496,43 @@ body .ph-gf .gform_footer input[type=submit]:focus-visible,
 body .ph-gf .gform_footer button[type=submit]:focus-visible,
 body .ph-gf .gform_footer .gform_button:focus-visible{
  outline:2px solid var(--brass)!important;outline-offset:3px!important}
-/* After an AJAX submit Gravity replaces the whole .gform_wrapper with
-   .gform_confirmation_wrapper, so the wrapper class must NOT be in these
-   selectors or they never match (which is why the message showed unstyled). */
-.ph-gf .gform_confirmation_wrapper{max-width:560px!important;margin:0 auto!important;
- padding:clamp(8px,1vw,16px) 0 0!important;text-align:center!important}
-.ph-gf .gform_confirmation_message{font-family:'Cormorant Garamond',Georgia,serif!important;
- font-size:clamp(23px,2.5vw,30px)!important;font-weight:500!important;line-height:1.3!important;
- letter-spacing:-.01em!important;color:var(--espresso)!important;text-align:center!important;
- max-width:560px!important;margin:0 auto!important;padding:0!important}
-.ph-gf .gform_confirmation_message p{font-family:inherit!important;font-size:inherit!important;
- line-height:inherit!important;color:inherit!important;margin:0!important}
-.ph-gf .gform_confirmation_message p+p{margin-top:12px!important}
-/* The on-page wording is set here, not in Gravity: whatever Gravity emits is
-   hidden and the sentence below is drawn in its place. Gravity's own settings
-   can't be written from the build, so this is the only way the wording ships
-   with the page. Change the text here, not in Forms > Confirmations. */
+/* Thank-you state, 2026-09-27, her review of the test submission: the puppy
+   photo on the left, the words on the right, and the section heading gone -
+   nobody should read "apply / take your time with this" after they have
+   applied. After an AJAX submit Gravity replaces the whole .gform_wrapper
+   with .gform_confirmation_wrapper, so the wrapper class must NOT be in these
+   selectors or they never match (which is why the message once showed
+   unstyled). The wording is drawn here, not in Gravity: Gravity's own
+   settings can't be written from the build. Change the text here, not in
+   Forms > Confirmations. `:has()` hides the heading; a browser without it
+   simply keeps the heading, nothing breaks. Inside :has() use Elementor's
+   own .e-con, never a ph- class - containers do not carry ph- classes. */
+.ph-head:has(+ .e-con .gform_confirmation_wrapper){display:none!important}
+.ph-formwrap:has(.gform_confirmation_wrapper){max-width:1040px!important}
+.ph-gf .gform_confirmation_wrapper{display:flex!important;flex-direction:row!important;
+ align-items:center!important;gap:clamp(28px,4vw,60px)!important;max-width:none!important;
+ margin:0!important;padding:clamp(22px,2.6vw,36px)!important;background:#FFFFFF!important;
+ text-align:left!important;
+ box-shadow:0 2px 6px rgba(28,26,24,.05),0 22px 50px -24px rgba(28,26,24,.22)!important}
+.ph-gf .gform_confirmation_wrapper::before{content:'';flex:0 0 42%;aspect-ratio:1426/1500;
+ background:url(https://www.pinehillgermanshepherds.com/wp-content/uploads/2024/10/AdobeStock_59460428.jpg) center/cover no-repeat}
+.ph-gf .gform_confirmation_message{flex:1 1 0!important;min-width:0!important;max-width:none!important;
+ margin:0!important;padding:0!important;text-align:left!important;
+ font-size:0!important;line-height:0!important}
 .ph-gf .gform_confirmation_message>*{display:none!important}
-.ph-gf .gform_confirmation_message{font-size:0!important;line-height:0!important}
+.ph-gf .gform_confirmation_message::before{content:'application received';display:block;
+ font-family:'Mrs Saint Delafield',cursive;color:var(--brass);font-size:clamp(42px,4.6vw,62px);
+ line-height:1.08;margin:0 0 10px}
 .ph-gf .gform_confirmation_message::after{content:'Thank you for reaching out! We will be in touch with you as soon as possible!';
- display:block;font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(23px,2.5vw,30px);
- font-weight:500;line-height:1.3;letter-spacing:-.01em;color:var(--espresso)}
-.ph-gf .gform_confirmation_message::before{content:'';display:block;width:100%;aspect-ratio:4/3;
- margin:0 auto 32px;background:url(https://www.pinehillgermanshepherds.com/wp-content/uploads/2026/09/Pine-Hill-German-Shepherds-1024x768.jpg) center/cover no-repeat;
- box-shadow:0 2px 6px rgba(28,26,24,.06),0 18px 40px -16px rgba(28,26,24,.20)}
+ display:block;font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(25px,2.7vw,35px);
+ font-weight:500;line-height:1.28;letter-spacing:-.01em;color:var(--espresso);max-width:24ch}
+@media(max-width:820px){
+.ph-gf .gform_confirmation_wrapper{flex-direction:column!important;gap:22px!important;
+ padding:22px!important;text-align:center!important}
+.ph-gf .gform_confirmation_wrapper::before{flex:0 0 auto;width:min(100%,320px)}
+.ph-gf .gform_confirmation_message{text-align:center!important}
+.ph-gf .gform_confirmation_message::after{max-width:none;margin-inline:auto}
+}
 .ph-gf .gform_wrapper .gform_validation_errors{border-radius:0!important}
 .elementor-element-litherow10 img{height:auto!important;object-fit:contain!important}
 
