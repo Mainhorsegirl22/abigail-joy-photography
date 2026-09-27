@@ -508,6 +508,15 @@ body .ph-gf .gform_footer .gform_button:focus-visible{
 .ph-gf .gform_confirmation_message p{font-family:inherit!important;font-size:inherit!important;
  line-height:inherit!important;color:inherit!important;margin:0!important}
 .ph-gf .gform_confirmation_message p+p{margin-top:12px!important}
+/* The on-page wording is set here, not in Gravity: whatever Gravity emits is
+   hidden and the sentence below is drawn in its place. Gravity's own settings
+   can't be written from the build, so this is the only way the wording ships
+   with the page. Change the text here, not in Forms > Confirmations. */
+.ph-gf .gform_confirmation_message>*{display:none!important}
+.ph-gf .gform_confirmation_message{font-size:0!important;line-height:0!important}
+.ph-gf .gform_confirmation_message::after{content:'Thank you for reaching out! We will be in touch with you as soon as possible!';
+ display:block;font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(23px,2.5vw,30px);
+ font-weight:500;line-height:1.3;letter-spacing:-.01em;color:var(--espresso)}
 .ph-gf .gform_confirmation_message::before{content:'';display:block;width:100%;aspect-ratio:4/3;
  margin:0 auto 32px;background:url(https://www.pinehillgermanshepherds.com/wp-content/uploads/2026/09/Pine-Hill-German-Shepherds-1024x768.jpg) center/cover no-repeat;
  box-shadow:0 2px 6px rgba(28,26,24,.06),0 18px 40px -16px rgba(28,26,24,.20)}
