@@ -582,7 +582,8 @@ def resolve(css):
 if __name__ == "__main__":
     mode = sys.argv[1] if len(sys.argv) > 1 else "data"
     if mode == "data":
-        sys.stdout.write(json.dumps(DATA, separators=(",", ":")))
+        from phkit import live_links
+        sys.stdout.write(live_links(json.dumps(DATA, separators=(",", ":"))))
     elif mode == "css":
         sys.stdout.write(resolve(CSS + CSS_FEED))
     elif mode == "push":

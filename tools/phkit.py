@@ -15,7 +15,7 @@ of bugs rather than nine.
   - every value only Abigail can supply is written with fill() so it shows up
     on the page as an obvious blank, never as an invented fact
 """
-import json, re
+import json, os, re
 
 U = "https://www.pinehillgermanshepherds.com/wp-content/uploads"
 
@@ -914,6 +914,39 @@ def prune(css, data_json):
     return "".join(out)
 
 
+# Go-live link map. While the rebrand sits beside the old site every page
+# links to the "-new" address. Build with PH_LIVE=1 and every link is
+# rewritten to the final address in one pass; the old-site addresses the
+# homepage still carries are mapped as well, so both builds agree.
+LIVE = os.environ.get("PH_LIVE") == "1"
+LIVE_LINKS = {
+    "/about-new/": "/about/",
+    "/about-us-maines-german-shepherds-2-2/": "/about/",
+    "/our-shepherds-new/": "/our-shepherds/",
+    "/freda-new/": "/freda/",
+    "/rangeley-new/": "/rangeley/",
+    "/puppies-new/": "/puppies/",
+    "/workinglinegermanshepherdpuppies/": "/puppies/",
+    "/litters-new/": "/litters/",
+    "/tgermanshepherdlitterspuppies/": "/litters/",
+    "/reserve-a-puppy-new/": "/reserve-a-puppy/",
+    "/sales-contract-new/": "/sales-contract/",
+    "/gallery-new/": "/gallery/",
+    "/news-new/": "/news/",
+    "/contact-new/": "/contact/",
+    "/contac-us-german-shepherd-puppies/": "/contact/",
+    "/puppy-culture-new/": "/puppy-culture/",
+    "/k9-scholars/": "/puppy-culture/",
+}
+
+def live_links(j):
+    if not LIVE:
+        return j
+    for a, b in LIVE_LINKS.items():
+        j = j.replace('"' + a + '"', '"' + b + '"')
+    return j
+
+
 def emit(data, extra_css=""):
-    j = json.dumps(data, separators=(",", ":"), ensure_ascii=False)
+    j = live_links(json.dumps(data, separators=(",", ":"), ensure_ascii=False))
     return (j, prune(minify(resolve(CSS + "\n" + extra_css)), j))
