@@ -39,3 +39,10 @@ What that tells you: she switches to "I" when it is her call. She asks the reade
 ## Image and alt habits
 
 She puts a photo of the actual dog near the top, sometimes a two-image gallery. Alt text is a short phrase, lowercase "shepherd" is fine: "working line German shepherd", "show line vrs working line". Keep the keyword in at least one alt, plainly.
+
+## More of her, unedited, from older posts
+
+- "Well living in Northern Maine the first day of spring doesn't really always mean winters over! Last night we got about 5 inches of snow! Of course the dogs were happy but... well all of us human are more than ready for spring to really come!"
+- "How fast does time goes by! We've been enjoying and usually cold winter here in norther Maine, with plenty of snow and -1 days! Freda just came into heat this week, and I'll be taking her to get bred next week sometime. I'm really excited and hope that everything will go smoothly!"
+
+She is chattier and warmer than my drafts. Let one or two sentences per post sound like this. Do not fix her grammar when editing her text.

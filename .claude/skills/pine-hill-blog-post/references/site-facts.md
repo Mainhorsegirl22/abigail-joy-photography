@@ -38,8 +38,18 @@ Only use what is here or on the live site. Do not invent customer stories, dates
 
 ## Focus keywords already used (do not reuse)
 
-German Shepherd breeders; working line German Shepherd; working line German Shepherd puppies; Czech German Shepherd; German Shepherds; German,Shepherds; Working Line German Shepherds; pros and cons of owning a Working Line German Shepherd; working line German Shepherd education guide; what is a working line German Shepherd.
+German Shepherd breeders; working line German Shepherd; working line German Shepherd puppies; Czech German Shepherd; German Shepherds; German,Shepherds; Working Line German Shepherds; pros and cons of owning a Working Line German Shepherd; working line German Shepherd education guide; what is a working line German Shepherd; sable German Shepherd; male German Shepherd; female German Shepherd; German Shepherd crate training; German Shepherd puppy biting.
 Add each new post's keyword here.
+
+## Posts drafted 27–28 Sep 2026 (check before reusing a topic)
+
+- ID 3074 /working-line-german-shepherd-vs-show-line/ — published
+- ID 3135 /sable-german-shepherd/ — draft
+- ID 3136 /male-german-shepherd-or-female/ — draft
+- ID 3137 /german-shepherd-crate-training/ — draft
+- ID 3138 /german-shepherd-puppy-biting/ — draft
+
+Good remaining topics, not yet covered: winter/cold-weather care in Maine, feeding and diet schedule by age, leash pulling, separation anxiety (distinct from crate training), DM (degenerative myelopathy) explained for buyers, what to do the first 24 hours home, AKC registration paperwork walkthrough, IGP/protection sport intro, senior German Shepherd care.
 
 ## Media library URLs that exist (with attachment ids where known)
 
