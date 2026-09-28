@@ -406,12 +406,12 @@ EXTRA = """
 .ph-feed .elementor-post__text{display:flex!important;flex-direction:column!important;
  gap:8px!important;padding:0!important}
 .ph-feed .elementor-post__meta-data{order:-1;margin:0!important;
- font-family:'Montserrat',system-ui,sans-serif!important;font-size:10.5px!important;
+ font-family:'Montserrat',system-ui,sans-serif!important;font-size:var(--t-label)!important;
  font-weight:500!important;letter-spacing:.2em!important;text-transform:uppercase!important;
  color:var(--brass)!important}
 .ph-feed .elementor-post__title{margin:0!important;
  font-family:'Cormorant Garamond',Georgia,serif!important;font-weight:500!important;
- font-size:clamp(21px,1.9vw,25px)!important;line-height:1.2!important;letter-spacing:-.01em!important;
+ font-size:var(--t-h3)!important;line-height:1.2!important;letter-spacing:-.01em!important;
  text-wrap:balance}
 .ph-feed .elementor-post__title a{color:var(--espresso)!important;text-decoration:none!important;
  transition:color .2s ease}
@@ -420,12 +420,12 @@ EXTRA = """
 .ph-feed .elementor-post__title a:active{color:var(--sage-deep)!important}
 .ph-feed .elementor-post__excerpt{margin:0!important}
 .ph-feed .elementor-post__excerpt p{margin:0!important;
- font-family:'Montserrat',system-ui,sans-serif!important;font-size:13.5px!important;
+ font-family:'Montserrat',system-ui,sans-serif!important;font-size:var(--t-small)!important;
  line-height:1.8!important;color:var(--body)!important;
  display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
 .ph-feed .elementor-post__read-more{align-self:flex-start;margin-top:6px!important;
  padding:0 0 3px!important;font-family:'Montserrat',system-ui,sans-serif!important;
- font-size:10.5px!important;font-weight:600!important;letter-spacing:.2em!important;
+ font-size:var(--t-label)!important;font-weight:600!important;letter-spacing:.2em!important;
  text-transform:uppercase!important;color:var(--espresso)!important;text-decoration:none!important;
  border-bottom:1px solid var(--brass)!important;transition:color .2s ease}
 .ph-feed .elementor-post__read-more:hover{color:var(--brass)!important}
@@ -434,7 +434,7 @@ EXTRA = """
 .ph-feed .elementor-pagination{display:flex!important;flex-wrap:wrap!important;
  justify-content:center!important;gap:4px!important;margin-top:clamp(44px,5vw,64px)!important;
  padding-top:clamp(24px,3vw,32px)!important;border-top:1px solid var(--hair)!important;
- font-family:'Montserrat',system-ui,sans-serif!important;font-size:11px!important;
+ font-family:'Montserrat',system-ui,sans-serif!important;font-size:var(--t-label)!important;
  letter-spacing:.16em!important;text-transform:uppercase!important}
 .ph-feed .elementor-pagination .page-numbers{display:inline-block!important;padding:10px 12px!important;
  line-height:1!important;color:var(--body)!important;text-decoration:none!important;
@@ -448,10 +448,10 @@ EXTRA = """
  border-top:1px solid var(--hair)!important}
 @media(max-width:880px){.ph-feed .elementor-posts-container{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
 @media(max-width:600px){.ph-feed .elementor-posts-container{grid-template-columns:1fr!important;gap:36px!important}
- .ph-feed .elementor-post__title{font-size:22px!important}}
-.ph-role p{font-size:10.5px!important;letter-spacing:.2em!important;
+ .ph-feed .elementor-post__title{font-size:var(--t-h3)!important}}
+.ph-role p{font-size:var(--t-label)!important;letter-spacing:.2em!important;
  text-transform:uppercase!important;color:var(--brass)!important}
-.ph-note p{font-size:12.5px!important;color:var(--brass)!important}
+.ph-note p{font-size:var(--t-label)!important;color:var(--brass)!important}
 .ph-litter{max-width:var(--wrap)!important;margin-inline:auto!important;padding:0!important;
  gap:0!important}
 .ph-facts a{color:var(--espresso);text-decoration:underline;text-underline-offset:3px;
@@ -468,18 +468,18 @@ EXTRA = """
 .ph-mast{width:100%!important;max-width:none!important;align-items:flex-start!important;
  text-align:left!important;gap:0!important;padding:0 0 clamp(26px,3vw,36px)!important;
  margin-bottom:clamp(30px,3.4vw,42px)!important;border-bottom:1px solid var(--hair)!important}
-.ph-mast__co p{margin-bottom:4px!important;font-size:clamp(24px,2.4vw,30px)!important}
-.ph-title .elementor-heading-title{font-size:clamp(26px,2.8vw,34px)!important;
+.ph-mast__co p{margin-bottom:4px!important;font-size:var(--t-script-s)!important}
+.ph-title .elementor-heading-title{font-size:var(--t-h2)!important;
  letter-spacing:-.015em!important;margin-bottom:12px!important}
-.ph-mast__note p{font-size:14px!important;line-height:1.8!important;max-width:58ch!important;
+.ph-mast__note p{font-size:var(--t-body)!important;line-height:1.8!important;max-width:58ch!important;
  margin-inline:0!important;color:var(--body)!important;padding-top:4px!important}
-.ph-doc>.ph-lede p{font-size:16.5px!important;line-height:1.8!important;max-width:74ch!important;
+.ph-doc>.ph-lede p{font-size:var(--t-read)!important;line-height:1.8!important;max-width:74ch!important;
  color:var(--espresso)!important;padding-bottom:clamp(14px,2vw,24px)!important}
 
 .ph-sign{border-top:1px solid var(--espresso)!important;
  margin-top:clamp(18px,2.4vw,32px)!important;padding-top:clamp(34px,4vw,48px)!important}
 .ph-sign .ph-crow__n{flex-direction:column!important;align-items:flex-start!important;gap:8px!important}
-.ph-sign .ph-cnum p{font-family:'Montserrat',system-ui,sans-serif!important;font-size:10.5px!important;
+.ph-sign .ph-cnum p{font-family:'Montserrat',system-ui,sans-serif!important;font-size:var(--t-label)!important;
  font-weight:600!important;letter-spacing:.2em!important;text-transform:uppercase!important;
  padding-top:6px!important;line-height:1.5!important}
 .ph-sign .ph-terms p{padding-bottom:22px!important}
@@ -495,12 +495,12 @@ EXTRA = """
 .ph-crow__n>*{width:auto!important}
 .ph-crow__b{flex:1 1 0!important;min-width:0!important;width:auto!important;max-width:680px!important;
  gap:0!important;padding:0!important;align-items:flex-start!important}
-.ph-cnum p{font-family:'Cormorant Garamond',Georgia,serif!important;font-size:20px!important;
+.ph-cnum p{font-family:'Cormorant Garamond',Georgia,serif!important;font-size:var(--t-h3)!important;
  line-height:1.4!important;color:var(--brass)!important;letter-spacing:0!important;
  font-variant-numeric:lining-nums!important}
-.ph-ctitle .elementor-heading-title{font-size:20px!important;line-height:1.4!important;
+.ph-ctitle .elementor-heading-title{font-size:var(--t-h3)!important;line-height:1.4!important;
  letter-spacing:-.01em!important}
-.ph-terms p{font-size:15px!important;line-height:1.85!important;padding-bottom:14px!important}
+.ph-terms p{font-size:var(--t-read)!important;line-height:1.85!important;padding-bottom:14px!important}
 .ph-terms:last-child p{padding-bottom:0!important}
 /* Phone: the rail sits above the wording. Must come after the desktop rules. */
 @media(max-width:820px){
@@ -508,12 +508,12 @@ EXTRA = """
 .ph-crow__n{flex:0 0 auto!important;flex-direction:row!important;align-items:baseline!important;
  gap:12px!important}
 .ph-crow__b{max-width:none!important}
-.ph-cnum p{font-size:19px!important}
+.ph-cnum p{font-size:var(--t-h3)!important}
 }
 /* Gravity Forms, dressed to match the rest of the site. Targets Gravity's own
    markup rather than Elementor's, because the form is a Gravity form. */
 .ph-gf .gform_wrapper .gfield_label,.ph-gf .gform_wrapper legend.gfield_label{
- font-family:'Montserrat',system-ui,sans-serif!important;font-size:10.5px!important;
+ font-family:'Montserrat',system-ui,sans-serif!important;font-size:var(--t-label)!important;
  font-weight:600!important;letter-spacing:.2em!important;text-transform:uppercase!important;
  color:var(--brass)!important;margin-bottom:8px!important}
 .ph-gf .gform_wrapper .gform_fields{row-gap:22px!important}
@@ -522,13 +522,13 @@ EXTRA = """
 .ph-gf .gform_wrapper textarea,.ph-gf .gform_wrapper select{
  border:1px solid var(--hair)!important;border-radius:0!important;background:#FFFFFF!important;
  padding:13px 14px!important;font-family:'Montserrat',system-ui,sans-serif!important;
- font-size:14px!important;color:var(--espresso)!important;box-shadow:none!important}
+ font-size:var(--t-body)!important;color:var(--espresso)!important;box-shadow:none!important}
 .ph-gf .gform_wrapper input:focus,.ph-gf .gform_wrapper textarea:focus,
 .ph-gf .gform_wrapper select:focus{outline:2px solid var(--brass)!important;
  outline-offset:2px!important;border-color:var(--brass)!important}
 .ph-gf .gform_wrapper .gfield--type-consent .gfield_consent_label,
 .ph-gf .gform_wrapper .ginput_container_consent label{
- font-family:'Montserrat',system-ui,sans-serif!important;font-size:13.5px!important;
+ font-family:'Montserrat',system-ui,sans-serif!important;font-size:var(--t-small)!important;
  font-weight:400!important;letter-spacing:0!important;text-transform:none!important;
  color:var(--body)!important;line-height:1.7!important}
 .ph-gf .gform_wrapper .gfield_required{color:var(--brass)!important}
@@ -546,7 +546,7 @@ body .ph-gf .gform_wrapper .gform_footer button{
  background:var(--sage)!important;background-color:var(--sage)!important;
  background-image:none!important;color:var(--ivory)!important;
  border:0!important;border-color:var(--sage)!important;
- font-family:'Montserrat',system-ui,sans-serif!important;font-size:10.5px!important;
+ font-family:'Montserrat',system-ui,sans-serif!important;font-size:var(--t-label)!important;
  font-weight:500!important;letter-spacing:.2em!important;text-transform:uppercase!important;
  border-radius:0!important;padding:17px 34px!important;width:auto!important;
  box-shadow:none!important;text-shadow:none!important;cursor:pointer!important;
@@ -566,7 +566,7 @@ body .ph-gf .gform_footer .gform_button:focus-visible{
 .ph-gf .gform_confirmation_wrapper{max-width:560px!important;margin:0 auto!important;
  padding:clamp(8px,1vw,16px) 0 0!important;text-align:center!important}
 .ph-gf .gform_confirmation_message{font-family:'Cormorant Garamond',Georgia,serif!important;
- font-size:clamp(23px,2.5vw,30px)!important;font-weight:500!important;line-height:1.3!important;
+ font-size:var(--t-h2)!important;font-weight:500!important;line-height:1.3!important;
  letter-spacing:-.01em!important;color:var(--espresso)!important;text-align:center!important;
  max-width:560px!important;margin:0 auto!important;padding:0!important}
 .ph-gf .gform_confirmation_message p{font-family:inherit!important;font-size:inherit!important;
@@ -579,7 +579,7 @@ body .ph-gf .gform_footer .gform_button:focus-visible{
 .ph-gf .gform_confirmation_message>*{display:none!important}
 .ph-gf .gform_confirmation_message{font-size:0!important;line-height:0!important}
 .ph-gf .gform_confirmation_message::after{content:'Thank you for reaching out! We will be in touch with you as soon as possible!';
- display:block;font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(23px,2.5vw,30px);
+ display:block;font-family:'Cormorant Garamond',Georgia,serif;font-size:var(--t-h2);
  font-weight:500;line-height:1.3;letter-spacing:-.01em;color:var(--espresso)}
 .ph-gf .gform_confirmation_message::before{content:'';display:block;width:100%;aspect-ratio:4/3;
  margin:0 auto 32px;background:url(https://www.pinehillgermanshepherds.com/wp-content/uploads/2026/09/Pine-Hill-German-Shepherds-1024x768.jpg) center/cover no-repeat;
@@ -590,21 +590,11 @@ body .ph-gf .gform_footer .gform_button:focus-visible{
 /* Phone: her review 2026-09-26, "make the text a little smaller". Sits last so
    it wins over every desktop rule of equal weight. */
 @media(max-width:600px){
-.elementor-widget-text-editor,.elementor-widget-text-editor p,.elementor-widget-text-editor li{font-size:14px!important;line-height:1.75!important}
-.elementor-widget-heading .elementor-heading-title{font-size:clamp(22px,6.2vw,26px)!important}
-.ph-hero .elementor-heading-title{font-size:clamp(24px,7vw,30px)!important}
-.ph-script p,.ph-hero .ph-script p{font-size:clamp(30px,8.6vw,36px)!important}
-.ph-introh .elementor-heading-title,.ph-valsh .elementor-heading-title{font-size:clamp(24px,6.8vw,28px)!important}
-.ph-tscript p{font-size:clamp(34px,9.5vw,40px)!important;margin-bottom:24px!important}
-.ph-tnum p{font-size:44px!important}
+body{--t-h1:clamp(24px,7vw,30px);--t-h2:clamp(22px,6.2vw,26px);--t-h3:18px;--t-read:15px;--t-script:clamp(30px,8.6vw,36px);--t-script-s:clamp(28px,7.6vw,32px)}
+.elementor-widget-text-editor,.elementor-widget-text-editor p,.elementor-widget-text-editor li{line-height:1.75!important}
 .ph-tnum{flex:0 0 48px!important}
-.ph-lede p,.ph-doc>.ph-lede p{font-size:14.5px!important}
-.ph-pro__name .elementor-heading-title{font-size:38px!important}
-.ph-strap p{font-size:11px!important;letter-spacing:.2em!important}
-.ph-vlabel p{font-size:10.5px!important}
-.ph-title .elementor-heading-title{font-size:26px!important}
-.ph-mast__co p{font-size:22px!important}
-.elementor-button{font-size:10px!important;padding:15px 26px!important}
+.ph-tscript p{margin-bottom:24px!important}
+.elementor-button{padding:15px 26px!important}
 }
 """
 

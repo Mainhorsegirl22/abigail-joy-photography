@@ -74,9 +74,9 @@ EXTRA = """
 .ph-post__head{max-width:820px!important;width:100%!important;margin-inline:auto!important;
  align-items:center!important;text-align:center!important;gap:14px!important;
  padding:0 0 clamp(28px,3.4vw,44px)!important}
-.ph-post__date p{font-size:10.5px!important;font-weight:600!important;letter-spacing:.2em!important;
+.ph-post__date p{font-size:var(--t-label)!important;font-weight:600!important;letter-spacing:.2em!important;
  text-transform:uppercase!important;color:var(--brass-ink)!important}
-.ph-post__title .elementor-heading-title{font-size:clamp(30px,3.8vw,50px)!important;
+.ph-post__title .elementor-heading-title{font-size:var(--t-h1)!important;
  line-height:1.1!important;letter-spacing:-.02em!important;text-wrap:balance}
 .ph-post__img{max-width:1040px!important;width:100%!important;margin-inline:auto!important}
 .ph-post__img img{width:100%!important;aspect-ratio:16/9!important;height:auto!important;
@@ -85,16 +85,16 @@ EXTRA = """
 .ph-post__body{max-width:720px!important;width:100%!important;margin-inline:auto!important;
  padding:clamp(40px,5vw,64px) 0 0!important;gap:0!important;align-items:stretch!important}
 /* The body is WordPress content, so the elements are the editor's own. */
-.ph-post__content p{font-family:'Montserrat',system-ui,sans-serif!important;font-size:16px!important;
+.ph-post__content p{font-family:'Montserrat',system-ui,sans-serif!important;font-size:var(--t-read)!important;
  line-height:1.85!important;color:var(--body)!important;margin:0 0 22px!important}
 .ph-post__content h2,.ph-post__content h3,.ph-post__content h4{
  font-family:'Cormorant Garamond',Georgia,serif!important;font-weight:500!important;
  color:var(--espresso)!important;letter-spacing:-.015em!important;line-height:1.15!important}
-.ph-post__content h2{font-size:clamp(25px,2.7vw,34px)!important;margin:44px 0 14px!important}
-.ph-post__content h3{font-size:clamp(21px,2.2vw,26px)!important;margin:34px 0 10px!important}
-.ph-post__content h4{font-size:19px!important;margin:28px 0 8px!important}
+.ph-post__content h2{font-size:var(--t-h2)!important;margin:44px 0 14px!important}
+.ph-post__content h3{font-size:var(--t-h3)!important;margin:34px 0 10px!important}
+.ph-post__content h4{font-size:var(--t-h3)!important;margin:28px 0 8px!important}
 .ph-post__content ul,.ph-post__content ol{margin:0 0 24px!important;padding:0 0 0 22px!important}
-.ph-post__content li{font-family:'Montserrat',system-ui,sans-serif!important;font-size:15.5px!important;
+.ph-post__content li{font-family:'Montserrat',system-ui,sans-serif!important;font-size:var(--t-read)!important;
  line-height:1.8!important;color:var(--body)!important;margin:0 0 10px!important}
 .ph-post__content li::marker{color:var(--brass)}
 .ph-post__content strong{color:var(--espresso)!important;font-weight:600!important}
@@ -106,13 +106,13 @@ EXTRA = """
 .ph-post__content a:active{color:var(--sage-deep)!important}
 .ph-post__content figure,.ph-post__content .wp-block-image{margin:36px 0!important;max-width:none!important}
 .ph-post__content img{width:100%!important;max-width:100%!important;height:auto!important;display:block!important}
-.ph-post__content figcaption{font-family:'Montserrat',system-ui,sans-serif!important;font-size:10.5px!important;
+.ph-post__content figcaption{font-family:'Montserrat',system-ui,sans-serif!important;font-size:var(--t-label)!important;
  letter-spacing:.2em!important;text-transform:uppercase!important;color:var(--brass-ink)!important;
  text-align:center!important;margin:12px 0 0!important}
 .ph-post__content blockquote{margin:36px 0!important;padding:4px 0 4px 26px!important;
  border-left:1px solid var(--brass)!important;background:none!important}
 .ph-post__content blockquote p{font-family:'Cormorant Garamond',Georgia,serif!important;font-style:italic!important;
- font-size:22px!important;line-height:1.5!important;color:var(--espresso)!important;margin:0!important}
+ font-size:var(--t-h3)!important;line-height:1.5!important;color:var(--espresso)!important;margin:0!important}
 .ph-post__content hr{border:0!important;border-top:1px solid var(--hair)!important;margin:40px 0!important}
 .ph-post__content>*:last-child{margin-bottom:0!important}
 /* Previous / next. Two quiet links on a hairline, no arrows. */
@@ -131,18 +131,16 @@ EXTRA = """
 .ph-post__nav .elementor-post-navigation__link__next{align-items:flex-end!important}
 .ph-post__nav .post-navigation__arrow-wrapper{display:none!important}
 .ph-post__nav .post-navigation__prev--label,.ph-post__nav .post-navigation__next--label{
- font-family:'Montserrat',system-ui,sans-serif!important;font-size:10.5px!important;font-weight:600!important;
+ font-family:'Montserrat',system-ui,sans-serif!important;font-size:var(--t-label)!important;font-weight:600!important;
  letter-spacing:.2em!important;text-transform:uppercase!important;color:var(--brass-ink)!important}
 .ph-post__nav .post-navigation__prev--title,.ph-post__nav .post-navigation__next--title{
- font-family:'Cormorant Garamond',Georgia,serif!important;font-weight:500!important;font-size:20px!important;
+ font-family:'Cormorant Garamond',Georgia,serif!important;font-weight:500!important;font-size:var(--t-h3)!important;
  line-height:1.25!important;color:var(--espresso)!important;transition:color .2s ease}
 .ph-post__nav a:hover .post-navigation__prev--title,.ph-post__nav a:hover .post-navigation__next--title{
  color:var(--brass)!important}
 .ph-post__nav a:focus-visible{outline:2px solid var(--brass);outline-offset:3px}
 @media(max-width:600px){
- .ph-post__title .elementor-heading-title{font-size:clamp(26px,7vw,32px)!important}
- .ph-post__content p{font-size:15px!important}
- .ph-post__content h2{font-size:24px!important;margin-top:36px!important}
+ .ph-post__content h2{margin-top:36px!important}
  .ph-post__nav .elementor-post-navigation{flex-direction:column!important;gap:22px!important}
  .ph-post__nav .elementor-post-navigation__next{text-align:left!important}
  .ph-post__nav .elementor-post-navigation__next a,.ph-post__nav .elementor-post-navigation__link__next{align-items:flex-start!important}

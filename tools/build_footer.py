@@ -124,33 +124,33 @@ CSS = """.ph-foot{background-color:var(--linen,#F2F0EC)!important;
 /* column headings: the darker gold, because the display gold is too faint
    to read at 10.5px */
 .ph-foot__col .elementor-heading-title{font-family:'Montserrat',system-ui,sans-serif!important;
- font-size:10.5px!important;font-weight:600!important;letter-spacing:.2em!important;
+ font-size:var(--t-label)!important;font-weight:600!important;letter-spacing:.2em!important;
  text-transform:uppercase!important;color:var(--brass-ink,#7A5F35)!important;
  padding-bottom:4px!important}
 
 .ph-foot .elementor-widget-text-editor,.ph-foot .elementor-widget-text-editor p,
 .ph-foot .elementor-widget-text-editor li{font-family:'Montserrat',system-ui,sans-serif!important;
- font-size:13.5px!important;line-height:1.85!important;color:#55504A!important;margin:0!important}
+ font-size:var(--t-small)!important;line-height:1.85!important;color:#55504A!important;margin:0!important}
 .ph-foot__brand p{max-width:40ch}
 .ph-foot__brand .ph-script p{font-family:'Mrs Saint Delafield',cursive!important;
- font-style:normal!important;font-size:clamp(34px,3vw,42px)!important;line-height:1.1!important;
+ font-style:normal!important;font-size:var(--t-script-s)!important;line-height:1.1!important;
  color:var(--brass,#A48760)!important;padding-top:2px!important}
 
 .ph-foot__links ul{list-style:none!important;margin:0!important;padding:0!important;
  display:grid!important;gap:11px!important}
 .ph-foot__links a,.ph-foot__links li{text-decoration:none!important;color:#1C1A18!important;
- font-size:13px!important;letter-spacing:0!important;text-transform:none!important}
+ font-size:var(--t-small)!important;letter-spacing:0!important;text-transform:none!important}
 .ph-foot__links a{border-bottom:1px solid transparent!important;
  transition:color .25s ease,border-color .25s ease}
 .ph-foot__links a:hover,.ph-foot__links a:focus-visible{color:var(--brass-ink,#7A5F35)!important;
  border-bottom-color:var(--brass-ink,#7A5F35)!important}
 .ph-foot__contact a{font-variant-numeric:lining-nums!important}
-.ph-foot__addr p{font-size:13px!important;line-height:1.7!important;padding-top:2px!important}
+.ph-foot__addr p{font-size:var(--t-small)!important;line-height:1.7!important;padding-top:2px!important}
 
 .ph-foot__social{margin-top:6px!important}
 .ph-foot__social .elementor-social-icon{background-color:transparent!important;
  border:1px solid rgba(28,26,24,.18)!important;color:#1C1A18!important;
- width:36px!important;height:36px!important;font-size:14px!important;
+ width:36px!important;height:36px!important;font-size:var(--t-body)!important;
  border-radius:0!important;margin:0 8px 0 0!important;
  transition:background-color .25s ease,color .25s ease,border-color .25s ease}
 /* Elementor colours the glyph itself white (i{color} / svg{fill}), so
@@ -173,7 +173,7 @@ CSS = """.ph-foot{background-color:var(--linen,#F2F0EC)!important;
  width:100%!important;margin-inline:auto!important;margin-top:clamp(20px,2.4vw,28px)!important;
  padding:0!important}
 .ph-foot__legal>*,.ph-foot__legal>.e-con-inner>*{width:auto!important;flex:0 0 auto!important;max-width:none!important}
-.ph-foot__legal p{font-size:8.5px!important;letter-spacing:.18em!important;
+.ph-foot__legal p{font-size:var(--t-label)!important;letter-spacing:.18em!important;
  text-transform:uppercase!important;color:#55504A!important}
 
 @media(max-width:980px){
