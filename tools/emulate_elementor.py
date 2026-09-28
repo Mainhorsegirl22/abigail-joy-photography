@@ -7,7 +7,7 @@ the .elementor-element-{id} hooks, the .elementor-widget-{type} wrappers and
 the inner markup of each widget type used on this page, plus the parts of
 Elementor's own base stylesheet that affect layout.
 """
-import json, sys, html
+import json, os, sys, html
 
 BASE = """
 *{box-sizing:border-box}
@@ -116,6 +116,33 @@ def widget_inner(t, s):
                f'<a class="next page-numbers" href="#">{s.get("pagination_next_label", "Next")} &raquo;</a></nav>')
         return ('<div class="elementor-posts-container elementor-posts elementor-posts--skin-classic elementor-grid">'
                 + arts + "</div>" + pag)
+    if t == "theme-post-title":
+        tag = s.get("header_size", "h1")
+        return (f'<{tag} class="elementor-heading-title elementor-size-default">'
+                'German Shepherd Breeders in New England: A Smart Buyer Guide '
+                f'for Finding the Right Program</{tag}>')
+    if t == "theme-post-featured-image":
+        return ('<img src="https://www.pinehillgermanshepherds.com/wp-content/uploads/2026/02/'
+                'ghows-LK-91aec015-bcf2-408a-a9fb-61a6f5ea16a4-4886035b.webp" '
+                'class="attachment-full size-full wp-post-image" alt="">')
+    if t == "theme-post-content":
+        here = os.path.dirname(os.path.abspath(__file__))
+        return open(os.path.join(here, "sample_post.html")).read()
+    if t == "post-navigation":
+        return ('<div class="elementor-post-navigation elementor-grid">'
+                '<div class="elementor-post-navigation__prev elementor-post-navigation__link">'
+                '<a href="#" rel="prev"><span class="post-navigation__arrow-wrapper post-navigation__arrow-prev">&lsaquo;</span>'
+                '<span class="elementor-post-navigation__link__prev">'
+                f'<span class="post-navigation__prev--label">{s.get("prev_label", "Previous")}</span>'
+                '<span class="post-navigation__prev--title">German Shepherd Puppy Checklist: 25 Must Haves to Prepare Before Pickup Day</span>'
+                '</span></a></div>'
+                '<div class="elementor-post-navigation__separator-wrapper"><div class="elementor-post-navigation__separator"></div></div>'
+                '<div class="elementor-post-navigation__next elementor-post-navigation__link">'
+                '<a href="#" rel="next"><span class="elementor-post-navigation__link__next">'
+                f'<span class="post-navigation__next--label">{s.get("next_label", "Next")}</span>'
+                '<span class="post-navigation__next--title">Early Puppy Socialization: The Vital First 16 Weeks</span>'
+                '</span><span class="post-navigation__arrow-wrapper post-navigation__arrow-next">&rsaquo;</span></a></div>'
+                '</div>')
     if t == "sbi-widget":
         # Smash Balloon feed: stand in with six tinted squares so the section
         # can be judged for rhythm before it ever touches the live site.
