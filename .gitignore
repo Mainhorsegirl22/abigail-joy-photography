@@ -1,6 +1,7 @@
 node_modules/
 temporary screenshots/
 .DS_Store
+.claude/settings.local.json
 fonts/
 __pycache__/
 *.pyc
